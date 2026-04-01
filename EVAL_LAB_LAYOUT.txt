@@ -1,0 +1,69 @@
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                         NAMING GATEKEEPER - EVAL LAB                            │
+│                   AI-powered naming governance for eBay products                │
+│                         [Single Run] [Eval Lab*]                                │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+┌────────────────────┬──────────────┬────────────────────┐
+│  GATE CONFIG (40%) │ ACTION (20%) │  TEST BRIEFS (40%) │
+├────────────────────┼──────────────┼────────────────────┤
+│                    │              │                    │
+│ Gate Configuration │              │   Test Briefs      │
+│ ┌────────────────┐ │              │ ┌────────────────┐ │
+│ │ ▸ G0: Inter... │ │              │ │ CITA           │ │
+│ └────────────────┘ │              │ │ Brief Text:    │ │
+│ ┌────────────────┐ │   ┌──────┐   │ │ [textarea...   │ │
+│ │ ▸ G1: Integr...│ │   │      │   │ │  editable]     │ │
+│ └────────────────┘ │   │ Ana- │   │ │                │ │
+│ ┌────────────────┐ │   │ lyze │   │ │ Original:      │ │
+│ │ ▾ G2: UX & S...│ │   │      │   │ │ ❌ No Name... │ │
+│ │ ┌────────────┐ │ │   │ Bri- │   │ │                │ │
+│ │ │[textarea   │ │ │   │ efs  │   │ │ New:           │ │
+│ │ │ with G2    │ │ │   │      │   │ │ ❌ No Name... │ │
+│ │ │ criteria]  │ │ │   │      │   │ │                │ │
+│ │ └────────────┘ │ │   └──────┘   │ │ ✓ Verdicts     │ │
+│ └────────────────┘ │              │ │   Match        │ │
+│ ┌────────────────┐ │  Evaluating  │ └────────────────┘ │
+│ │ ▸ G3: Strate...│ │   1/3...     │ ┌────────────────┐ │
+│ └────────────────┘ │              │ │ Managed Ship.  │ │
+│ ┌────────────────┐ │              │ │ Brief Text:    │ │
+│ │ ▸ G4: Portfo...│ │   ┌──────┐   │ │ [textarea...   │ │
+│ └────────────────┘ │   │      │   │ │  editable]     │ │
+│ ┌────────────────┐ │   │ 2/3  │   │ │                │ │
+│ │ ▸ G5: Legal &..│ │   │ mat- │   │ │ Original:      │ │
+│ └────────────────┘ │   │ched  │   │ │ ❌ No Name... │ │
+│                    │   │      │   │ │                │ │
+│                    │   └──────┘   │ │ New:           │ │
+│                    │              │ │ ✅ Needs Name │ │
+│                    │              │ │                │ │
+│                    │              │ │ ✗ Verdicts     │ │
+│                    │              │ │   Differ       │ │
+│                    │              │ │ Original: ❌.. │ │
+│                    │              │ │ New: ✅...     │ │
+│                    │              │ └────────────────┘ │
+│                    │              │ ┌────────────────┐ │
+│                    │              │ │ Carrier Net... │ │
+│                    │              │ │ [similar...]   │ │
+│                    │              │ └────────────────┘ │
+└────────────────────┴──────────────┴────────────────────┘
+
+KEY INTERACTIONS:
+├─ LEFT: Click ▸/▾ to expand/collapse gates
+│        Edit textarea to modify gate criteria
+├─ CENTER: Click "Analyze Briefs" to run evaluation
+│          Watch progress indicator in real-time
+└─ RIGHT: Edit brief text before analysis
+          See verdict comparison after analysis
+          ✓ = Match, ✗ = Difference
+
+MOBILE LAYOUT (stacks vertically):
+┌─────────────────────┐
+│ Gate Configuration  │
+│ [all gates...]      │
+├─────────────────────┤
+│ Analyze Briefs      │
+│ [button + progress] │
+├─────────────────────┤
+│ Test Briefs         │
+│ [all 3 briefs...]   │
+└─────────────────────┘
