@@ -116,15 +116,15 @@ export default function SingleRunStudio() {
       setChatMessages([]);
     }
 
-    // Simulate smooth progress during API call
+    // Simulate smooth progress during API call (whole numbers only)
     const progressInterval = setInterval(() => {
       setLoadingProgress((prev) => {
-        if (prev < 10) return prev + 2;
-        if (prev < 40) return prev + 1;
-        if (prev < 70) return prev + 0.5;
+        if (prev < 10) return Math.min(prev + 2, 10);
+        if (prev < 40) return Math.min(prev + 1, 40);
+        if (prev < 70) return Math.min(prev + 1, 70);
         return prev;
       });
-    }, 200);
+    }, 250);
 
     try {
       // Initial stage
@@ -206,27 +206,77 @@ export default function SingleRunStudio() {
     return [];
   };
 
-  // Helper to generate missing information requirements
+  // Helper to generate missing information requirements (ONLY for Pending/Unknown gates)
   const getMissingInfo = () => {
     if (!result) return [];
 
-    const missing: string[] = [];
-    const gates = [
-      { id: "G0", gate: result.gatekeeperResult.G0, asks: ["Confirm whether users actively select, toggle, or see this feature, or if it's an invisible background process"] },
-      { id: "G1", gate: result.gatekeeperResult.G1, asks: ["Confirm whether the experience has a primary standalone entry point or lives only inside existing surfaces", "Confirm whether users must enroll, apply, or be approved separately", "Confirm whether checkout is distinct or fully uses standard platform checkout"] },
-      { id: "G2", gate: result.gatekeeperResult.G2, asks: ["Confirm whether the experience is a separate destination versus a module embedded in existing flows", "Clarify the system architecture and backend boundaries"] },
-      { id: "G3", gate: result.gatekeeperResult.G3, asks: ["Confirm the strategic timeline and whether this is a permanent addition (>12 months) or short-term promotion"] },
-      { id: "G4", gate: result.gatekeeperResult.G4, asks: ["Identify any existing eBay products that might conflict with or be confused with the proposed name"] },
-      { id: "G5", gate: result.gatekeeperResult.G5, asks: ["Confirm trademark availability and regulatory compliance in target markets"] },
+    const missingByGate: Array<{ gateId: string; gateName: string; questions: string[] }> = [];
+
+    const gateDefinitions = [
+      {
+        id: "G0",
+        name: "Interaction Model",
+        gate: result.gatekeeperResult.G0,
+        asks: [
+          "Confirm whether users actively select, toggle, or see this feature",
+          "Clarify if this is an invisible background process or user-facing feature"
+        ]
+      },
+      {
+        id: "G1",
+        name: "Integration Level",
+        gate: result.gatekeeperResult.G1,
+        asks: [
+          "Confirm the primary user entry point (standalone vs. embedded)",
+          "Clarify whether users must enroll, apply, or be approved separately",
+          "Confirm whether checkout is distinct or uses standard platform checkout"
+        ]
+      },
+      {
+        id: "G2",
+        name: "UX & Service Boundary",
+        gate: result.gatekeeperResult.G2,
+        asks: [
+          "Confirm whether this is a separate destination or embedded module",
+          "Clarify the system architecture and backend boundaries"
+        ]
+      },
+      {
+        id: "G3",
+        name: "Strategic Lifespan",
+        gate: result.gatekeeperResult.G3,
+        asks: [
+          "Confirm the strategic timeline (permanent >12 months vs. short-term)",
+          "Provide launch timeline and market rollout plan"
+        ]
+      },
+      {
+        id: "G4",
+        name: "Portfolio Alignment",
+        gate: result.gatekeeperResult.G4,
+        asks: [
+          "Identify any existing eBay products that might conflict with this name",
+          "Confirm positioning relative to existing portfolio"
+        ]
+      },
+      {
+        id: "G5",
+        name: "Legal & Localization",
+        gate: result.gatekeeperResult.G5,
+        asks: [
+          "Confirm trademark availability in target markets",
+          "Clarify regulatory compliance and cultural considerations"
+        ]
+      },
     ];
 
-    gates.forEach(({ gate, asks }) => {
+    gateDefinitions.forEach(({ id, name, gate, asks }) => {
       if (gate.status === "Pending" || gate.status === "Unknown") {
-        missing.push(...asks);
+        missingByGate.push({ gateId: id, gateName: name, questions: asks });
       }
     });
 
-    return missing;
+    return missingByGate;
   };
 
   // Check if decision is final (not pending/unknown)
@@ -528,21 +578,61 @@ export default function SingleRunStudio() {
                   </div>
                 </div>
 
-                {/* Decision Summary or Missing Info */}
+                {/* Decision Summary or Missing Info with Reassessment */}
                 {!isFinalDecision() && getMissingInfo().length > 0 ? (
-                  <Card className="border-amber-200 bg-amber-50">
-                    <CardHeader className="pb-3">
-                      <CardTitle className="text-lg font-semibold text-amber-900">Additional Information Needed</CardTitle>
+                  <Card className="border-2 border-amber-300 bg-gradient-to-br from-amber-50 to-orange-50 shadow-lg">
+                    <CardHeader className="pb-4 border-b border-amber-200">
+                      <div className="flex items-center gap-2">
+                        <AlertCircle className="h-6 w-6 text-amber-600" />
+                        <CardTitle className="text-xl font-bold text-amber-900">Additional Information Needed</CardTitle>
+                      </div>
+                      <CardDescription className="text-amber-700 mt-2">
+                        Please provide the following information to complete the evaluation
+                      </CardDescription>
                     </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2 text-sm text-slate-700">
-                        {getMissingInfo().map((info, idx) => (
-                          <li key={idx} className="flex items-start gap-2">
-                            <span className="text-amber-600 mt-0.5">•</span>
-                            <span>{info}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    <CardContent className="pt-6 space-y-6">
+                      {/* Missing Info by Gate */}
+                      {getMissingInfo().map((gateInfo) => (
+                        <div key={gateInfo.gateId} className="bg-white rounded-lg p-4 border border-amber-200">
+                          <div className="flex items-center gap-2 mb-3">
+                            <Badge className="bg-blue-600 text-white font-mono font-bold">
+                              {gateInfo.gateId}
+                            </Badge>
+                            <h3 className="font-semibold text-slate-900">{gateInfo.gateName}</h3>
+                          </div>
+                          <ul className="space-y-2 ml-1">
+                            {gateInfo.questions.map((question, idx) => (
+                              <li key={idx} className="flex items-start gap-2 text-sm text-slate-700">
+                                <span className="text-amber-600 mt-0.5">•</span>
+                                <span>{question}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+
+                      {/* Reassessment Input */}
+                      <div className="bg-white rounded-lg p-5 border-2 border-amber-300 space-y-3">
+                        <label className="block">
+                          <span className="text-sm font-semibold text-slate-900 mb-2 block">
+                            Provide the missing information:
+                          </span>
+                          <Textarea
+                            placeholder="Answer the questions above...&#10;&#10;Example:&#10;G1 - Integration Level:&#10;The experience has a standalone entry point at ebay.com/newfeature&#10;Users must complete a separate enrollment form&#10;Checkout uses the standard eBay checkout flow"
+                            value={additionalContext}
+                            onChange={(e) => setAdditionalContext(e.target.value)}
+                            className="min-h-[180px] text-sm border-amber-300 focus:border-amber-500 focus:ring-amber-500 bg-white"
+                          />
+                        </label>
+                        <Button
+                          onClick={() => runEvaluation(true)}
+                          disabled={loading || !additionalContext.trim()}
+                          className="w-full bg-amber-600 hover:bg-amber-700 active:bg-amber-800 disabled:bg-slate-300 gap-2 shadow-md hover:shadow-lg transition-all duration-200"
+                        >
+                          <RefreshCw className="h-4 w-4" />
+                          Reassess with Additional Context
+                        </Button>
+                      </div>
                     </CardContent>
                   </Card>
                 ) : getDecisionSummary().length > 0 ? (
@@ -677,36 +767,6 @@ export default function SingleRunStudio() {
               </Card>
             )}
 
-            {/* Reassessment Section - ONLY shown when decision is incomplete */}
-            {!isFinalDecision() && (
-              <Card className="border-2 border-amber-300 bg-amber-50 shadow-md">
-                <CardHeader className="bg-amber-100 border-b border-amber-200">
-                  <CardTitle className="flex items-center gap-2 text-amber-900">
-                    <RefreshCw className="h-5 w-5 text-amber-600" />
-                    Provide Additional Context
-                  </CardTitle>
-                  <CardDescription className="text-amber-700">
-                    Answer the questions above to complete the evaluation
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4 pt-6">
-                  <Textarea
-                    placeholder="Provide the missing information requested above..."
-                    value={additionalContext}
-                    onChange={(e) => setAdditionalContext(e.target.value)}
-                    className="min-h-[150px] text-sm border-amber-300 focus:border-amber-500 focus:ring-amber-500 bg-white"
-                  />
-                  <Button
-                    onClick={() => runEvaluation(true)}
-                    disabled={loading || !additionalContext.trim()}
-                    className="bg-amber-600 hover:bg-amber-700 active:bg-amber-800 disabled:bg-slate-300 gap-2 shadow-md hover:shadow-lg transition-all duration-200"
-                  >
-                    <RefreshCw className="h-4 w-4" />
-                    Reassess with Additional Context
-                  </Button>
-                </CardContent>
-              </Card>
-            )}
 
             {/* Brand Coach Chat - ONLY shown after final decision */}
             {isFinalDecision() && (
