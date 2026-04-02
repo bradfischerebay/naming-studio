@@ -26,6 +26,8 @@ interface ChatMessage {
 export default function SingleRunStudio() {
   const [brief, setBrief] = useState("");
   const [loading, setLoading] = useState(false);
+  const [loadingProgress, setLoadingProgress] = useState(0);
+  const [loadingStage, setLoadingStage] = useState("");
   const [result, setResult] = useState<EvaluationResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
@@ -87,6 +89,8 @@ export default function SingleRunStudio() {
 
     setLoading(true);
     setError(null);
+    setLoadingProgress(0);
+    setLoadingStage("Initializing...");
     if (!isReassessment) {
       setResult(null);
       setChatMessages([]);
@@ -94,18 +98,32 @@ export default function SingleRunStudio() {
     }
 
     try {
+      // Simulate realistic progress
+      setLoadingProgress(10);
+      setLoadingStage("Running Gatekeeper evaluation...");
+
       const response = await fetch("/api/evaluate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ brief: evaluationText }),
       });
 
+      setLoadingProgress(60);
+      setLoadingStage("Analyzing gate results...");
+
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.error || "Evaluation failed");
       }
 
+      setLoadingProgress(80);
+      setLoadingStage("Calculating verdict...");
+
       const data = await response.json();
+
+      setLoadingProgress(100);
+      setLoadingStage("Complete!");
+
       setResult(data);
 
       // Check if more information is needed
@@ -304,18 +322,38 @@ export default function SingleRunStudio() {
               onChange={(e) => setBrief(e.target.value)}
               className="min-h-[200px] font-mono text-sm border-slate-300 focus:border-blue-500 focus:ring-blue-500"
             />
-            <div className="flex items-center gap-3">
-              <Button
-                onClick={() => runEvaluation(false)}
-                disabled={loading || !brief.trim()}
-                size="lg"
-                className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 disabled:bg-slate-300 shadow-md hover:shadow-lg transition-all duration-200"
-              >
-                {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                {loading ? "Evaluating..." : "Evaluate Brief"}
-              </Button>
-              {error && (
-                <p className="text-sm text-red-600 font-medium">{error}</p>
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <Button
+                  onClick={() => runEvaluation(false)}
+                  disabled={loading || !brief.trim()}
+                  size="lg"
+                  className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 disabled:bg-slate-300 shadow-md hover:shadow-lg transition-all duration-200"
+                >
+                  {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                  {loading ? "Evaluating..." : "Evaluate Brief"}
+                </Button>
+                {error && (
+                  <p className="text-sm text-red-600 font-medium">{error}</p>
+                )}
+              </div>
+
+              {/* Loading Progress Bar */}
+              {loading && (
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-slate-600 font-medium">{loadingStage}</span>
+                    <span className="text-slate-500">{loadingProgress}%</span>
+                  </div>
+                  <div className="w-full bg-slate-200 rounded-full h-2 overflow-hidden">
+                    <motion.div
+                      className="h-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"
+                      initial={{ width: 0 }}
+                      animate={{ width: `${loadingProgress}%` }}
+                      transition={{ duration: 0.5, ease: "easeOut" }}
+                    />
+                  </div>
+                </div>
               )}
             </div>
           </CardContent>

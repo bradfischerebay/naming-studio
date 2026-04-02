@@ -93,15 +93,27 @@ export class ChomskyClient {
     const token = await this.getAccessToken();
     const modelName = params.model || this.config.model;
 
+    // Determine provider based on model name
+    const isAnthropic = modelName.includes('anthropic') || modelName.includes('claude');
+    const isGemini = modelName.includes('gemini');
+    const provider = isAnthropic ? 'gcp-vertex-ai' : isGemini ? 'gcp-vertex-ai' : 'azure';
+
+    const headers: Record<string, string> = {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`,
+      "X-genai-api-provider": provider,
+      "X-EBAY-USER-ID": process.env.USER || "naming-studio",
+      "X-EBAY-CHOMSKY-MODEL-NAME": modelName,
+    };
+
+    // Add anthropic_version for Claude models
+    if (isAnthropic) {
+      headers["anthropic-version"] = "2023-06-01";
+    }
+
     const response = await fetch(this.config.endpoint, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
-        "X-genai-api-provider": "azure",
-        "X-EBAY-USER-ID": process.env.USER || "naming-studio",
-        "X-EBAY-CHOMSKY-MODEL-NAME": modelName,
-      },
+      headers,
       body: JSON.stringify({
         model: modelName,
         messages: [
@@ -153,15 +165,27 @@ export class ChomskyClient {
     const token = await this.getAccessToken();
     const modelName = params.model || this.config.model;
 
+    // Determine provider based on model name
+    const isAnthropic = modelName.includes('anthropic') || modelName.includes('claude');
+    const isGemini = modelName.includes('gemini');
+    const provider = isAnthropic ? 'gcp-vertex-ai' : isGemini ? 'gcp-vertex-ai' : 'azure';
+
+    const headers: Record<string, string> = {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`,
+      "X-genai-api-provider": provider,
+      "X-EBAY-USER-ID": process.env.USER || "naming-studio",
+      "X-EBAY-CHOMSKY-MODEL-NAME": modelName,
+    };
+
+    // Add anthropic_version for Claude models
+    if (isAnthropic) {
+      headers["anthropic-version"] = "2023-06-01";
+    }
+
     const response = await fetch(this.config.endpoint, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
-        "X-genai-api-provider": "azure",
-        "X-EBAY-USER-ID": process.env.USER || "naming-studio",
-        "X-EBAY-CHOMSKY-MODEL-NAME": modelName,
-      },
+      headers,
       body: JSON.stringify({
         model: modelName,
         messages: params.messages,
