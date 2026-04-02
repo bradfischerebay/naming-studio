@@ -116,9 +116,19 @@ export default function SingleRunStudio() {
       setChatMessages([]);
     }
 
+    // Simulate smooth progress during API call
+    const progressInterval = setInterval(() => {
+      setLoadingProgress((prev) => {
+        if (prev < 10) return prev + 2;
+        if (prev < 40) return prev + 1;
+        if (prev < 70) return prev + 0.5;
+        return prev;
+      });
+    }, 200);
+
     try {
-      // Simulate realistic progress
-      setLoadingProgress(10);
+      // Initial stage
+      setLoadingProgress(5);
       setLoadingStage("Running Gatekeeper evaluation...");
 
       const response = await fetch("/api/evaluate", {
@@ -130,7 +140,7 @@ export default function SingleRunStudio() {
         }),
       });
 
-      setLoadingProgress(60);
+      setLoadingProgress(75);
       setLoadingStage("Analyzing gate results...");
 
       if (!response.ok) {
@@ -138,7 +148,7 @@ export default function SingleRunStudio() {
         throw new Error(errorData.error || "Evaluation failed");
       }
 
-      setLoadingProgress(80);
+      setLoadingProgress(85);
       setLoadingStage("Calculating verdict...");
 
       const data = await response.json();
@@ -156,6 +166,7 @@ export default function SingleRunStudio() {
       const errorMessage = err instanceof Error ? err.message : "Evaluation failed";
       setError(errorMessage);
     } finally {
+      clearInterval(progressInterval);
       setLoading(false);
     }
   };
@@ -223,6 +234,20 @@ export default function SingleRunStudio() {
     if (!result) return false;
     const verdict = result.verdict;
     return !verdict.includes("Need More Info") && !verdict.includes("Decision Deferred");
+  };
+
+  // Format reasoning text with CHECK/FINDING highlighting
+  const formatReasoning = (reasoning: string) => {
+    const parts = reasoning.split(/(\bCHECK:|\/\/ FINDING:)/g);
+    return parts.map((part, idx) => {
+      if (part === "CHECK:") {
+        return <strong key={idx} className="text-blue-700 font-semibold">CHECK:</strong>;
+      } else if (part === "// FINDING:") {
+        return <strong key={idx} className="text-green-700 font-semibold">FINDING:</strong>;
+      } else {
+        return <span key={idx}>{part}</span>;
+      }
+    });
   };
 
   const copyAuditReport = () => {
@@ -555,44 +580,53 @@ export default function SingleRunStudio() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-0">
-                <Table>
-                  <TableHeader>
-                    <TableRow className="bg-slate-50 hover:bg-slate-50">
-                      <TableHead className="w-20 font-semibold">Gate</TableHead>
-                      <TableHead className="w-32 font-semibold">Result</TableHead>
-                      <TableHead className="font-semibold">Criterion</TableHead>
-                      <TableHead className="font-semibold">Evidence & Rationale</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {[
-                      { id: "G0", name: "Interaction Model", gate: result.gatekeeperResult.G0 },
-                      { id: "G1", name: "Integration Level", gate: result.gatekeeperResult.G1 },
-                      { id: "G2", name: "UX & Service Boundary", gate: result.gatekeeperResult.G2 },
-                      { id: "G3", name: "Strategic Lifespan", gate: result.gatekeeperResult.G3 },
-                      { id: "G4", name: "Portfolio Alignment", gate: result.gatekeeperResult.G4 },
-                      { id: "G5", name: "Legal & Localization", gate: result.gatekeeperResult.G5 },
-                    ].map((item) => (
-                      <TableRow key={item.id} className="hover:bg-slate-50 transition-colors">
-                        <TableCell className="font-mono font-bold text-blue-600">
-                          {item.id}
-                        </TableCell>
-                        <TableCell>
-                          <div className="flex items-center gap-2">
-                            {getStatusIcon(item.gate.status)}
-                            {getStatusBadge(item.gate.status)}
-                          </div>
-                        </TableCell>
-                        <TableCell className="font-medium text-slate-900">
-                          {item.name}
-                        </TableCell>
-                        <TableCell className="text-sm text-slate-700 whitespace-pre-wrap leading-relaxed">
-                          {item.gate.reasoning}
-                        </TableCell>
+                <div className="overflow-x-auto">
+                  <Table>
+                    <TableHeader>
+                      <TableRow className="bg-slate-100 hover:bg-slate-100 border-b-2 border-slate-300">
+                        <TableHead className="w-16 font-bold text-slate-900">Gate</TableHead>
+                        <TableHead className="w-36 font-bold text-slate-900">Result</TableHead>
+                        <TableHead className="w-48 font-bold text-slate-900">Criterion</TableHead>
+                        <TableHead className="font-bold text-slate-900">Evidence & Rationale</TableHead>
                       </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
+                    </TableHeader>
+                    <TableBody>
+                      {[
+                        { id: "G0", name: "Interaction Model", gate: result.gatekeeperResult.G0 },
+                        { id: "G1", name: "Integration Level", gate: result.gatekeeperResult.G1 },
+                        { id: "G2", name: "UX & Service Boundary", gate: result.gatekeeperResult.G2 },
+                        { id: "G3", name: "Strategic Lifespan", gate: result.gatekeeperResult.G3 },
+                        { id: "G4", name: "Portfolio Alignment", gate: result.gatekeeperResult.G4 },
+                        { id: "G5", name: "Legal & Localization", gate: result.gatekeeperResult.G5 },
+                      ].map((item, idx) => (
+                        <TableRow
+                          key={item.id}
+                          className={`hover:bg-blue-50 transition-colors border-b border-slate-200 ${
+                            idx % 2 === 0 ? 'bg-white' : 'bg-slate-50'
+                          }`}
+                        >
+                          <TableCell className="font-mono font-bold text-blue-600 text-base align-top py-4">
+                            {item.id}
+                          </TableCell>
+                          <TableCell className="align-top py-4">
+                            <div className="flex items-center gap-2">
+                              {getStatusIcon(item.gate.status)}
+                              {getStatusBadge(item.gate.status)}
+                            </div>
+                          </TableCell>
+                          <TableCell className="font-semibold text-slate-900 align-top py-4">
+                            {item.name}
+                          </TableCell>
+                          <TableCell className="text-sm text-slate-700 leading-relaxed align-top py-4">
+                            <div className="max-w-3xl">
+                              {formatReasoning(item.gate.reasoning)}
+                            </div>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
               </CardContent>
             </Card>
 
