@@ -364,7 +364,15 @@ export default function SingleRunStudio() {
           <CardHeader>
             <CardTitle className="text-xl">Test a Brief Against Gates</CardTitle>
             <CardDescription className="text-slate-600">
-              Submit your product brief for governance evaluation
+              Paste your product naming brief or upload a file.
+              <a
+                href="https://docs.google.com/document/d/1nQiPrWpeN_x5D_pIfLmKvcUYRwfz9VxV/copy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:text-blue-700 underline ml-1 font-medium"
+              >
+                Download template brief →
+              </a>
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -419,10 +427,10 @@ export default function SingleRunStudio() {
 
             {/* Text Input */}
             <Textarea
-              placeholder="Product: [Name]&#10;&#10;Description: [What does it do?]&#10;&#10;Integration: [Standalone or embedded?]&#10;&#10;Architecture: [System boundaries?]&#10;&#10;Timeline: [Duration and markets]&#10;&#10;Portfolio Context: [Related products]&#10;&#10;Legal: [Trademark/regulatory considerations]"
+              placeholder="Paste your product naming brief here...&#10;&#10;Typical product naming briefs cover:&#10;• Primary contact & offering description&#10;• Value proposition & customer benefits&#10;• Jobs to be done & example use cases&#10;• Target customers & geographies&#10;• Customer research & competitive insights&#10;• Brand & legal considerations&#10;• Naming request & initial ideas&#10;• Timing & business impact&#10;&#10;Don't have a brief? Download the template above to get started."
               value={brief}
               onChange={(e) => setBrief(e.target.value)}
-              className="min-h-[200px] font-mono text-sm border-slate-300 focus:border-blue-500 focus:ring-blue-500"
+              className="min-h-[240px] text-sm border-slate-300 focus:border-blue-500 focus:ring-blue-500 leading-relaxed"
             />
             <div className="space-y-4">
               <div className="flex items-center gap-3">
