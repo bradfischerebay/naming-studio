@@ -116,7 +116,7 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const { brief, customPrompt } = await req.json();
+    const { brief, customPrompt, model } = await req.json();
 
     if (!brief || typeof brief !== "string") {
       return NextResponse.json(
@@ -135,10 +135,14 @@ export async function POST(req: NextRequest) {
     // Example: const trace = langsmith.trace({ name: "gatekeeper", input: brief });
 
     console.log("Step 1: Running Gatekeeper...");
+    if (model) {
+      console.log(`Using model: ${model}`);
+    }
 
     // Step 1: The Gatekeeper (LLM Call)
     const gatekeeperResult = await chomsky.generateObject({
       schema: GatekeeperSchema,
+      model,
       messages: [
         {
           role: "system",
@@ -175,6 +179,7 @@ export async function POST(req: NextRequest) {
 
       const scorerResponse = await chomsky.generateObject({
         schema: ScorerSchema,
+        model,
         messages: [
           {
             role: "system",

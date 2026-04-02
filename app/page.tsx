@@ -23,11 +23,32 @@ interface ChatMessage {
   content: string;
 }
 
+// Available models grouped by provider
+const MODELS = {
+  "GPT (Azure OpenAI)": [
+    { value: "azure-chat-completions-gpt-5-2-2025-12-11-sandbox", label: "GPT-5.2 (Latest, Reasoning)", recommended: true },
+    { value: "azure-chat-completions-gpt-5-2-chat-2025-12-11-sandbox", label: "GPT-5.2 Chat (Faster)" },
+    { value: "azure-chat-completions-gpt-5-1-2025-11-13-sandbox", label: "GPT-5.1 (Reasoning)" },
+    { value: "azure-chat-completions-gpt-4-1-2025-04-14-sandbox", label: "GPT-4.1" },
+    { value: "azure-chat-completions-gpt-4o-2024-05-13-sandbox", label: "GPT-4o" },
+  ],
+  "Claude (Anthropic)": [
+    { value: "gcp-chat-completions-anthropic-claude-sonnet-4.6-sandbox", label: "Claude Sonnet 4.6 (⚠️ 6 req/min)" },
+    { value: "gcp-chat-completions-anthropic-claude-opus-4.6-sandbox", label: "Claude Opus 4.6 (⚠️ 6 req/min)" },
+    { value: "gcp-chat-completions-anthropic-claude-sonnet-4.5-sandbox", label: "Claude Sonnet 4.5 (⚠️ 6 req/min)" },
+  ],
+  "Gemini (Google)": [
+    { value: "gcp-chat-completions-chat-gemini-3.1-pro-preview-sandbox", label: "Gemini 3.1 Pro (300 req/min)" },
+    { value: "gcp-chat-completions-chat-gemini-2.5-pro-sandbox", label: "Gemini 2.5 Pro" },
+  ],
+};
+
 export default function SingleRunStudio() {
   const [brief, setBrief] = useState("");
   const [loading, setLoading] = useState(false);
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [loadingStage, setLoadingStage] = useState("");
+  const [selectedModel, setSelectedModel] = useState("azure-chat-completions-gpt-5-2-2025-12-11-sandbox");
   const [result, setResult] = useState<EvaluationResult | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
@@ -105,7 +126,10 @@ export default function SingleRunStudio() {
       const response = await fetch("/api/evaluate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ brief: evaluationText }),
+        body: JSON.stringify({
+          brief: evaluationText,
+          model: selectedModel
+        }),
       });
 
       setLoadingProgress(60);
@@ -290,19 +314,20 @@ export default function SingleRunStudio() {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            {/* File Upload */}
-            <div className="flex items-center gap-3 pb-4 border-b border-slate-200">
-              <label className="cursor-pointer">
-                <input
-                  type="file"
-                  accept=".pdf,.docx,.doc,.txt"
-                  onChange={handleFileUpload}
-                  className="hidden"
-                />
-                <div className="flex items-center gap-2 px-5 py-3 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-md transition-all duration-200 font-medium text-blue-700">
-                  <Upload className="h-5 w-5" />
-                  <span className="text-sm">Upload Brief</span>
-                </div>
+            {/* Model Selection & File Upload */}
+            <div className="flex items-center justify-between gap-4 pb-4 border-b border-slate-200">
+              <div className="flex items-center gap-3">
+                <label className="cursor-pointer">
+                  <input
+                    type="file"
+                    accept=".pdf,.docx,.doc,.txt"
+                    onChange={handleFileUpload}
+                    className="hidden"
+                  />
+                  <div className="flex items-center gap-2 px-5 py-3 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-md transition-all duration-200 font-medium text-blue-700">
+                    <Upload className="h-5 w-5" />
+                    <span className="text-sm">Upload Brief</span>
+                  </div>
               </label>
               {uploadedFileName && (
                 <div className="flex items-center gap-2 bg-green-50 px-3 py-2 rounded-md border border-green-200">
@@ -310,9 +335,32 @@ export default function SingleRunStudio() {
                   <span className="text-sm text-green-700 font-medium">{uploadedFileName}</span>
                 </div>
               )}
-              <span className="text-xs text-slate-500 ml-auto">
+              <span className="text-xs text-slate-500">
                 PDF, DOCX, or TXT
               </span>
+            </div>
+
+            {/* Model Selector */}
+            <div className="flex items-center gap-2">
+              <label className="text-sm font-medium text-slate-700 whitespace-nowrap">
+                AI Model:
+              </label>
+              <select
+                value={selectedModel}
+                onChange={(e) => setSelectedModel(e.target.value)}
+                className="flex-1 px-3 py-2 border border-slate-300 rounded-md text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
+              >
+                {Object.entries(MODELS).map(([group, models]) => (
+                  <optgroup key={group} label={group}>
+                    {models.map((model) => (
+                      <option key={model.value} value={model.value}>
+                        {model.label} {model.recommended ? "⭐" : ""}
+                      </option>
+                    ))}
+                  </optgroup>
+                ))}
+              </select>
+            </div>
             </div>
 
             {/* Text Input */}
