@@ -56,7 +56,6 @@ export default function SingleRunStudio() {
   const [chatLoading, setChatLoading] = useState(false);
   const [uploadedFileName, setUploadedFileName] = useState<string | null>(null);
   const [additionalContext, setAdditionalContext] = useState("");
-  const [showReassessment, setShowReassessment] = useState(false);
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -115,7 +114,6 @@ export default function SingleRunStudio() {
     if (!isReassessment) {
       setResult(null);
       setChatMessages([]);
-      setShowReassessment(false);
     }
 
     try {
@@ -150,17 +148,8 @@ export default function SingleRunStudio() {
 
       setResult(data);
 
-      // Check if more information is needed
-      const hasPendingOrUnknown = Object.values(data.gatekeeperResult).some(
-        (gate) =>
-          typeof gate === "object" &&
-          gate !== null &&
-          "status" in gate &&
-          (gate.status === "Pending" || gate.status === "Unknown")
-      );
-      setShowReassessment(hasPendingOrUnknown);
-
       if (isReassessment) {
+        setAdditionalContext(""); // Clear the context field after reassessment
         toast.success("Brief reassessed with additional context!");
       }
     } catch (err) {
@@ -169,6 +158,71 @@ export default function SingleRunStudio() {
     } finally {
       setLoading(false);
     }
+  };
+
+  // Helper to generate decision summary bullets
+  const getDecisionSummary = () => {
+    if (!result) return [];
+
+    const verdict = result.verdict;
+
+    if (verdict.includes("Proceed") || verdict.includes("Proper Name Recommended")) {
+      return [
+        "All critical gates have been satisfied with sufficient evidence",
+        "The initiative demonstrates characteristics of a standalone product",
+        "A proper name is recommended to establish market identity"
+      ];
+    }
+
+    if (verdict.includes("No Proper Name") || verdict.includes("Descriptive Label")) {
+      const reasons = [];
+      if (result.gatekeeperResult.G1.status === "Fail") {
+        reasons.push("The experience is accessed through existing eBay entry points with no separate enrollment");
+      }
+      if (result.gatekeeperResult.G2.status === "Fail") {
+        reasons.push("The initiative behaves like an integrated layer within the platform, not a separately accessed product");
+      }
+      if (result.gatekeeperResult.G3.status === "Fail") {
+        reasons.push("The timeline indicates a short-term initiative rather than a permanent product addition");
+      }
+      if (reasons.length === 0) {
+        reasons.push("The brief does not meet the criteria for a standalone proper name");
+        reasons.push("It should be presented as a descriptive label or format identifier within the existing ecosystem");
+      }
+      return reasons;
+    }
+
+    return [];
+  };
+
+  // Helper to generate missing information requirements
+  const getMissingInfo = () => {
+    if (!result) return [];
+
+    const missing: string[] = [];
+    const gates = [
+      { id: "G0", gate: result.gatekeeperResult.G0, asks: ["Confirm whether users actively select, toggle, or see this feature, or if it's an invisible background process"] },
+      { id: "G1", gate: result.gatekeeperResult.G1, asks: ["Confirm whether the experience has a primary standalone entry point or lives only inside existing surfaces", "Confirm whether users must enroll, apply, or be approved separately", "Confirm whether checkout is distinct or fully uses standard platform checkout"] },
+      { id: "G2", gate: result.gatekeeperResult.G2, asks: ["Confirm whether the experience is a separate destination versus a module embedded in existing flows", "Clarify the system architecture and backend boundaries"] },
+      { id: "G3", gate: result.gatekeeperResult.G3, asks: ["Confirm the strategic timeline and whether this is a permanent addition (>12 months) or short-term promotion"] },
+      { id: "G4", gate: result.gatekeeperResult.G4, asks: ["Identify any existing eBay products that might conflict with or be confused with the proposed name"] },
+      { id: "G5", gate: result.gatekeeperResult.G5, asks: ["Confirm trademark availability and regulatory compliance in target markets"] },
+    ];
+
+    gates.forEach(({ gate, asks }) => {
+      if (gate.status === "Pending" || gate.status === "Unknown") {
+        missing.push(...asks);
+      }
+    });
+
+    return missing;
+  };
+
+  // Check if decision is final (not pending/unknown)
+  const isFinalDecision = () => {
+    if (!result) return false;
+    const verdict = result.verdict;
+    return !verdict.includes("Need More Info") && !verdict.includes("Decision Deferred");
   };
 
   const copyAuditReport = () => {
@@ -415,15 +469,64 @@ export default function SingleRunStudio() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
           >
-            {/* Verdict */}
-            <Card className="border-2 border-slate-200 shadow-md">
-              <CardHeader className="bg-slate-50">
-                <CardTitle className="text-xl font-semibold">Final Verdict</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4 pt-6">
-                <p className="text-3xl font-bold text-slate-900">
-                  {result.verdict}
-                </p>
+            {/* Decision Header - Outcome First */}
+            <div className="space-y-6">
+              {/* Primary Decision Statement */}
+              <div className="space-y-4">
+                <div className="flex items-start gap-4">
+                  {result.verdict.includes("Proceed") || result.verdict.includes("Proper Name Recommended") ? (
+                    <CheckCircle2 className="h-12 w-12 text-green-600 flex-shrink-0 mt-1" />
+                  ) : result.verdict.includes("Need More Info") || result.verdict.includes("Decision Deferred") ? (
+                    <AlertCircle className="h-12 w-12 text-amber-600 flex-shrink-0 mt-1" />
+                  ) : (
+                    <XCircle className="h-12 w-12 text-slate-600 flex-shrink-0 mt-1" />
+                  )}
+                  <div className="flex-1">
+                    <h2 className="text-3xl font-bold text-slate-900 leading-tight">
+                      {result.verdict.includes("Proceed") || result.verdict.includes("Proper Name Recommended")
+                        ? "Proper Name Recommended"
+                        : result.verdict.includes("Need More Info") || result.verdict.includes("Decision Deferred")
+                        ? "Need More Information"
+                        : "No Proper Name Needed - Use A Descriptive Label"}
+                    </h2>
+                    {(result.verdict.includes("Need More Info") || result.verdict.includes("Decision Deferred")) && (
+                      <p className="text-slate-600 mt-2">Decision cannot be completed yet</p>
+                    )}
+                  </div>
+                </div>
+
+                {/* Decision Summary or Missing Info */}
+                {!isFinalDecision() && getMissingInfo().length > 0 ? (
+                  <Card className="border-amber-200 bg-amber-50">
+                    <CardHeader className="pb-3">
+                      <CardTitle className="text-lg font-semibold text-amber-900">Additional Information Needed</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-2 text-sm text-slate-700">
+                        {getMissingInfo().map((info, idx) => (
+                          <li key={idx} className="flex items-start gap-2">
+                            <span className="text-amber-600 mt-0.5">•</span>
+                            <span>{info}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                ) : getDecisionSummary().length > 0 ? (
+                  <Card className="border-slate-200 bg-slate-50">
+                    <CardContent className="pt-6">
+                      <ul className="space-y-3 text-slate-700">
+                        {getDecisionSummary().map((summary, idx) => (
+                          <li key={idx} className="flex items-start gap-3">
+                            <span className="text-blue-600 mt-1">•</span>
+                            <span>{summary}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                ) : null}
+
                 <Button
                   onClick={copyAuditReport}
                   variant="outline"
@@ -432,13 +535,13 @@ export default function SingleRunStudio() {
                   <Copy className="h-4 w-4" />
                   Copy Audit Report
                 </Button>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
-            {/* Gate Audit Table */}
+            {/* Decision Logic Audit */}
             <Card className="border-slate-200 shadow-sm">
               <CardHeader className="bg-slate-50 border-b border-slate-200">
-                <CardTitle className="text-lg font-semibold">Gate Audit</CardTitle>
+                <CardTitle className="text-lg font-semibold">Decision Logic Audit</CardTitle>
                 <CardDescription className="text-slate-600">
                   Six-gate existence framework evaluation
                 </CardDescription>
@@ -448,7 +551,7 @@ export default function SingleRunStudio() {
                   <TableHeader>
                     <TableRow className="bg-slate-50 hover:bg-slate-50">
                       <TableHead className="w-20 font-semibold">Gate</TableHead>
-                      <TableHead className="w-32 font-semibold">Status</TableHead>
+                      <TableHead className="w-32 font-semibold">Result</TableHead>
                       <TableHead className="font-semibold">Criterion</TableHead>
                       <TableHead className="font-semibold">Evidence & Rationale</TableHead>
                     </TableRow>
@@ -532,24 +635,24 @@ export default function SingleRunStudio() {
               </Card>
             )}
 
-            {/* Reassessment Section - shown when Pending/Unknown gates detected */}
-            {showReassessment && (
+            {/* Reassessment Section - ONLY shown when decision is incomplete */}
+            {!isFinalDecision() && (
               <Card className="border-2 border-amber-300 bg-amber-50 shadow-md">
                 <CardHeader className="bg-amber-100 border-b border-amber-200">
                   <CardTitle className="flex items-center gap-2 text-amber-900">
-                    <AlertCircle className="h-5 w-5 text-amber-600" />
-                    Additional Information Needed
+                    <RefreshCw className="h-5 w-5 text-amber-600" />
+                    Provide Additional Context
                   </CardTitle>
                   <CardDescription className="text-amber-700">
-                    Some gates require more context. Provide additional details to reassess.
+                    Answer the questions above to complete the evaluation
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4 pt-6">
                   <Textarea
-                    placeholder="Provide additional context about:&#10;- User interaction model&#10;- Integration architecture&#10;- System boundaries&#10;- Timeline and lifespan&#10;- Portfolio positioning&#10;- Legal/trademark status"
+                    placeholder="Provide the missing information requested above..."
                     value={additionalContext}
                     onChange={(e) => setAdditionalContext(e.target.value)}
-                    className="min-h-[120px] font-mono text-sm border-amber-300 focus:border-amber-500 focus:ring-amber-500 bg-white"
+                    className="min-h-[150px] text-sm border-amber-300 focus:border-amber-500 focus:ring-amber-500 bg-white"
                   />
                   <Button
                     onClick={() => runEvaluation(true)}
@@ -563,71 +666,94 @@ export default function SingleRunStudio() {
               </Card>
             )}
 
-            {/* Brand Coach Chat */}
-            <Card className="border-slate-200 shadow-sm">
-              <CardHeader className="bg-slate-50 border-b border-slate-200">
-                <CardTitle className="text-lg font-semibold">Brand Coach</CardTitle>
-                <CardDescription className="text-slate-600">
-                  Ask questions about your evaluation
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4 pt-6">
-                {/* Chat Messages */}
-                {chatMessages.length > 0 && (
-                  <div className="space-y-4 max-h-[400px] overflow-y-auto p-4 bg-slate-50 rounded-lg border border-slate-200">
-                    {chatMessages.map((msg, idx) => (
-                      <div
-                        key={idx}
-                        className={`flex ${
-                          msg.role === "user" ? "justify-end" : "justify-start"
-                        }`}
-                      >
+            {/* Brand Coach Chat - ONLY shown after final decision */}
+            {isFinalDecision() && (
+              <Card className="border-slate-200 shadow-sm">
+                <CardHeader className="bg-gradient-to-r from-blue-50 to-slate-50 border-b border-slate-200">
+                  <CardTitle className="text-lg font-semibold flex items-center gap-2">
+                    <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-sm font-bold">
+                      BC
+                    </div>
+                    Brand Coach
+                  </CardTitle>
+                  <CardDescription className="text-slate-600">
+                    Ask me anything about your naming evaluation
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4 pt-6">
+                  {/* Chat Messages */}
+                  {chatMessages.length > 0 && (
+                    <div className="space-y-3 max-h-[500px] overflow-y-auto pr-2">
+                      {chatMessages.map((msg, idx) => (
                         <div
-                          className={`max-w-[80%] rounded-lg px-4 py-3 shadow-sm ${
-                            msg.role === "user"
-                              ? "bg-blue-600 text-white"
-                              : "bg-white border border-slate-200 text-slate-900"
+                          key={idx}
+                          className={`flex gap-3 ${
+                            msg.role === "user" ? "justify-end" : "justify-start"
                           }`}
                         >
-                          <p className="text-sm whitespace-pre-wrap leading-relaxed">{msg.content}</p>
+                          {msg.role === "assistant" && (
+                            <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0 mt-1">
+                              BC
+                            </div>
+                          )}
+                          <div
+                            className={`max-w-[85%] rounded-2xl px-4 py-3 ${
+                              msg.role === "user"
+                                ? "bg-blue-600 text-white rounded-br-sm"
+                                : "bg-slate-100 text-slate-900 border border-slate-200 rounded-bl-sm"
+                            }`}
+                          >
+                            <p className="text-sm whitespace-pre-wrap leading-relaxed">{msg.content}</p>
+                          </div>
+                          {msg.role === "user" && (
+                            <div className="w-8 h-8 rounded-full bg-slate-400 flex items-center justify-center text-white text-xs font-bold flex-shrink-0 mt-1">
+                              YOU
+                            </div>
+                          )}
                         </div>
-                      </div>
-                    ))}
-                    {chatLoading && (
-                      <div className="flex justify-start">
-                        <div className="bg-white border border-slate-200 rounded-lg px-4 py-3 shadow-sm">
-                          <Loader2 className="h-4 w-4 animate-spin text-slate-600" />
+                      ))}
+                      {chatLoading && (
+                        <div className="flex gap-3 justify-start">
+                          <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0 mt-1">
+                            BC
+                          </div>
+                          <div className="bg-slate-100 border border-slate-200 rounded-2xl rounded-bl-sm px-4 py-3 flex items-center gap-2">
+                            <Loader2 className="h-4 w-4 animate-spin text-blue-600" />
+                            <span className="text-sm text-slate-600">Thinking...</span>
+                          </div>
                         </div>
-                      </div>
-                    )}
-                  </div>
-                )}
+                      )}
+                    </div>
+                  )}
 
-                {/* Chat Input */}
-                <div className="flex gap-3">
-                  <Textarea
-                    placeholder="Ask the Brand Coach about your evaluation..."
-                    value={chatInput}
-                    onChange={(e) => setChatInput(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" && !e.shiftKey) {
-                        e.preventDefault();
-                        sendChatMessage();
-                      }
-                    }}
-                    className="min-h-[80px] border-slate-300 focus:border-blue-500 focus:ring-blue-500"
-                  />
-                  <Button
-                    onClick={sendChatMessage}
-                    disabled={chatLoading || !chatInput.trim()}
-                    size="icon"
-                    className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 disabled:bg-slate-300 h-[80px] w-[80px] shadow-md hover:shadow-lg transition-all duration-200"
-                  >
-                    <Send className="h-5 w-5" />
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+                  {/* Chat Input */}
+                  <div className="space-y-2">
+                    <Textarea
+                      placeholder="Message Brand Coach... (Shift+Enter for new line)"
+                      value={chatInput}
+                      onChange={(e) => setChatInput(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" && !e.shiftKey) {
+                          e.preventDefault();
+                          sendChatMessage();
+                        }
+                      }}
+                      className="min-h-[100px] resize-none border-slate-300 focus:border-blue-500 focus:ring-blue-500"
+                    />
+                    <div className="flex justify-end">
+                      <Button
+                        onClick={sendChatMessage}
+                        disabled={chatLoading || !chatInput.trim()}
+                        className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 disabled:bg-slate-300 gap-2"
+                      >
+                        <Send className="h-4 w-4" />
+                        Send
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
           </motion.div>
         )}
         </main>
