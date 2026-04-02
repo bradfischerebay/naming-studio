@@ -111,20 +111,26 @@ export class ChomskyClient {
       headers["anthropic-version"] = "2023-06-01";
     }
 
+    // GPT-5+ and o-series models use max_completion_tokens instead of max_tokens
+    const isGPT5Plus = modelName.includes('gpt-5') || modelName.includes('gpt-4-1') || modelName.includes('o1') || modelName.includes('o3') || modelName.includes('o4');
+    const maxTokensKey = isGPT5Plus ? 'max_completion_tokens' : 'max_tokens';
+
+    const requestBody: Record<string, unknown> = {
+      model: modelName,
+      messages: [
+        {
+          role: "user",
+          content: prompt,
+        },
+      ],
+      temperature: params.temperature || this.config.temperature,
+      [maxTokensKey]: this.config.maxTokens,
+    };
+
     const response = await fetch(this.config.endpoint, {
       method: "POST",
       headers,
-      body: JSON.stringify({
-        model: modelName,
-        messages: [
-          {
-            role: "user",
-            content: prompt,
-          },
-        ],
-        temperature: params.temperature || this.config.temperature,
-        max_tokens: this.config.maxTokens,
-      }),
+      body: JSON.stringify(requestBody),
     });
 
     if (!response.ok) {
@@ -183,15 +189,21 @@ export class ChomskyClient {
       headers["anthropic-version"] = "2023-06-01";
     }
 
+    // GPT-5+ and o-series models use max_completion_tokens instead of max_tokens
+    const isGPT5Plus = modelName.includes('gpt-5') || modelName.includes('gpt-4-1') || modelName.includes('o1') || modelName.includes('o3') || modelName.includes('o4');
+    const maxTokensKey = isGPT5Plus ? 'max_completion_tokens' : 'max_tokens';
+
+    const requestBody: Record<string, unknown> = {
+      model: modelName,
+      messages: params.messages,
+      temperature: params.temperature || this.config.temperature,
+      [maxTokensKey]: this.config.maxTokens,
+    };
+
     const response = await fetch(this.config.endpoint, {
       method: "POST",
       headers,
-      body: JSON.stringify({
-        model: modelName,
-        messages: params.messages,
-        temperature: params.temperature || this.config.temperature,
-        max_tokens: this.config.maxTokens,
-      }),
+      body: JSON.stringify(requestBody),
     });
 
     if (!response.ok) {
