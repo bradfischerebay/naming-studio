@@ -1672,6 +1672,9 @@ export default function LabPage() {
   // Abort stream on unmount
   useEffect(() => () => { abortControllerRef.current?.abort(); }, []);
 
+  // Clear inject debounce timer on unmount
+  useEffect(() => () => { if (injectDebounceRef.current) clearTimeout(injectDebounceRef.current); }, []);
+
   // Close model picker when clicking outside
   useEffect(() => {
     if (!modelPickerOpen) return;
@@ -2520,7 +2523,7 @@ export default function LabPage() {
                             disabled={!presetName.trim() || isSavingPreset}
                             onClick={() => {
                               const name = presetName.trim();
-                              if (!name) return;
+                              if (!name || isSavingPreset) return;
                               setIsSavingPreset(true);
                               fetch("/api/lab/presets", {
                                 method: "POST",

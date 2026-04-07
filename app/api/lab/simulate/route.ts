@@ -56,7 +56,7 @@ async function runBriefSimulation(
           // Treat gate errors as Pending so they surface correctly in verdict
           gateDecisions[gate] = {
             status: "Pending",
-            reasoning: event.error ?? "Gate evaluation failed",
+            reasoning: `Evaluation error: ${event.error ?? "unknown error"}`,
           };
         }
       },

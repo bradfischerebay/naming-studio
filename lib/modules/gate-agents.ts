@@ -253,14 +253,17 @@ export async function runGateAgent(
   signal?: AbortSignal,
   customGateDef?: CustomGateDef
 ): Promise<void> {
-  let userContent = `Please evaluate the following naming brief against Gate ${gateKey}:\n\n${brief}`;
+  const sanitizedBrief = sanitizeForPrompt(brief, 5000);
+  const sanitizedContext = contextHistory.map((c) => sanitizeForPrompt(c, 2000));
 
-  if (contextHistory.length > 0) {
-    userContent += `\n\n[USER-PROVIDED CONTEXT]:\n${contextHistory.join("\n\n")}`;
+  let userContent = `Please evaluate the following naming brief against Gate ${gateKey}:\n\n${sanitizedBrief}`;
+
+  if (sanitizedContext.length > 0) {
+    userContent += `\n\n[USER-PROVIDED CONTEXT]:\n${sanitizedContext.join("\n\n")}`;
   }
 
-  if (partialState?.thinking && contextHistory.length > 0) {
-    userContent += buildResumeFragment(partialState.thinking, contextHistory[contextHistory.length - 1]);
+  if (partialState?.thinking && sanitizedContext.length > 0) {
+    userContent += buildResumeFragment(partialState.thinking, sanitizedContext[sanitizedContext.length - 1]);
   }
 
   const messages = [
@@ -308,10 +311,13 @@ export async function runScorerAgent(
   signal?: AbortSignal,
   customScoring?: CustomScoringConfig
 ): Promise<void> {
-  let userContent = `Please calculate the naming score for the following brief (all gates passed):\n\n${brief}`;
+  const sanitizedBrief = sanitizeForPrompt(brief, 5000);
+  const sanitizedContext = contextHistory.map((c) => sanitizeForPrompt(c, 2000));
 
-  if (contextHistory.length > 0) {
-    userContent += `\n\n[USER-PROVIDED CONTEXT]:\n${contextHistory.join("\n\n")}`;
+  let userContent = `Please calculate the naming score for the following brief (all gates passed):\n\n${sanitizedBrief}`;
+
+  if (sanitizedContext.length > 0) {
+    userContent += `\n\n[USER-PROVIDED CONTEXT]:\n${sanitizedContext.join("\n\n")}`;
   }
 
   const messages = [
