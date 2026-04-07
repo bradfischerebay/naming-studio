@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
 
   try {
     const body = await request.json();
-    const { brief, skipWebResearch = false, clarification, previousResult, model } = body;
+    const { brief, skipWebResearch = false, useDeepSights = false, clarification, previousResult, model } = body;
 
     // Extract session ID from headers or generate one
     sessionId = request.headers.get("x-session-id") ||
@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
     // Thin-brief detection is now handled by the orchestrator via buildNoBriefVerdict,
     // which returns a helpful PATH_B response instead of a hard error.
 
-    const config = { skipWebResearch, model: validatedModel };
+    const config = { skipWebResearch, useDeepSights, model: validatedModel };
 
     // Handle clarification flow (retry)
     if (clarification && previousResult) {

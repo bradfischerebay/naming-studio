@@ -84,9 +84,12 @@ export async function evaluate(options: EvaluateOptions): Promise<EvaluateResult
     }
 
     // Phase 2: Research Landscape (optional)
-    if (!config?.skipWebResearch) {
+    if (!config?.skipWebResearch || config?.useDeepSights) {
       log(WorkflowPhase.RESEARCH, "Analyzing competitive landscape...");
-      state.landscapeData = await analyzeLandscape(state.parsedBrief);
+      state.landscapeData = await analyzeLandscape(state.parsedBrief, {
+        skipWebResearch: config?.skipWebResearch,
+        useDeepSights: config?.useDeepSights,
+      });
     }
 
     // Phase 3: Extract Facts

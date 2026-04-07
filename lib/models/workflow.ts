@@ -54,6 +54,7 @@ export interface WorkflowConfig {
   maxRetries: number;
   enableCheckpointing: boolean;
   skipWebResearch: boolean;
+  useDeepSights: boolean;
   verbose: boolean;
   model?: string;
 }
@@ -62,6 +63,7 @@ export const DEFAULT_WORKFLOW_CONFIG: WorkflowConfig = {
   maxRetries: 1,
   enableCheckpointing: false,
   skipWebResearch: false,
+  useDeepSights: false,
   verbose: false,
 };
 
