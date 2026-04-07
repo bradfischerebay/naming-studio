@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
-import { Loader2, ArrowUp, Plus, ChevronLeft, ChevronRight, PlusCircle, Check, BarChart2, Paperclip, X, Beaker } from "lucide-react";
+import { Loader2, ArrowUp, Plus, ChevronLeft, ChevronRight, PlusCircle, Check, BarChart2, Paperclip, X, Beaker, Globe } from "lucide-react";
 import { toast, Toaster } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChatMessage, type Message } from "@/components/ChatMessage";
@@ -63,6 +63,7 @@ export default function Home() {
   const [inputValue, setInputValue] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
   const [selectedModel, setSelectedModel] = useState(DEFAULT_MODEL);
+  const [includeResearch, setIncludeResearch] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [modelPickerOpen, setModelPickerOpen] = useState(false);
 
@@ -291,7 +292,7 @@ export default function Home() {
 
     try {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const payload: any = { skipWebResearch: false, model: selectedModel };
+      const payload: any = { skipWebResearch: !includeResearch, model: selectedModel };
 
       if (isClarification && currentEvaluation) {
         const origBrief = messages.find((m) => m.metadata?.type === "brief")?.content || briefText;
@@ -764,6 +765,22 @@ export default function Home() {
                   >
                     {modelLabel}
                     <span className="text-slate-400 text-[10px]">▾</span>
+                  </button>
+
+                  {/* Web research toggle */}
+                  <button
+                    type="button"
+                    onClick={() => setIncludeResearch((v) => !v)}
+                    disabled={isProcessing}
+                    title={includeResearch ? "Competitive research on — click to turn off" : "Competitive research off — click to include web context"}
+                    className={`flex-shrink-0 flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors disabled:opacity-40 ${
+                      includeResearch
+                        ? "bg-blue-100 text-blue-700 hover:bg-blue-200"
+                        : "bg-slate-100 text-slate-500 hover:bg-slate-200"
+                    }`}
+                  >
+                    <Globe className="h-3.5 w-3.5" />
+                    Research
                   </button>
 
                   <div className="flex-1" />
