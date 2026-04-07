@@ -27,7 +27,7 @@ import {
   MessageSquare,
   Wand2,
   Zap,
-  FlaskConical,
+  TestTube2,
 } from "lucide-react";
 import { toast, Toaster } from "sonner";
 import Link from "next/link";
@@ -1243,6 +1243,21 @@ const QuickTestPanel = memo(function QuickTestPanel({
     return "bg-amber-100 text-amber-700";
   };
 
+  const gateSymbol = (status: string) => {
+    if (status === "Pass") return "✓";
+    if (status === "Fail") return "✕";
+    return "?";
+  };
+
+  const verdictLabel = (v: string) => {
+    if (v === "PATH_C") return "✓ Approved";
+    if (v === "PATH_B") return "? Need Info";
+    if (v === "PATH_A0") return "✕ No Name";
+    if (v === "PATH_A1") return "✕ No Name";
+    if (v === "PATH_A2") return "✕ Low Score";
+    return v;
+  };
+
   const runSimulation = async () => {
     const filledBriefs = briefs.filter((b) => b.trim().length > 0);
     if (!filledBriefs.length || isRunning) return;
@@ -1354,45 +1369,60 @@ const QuickTestPanel = memo(function QuickTestPanel({
 
       {/* Results grid (compact, only shown when there are results) */}
       {results.some(Boolean) && (
-        <div className="overflow-x-auto rounded-xl border border-slate-200">
-          <table className="w-full text-[10px]">
-            <thead>
-              <tr className="border-b border-slate-100 bg-slate-50">
-                <th className="text-left px-3 py-2 font-semibold text-slate-500">Brief</th>
-                {allResultGateKeys.map((g) => (
-                  <th key={g} className="px-2 py-2 font-mono font-semibold text-slate-400 text-center">{g}</th>
-                ))}
-                <th className="px-3 py-2 font-semibold text-slate-500 text-center">Verdict</th>
-              </tr>
-            </thead>
-            <tbody>
-              {results.map((result, idx) => (
-                <tr key={idx} className="border-b border-slate-50 last:border-0">
-                  <td className="px-3 py-2 text-slate-500 max-w-[140px] truncate">#{idx + 1} {briefs[idx]?.slice(0, 30)}…</td>
-                  {allResultGateKeys.map((gate) => {
-                    const gr = result?.gateResults[gate];
-                    if (!gr) return <td key={gate} className="px-2 py-2 text-center text-slate-200">—</td>;
-                    return (
-                      <td key={gate} className="px-2 py-2 text-center">
-                        <span className={`inline-block px-1.5 py-0.5 rounded-full font-bold ${gateColor(gr.status)}`}>
-                          {gr.status.slice(0, 1)}
-                        </span>
-                      </td>
-                    );
-                  })}
-                  <td className="px-3 py-2 text-center">
-                    {result ? (
-                      <span className={`inline-block px-2 py-0.5 rounded-full font-bold ${verdictColor(result.verdict)}`}>
-                        {VERDICT_SHORT[result.verdict] ?? result.verdict}
-                      </span>
-                    ) : (
-                      <span className="text-slate-200">—</span>
-                    )}
-                  </td>
+        <div className="space-y-2">
+          <div className="overflow-x-auto rounded-xl border border-slate-200">
+            <table className="w-full text-[10px]">
+              <thead>
+                <tr className="border-b border-slate-100 bg-slate-50">
+                  <th className="text-left px-3 py-2 font-semibold text-slate-500">Brief</th>
+                  {allResultGateKeys.map((g) => (
+                    <th key={g} className="px-2 py-2 font-mono font-semibold text-slate-400 text-center" title={`Gate ${g}`}>{g}</th>
+                  ))}
+                  <th className="px-3 py-2 font-semibold text-slate-500 text-center">Verdict</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {results.map((result, idx) => (
+                  <tr key={idx} className="border-b border-slate-50 last:border-0">
+                    <td className="px-3 py-2 text-slate-500 max-w-[140px] truncate">#{idx + 1} {briefs[idx]?.slice(0, 30)}…</td>
+                    {allResultGateKeys.map((gate) => {
+                      const gr = result?.gateResults[gate];
+                      if (!gr) return <td key={gate} className="px-2 py-2 text-center text-slate-300 font-bold">—</td>;
+                      return (
+                        <td key={gate} className="px-2 py-2 text-center" title={`${gate}: ${gr.status} — ${gr.reasoning}`}>
+                          <span className={`inline-block w-6 h-6 leading-6 rounded-full font-bold text-center ${gateColor(gr.status)}`}>
+                            {gateSymbol(gr.status)}
+                          </span>
+                        </td>
+                      );
+                    })}
+                    <td className="px-3 py-2 text-center">
+                      {result ? (
+                        <span className={`inline-block px-2 py-0.5 rounded-full font-semibold whitespace-nowrap ${verdictColor(result.verdict)}`}>
+                          {verdictLabel(result.verdict)}
+                          {result.scorerResult ? ` · ${result.scorerResult.total}pts` : ""}
+                        </span>
+                      ) : (
+                        <span className="text-slate-300">—</span>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          {/* Legend */}
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 px-1 text-[9px] text-slate-400">
+            <span className="font-semibold text-slate-500">Gates:</span>
+            <span className="flex items-center gap-1"><span className="inline-block w-4 h-4 leading-4 rounded-full text-center font-bold bg-green-100 text-green-700">✓</span> Pass</span>
+            <span className="flex items-center gap-1"><span className="inline-block w-4 h-4 leading-4 rounded-full text-center font-bold bg-red-100 text-red-700">✕</span> Fail</span>
+            <span className="flex items-center gap-1"><span className="text-slate-300 font-bold">—</span> Skipped (blocked by earlier fail)</span>
+            <span className="mx-1 text-slate-200">|</span>
+            <span className="font-semibold text-slate-500">Verdicts:</span>
+            <span className="text-green-700">✓ Approved = proceed with naming</span>
+            <span className="text-amber-700">? Need Info = missing details</span>
+            <span className="text-red-700">✕ No Name / Low Score = use a descriptive label</span>
+          </div>
         </div>
       )}
 
@@ -1405,7 +1435,7 @@ const QuickTestPanel = memo(function QuickTestPanel({
         {isRunning ? (
           <><Loader2 className="h-3.5 w-3.5 animate-spin" /> Running simulation…</>
         ) : (
-          <><FlaskConical className="h-3.5 w-3.5" /> Run simulation</>
+          <><TestTube2 className="h-3.5 w-3.5" /> Run simulation</>
         )}
       </button>
       {simError && (
@@ -2440,7 +2470,7 @@ export default function LabPage() {
                   {/* Quick Test */}
                   <div>
                     <div className="flex items-center gap-2 mb-3">
-                      <FlaskConical className="h-4 w-4 text-slate-500" />
+                      <TestTube2 className="h-4 w-4 text-slate-500" />
                       <h2 className="text-sm font-semibold text-slate-800">Quick Test</h2>
                       <span className="text-[10px] font-bold text-green-600 bg-green-50 border border-green-200 px-1.5 py-0.5 rounded-full">Enabled</span>
                     </div>
