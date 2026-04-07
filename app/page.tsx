@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
-import { Loader2, ArrowUp, Plus, ChevronLeft, ChevronRight, PlusCircle, Check, BarChart2, Paperclip, X, Beaker, Globe, FlaskConical } from "lucide-react";
+import { Loader2, ArrowUp, Plus, ChevronLeft, ChevronRight, PlusCircle, Check, BarChart2, Paperclip, X, TestTube2, Globe, TrendingUp } from "lucide-react";
 import { toast, Toaster } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChatMessage, type Message } from "@/components/ChatMessage";
@@ -532,7 +532,7 @@ export default function Home() {
             title="Market Intelligence"
             className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/10 transition-colors text-sm text-white/60 hover:text-white ${!sidebarOpen ? "justify-center" : ""}`}
           >
-            <FlaskConical className="h-4 w-4 flex-shrink-0" />
+            <TrendingUp className="h-4 w-4 flex-shrink-0" />
             {sidebarOpen && <span>Insights</span>}
           </Link>
           <Link
@@ -540,7 +540,7 @@ export default function Home() {
             title="Lab"
             className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/10 transition-colors text-sm text-white/60 hover:text-white ${!sidebarOpen ? "justify-center" : ""}`}
           >
-            <Beaker className="h-4 w-4 flex-shrink-0" />
+            <TestTube2 className="h-4 w-4 flex-shrink-0" />
             {sidebarOpen && (
               <span className="flex items-center gap-1.5">
                 Lab
@@ -828,7 +828,7 @@ export default function Home() {
                         : "bg-slate-100 text-slate-500 hover:bg-slate-200"
                     }`}
                   >
-                    <FlaskConical className="h-3.5 w-3.5" />
+                    <TrendingUp className="h-3.5 w-3.5" />
                     Insights
                   </button>
 
