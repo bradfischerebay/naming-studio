@@ -207,7 +207,14 @@ export default function Home() {
       textareaRef.current?.focus();
     } catch (err) {
       const msg = err instanceof Error ? err.message : "Upload failed";
-      toast.error(msg);
+      const helpfulMsg = msg.includes("20MB")
+        ? msg
+        : msg.includes("No text")
+        ? "No text found in this file. Try a different file or paste text directly."
+        : msg.includes("format") || msg.includes("Unsupported")
+        ? "This file format isn't supported. Upload a .pdf, .docx, or .txt file."
+        : "Upload failed — please try a different file.";
+      toast.error(helpfulMsg);
     } finally {
       setIsUploading(false);
       // Reset so the same file can be re-uploaded
@@ -357,8 +364,13 @@ export default function Home() {
     } catch (err) {
       removeLoadingMessage(conv.id);
       const msg = err instanceof Error ? err.message : "Evaluation failed";
-      addMessages(conv.id, [{ role: "assistant", content: msg }]);
-      toast.error(msg);
+      const helpfulMsg = msg.includes("VPN")
+        ? msg
+        : msg.includes("Request failed")
+        ? "Server connection issue — please try again in a moment."
+        : "Evaluation failed — please check your brief and try again.";
+      addMessages(conv.id, [{ role: "assistant", content: helpfulMsg }]);
+      toast.error(helpfulMsg);
     } finally {
       clearInterval(phaseTimer);
       setIsProcessing(false);
@@ -392,11 +404,15 @@ export default function Home() {
           metadata: { type: "chat" },
         }]);
       } else {
-        addMessages(conv.id, [{ role: "assistant", content: data.error ?? "Sorry, I couldn't answer that right now." }]);
+        addMessages(conv.id, [{ role: "assistant", content: data.error ?? "I couldn't retrieve an answer right now. Try rephrasing your question." }]);
       }
-    } catch {
+    } catch (err) {
       removeLoadingMessage(conv.id);
-      addMessages(conv.id, [{ role: "assistant", content: "Sorry, something went wrong. Please try again." }]);
+      const errMsg = err instanceof Error ? err.message : "";
+      const helpfulMsg = errMsg.includes("VPN")
+        ? "Connection failed — check your VPN connection."
+        : "Connection issue — please try again.";
+      addMessages(conv.id, [{ role: "assistant", content: helpfulMsg }]);
     } finally {
       setIsProcessing(false);
     }
@@ -425,7 +441,11 @@ export default function Home() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: text }),
       });
-      const { type } = await res.json() as { type: "brief" | "question" };
+      const { type, fallback } = await res.json() as { type: "brief" | "question"; fallback?: boolean };
+
+      if (fallback) {
+        toast.error("Classifier unreachable — check your VPN. Treating input as a brief.");
+      }
 
       if (type === "question") {
         await handleConversationalQuestion(text);
@@ -718,7 +738,7 @@ export default function Home() {
                   disabled={isProcessing}
                   rows={1}
                   style={{ maxHeight: `${MAX_TEXTAREA_HEIGHT}px` }}
-                  className="w-full px-5 pt-4 pb-2 text-sm text-slate-900 bg-transparent resize-none focus:outline-none placeholder:text-slate-400 min-h-[52px] leading-relaxed overflow-y-auto"
+                  className="w-full px-5 pt-4 pb-2 text-sm text-slate-900 bg-transparent resize-none focus:outline-none placeholder:text-slate-400 min-h-[52px] leading-relaxed overflow-y-auto disabled:opacity-50 disabled:cursor-not-allowed"
                 />
 
                 {/* Character counter */}

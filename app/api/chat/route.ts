@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { chomsky } from "@/lib/chomsky";
 import { rateLimit } from "@/lib/rate-limit";
 
+// Maximum message length: 5,000 characters
+const MAX_MESSAGE_LENGTH = 5000;
+
 // ─── Knowledge mode system prompt ────────────────────────────────────────────
 // Used when mode === "knowledge" (conversational questions, no evaluation context)
 
@@ -104,12 +107,21 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Message is required" }, { status: 400 });
     }
 
+    if (message.length > MAX_MESSAGE_LENGTH) {
+      return NextResponse.json(
+        {
+          error: `Message is too long. Maximum ${MAX_MESSAGE_LENGTH.toLocaleString()} characters allowed. Your message is ${message.length.toLocaleString()} characters.`,
+        },
+        { status: 400 }
+      );
+    }
+
     // ── Knowledge mode: conversational eBay naming expert ─────────────────────
     if (mode === "knowledge") {
       const responseText = await chomsky.generateText({
         messages: [
           { role: "system", content: KNOWLEDGE_SYSTEM_PROMPT },
-          { role: "user", content: message.slice(0, 2000) },
+          { role: "user", content: message }, // Already validated length above
         ],
         maxTokens: 1500,
       });
@@ -158,10 +170,21 @@ Your job is to help the user understand why their brief failed or passed the eva
 
     return NextResponse.json({ response: responseText });
   } catch (error) {
-    console.error("Chat error:", error);
-    return NextResponse.json(
-      { error: "Chat request failed. Please try again." },
-      { status: 500 }
-    );
+    const rawMessage = error instanceof Error ? error.message : String(error);
+    console.error("Chat error:", rawMessage);
+
+    // Sanitize error for client
+    let clientMessage = "Chat request failed. Please try again.";
+    let statusCode = 500;
+
+    if (rawMessage.includes("403") || rawMessage.includes("ECONNREFUSED") || rawMessage.includes("ETIMEDOUT")) {
+      clientMessage = "Cannot reach Chomsky gateway. Check your VPN connection.";
+      statusCode = 503;
+    } else if (rawMessage.includes("rate limit") || rawMessage.includes("429")) {
+      clientMessage = "Rate limit exceeded. Please try again in a few minutes.";
+      statusCode = 429;
+    }
+
+    return NextResponse.json({ error: clientMessage }, { status: statusCode });
   }
 }

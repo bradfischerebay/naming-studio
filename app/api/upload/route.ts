@@ -4,6 +4,16 @@ import { rateLimit } from "@/lib/rate-limit";
 // Maximum file size: 20MB
 const MAX_FILE_SIZE = 20 * 1024 * 1024;
 
+// Allowed MIME types (browsers may send variants, so we also check extension + magic bytes)
+const ALLOWED_MIME_TYPES = [
+  "application/pdf",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document", // .docx
+  "application/msword", // .doc
+  "text/plain",
+  "application/octet-stream", // Some browsers send this as fallback
+  "", // Empty string - some browsers don't set Content-Type
+] as const;
+
 // Uses file extension as fallback when browser sends empty/variant MIME types
 function validateMagicBytes(buffer: Buffer, extension: string, claimedType: string): boolean {
   const type = claimedType.toLowerCase();
@@ -62,6 +72,21 @@ export async function POST(req: NextRequest) {
     const fileType = file.type.toLowerCase();
 
     console.log("[Upload] File received:", { name: file.name, type: fileType, extension, size: file.size });
+
+    // Validate Content-Type (allow some flexibility for browser quirks)
+    const isMimeAllowed = ALLOWED_MIME_TYPES.some(allowed =>
+      fileType === allowed || fileType.includes("pdf") || fileType.includes("word") || fileType.includes("text")
+    );
+    const isExtensionAllowed = ["pdf", "docx", "doc", "txt"].includes(extension);
+
+    if (!isMimeAllowed && !isExtensionAllowed) {
+      return NextResponse.json(
+        {
+          error: `Unsupported file type: ${fileType || "unknown"}. Please upload PDF, DOCX, or TXT files.`,
+        },
+        { status: 400 }
+      );
+    }
 
     let buffer: Buffer;
     try {

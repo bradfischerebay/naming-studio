@@ -9,6 +9,7 @@ interface ChomskyConfig {
   temperature?: number;
   maxTokens?: number;
   tokenEndpoint?: string;
+  timeout?: number; // Request timeout in milliseconds
 }
 
 interface Message {
@@ -32,7 +33,18 @@ export class ChomskyClient {
       temperature: config?.temperature || 0.7,
       maxTokens: config?.maxTokens || 4000,
       tokenEndpoint: config?.tokenEndpoint || "https://dcputilityexecutorsvc.vip.qa.ebay.com/dcp/executor/v1/apis/utilities/62f4a6871cb7d52b85a91429/run",
+      timeout: config?.timeout || 60000, // Default 60s timeout
     };
+  }
+
+  /**
+   * Create an AbortController with timeout for fetch requests
+   */
+  private createTimeoutController(timeoutMs?: number): AbortController {
+    const controller = new AbortController();
+    const timeout = timeoutMs || this.config.timeout || 60000;
+    setTimeout(() => controller.abort(), timeout);
+    return controller;
   }
 
   /**
@@ -46,6 +58,7 @@ export class ChomskyClient {
     }
 
     try {
+      const controller = this.createTimeoutController(10000); // 10s timeout for token fetch
       const response = await fetch(this.config.tokenEndpoint!, {
         method: "POST",
         headers: {
@@ -54,6 +67,7 @@ export class ChomskyClient {
         body: JSON.stringify({
           appName: "chomskygw",
         }),
+        signal: controller.signal,
       });
 
       if (!response.ok) {
@@ -75,6 +89,9 @@ export class ChomskyClient {
 
       return token;
     } catch (error) {
+      if (error instanceof Error && error.name === "AbortError") {
+        throw new Error("Token fetch timed out. Check your network connection.");
+      }
       throw new Error(`Failed to get Chomsky access token: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
@@ -127,40 +144,49 @@ export class ChomskyClient {
       [maxTokensKey]: this.config.maxTokens,
     };
 
-    const response = await fetch(this.config.endpoint, {
-      method: "POST",
-      headers,
-      body: JSON.stringify(requestBody),
-    });
-
-    if (!response.ok) {
-      const error = await response.text();
-      throw new Error(`Chomsky API error: ${response.status} - ${error}`);
-    }
-
-    const data = await response.json();
-
-    // Extract the response content
-    let content = data.choices?.[0]?.message?.content || data.content || "";
-
-    if (!content) {
-      throw new Error("No content returned from Chomsky API");
-    }
-
-    // Clean up markdown code blocks if present
-    content = content.replace(/```json\n?/g, "").replace(/```\n?/g, "").trim();
-
-    // Parse and validate with schema
-    let parsed;
+    const controller = this.createTimeoutController();
     try {
-      parsed = JSON.parse(content);
-    } catch (parseError) {
-      throw new Error(`Failed to parse JSON response: ${parseError instanceof Error ? parseError.message : String(parseError)}. Content: ${content.substring(0, 200)}`);
+      const response = await fetch(this.config.endpoint, {
+        method: "POST",
+        headers,
+        body: JSON.stringify(requestBody),
+        signal: controller.signal,
+      });
+
+      if (!response.ok) {
+        const error = await response.text();
+        throw new Error(`Chomsky API error: ${response.status} - ${error}`);
+      }
+
+      const data = await response.json();
+
+      // Extract the response content
+      let content = data.choices?.[0]?.message?.content || data.content || "";
+
+      if (!content) {
+        throw new Error("No content returned from Chomsky API");
+      }
+
+      // Clean up markdown code blocks if present
+      content = content.replace(/```json\n?/g, "").replace(/```\n?/g, "").trim();
+
+      // Parse and validate with schema
+      let parsed;
+      try {
+        parsed = JSON.parse(content);
+      } catch (parseError) {
+        throw new Error(`Failed to parse JSON response: ${parseError instanceof Error ? parseError.message : String(parseError)}. Content: ${content.substring(0, 200)}`);
+      }
+
+      const validated = params.schema.parse(parsed);
+
+      return { object: validated };
+    } catch (error) {
+      if (error instanceof Error && error.name === "AbortError") {
+        throw new Error("Request timed out. The brief may be too complex or Chomsky is slow to respond.");
+      }
+      throw error;
     }
-
-    const validated = params.schema.parse(parsed);
-
-    return { object: validated };
   }
 
   async generateText(params: {
@@ -201,10 +227,12 @@ export class ChomskyClient {
       [maxTokensKey]: params.maxTokens ?? this.config.maxTokens,
     };
 
+    const controller = this.createTimeoutController();
     const response = await fetch(this.config.endpoint, {
       method: "POST",
       headers,
       body: JSON.stringify(requestBody),
+      signal: controller.signal,
     });
 
     if (!response.ok) {

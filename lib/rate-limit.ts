@@ -29,6 +29,12 @@ interface RateLimitStorage {
 // maintains its own store, allowing rate limit bypass. Replace with a distributed
 // store (Redis, Vercel KV, Upstash) before deploying to production.
 // To swap: implement RateLimitStorage and pass it as rateLimitStorage.storage
+//
+// KNOWN LIMITATION: There is a race condition between get(), set(), and increment()
+// in the rateLimit() function below. If two requests arrive simultaneously during a
+// window reset, both may initialize count=0 and increment to count=1, bypassing the
+// limit by 1 request. This is acceptable in development but should be fixed with
+// atomic operations (Redis INCR) in production. See UpstashStorage for atomic impl.
 class InMemoryStorage implements RateLimitStorage {
   private store: {
     [key: string]: {
@@ -160,6 +166,9 @@ export async function rateLimit(
   const resetTime = now + config.interval;
 
   // Initialize or get current rate limit data
+  // NOTE: Race condition exists here in InMemoryStorage (see class comment above)
+  // Between get(), set(), and increment(), concurrent requests may bypass limit by 1-2
+  // This is mitigated in UpstashStorage via atomic Redis INCR
   const current = await storage.get(identifier);
 
   if (!current || current.resetTime < now) {

@@ -63,7 +63,10 @@ Output ONLY valid JSON with no markdown or explanation:
     try {
       parsed = JSON.parse(cleaned) as typeof parsed;
     } catch {
-      return Response.json({ error: "Failed to parse conditions — try again" }, { status: 500 });
+      return Response.json(
+        { error: "Failed to parse AI response. Please try again or rephrase your gate description." },
+        { status: 422 } // Unprocessable Entity - AI returned invalid format
+      );
     }
 
     const passConditions = Array.isArray(parsed.passConditions)
@@ -74,8 +77,22 @@ Output ONLY valid JSON with no markdown or explanation:
       : [];
 
     return Response.json({ passConditions, failConditions });
-  } catch {
-    return Response.json({ error: "Failed to generate conditions" }, { status: 500 });
+  } catch (error) {
+    const rawMessage = error instanceof Error ? error.message : String(error);
+    console.error("[Generate Conditions] Error:", rawMessage);
+
+    let clientMessage = "Failed to generate conditions. Please try again.";
+    let statusCode = 500;
+
+    if (rawMessage.includes("403") || rawMessage.includes("ECONNREFUSED") || rawMessage.includes("ETIMEDOUT")) {
+      clientMessage = "Cannot reach Chomsky gateway. Check your VPN connection.";
+      statusCode = 503;
+    } else if (rawMessage.includes("rate limit") || rawMessage.includes("429")) {
+      clientMessage = "Rate limit exceeded. Please try again later.";
+      statusCode = 429;
+    }
+
+    return Response.json({ error: clientMessage }, { status: statusCode });
   }
 }
 

@@ -197,7 +197,22 @@ export async function POST(req: NextRequest) {
     );
     return Response.json({ results });
   } catch (err) {
-    return Response.json({ error: String(err) }, { status: 500 });
+    const rawMessage = err instanceof Error ? err.message : String(err);
+    console.error("[Lab Simulate] Error:", rawMessage);
+
+    // Sanitize error for client
+    let clientMessage = "Simulation failed. Please try again.";
+    let statusCode = 500;
+
+    if (rawMessage.includes("403") || rawMessage.includes("ECONNREFUSED") || rawMessage.includes("ETIMEDOUT")) {
+      clientMessage = "Cannot reach Chomsky gateway. Check your VPN connection.";
+      statusCode = 503;
+    } else if (rawMessage.includes("rate limit") || rawMessage.includes("429")) {
+      clientMessage = "Rate limit exceeded. Please try again later.";
+      statusCode = 429;
+    }
+
+    return Response.json({ error: clientMessage }, { status: statusCode });
   }
 }
 

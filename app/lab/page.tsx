@@ -716,7 +716,7 @@ function GateConfigPanel({
       }
     } catch (err) {
       if ((err as { name?: string })?.name === "AbortError") return;
-      toast.error("Couldn't generate conditions — try adding more detail to the label and description");
+      toast.error("Couldn't generate conditions — add more detail to the label and description, then try again.");
     } finally {
       if (!controller.signal.aborted) {
         setGeneratingIdx(null);
@@ -1420,7 +1420,7 @@ const QuickTestPanel = memo(function QuickTestPanel({
       )}
     </div>
   );
-}
+});
 
 // ─── Run Audit Panel ──────────────────────────────────────────────────────────
 
@@ -1580,7 +1580,7 @@ function RunAuditPanel({ runs }: { runs: LabRun[] }) {
       )}
     </div>
   );
-});
+}
 
 // ─── Main Page ────────────────────────────────────────────────────────────────
 
@@ -1931,7 +1931,15 @@ export default function LabPage() {
       toast.success(`${file.name} attached — press Analyze to evaluate`);
       inputRef.current?.focus();
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Upload failed");
+      const msg = err instanceof Error ? err.message : "Upload failed";
+      const helpfulMsg = msg.includes("20MB")
+        ? msg
+        : msg.includes("No text")
+        ? "No text found in this file. Try a different file or paste text directly."
+        : msg.includes("format") || msg.includes("Unsupported")
+        ? "This file format isn't supported. Upload a .pdf, .docx, or .txt file."
+        : "Upload failed — please try a different file.";
+      toast.error(helpfulMsg);
     } finally {
       setIsUploading(false);
       if (fileInputRef.current) fileInputRef.current.value = "";
@@ -2068,12 +2076,16 @@ export default function LabPage() {
       const data = await res.json() as { response?: string };
       setLabChatMessages((prev) => [
         ...prev,
-        { id: crypto.randomUUID(), role: "assistant", content: data.response ?? "Sorry, I could not answer that." },
+        { id: crypto.randomUUID(), role: "assistant", content: data.response ?? "I couldn't retrieve an answer right now. Try rephrasing your question." },
       ]);
-    } catch {
+    } catch (err) {
+      const errMsg = err instanceof Error ? err.message : "";
+      const helpfulMsg = errMsg.includes("VPN")
+        ? "Connection failed — check your VPN connection."
+        : "Connection issue — please try again.";
       setLabChatMessages((prev) => [
         ...prev,
-        { id: crypto.randomUUID(), role: "assistant", content: "Something went wrong. Please try again." },
+        { id: crypto.randomUUID(), role: "assistant", content: helpfulMsg },
       ]);
     } finally {
       setIsAnswering(false);

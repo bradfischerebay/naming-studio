@@ -82,8 +82,12 @@ export async function POST(req: NextRequest) {
       .ltrim(PRESETS_KEY, 0, MAX_PRESETS - 1)
       .exec();
     return Response.json({ id: preset.id, preset });
-  } catch {
-    return Response.json({ error: "Failed to save preset" }, { status: 500 });
+  } catch (error) {
+    console.error("[Presets] Save error:", error);
+    return Response.json(
+      { error: "Failed to save preset to storage. Please try again." },
+      { status: 503 } // Service Unavailable - Redis is down
+    );
   }
 }
 
@@ -113,7 +117,11 @@ export async function DELETE(req: NextRequest) {
       }
     }
     return Response.json({ success: true });
-  } catch {
-    return Response.json({ error: "Failed to delete preset" }, { status: 500 });
+  } catch (error) {
+    console.error("[Presets] Delete error:", error);
+    return Response.json(
+      { error: "Failed to delete preset from storage. Please try again." },
+      { status: 503 }
+    );
   }
 }

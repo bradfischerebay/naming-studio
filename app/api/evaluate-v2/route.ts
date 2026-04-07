@@ -8,9 +8,14 @@ import { orchestrator } from "@/lib/orchestrator";
 import { toMachinePayload } from "@/lib/modules/formatter";
 import { analytics } from "@/lib/analytics";
 import type { AnalyticsEvent } from "@/lib/analytics";
+import { validateModel } from "@/lib/config/models";
 
 export const runtime = "nodejs";
 export const maxDuration = 240; // 4 minutes — pipeline makes 4-6 sequential LLM calls
+
+// Maximum brief length: 50,000 characters (~12,500 tokens)
+// Prevents timeouts and excessive token costs
+const MAX_BRIEF_LENGTH = 50000;
 
 export async function POST(request: NextRequest) {
   const startTime = Date.now();
@@ -37,14 +42,36 @@ export async function POST(request: NextRequest) {
     }
 
     briefLength = brief.length;
-    modelUsed = model || process.env.CHOMSKY_MODEL || "unknown";
+
+    // Validate brief length
+    if (briefLength > MAX_BRIEF_LENGTH) {
+      return NextResponse.json(
+        {
+          error: `Brief is too long. Maximum ${MAX_BRIEF_LENGTH.toLocaleString()} characters allowed. Your brief is ${briefLength.toLocaleString()} characters.`,
+        },
+        { status: 400 }
+      );
+    }
+
+    // Validate model if provided
+    let validatedModel: string | undefined;
+    try {
+      validatedModel = model ? validateModel(model) : undefined;
+    } catch (error) {
+      return NextResponse.json(
+        { error: error instanceof Error ? error.message : "Invalid model specified" },
+        { status: 400 }
+      );
+    }
+
+    modelUsed = validatedModel || process.env.CHOMSKY_MODEL || "unknown";
     isClarificationRetry = !!(clarification && previousResult);
     retryCount = isClarificationRetry ? (previousResult?.retryCount || 0) + 1 : 0;
 
     // Thin-brief detection is now handled by the orchestrator via buildNoBriefVerdict,
     // which returns a helpful PATH_B response instead of a hard error.
 
-    const config = { skipWebResearch, model };
+    const config = { skipWebResearch, model: validatedModel };
 
     // Handle clarification flow (retry)
     if (clarification && previousResult) {
@@ -130,9 +157,30 @@ export async function POST(request: NextRequest) {
       questions: result.questions,
     });
   } catch (error) {
-    // Surface the real error so the UI can show it
-    const message = error instanceof Error ? error.message : String(error);
-    console.error("Evaluation error:", message);
+    // Sanitize error message before sending to client
+    const rawMessage = error instanceof Error ? error.message : String(error);
+    console.error("Evaluation error:", rawMessage);
+
+    // Determine safe error message to return to client
+    let clientMessage: string;
+    let statusCode = 500;
+
+    if (rawMessage.includes("403") || rawMessage.includes("ECONNREFUSED") || rawMessage.includes("ETIMEDOUT")) {
+      clientMessage = "Cannot reach the Chomsky gateway. Make sure you're on the eBay VPN.";
+      statusCode = 503;
+    } else if (rawMessage.includes("rate limit") || rawMessage.includes("429")) {
+      clientMessage = "Rate limit exceeded. Please try again in a few minutes.";
+      statusCode = 429;
+    } else if (rawMessage.includes("timeout") || rawMessage.includes("ESOCKETTIMEDOUT")) {
+      clientMessage = "Request timed out. The brief may be too complex. Try simplifying it.";
+      statusCode = 504;
+    } else if (rawMessage.includes("Invalid model")) {
+      clientMessage = rawMessage; // Safe — our own validation error
+      statusCode = 400;
+    } else {
+      // Generic error — don't leak internal details
+      clientMessage = "Evaluation failed. Please try again or contact support if the issue persists.";
+    }
 
     // Track error (fire-and-forget)
     trackEvaluation({
@@ -150,7 +198,7 @@ export async function POST(request: NextRequest) {
       isClarificationRetry,
       durationMs: Date.now() - startTime,
       briefLength,
-      error: message,
+      error: rawMessage, // Log full error internally
       briefText: "",
       briefSummary: null,
       targetGeographies: null,
@@ -164,16 +212,12 @@ export async function POST(request: NextRequest) {
       retryCount,
     });
 
-    const isVpn = message.includes("403") || message.includes("ECONNREFUSED") || message.includes("ETIMEDOUT");
-
     return NextResponse.json(
       {
         success: false,
-        error: isVpn
-          ? "Cannot reach the Chomsky gateway — make sure you're on the eBay VPN."
-          : message,
+        error: clientMessage,
       },
-      { status: 500 }
+      { status: statusCode }
     );
   }
 }

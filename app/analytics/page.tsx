@@ -389,12 +389,18 @@ export default function AnalyticsPage() {
     try {
       const res = await fetch("/api/analytics");
       const body = await res.json().catch(() => ({}));
-      if (!res.ok) throw new Error(body.error || `Request failed (${res.status})`);
-      if (!body.success) throw new Error(body.error || "API returned failure");
+      if (!res.ok) throw new Error(body.error || `Server returned status ${res.status}`);
+      if (!body.success) throw new Error(body.error || "Unable to load analytics data");
       setData(body.data);
       setCountdown(30);
     } catch (err) {
-      setFetchError(err instanceof Error ? err.message : "Failed to load analytics");
+      const msg = err instanceof Error ? err.message : "Failed to load analytics";
+      const helpfulMsg = msg.includes("configured") || msg.includes("Redis")
+        ? "Analytics storage isn't configured yet. Contact your administrator."
+        : msg.includes("VPN")
+        ? msg
+        : "Unable to load analytics — please try refreshing.";
+      setFetchError(helpfulMsg);
     } finally {
       setLoading(false);
     }
@@ -800,7 +806,7 @@ function PageHeader({
         <button
           onClick={onRefresh}
           disabled={loading}
-          className="flex items-center gap-1.5 px-3 py-1.5 text-xs text-slate-600 hover:text-slate-900 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors disabled:opacity-40"
+          className="flex items-center gap-1.5 px-3 py-1.5 text-xs text-slate-600 hover:text-slate-900 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
         >
           {loading ? (
             <Loader2 className="h-3.5 w-3.5 animate-spin" />

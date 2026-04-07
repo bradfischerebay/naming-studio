@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
     const { message } = await req.json() as { message: string };
 
     if (!message?.trim()) {
-      return Response.json({ type: "brief" }); // default to brief if empty
+      return Response.json({ type: "brief", fallback: false });
     }
 
     const raw = await chomsky.generateText({
@@ -46,13 +46,15 @@ export async function POST(req: NextRequest) {
     try {
       const parsed = JSON.parse(cleaned) as { type: string };
       const type = parsed.type === "question" ? "question" : "brief";
-      return Response.json({ type });
+      return Response.json({ type, fallback: false });
     } catch {
       // Parse failure — default to brief (safer)
-      return Response.json({ type: "brief" });
+      console.warn("[Classify] JSON parse failed, falling back to brief");
+      return Response.json({ type: "brief", fallback: true });
     }
-  } catch {
-    // Any error — default to brief
-    return Response.json({ type: "brief" });
+  } catch (error) {
+    // Chomsky unreachable — default to brief
+    console.warn("[Classify] Chomsky error, falling back to brief:", error);
+    return Response.json({ type: "brief", fallback: true });
   }
 }

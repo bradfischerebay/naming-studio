@@ -1,6 +1,8 @@
 import { NextRequest } from "next/server";
 import { runGateAgent, runScorerAgent } from "@/lib/modules/gate-agents";
 import type { GateAgentEvent, ScorerAgentEvent, CustomGateDef, CustomScoringConfig } from "@/lib/modules/gate-agents";
+import { rateLimit } from "@/lib/rate-limit";
+import { validateModel } from "@/lib/config/models";
 
 export const maxDuration = 120;
 
@@ -11,6 +13,25 @@ function sseEvent(data: object): Uint8Array {
 }
 
 export async function POST(req: NextRequest) {
+  // Rate limiting: 10 requests per minute (expensive route, makes 6-8 LLM calls)
+  const rateLimitResult = await rateLimit(req, {
+    interval: 60 * 1000,
+    maxRequests: 10,
+  });
+
+  if (!rateLimitResult.success) {
+    return new Response(
+      JSON.stringify({ error: "Too many requests. Please try again later." }),
+      {
+        status: 429,
+        headers: {
+          "Content-Type": "application/json",
+          ...rateLimitResult.headers,
+        },
+      }
+    );
+  }
+
   const {
     brief,
     contextHistory = [],
@@ -38,7 +59,26 @@ export async function POST(req: NextRequest) {
   );
 
   if (!brief?.trim()) {
-    return new Response(JSON.stringify({ error: "Brief is required" }), { status: 400 });
+    return new Response(JSON.stringify({ error: "Brief is required" }), {
+      status: 400,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+
+  // Validate model if provided
+  let validatedModel: string | undefined;
+  try {
+    validatedModel = model ? validateModel(model) : undefined;
+  } catch (error) {
+    return new Response(
+      JSON.stringify({
+        error: error instanceof Error ? error.message : "Invalid model specified",
+      }),
+      {
+        status: 400,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
   }
 
   const stream = new TransformStream<Uint8Array, Uint8Array>();
@@ -93,7 +133,7 @@ export async function POST(req: NextRequest) {
       if (g0Decision?.status === "Fail") {
         const verdictEvent = { type: "verdict", path: "PATH_A0" };
         await writer.write(sseEvent(verdictEvent));
-        await writer.write(sseEvent({ type: "complete", model: model ?? process.env.CHOMSKY_MODEL ?? "unknown" }));
+        await writer.write(sseEvent({ type: "complete", model: validatedModel ?? process.env.CHOMSKY_MODEL ?? "unknown" }));
         return;
       }
 
@@ -112,7 +152,7 @@ export async function POST(req: NextRequest) {
         );
         if (anyBlockerFailed) {
           await writer.write(sseEvent({ type: "verdict", path: "PATH_A1" }));
-          await writer.write(sseEvent({ type: "complete", model: model ?? process.env.CHOMSKY_MODEL ?? "unknown" }));
+          await writer.write(sseEvent({ type: "complete", model: validatedModel ?? process.env.CHOMSKY_MODEL ?? "unknown" }));
           return;
         }
       }
@@ -153,10 +193,16 @@ export async function POST(req: NextRequest) {
         await writer.write(sseEvent(verdictEvent));
       }
 
-      await writer.write(sseEvent({ type: "complete", model: model ?? process.env.CHOMSKY_MODEL ?? "unknown" }));
+      await writer.write(sseEvent({ type: "complete", model: validatedModel ?? process.env.CHOMSKY_MODEL ?? "unknown" }));
     } catch (err) {
       try {
-        await writer.write(sseEvent({ type: "error", error: String(err) }));
+        // Sanitize error before sending to client
+        const errorMsg = err instanceof Error ? err.message : String(err);
+        const isVpnError = errorMsg.includes("403") || errorMsg.includes("ECONNREFUSED") || errorMsg.includes("ETIMEDOUT");
+        const clientError = isVpnError
+          ? "Cannot reach Chomsky gateway. Check your VPN connection."
+          : "Evaluation failed. Please try again.";
+        await writer.write(sseEvent({ type: "error", error: clientError }));
       } catch {
         // ignore
       }
