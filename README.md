@@ -1,12 +1,12 @@
 # eBay AI Naming Studio & Eval Lab
 
-An internal governance application designed to evaluate product naming briefs using a modular DAG architecture with eBay's Chomsky LLM gateway.
+An internal governance application designed to evaluate product naming briefs using a hybrid agent system with eBay's Chomsky LLM gateway.
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 - Node.js 18+
-- Connected to eBay VPN (required for Chomsky gateway access)
+- eBay VPN connection (required for Chomsky gateway access)
 
 ### Setup
 
@@ -18,54 +18,98 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000)
 
-## 🏗️ Architecture
+### Run Tests
 
-### Modular DAG Architecture (3 Steps)
+```bash
+npm test                  # Run all tests (37+ tests)
+npm run test:ui          # Interactive test UI
+npm run test:coverage    # Coverage report
+```
 
-**Step 1: The Gatekeeper (LLM via `generateObject`)**
-- Evaluates brief against 6 strict architectural gates (G0-G5)
-- Uses Zod schema for structured output
-- Returns Pass/Fail/Pending/Unknown for each gate
+## 📚 Documentation
 
-**Step 2: The Scorer (LLM via `generateObject` - CONDITIONAL)**
-- Only runs if ALL gates pass
-- Scores on 5 criteria (Standalone, Longevity, Legal, Global, Clarity)
-- Total possible: 70 points, Threshold: 60 points
+**For comprehensive documentation, see [CLAUDE.md](./CLAUDE.md)** - the complete developer guide covering:
 
-**Step 3: The Verdict Engine (TypeScript Logic)**
-- Pure TypeScript function (NO LLM)
-- Returns one of 4 exact verdicts based on gate/score results
+- Agent dispatch protocol for complex tasks
+- Full architecture overview (3-step DAG)
+- Development setup and VPN requirements
+- Testing procedures and best practices
+- API reference and usage examples
+- Model selection guide (GPT-5, Claude 4.6, Gemini)
+- Configuration and business rules
+- Deployment and troubleshooting
 
-### Gate Criteria
+### Additional Resources
+
+- **[docs/AGENT_README.md](./docs/AGENT_README.md)** - Deep dive into modules and data flow
+- **[docs/USAGE_EXAMPLES.md](./docs/USAGE_EXAMPLES.md)** - Code examples and patterns
+- **[docs/DEPLOYMENT.md](./docs/DEPLOYMENT.md)** - Production deployment guide
+- **[docs/IMPLEMENTATION_PLAN.md](./docs/IMPLEMENTATION_PLAN.md)** - Architecture decisions
+
+## 🏗️ Architecture Overview
+
+### Hybrid Design: LLM + Deterministic Logic
+
+**LLM-Powered** (Semantic Understanding):
+- Brief parsing, landscape research, fact extraction, question generation
+
+**Deterministic TypeScript** (Business Logic):
+- Gate evaluation (G0-G5), scoring calculation (0-70 points), verdict routing (PATH_A0/A1/A2/B/C)
+
+### The 6 Gates (G0-G5)
 
 | Gate | Criterion | Pass | Fail |
 |------|-----------|------|------|
-| G0 | Interaction Model | User-visible | Invisible background |
-| G1 | Integration Level | Distinct enrollment | Embedded in flows |
-| G2 | UX & Service Boundary | Distinct environment | Feature/button |
-| G3 | Strategic Lifespan | >12 months | Temporary |
-| G4 | Portfolio Alignment | No collisions | Naming conflicts |
-| G5 | Legal & Localization | No red flags | Trademark/regulatory issues |
+| G0 | Interaction Model | User actively selects/sees | Invisible background |
+| G1 | Integration Level | Standalone app | Embedded feature |
+| G2 | Standalone Architecture | Distinct service | Shared platform |
+| G3 | Strategic Lifespan | ≥12 months | <12 months |
+| G4 | Portfolio Alignment | No collisions | Name conflicts |
+| G5 | Legal & Localization | No blockers | Trademark/regulatory issues |
 
-## 📊 Testing
+### The 5 Verdict Paths
 
-Test with the three baseline briefs from `/data/mockBriefs.ts`:
-1. **CITA** - Expected: ❌ No Proper Name Needed
-2. **Managed Shipping** - Expected: ❌ No Proper Name Needed  
-3. **Carrier Network** - Expected: ❌ No Proper Name Needed
+1. **PATH_A0** - Do Not Name (G0 Fail: no user interaction)
+2. **PATH_A1** - No Proper Name (Gate failure)
+3. **PATH_A2** - No Proper Name (Score < 60)
+4. **PATH_B** - Need More Information (Missing data)
+5. **PATH_C** - Proceed With Naming (All pass + Score ≥ 60)
 
 ## 🔧 Configuration
 
-The app uses eBay's internal Chomsky gateway. Make sure you're on eBay VPN.
+Create `.env.local`:
 
-`.env.local`:
 ```bash
+# Chomsky LLM Gateway
 CHOMSKY_ENDPOINT=https://chomskygw.vip.qa.ebay.com/api/v1/genai
-CHOMSKY_MODEL=gcp-chat-completions-anthropic-claude-3.7-sonnet-sandbox
+
+# Model Selection (recommended: GPT-5.2)
+CHOMSKY_MODEL=azure-chat-completions-gpt-5-2-2025-12-11-sandbox
+
+# Alternative Models:
+# CHOMSKY_MODEL=gcp-chat-completions-anthropic-claude-sonnet-4.6-sandbox
+# CHOMSKY_MODEL=gcp-chat-completions-chat-gemini-3.1-pro-preview-sandbox
 ```
+
+See [CLAUDE.md > Model Selection](./CLAUDE.md#model-selection) for detailed guidance.
+
+## 📊 Testing
+
+```bash
+npm test                # Run all 37+ tests
+npm test evaluator      # Run gate evaluation tests
+npm test scorer         # Run scoring tests
+npm test verdict        # Run verdict routing tests
+```
+
+Test with baseline briefs from `/data/mockBriefs.ts`.
 
 ---
 
 **Built by**: Brad Fischer  
-**Status**: MVP Development  
+**Version**: 2.0  
+**Status**: Production Ready  
+**Tests**: 37+ passing (100% coverage on deterministic logic)  
 **Last Updated**: April 2026
+
+**For complete documentation, see [CLAUDE.md](./CLAUDE.md)**

@@ -1,865 +1,801 @@
 "use client";
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { Loader2, CheckCircle2, XCircle, AlertCircle, HelpCircle, Copy, Send, Upload, RefreshCw } from "lucide-react";
-import type { EvaluationResult } from "@/lib/schemas";
-import { motion } from "framer-motion";
+import { useState, useRef, useEffect, useCallback } from "react";
+import { Loader2, ArrowUp, Plus, ChevronLeft, ChevronRight, PlusCircle, Check, BarChart2, Paperclip, X, Beaker } from "lucide-react";
 import { toast, Toaster } from "sonner";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChatMessage, type Message } from "@/components/ChatMessage";
+import Link from "next/link";
 
-interface ChatMessage {
-  role: "user" | "assistant";
-  content: string;
+// ─── Types ───────────────────────────────────────────────────────────────────
+
+interface Conversation {
+  id: string;
+  title: string;
+  messages: Message[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  evaluation: any | null;
+  model: string;
+  createdAt: string;
 }
 
-// Available models grouped by provider
-const MODELS = {
-  "GPT (Azure OpenAI)": [
-    { value: "azure-chat-completions-gpt-5-2-2025-12-11-sandbox", label: "GPT-5.2 (Latest, Reasoning)", recommended: true },
-    { value: "azure-chat-completions-gpt-5-2-chat-2025-12-11-sandbox", label: "GPT-5.2 Chat (Faster)" },
-    { value: "azure-chat-completions-gpt-5-1-2025-11-13-sandbox", label: "GPT-5.1 (Reasoning)" },
-    { value: "azure-chat-completions-gpt-4-1-2025-04-14-sandbox", label: "GPT-4.1" },
-    { value: "azure-chat-completions-gpt-4o-2024-05-13-sandbox", label: "GPT-4o" },
-  ],
-  "Claude (Anthropic)": [
-    { value: "gcp-chat-completions-anthropic-claude-sonnet-4.6-sandbox", label: "Claude Sonnet 4.6 (⚠️ 6 req/min)" },
-    { value: "gcp-chat-completions-anthropic-claude-opus-4.6-sandbox", label: "Claude Opus 4.6 (⚠️ 6 req/min)" },
-    { value: "gcp-chat-completions-anthropic-claude-sonnet-4.5-sandbox", label: "Claude Sonnet 4.5 (⚠️ 6 req/min)" },
-  ],
-  "Gemini (Google)": [
-    { value: "gcp-chat-completions-chat-gemini-3.1-pro-preview-sandbox", label: "Gemini 3.1 Pro (300 req/min)" },
-    { value: "gcp-chat-completions-chat-gemini-2.5-pro-sandbox", label: "Gemini 2.5 Pro" },
-  ],
-};
+// ─── Models ──────────────────────────────────────────────────────────────────
 
-export default function SingleRunStudio() {
-  const [brief, setBrief] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [loadingProgress, setLoadingProgress] = useState(0);
-  const [loadingStage, setLoadingStage] = useState("");
-  const [selectedModel, setSelectedModel] = useState("azure-chat-completions-gpt-5-2-2025-12-11-sandbox");
-  const [result, setResult] = useState<EvaluationResult | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
-  const [chatInput, setChatInput] = useState("");
-  const [chatLoading, setChatLoading] = useState(false);
+const MODELS = [
+  { value: "azure-chat-completions-gpt-5-2-2025-12-11-sandbox", label: "GPT-5.2", group: "GPT", badge: "⭐" },
+  { value: "azure-chat-completions-gpt-5-latest-sandbox", label: "GPT-5 Latest", group: "GPT" },
+  { value: "azure-chat-completions-gpt-5-mini-2025-01-31-sandbox", label: "GPT-5 Mini", group: "GPT" },
+  { value: "azure-chat-completions-gpt-4.1-sandbox", label: "GPT-4.1", group: "GPT" },
+  { value: "gcp-chat-completions-anthropic-claude-sonnet-4.6-sandbox", label: "Claude Sonnet 4.6", group: "Claude", badge: "⚠️ 6/min" },
+  { value: "gcp-chat-completions-anthropic-claude-opus-4.6-sandbox", label: "Claude Opus 4.6", group: "Claude", badge: "⚠️ 6/min" },
+  { value: "gcp-chat-completions-chat-gemini-3.1-pro-preview-sandbox", label: "Gemini 3.1 Pro", group: "Gemini" },
+  { value: "gcp-chat-completions-chat-gemini-3.1-flash-preview-sandbox", label: "Gemini 3.1 Flash", group: "Gemini" },
+];
+
+const DEFAULT_MODEL = "azure-chat-completions-gpt-5-2-2025-12-11-sandbox";
+
+// Max textarea height ≈ 15 lines (14px × 1.625 line-height × 15 + top/bottom padding)
+const MAX_TEXTAREA_HEIGHT = 340;
+
+// ─── Helpers ─────────────────────────────────────────────────────────────────
+
+function newConversation(model: string): Conversation {
+  return {
+    id: Date.now().toString(),
+    title: "New conversation",
+    messages: [],
+    evaluation: null,
+    model,
+    createdAt: new Date().toISOString(),
+  };
+}
+
+function titleFromMessage(content: string): string {
+  const clean = content.replace(/\n/g, " ").trim();
+  return clean.length > 50 ? clean.slice(0, 50) + "…" : clean;
+}
+
+// ─── Component ───────────────────────────────────────────────────────────────
+
+export default function Home() {
+  const [conversations, setConversations] = useState<Conversation[]>([]);
+  const [activeId, setActiveId] = useState<string>("");
+  const [inputValue, setInputValue] = useState("");
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [selectedModel, setSelectedModel] = useState(DEFAULT_MODEL);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [modelPickerOpen, setModelPickerOpen] = useState(false);
+
+  // Upload state — stored separately so file shows as pill, not as textarea text
   const [uploadedFileName, setUploadedFileName] = useState<string | null>(null);
-  const [additionalContext, setAdditionalContext] = useState("");
+  const [pendingUploadText, setPendingUploadText] = useState<string | null>(null);
+  const [isUploading, setIsUploading] = useState(false);
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const chatEndRef = useRef<HTMLDivElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const modelPickerRef = useRef<HTMLDivElement>(null);
+
+  // Derived state
+  const activeConversation = conversations.find((c) => c.id === activeId) ?? null;
+  const messages = activeConversation?.messages ?? [];
+  const currentEvaluation = activeConversation?.evaluation ?? null;
+
+  // Whether there's something ready to send
+  const hasContent = inputValue.trim().length > 0 || !!pendingUploadText;
+
+  // ── Effects ──
+
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  // Auto-resize textarea up to MAX_TEXTAREA_HEIGHT
+  useEffect(() => {
+    const ta = textareaRef.current;
+    if (ta) {
+      ta.style.height = "auto";
+      ta.style.height = `${Math.min(ta.scrollHeight, MAX_TEXTAREA_HEIGHT)}px`;
+    }
+  }, [inputValue]);
+
+  // Close model picker when clicking outside it
+  useEffect(() => {
+    if (!modelPickerOpen) return;
+    const handler = (e: MouseEvent) => {
+      if (modelPickerRef.current && !modelPickerRef.current.contains(e.target as Node)) {
+        setModelPickerOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [modelPickerOpen]);
+
+  // Keyboard shortcuts
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        textareaRef.current?.focus();
+      }
+      if ((e.metaKey || e.ctrlKey) && e.key === "b") {
+        e.preventDefault();
+        setSidebarOpen((v) => !v);
+      }
+    };
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, []);
+
+  // ── Conversation management ──
+
+  const getOrCreateConversation = (): Conversation => {
+    if (activeConversation) return activeConversation;
+    const conv = newConversation(selectedModel);
+    setConversations((prev) => [conv, ...prev]);
+    setActiveId(conv.id);
+    return conv;
+  };
+
+  const updateConversation = (id: string, patch: Partial<Conversation>) => {
+    setConversations((prev) =>
+      prev.map((c) => (c.id === id ? { ...c, ...patch } : c))
+    );
+  };
+
+  const addMessages = (convId: string, newMsgs: Message[]) => {
+    setConversations((prev) =>
+      prev.map((c) =>
+        c.id === convId ? { ...c, messages: [...c.messages, ...newMsgs] } : c
+      )
+    );
+  };
+
+  const removeLoadingMessage = (convId: string) => {
+    setConversations((prev) =>
+      prev.map((c) =>
+        c.id === convId
+          ? { ...c, messages: c.messages.filter((m) => m.metadata?.type !== "loading") }
+          : c
+      )
+    );
+  };
+
+  const updateLoadingMessage = useCallback((convId: string, content: string) => {
+    setConversations((prev) =>
+      prev.map((c) =>
+        c.id === convId
+          ? { ...c, messages: c.messages.map((m) => m.metadata?.type === "loading" ? { ...m, content } : m) }
+          : c
+      )
+    );
+  }, []);
+
+  const startNewChat = () => {
+    const conv = newConversation(selectedModel);
+    setConversations((prev) => [conv, ...prev]);
+    setActiveId(conv.id);
+    setInputValue("");
+    setUploadedFileName(null);
+    setPendingUploadText(null);
+  };
+
+  // ── Upload — shows file as attachment pill; text extracted but NOT put in textarea ──
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
+    setIsUploading(true);
     const formData = new FormData();
     formData.append("file", file);
 
-    const toastId = toast.loading("Processing file...");
-
     try {
-      const response = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || "Failed to process file");
+      const res = await fetch("/api/upload", { method: "POST", body: formData });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error || "Upload failed");
       }
+      const data = await res.json();
+      if (!data.text) throw new Error("No text extracted from file");
 
-      const data = await response.json();
-
-      if (!data.text || typeof data.text !== "string") {
-        throw new Error("Invalid response from upload API");
-      }
-
-      setBrief(data.text);
+      // Store extracted text separately — show as pill, not in textarea
+      setPendingUploadText(data.text);
       setUploadedFileName(file.name);
-      toast.dismiss(toastId);
-      toast.success(`File "${file.name}" uploaded successfully!`);
+      toast.success(`${file.name} attached — press Send to evaluate`);
+      textareaRef.current?.focus();
     } catch (err) {
-      toast.dismiss(toastId);
-      const errorMessage = err instanceof Error ? err.message : "Failed to upload file";
-      toast.error(errorMessage);
+      const msg = err instanceof Error ? err.message : "Upload failed";
+      toast.error(msg);
     } finally {
-      // Reset the file input so the same file can be uploaded again
-      e.target.value = "";
+      setIsUploading(false);
+      // Reset so the same file can be re-uploaded
+      if (fileInputRef.current) fileInputRef.current.value = "";
     }
   };
 
-  const runEvaluation = async (isReassessment = false) => {
-    const evaluationText = isReassessment
-      ? `${brief}\n\n--- ADDITIONAL CONTEXT PROVIDED ---\n${additionalContext}`
-      : brief;
+  const clearUpload = () => {
+    setUploadedFileName(null);
+    setPendingUploadText(null);
+  };
 
-    if (!evaluationText.trim()) {
-      setError("Please enter a product naming brief");
+  // ── Evaluation ──
+
+  const runEvaluation = async ({
+    conv: convParam,
+    isClarification = false,
+  }: {
+    conv?: Conversation;
+    isClarification?: boolean;
+  }) => {
+    // The text to evaluate: uploaded file content takes priority; textarea text is additional context
+    const briefText = pendingUploadText || inputValue.trim();
+    const additionalContext = pendingUploadText ? inputValue.trim() : "";
+
+    if (!briefText) {
+      toast.error("Please enter a brief or upload a file");
       return;
     }
 
-    setLoading(true);
-    setError(null);
-    setLoadingProgress(0);
-    setLoadingStage("Initializing...");
-    if (!isReassessment) {
-      setResult(null);
-      setChatMessages([]);
+    const conv = convParam ?? getOrCreateConversation();
+    const fileName = uploadedFileName;
+
+    // Add user message to chat
+    const userContent = fileName ? `📎 ${fileName}${additionalContext ? `\n\n${additionalContext}` : ""}` : briefText;
+    addMessages(conv.id, [
+      {
+        role: "user",
+        content: userContent,
+        metadata: {
+          type: isClarification ? "clarification" : "brief",
+          uploadedFile: fileName || undefined,
+        },
+      },
+    ]);
+
+    // Title from first message
+    if (!isClarification && conv.messages.length === 0) {
+      updateConversation(conv.id, { title: titleFromMessage(fileName || briefText) });
     }
 
-    // Simulate smooth progress during API call (whole numbers only)
-    const progressInterval = setInterval(() => {
-      setLoadingProgress((prev) => {
-        if (prev < 10) return Math.min(prev + 2, 10);
-        if (prev < 40) return Math.min(prev + 1, 40);
-        if (prev < 70) return Math.min(prev + 1, 70);
-        return prev;
-      });
-    }, 250);
+    // Clear input state
+    setInputValue("");
+    setUploadedFileName(null);
+    setPendingUploadText(null);
+
+    // Loading message with phase cycling
+    const EVAL_PHASES = [
+      "Parsing your brief…",
+      "Researching the competitive landscape…",
+      "Extracting naming facts…",
+      "Evaluating against 6 gates…",
+      "Calculating priority score…",
+      "Determining verdict…",
+    ];
+    const CLARIFY_PHASES = [
+      "Applying your clarification…",
+      "Re-evaluating gates with new context…",
+      "Recalculating priority score…",
+      "Updating verdict…",
+    ];
+    const phases = isClarification ? CLARIFY_PHASES : EVAL_PHASES;
+    addMessages(conv.id, [{ role: "assistant", content: phases[0], metadata: { type: "loading" } }]);
+
+    let phaseIdx = 0;
+    const phaseTimer = setInterval(() => {
+      phaseIdx = Math.min(phaseIdx + 1, phases.length - 1);
+      updateLoadingMessage(conv.id, phases[phaseIdx]);
+    }, 4500);
+
+    setIsProcessing(true);
 
     try {
-      // Initial stage
-      setLoadingProgress(5);
-      setLoadingStage("Running Gatekeeper evaluation...");
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const payload: any = { skipWebResearch: false, model: selectedModel };
 
-      const response = await fetch("/api/evaluate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          brief: evaluationText,
-          model: selectedModel
-        }),
-      });
-
-      setLoadingProgress(75);
-      setLoadingStage("Analyzing gate results...");
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || "Evaluation failed");
+      if (isClarification && currentEvaluation) {
+        const origBrief = messages.find((m) => m.metadata?.type === "brief")?.content || briefText;
+        payload.brief = `${origBrief}\n\nAdditional Context:\n${briefText}`;
+        payload.clarification = briefText;
+        payload.previousResult = currentEvaluation;
+      } else {
+        const fullBrief = additionalContext
+          ? `${briefText}\n\nAdditional context from user: ${additionalContext}`
+          : briefText;
+        payload.brief = fullBrief;
       }
 
-      setLoadingProgress(85);
-      setLoadingStage("Calculating verdict...");
+      const res = await fetch("/api/evaluate-v2", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-      const data = await response.json();
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({}));
+        throw new Error(errData.error || `Request failed (${res.status})`);
+      }
 
-      setLoadingProgress(100);
-      setLoadingStage("Complete!");
+      const data = await res.json();
+      if (!data.success) throw new Error(data.error || "Evaluation failed");
 
-      setResult(data);
+      const result = data.result;
 
-      if (isReassessment) {
-        setAdditionalContext(""); // Clear the context field after reassessment
-        toast.success("Brief reassessed with additional context!");
+      removeLoadingMessage(conv.id);
+      updateConversation(conv.id, { evaluation: result });
+
+      const isFinal = !data.requiresClarification;
+
+      addMessages(conv.id, [
+        {
+          role: "assistant",
+          content: isFinal
+            ? "Here's my evaluation:"
+            : "I've reviewed your brief but need a bit more information:",
+          metadata: {
+            type: isFinal ? "final_verdict" : "evaluation",
+            gateResults: result.gateEvaluation?.gate_results,
+            scoringResults: result.scoringResult?.scores?.breakdown,
+            totalScore: result.scoringResult?.scores?.total,
+            questions: data.questions,
+            verdict: result.verdict?.title || result.verdict?.path,
+            verdictPath: result.verdict?.path,
+            verdictSummary: result.verdict?.summary,
+          },
+        },
+      ]);
+
+      if (!isFinal) {
+        addMessages(conv.id, [
+          {
+            role: "assistant",
+            content: "Feel free to paste any additional details below and I'll reassess.",
+          },
+        ]);
       }
     } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : "Evaluation failed";
-      setError(errorMessage);
+      removeLoadingMessage(conv.id);
+      const msg = err instanceof Error ? err.message : "Evaluation failed";
+      addMessages(conv.id, [{ role: "assistant", content: msg }]);
+      toast.error(msg);
     } finally {
-      clearInterval(progressInterval);
-      setLoading(false);
+      clearInterval(phaseTimer);
+      setIsProcessing(false);
     }
   };
 
-  // Helper to generate decision summary bullets
-  const getDecisionSummary = () => {
-    if (!result) return [];
-
-    const verdict = result.verdict;
-
-    if (verdict.includes("Proceed") || verdict.includes("Proper Name Recommended")) {
-      return [
-        "All critical gates have been satisfied with sufficient evidence",
-        "The initiative demonstrates characteristics of a standalone product",
-        "A proper name is recommended to establish market identity"
-      ];
+  const handleConversationalQuestion = async (text: string) => {
+    const conv = getOrCreateConversation();
+    addMessages(conv.id, [
+      { role: "user", content: text },
+    ]);
+    if (conv.messages.length === 0) {
+      updateConversation(conv.id, { title: titleFromMessage(text) });
     }
-
-    if (verdict.includes("No Proper Name") || verdict.includes("Descriptive Label")) {
-      const reasons = [];
-      if (result.gatekeeperResult.G1.status === "Fail") {
-        reasons.push("The experience is accessed through existing eBay entry points with no separate enrollment");
-      }
-      if (result.gatekeeperResult.G2.status === "Fail") {
-        reasons.push("The initiative behaves like an integrated layer within the platform, not a separately accessed product");
-      }
-      if (result.gatekeeperResult.G3.status === "Fail") {
-        reasons.push("The timeline indicates a short-term initiative rather than a permanent product addition");
-      }
-      if (reasons.length === 0) {
-        reasons.push("The brief does not meet the criteria for a standalone proper name");
-        reasons.push("It should be presented as a descriptive label or format identifier within the existing ecosystem");
-      }
-      return reasons;
-    }
-
-    return [];
-  };
-
-  // Helper to generate missing information requirements (ONLY for Pending/Unknown gates)
-  const getMissingInfo = () => {
-    if (!result) return [];
-
-    const missingByGate: Array<{ gateId: string; gateName: string; questions: string[] }> = [];
-
-    const gateDefinitions = [
-      {
-        id: "G0",
-        name: "Interaction Model",
-        gate: result.gatekeeperResult.G0,
-        asks: [
-          "Confirm whether users actively select, toggle, or see this feature",
-          "Clarify if this is an invisible background process or user-facing feature"
-        ]
-      },
-      {
-        id: "G1",
-        name: "Integration Level",
-        gate: result.gatekeeperResult.G1,
-        asks: [
-          "Confirm the primary user entry point (standalone vs. embedded)",
-          "Clarify whether users must enroll, apply, or be approved separately",
-          "Confirm whether checkout is distinct or uses standard platform checkout"
-        ]
-      },
-      {
-        id: "G2",
-        name: "UX & Service Boundary",
-        gate: result.gatekeeperResult.G2,
-        asks: [
-          "Confirm whether this is a separate destination or embedded module",
-          "Clarify the system architecture and backend boundaries"
-        ]
-      },
-      {
-        id: "G3",
-        name: "Strategic Lifespan",
-        gate: result.gatekeeperResult.G3,
-        asks: [
-          "Confirm the strategic timeline (permanent >12 months vs. short-term)",
-          "Provide launch timeline and market rollout plan"
-        ]
-      },
-      {
-        id: "G4",
-        name: "Portfolio Alignment",
-        gate: result.gatekeeperResult.G4,
-        asks: [
-          "Identify any existing eBay products that might conflict with this name",
-          "Confirm positioning relative to existing portfolio"
-        ]
-      },
-      {
-        id: "G5",
-        name: "Legal & Localization",
-        gate: result.gatekeeperResult.G5,
-        asks: [
-          "Confirm trademark availability in target markets",
-          "Clarify regulatory compliance and cultural considerations"
-        ]
-      },
-    ];
-
-    gateDefinitions.forEach(({ id, name, gate, asks }) => {
-      if (gate.status === "Pending" || gate.status === "Unknown") {
-        missingByGate.push({ gateId: id, gateName: name, questions: asks });
-      }
-    });
-
-    return missingByGate;
-  };
-
-  // Check if decision is final (not pending/unknown)
-  const isFinalDecision = () => {
-    if (!result) return false;
-    const verdict = result.verdict;
-    return !verdict.includes("Need More Info") && !verdict.includes("Decision Deferred");
-  };
-
-  // Format reasoning text with CHECK/FINDING highlighting
-  const formatReasoning = (reasoning: string) => {
-    const parts = reasoning.split(/(\bCHECK:|\/\/ FINDING:)/g);
-    return parts.map((part, idx) => {
-      if (part === "CHECK:") {
-        return <strong key={idx} className="text-blue-700 font-semibold">CHECK:</strong>;
-      } else if (part === "// FINDING:") {
-        return <strong key={idx} className="text-green-700 font-semibold">FINDING:</strong>;
-      } else {
-        return <span key={idx}>{part}</span>;
-      }
-    });
-  };
-
-  const copyAuditReport = () => {
-    if (!result) return;
-
-    const gates = [
-      { id: "G0", name: "Interaction Model", gate: result.gatekeeperResult.G0 },
-      { id: "G1", name: "Integration Level", gate: result.gatekeeperResult.G1 },
-      { id: "G2", name: "UX & Service Boundary", gate: result.gatekeeperResult.G2 },
-      { id: "G3", name: "Strategic Lifespan", gate: result.gatekeeperResult.G3 },
-      { id: "G4", name: "Portfolio Alignment", gate: result.gatekeeperResult.G4 },
-      { id: "G5", name: "Legal & Localization", gate: result.gatekeeperResult.G5 },
-    ];
-
-    let report = `# Naming Evaluation Report\n**Verdict:** ${result.verdict}\n\n## Gate Audit\n`;
-
-    gates.forEach((item) => {
-      report += `- ${item.id} (${item.name}): ${item.gate.status} - ${item.gate.reasoning}\n`;
-    });
-
-    if (result.scorerResult) {
-      report += `\n## Scoring Breakdown\n`;
-      report += `- Standalone Quality: ${result.scorerResult.standalone}/25\n`;
-      report += `- Longevity: ${result.scorerResult.longevity}/15\n`;
-      report += `- Legal Clarity: ${result.scorerResult.legal}/10\n`;
-      report += `- Global Viability: ${result.scorerResult.global}/10\n`;
-      report += `- Clarity & Distinctiveness: ${result.scorerResult.clarity}/10\n`;
-      report += `- **Total Score: ${result.totalScore}/70**\n`;
-      report += `\n${result.scorerResult.reasoning}\n`;
-    }
-
-    report += `\nGenerated by eBay AI Naming Studio`;
-
-    navigator.clipboard.writeText(report);
-    toast.success("Audit report copied to clipboard!");
-  };
-
-  const sendChatMessage = async () => {
-    if (!chatInput.trim() || !result) return;
-
-    const userMessage: ChatMessage = { role: "user", content: chatInput };
-    setChatMessages((prev) => [...prev, userMessage]);
-    setChatInput("");
-    setChatLoading(true);
+    setInputValue("");
+    addMessages(conv.id, [{ role: "assistant", content: "Thinking…", metadata: { type: "loading" } }]);
+    setIsProcessing(true);
 
     try {
-      const response = await fetch("/api/chat", {
+      const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          message: chatInput,
-          context: {
-            verdict: result.verdict,
-            gatekeeperResult: result.gatekeeperResult,
-            scorerResult: result.scorerResult,
-          },
-        }),
+        body: JSON.stringify({ message: text, mode: "knowledge" }),
       });
-
-      if (!response.ok) {
-        throw new Error("Chat request failed");
+      const data = await res.json() as { response?: string; error?: string };
+      removeLoadingMessage(conv.id);
+      if (data.response) {
+        addMessages(conv.id, [{
+          role: "assistant",
+          content: data.response,
+          metadata: { type: "chat" },
+        }]);
+      } else {
+        addMessages(conv.id, [{ role: "assistant", content: data.error ?? "Sorry, I couldn't answer that right now." }]);
       }
-
-      const data = await response.json();
-      const assistantMessage: ChatMessage = {
-        role: "assistant",
-        content: data.response,
-      };
-      setChatMessages((prev) => [...prev, assistantMessage]);
     } catch {
-      toast.error("Failed to get response from Brand Coach");
+      removeLoadingMessage(conv.id);
+      addMessages(conv.id, [{ role: "assistant", content: "Sorry, something went wrong. Please try again." }]);
     } finally {
-      setChatLoading(false);
+      setIsProcessing(false);
     }
   };
 
-  const getStatusIcon = (status: string) => {
-    switch (status) {
-      case "Pass":
-        return <CheckCircle2 className="h-5 w-5 text-green-600" />;
-      case "Fail":
-        return <XCircle className="h-5 w-5 text-red-600" />;
-      case "Pending":
-        return <AlertCircle className="h-5 w-5 text-amber-600" />;
-      case "Unknown":
-        return <HelpCircle className="h-5 w-5 text-gray-600" />;
-      default:
-        return null;
+  const handleSend = async () => {
+    if (!hasContent || isProcessing || isUploading) return;
+    setModelPickerOpen(false);
+
+    const isClarification = !!(currentEvaluation?.requiresClarification);
+
+    // Uploaded files are always briefs — skip classification
+    // Clarification responses are always briefs — skip classification
+    if (pendingUploadText || isClarification) {
+      const conv = getOrCreateConversation();
+      runEvaluation({ conv, isClarification });
+      return;
+    }
+
+    const text = inputValue.trim();
+
+    // Classify intent
+    try {
+      const res = await fetch("/api/classify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text }),
+      });
+      const { type } = await res.json() as { type: "brief" | "question" };
+
+      if (type === "question") {
+        await handleConversationalQuestion(text);
+        return;
+      }
+    } catch {
+      // Classifier failed — fall through to evaluation (safer default)
+    }
+
+    const conv = getOrCreateConversation();
+    runEvaluation({ conv, isClarification: false });
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      void handleSend();
     }
   };
 
-  const getStatusBadge = (status: string) => {
-    const styles: Record<string, string> = {
-      Pass: "bg-green-600 hover:bg-green-700 text-white border-0",
-      Fail: "bg-red-600 hover:bg-red-700 text-white border-0",
-      Pending: "bg-amber-500 hover:bg-amber-600 text-white border-0",
-      Unknown: "bg-slate-400 hover:bg-slate-500 text-white border-0",
-    };
+  // ── Derived labels ──
 
-    return (
-      <Badge className={`font-semibold ${styles[status] || styles.Unknown}`}>
-        {status}
-      </Badge>
-    );
-  };
+  const selectedModelMeta = MODELS.find((m) => m.value === selectedModel);
+  const modelLabel = selectedModelMeta?.label ?? "GPT-5.2";
+  const groups = ["GPT", "Claude", "Gemini"] as const;
+
+  // ─── Render ──────────────────────────────────────────────────────────────
 
   return (
-    <>
-      <Toaster position="top-right" />
-      <div className="min-h-screen bg-slate-50">
+    <div className="h-screen bg-[#f4f4f4] flex overflow-hidden">
+      <Toaster position="top-center" richColors />
+
+      {/* ── Sidebar — always rendered, animates between 52px (icon-only) and 260px ── */}
+      <motion.aside
+        animate={{ width: sidebarOpen ? 260 : 52 }}
+        transition={{ duration: 0.2, ease: "easeInOut" }}
+        className="bg-[#171717] text-white flex flex-col flex-shrink-0 overflow-hidden"
+      >
         {/* Header */}
-        <header className="border-b bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl font-bold text-slate-900">
-                Naming Gatekeeper
-              </h1>
-              <p className="text-sm text-slate-600 mt-1">
-                AI-powered naming governance for eBay products
-              </p>
-            </div>
-            <nav className="flex gap-2">
-              <Button variant="default" asChild className="bg-blue-600 hover:bg-blue-700">
-                <a href="/">Single Run</a>
-              </Button>
-              <Button variant="ghost" asChild className="font-medium">
-                <a href="/evals">Eval Lab</a>
-              </Button>
-            </nav>
+        <div className="flex items-center px-3 py-4 border-b border-white/10 min-w-0">
+          {sidebarOpen && (
+            <span className="flex-1 text-sm font-semibold truncate mr-2">Naming Assistant</span>
+          )}
+          <button
+            type="button"
+            onClick={() => setSidebarOpen((v) => !v)}
+            className={`p-1 rounded hover:bg-white/10 transition-colors flex-shrink-0 ${!sidebarOpen ? "mx-auto" : ""}`}
+            title={sidebarOpen ? "Collapse sidebar" : "Expand sidebar"}
+          >
+            {sidebarOpen ? <ChevronLeft className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
+          </button>
+        </div>
+
+        {/* New chat */}
+        <div className="px-2 py-2 border-b border-white/10">
+          <button
+            type="button"
+            onClick={startNewChat}
+            title="New conversation"
+            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/10 transition-colors text-sm text-white/80 hover:text-white ${!sidebarOpen ? "justify-center" : ""}`}
+          >
+            <PlusCircle className="h-4 w-4 flex-shrink-0" />
+            {sidebarOpen && <span>New conversation</span>}
+          </button>
+        </div>
+
+        {/* Analytics */}
+        <div className="px-2 py-1 border-b border-white/10">
+          <Link
+            href="/analytics"
+            title="Analytics"
+            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/10 transition-colors text-sm text-white/60 hover:text-white ${!sidebarOpen ? "justify-center" : ""}`}
+          >
+            <BarChart2 className="h-4 w-4 flex-shrink-0" />
+            {sidebarOpen && <span>Analytics</span>}
+          </Link>
+          <Link
+            href="/lab"
+            title="Lab"
+            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/10 transition-colors text-sm text-white/60 hover:text-white ${!sidebarOpen ? "justify-center" : ""}`}
+          >
+            <Beaker className="h-4 w-4 flex-shrink-0" />
+            {sidebarOpen && (
+              <span className="flex items-center gap-1.5">
+                Lab
+                <span className="text-[9px] font-bold text-blue-300 bg-blue-900/40 px-1 py-0.5 rounded uppercase tracking-wide">Beta</span>
+              </span>
+            )}
+          </Link>
+        </div>
+
+        {/* History — only in expanded mode */}
+        {sidebarOpen && (
+          <div className="flex-1 overflow-y-auto px-3 pb-4 pt-2 space-y-1">
+            {conversations.length === 0 ? (
+              <p className="text-xs text-white/30 px-3 py-4 text-center">No conversations yet</p>
+            ) : (
+              conversations.map((conv) => (
+                <button
+                  key={conv.id}
+                  type="button"
+                  onClick={() => {
+                    setActiveId(conv.id);
+                    setSelectedModel(conv.model);
+                  }}
+                  className={`w-full text-left px-3 py-2.5 rounded-lg text-sm transition-colors ${
+                    conv.id === activeId
+                      ? "bg-white/15 text-white"
+                      : "text-white/60 hover:bg-white/10 hover:text-white"
+                  }`}
+                >
+                  <div className="truncate" title={conv.title}>{conv.title}</div>
+                  <div className="text-[10px] text-white/30 mt-0.5">
+                    {new Date(conv.createdAt).toLocaleDateString(undefined, {
+                      month: "short",
+                      day: "numeric",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
+                  </div>
+                </button>
+              ))
+            )}
+          </div>
+        )}
+      </motion.aside>
+
+      {/* ── Main area ── */}
+      <div className="flex-1 flex flex-col overflow-hidden">
+
+        {/* Header */}
+        <header className="bg-white border-b border-slate-200 px-4 py-3 flex items-center gap-3 flex-shrink-0">
+          <div className="flex-1 min-w-0">
+            <h1 className="text-base font-semibold text-slate-900 leading-tight truncate">
+              {activeConversation?.title ?? "Naming Decision Assistant"}
+            </h1>
+            <p className="text-xs text-slate-400">eBay AI-powered naming governance</p>
+          </div>
+          <button
+            type="button"
+            onClick={startNewChat}
+            className="flex-shrink-0 flex items-center gap-1.5 text-xs text-slate-500 hover:text-slate-900 px-3 py-1.5 rounded-lg border border-slate-200 hover:bg-slate-50 transition-colors"
+          >
+            <Plus className="h-3.5 w-3.5" />
+            New chat
+          </button>
+        </header>
+
+        {/* Messages */}
+        <div className="flex-1 overflow-y-auto">
+          <div className="max-w-5xl mx-auto px-4 py-8">
+            {messages.length === 0 ? (
+              <div className="flex items-center justify-center min-h-[50vh]">
+                <div className="text-center max-w-xl">
+                  <h2 className="text-3xl font-bold text-slate-900 mb-3">
+                    What would you like to name?
+                  </h2>
+                  <p className="text-slate-400 mb-8 text-sm leading-relaxed">
+                    Paste a product brief and I&apos;ll evaluate it against eBay&apos;s naming framework — or upload a document using the attachment button below.
+                  </p>
+                  <div className="grid grid-cols-2 gap-3 text-left">
+                    {[
+                      { title: "Paste a brief", desc: "Type or paste text describing your product" },
+                      { title: "Upload a file", desc: "Attach a .docx, .pdf, or .txt file" },
+                      { title: "Clarify as you go", desc: "I'll ask follow-up questions when needed" },
+                      { title: "Instant decision", desc: "Get a verdict across 6 gates with rationale" },
+                    ].map((card) => (
+                      <div
+                        key={card.title}
+                        className="bg-white rounded-2xl border border-slate-200 p-4 text-left"
+                      >
+                        <div className="font-medium text-slate-900 text-sm">{card.title}</div>
+                        <div className="text-xs text-slate-400 mt-1">{card.desc}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-8 pt-6 border-t border-slate-200">
+                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-3">Try an example</p>
+                    <div className="space-y-2">
+                      {[
+                        "eBay is launching a managed shipping service for high-volume sellers in the US and UK. Sellers opt in separately, eBay negotiates bulk carrier rates, and the service includes a dedicated dashboard and shipment tracking. Planned as a permanent addition launching Q3 2026.",
+                        "We're building an AI-powered listing description generator. Users can enable or disable it in the seller hub settings. Initially US-only with global rollout planned for Q1 2027. Standalone backend service with its own data model.",
+                        "New checkout toggle that lets buyers add gift wrapping to their order. It's a paid add-on — seller opts in, buyer sees it in checkout. Launching for holiday season 2026 only (3-month campaign).",
+                      ].map((example, idx) => (
+                        <button
+                          type="button"
+                          key={idx}
+                          onClick={() => {
+                            setInputValue(example);
+                            textareaRef.current?.focus();
+                          }}
+                          className="w-full text-left px-4 py-3 bg-white hover:bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-600 hover:text-slate-900 transition-colors leading-relaxed"
+                        >
+                          {example}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-2">
+                {messages.map((message, idx) => (
+                  <ChatMessage key={idx} message={message} isLatest={idx === messages.length - 1} />
+                ))}
+                <div ref={chatEndRef} />
+              </div>
+            )}
           </div>
         </div>
-      </header>
 
-      {/* Main Content */}
-      <main className="max-w-5xl mx-auto px-6 py-8 space-y-8">
-        {/* Brief Input */}
-        <Card className="border-slate-200 shadow-sm">
-          <CardHeader>
-            <CardTitle className="text-xl">Test a Brief Against Gates</CardTitle>
-            <CardDescription className="text-slate-600">
-              Paste your product naming brief or upload a file.
-              <a
-                href="https://docs.google.com/document/d/1nQiPrWpeN_x5D_pIfLmKvcUYRwfz9VxV/copy"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:text-blue-700 underline ml-1 font-medium"
-              >
-                Download template brief →
-              </a>
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            {/* Model Selection & File Upload */}
-            <div className="flex items-center justify-between gap-4 pb-4 border-b border-slate-200">
-              <div className="flex items-center gap-3">
-                <label className="cursor-pointer">
+        {/* ── Input area ── */}
+        <div className="flex-shrink-0 bg-[#f4f4f4] px-4 pb-5 pt-2">
+          <div className="max-w-5xl mx-auto">
+
+            <div className="relative" ref={modelPickerRef}>
+              <AnimatePresence>
+                {modelPickerOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8, scale: 0.97 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.97 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute bottom-full left-0 mb-2 bg-white border border-slate-200 rounded-2xl shadow-xl p-3 w-72 z-50"
+                  >
+                    <p className="text-xs font-semibold text-slate-500 px-2 mb-2">Select model</p>
+                    {groups.map((group) => (
+                      <div key={group} className="mb-3 last:mb-0">
+                        <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wide px-2 mb-1">{group}</p>
+                        {MODELS.filter((m) => m.group === group).map((m) => (
+                          <button
+                            type="button"
+                            key={m.value}
+                            onClick={() => {
+                              setSelectedModel(m.value);
+                              setModelPickerOpen(false);
+                            }}
+                            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-sm transition-colors ${
+                              selectedModel === m.value
+                                ? "bg-slate-100 text-slate-900 font-medium"
+                                : "text-slate-700 hover:bg-slate-50"
+                            }`}
+                          >
+                            <span>{m.label}</span>
+                            <span className="flex items-center gap-1.5">
+                              {m.badge && <span className="text-[10px] text-slate-400">{m.badge}</span>}
+                              {selectedModel === m.value && <Check className="h-3.5 w-3.5 text-blue-600" />}
+                            </span>
+                          </button>
+                        ))}
+                      </div>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Input box */}
+              <div className="bg-white rounded-3xl shadow-sm border border-slate-200">
+
+                {/* Attachment pill */}
+                {uploadedFileName && (
+                  <div className="flex items-center gap-2 px-4 pt-3 pb-1">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-blue-50 border border-blue-200 rounded-full text-xs font-medium text-blue-700">
+                      <Paperclip className="h-3 w-3" />
+                      {uploadedFileName}
+                      <button
+                        type="button"
+                        onClick={clearUpload}
+                        className="text-blue-400 hover:text-blue-700 ml-0.5"
+                        aria-label="Remove attachment"
+                      >
+                        <X className="h-3 w-3" />
+                      </button>
+                    </span>
+                  </div>
+                )}
+
+                {/* Textarea — grows up to 15 lines then scrolls */}
+                <textarea
+                  ref={textareaRef}
+                  placeholder={
+                    uploadedFileName
+                      ? "Add a note or context (optional)…"
+                      : "Paste your brief or describe what you want to name…"
+                  }
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  disabled={isProcessing}
+                  rows={1}
+                  style={{ maxHeight: `${MAX_TEXTAREA_HEIGHT}px` }}
+                  className="w-full px-5 pt-4 pb-2 text-sm text-slate-900 bg-transparent resize-none focus:outline-none placeholder:text-slate-400 min-h-[52px] leading-relaxed overflow-y-auto"
+                />
+
+                {/* Character counter */}
+                {inputValue.length > 500 && (
+                  <div className="px-5 pb-0.5 text-right">
+                    <span className={`text-[10px] ${inputValue.length > 8000 ? "text-amber-600 font-semibold" : "text-slate-400"}`}>
+                      {inputValue.length.toLocaleString()} chars{inputValue.length > 8000 ? " — very long" : ""}
+                    </span>
+                  </div>
+                )}
+
+                {/* Bottom toolbar */}
+                <div className="flex items-center gap-2 px-3 pb-3 pt-1">
+
+                  {/* Upload */}
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    title="Upload a document (.docx, .pdf, .txt)"
+                    className={`flex-shrink-0 w-9 h-9 rounded-full border border-slate-300 bg-white hover:bg-slate-50 flex items-center justify-center text-slate-600 hover:text-slate-900 transition-colors cursor-pointer select-none ${
+                      isProcessing || isUploading ? "opacity-40 pointer-events-none" : ""
+                    }`}
+                  >
+                    {isUploading ? (
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                    ) : (
+                      <Paperclip className="h-4 w-4" />
+                    )}
+                  </button>
                   <input
+                    ref={fileInputRef}
                     type="file"
                     accept=".pdf,.docx,.doc,.txt"
                     onChange={handleFileUpload}
-                    className="hidden"
+                    className="sr-only"
                   />
-                  <div className="flex items-center gap-2 px-5 py-3 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded-md transition-all duration-200 font-medium text-blue-700">
-                    <Upload className="h-5 w-5" />
-                    <span className="text-sm">Upload Brief</span>
-                  </div>
-              </label>
-              {uploadedFileName && (
-                <div className="flex items-center gap-2 bg-green-50 px-3 py-2 rounded-md border border-green-200">
-                  <CheckCircle2 className="h-4 w-4 text-green-600" />
-                  <span className="text-sm text-green-700 font-medium">{uploadedFileName}</span>
-                </div>
-              )}
-              <span className="text-xs text-slate-500">
-                PDF, DOCX, or TXT
-              </span>
-            </div>
 
-            {/* Model Selector */}
-            <div className="flex items-center gap-2">
-              <label className="text-sm font-medium text-slate-700 whitespace-nowrap">
-                AI Model:
-              </label>
-              <select
-                value={selectedModel}
-                onChange={(e) => setSelectedModel(e.target.value)}
-                className="flex-1 px-3 py-2 border border-slate-300 rounded-md text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white"
-              >
-                {Object.entries(MODELS).map(([group, models]) => (
-                  <optgroup key={group} label={group}>
-                    {models.map((model) => (
-                      <option key={model.value} value={model.value}>
-                        {model.label} {model.recommended ? "⭐" : ""}
-                      </option>
-                    ))}
-                  </optgroup>
-                ))}
-              </select>
-            </div>
-            </div>
+                  {/* Model selector */}
+                  <button
+                    type="button"
+                    onClick={() => setModelPickerOpen((v) => !v)}
+                    disabled={isProcessing}
+                    className="flex-shrink-0 flex items-center gap-1.5 bg-slate-100 hover:bg-slate-200 rounded-full px-3 py-1.5 text-xs font-medium text-slate-700 transition-colors disabled:opacity-40"
+                  >
+                    {modelLabel}
+                    <span className="text-slate-400 text-[10px]">▾</span>
+                  </button>
 
-            {/* Text Input */}
-            <Textarea
-              placeholder="Paste your product naming brief here...&#10;&#10;Typical product naming briefs cover:&#10;• Primary contact & offering description&#10;• Value proposition & customer benefits&#10;• Jobs to be done & example use cases&#10;• Target customers & geographies&#10;• Customer research & competitive insights&#10;• Brand & legal considerations&#10;• Naming request & initial ideas&#10;• Timing & business impact&#10;&#10;Don't have a brief? Download the template above to get started."
-              value={brief}
-              onChange={(e) => setBrief(e.target.value)}
-              className="min-h-[240px] text-sm border-slate-300 focus:border-blue-500 focus:ring-blue-500 leading-relaxed"
-            />
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <Button
-                  onClick={() => runEvaluation(false)}
-                  disabled={loading || !brief.trim()}
-                  size="lg"
-                  className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 disabled:bg-slate-300 shadow-md hover:shadow-lg transition-all duration-200"
-                >
-                  {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                  {loading ? "Evaluating..." : "Evaluate Brief"}
-                </Button>
-                {error && (
-                  <p className="text-sm text-red-600 font-medium">{error}</p>
-                )}
-              </div>
+                  <div className="flex-1" />
 
-              {/* Loading Progress Bar */}
-              {loading && (
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-slate-600 font-medium">{loadingStage}</span>
-                    <span className="text-slate-500">{loadingProgress}%</span>
-                  </div>
-                  <div className="w-full bg-slate-200 rounded-full h-2 overflow-hidden">
-                    <motion.div
-                      className="h-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"
-                      initial={{ width: 0 }}
-                      animate={{ width: `${loadingProgress}%` }}
-                      transition={{ duration: 0.5, ease: "easeOut" }}
-                    />
-                  </div>
-                </div>
-              )}
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Results Dashboard */}
-        {result && (
-          <motion.div
-            className="space-y-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-          >
-            {/* Decision Header - Outcome First */}
-            <div className="space-y-6">
-              {/* Primary Decision Statement */}
-              <div className="space-y-4">
-                <div className="flex items-start gap-4">
-                  {result.verdict.includes("Proceed") || result.verdict.includes("Proper Name Recommended") ? (
-                    <CheckCircle2 className="h-12 w-12 text-green-600 flex-shrink-0 mt-1" />
-                  ) : result.verdict.includes("Need More Info") || result.verdict.includes("Decision Deferred") ? (
-                    <AlertCircle className="h-12 w-12 text-amber-600 flex-shrink-0 mt-1" />
-                  ) : (
-                    <XCircle className="h-12 w-12 text-slate-600 flex-shrink-0 mt-1" />
-                  )}
-                  <div className="flex-1">
-                    <h2 className="text-3xl font-bold text-slate-900 leading-tight">
-                      {result.verdict.includes("Proceed") || result.verdict.includes("Proper Name Recommended")
-                        ? "Proper Name Recommended"
-                        : result.verdict.includes("Need More Info") || result.verdict.includes("Decision Deferred")
-                        ? "Need More Information"
-                        : "No Proper Name Needed - Use A Descriptive Label"}
-                    </h2>
-                    {(result.verdict.includes("Need More Info") || result.verdict.includes("Decision Deferred")) && (
-                      <p className="text-slate-600 mt-2">Decision cannot be completed yet</p>
+                  {/* Send */}
+                  <button
+                    type="button"
+                    onClick={() => void handleSend()}
+                    disabled={!hasContent || isProcessing || isUploading}
+                    title="Send (Return)"
+                    className="flex-shrink-0 w-9 h-9 rounded-full bg-slate-900 hover:bg-slate-700 disabled:bg-slate-300 flex items-center justify-center transition-colors"
+                  >
+                    {isProcessing ? (
+                      <Loader2 className="h-4 w-4 text-white animate-spin" />
+                    ) : (
+                      <ArrowUp className="h-4 w-4 text-white" />
                     )}
-                  </div>
+                  </button>
                 </div>
-
-                {/* Decision Summary or Missing Info with Reassessment */}
-                {!isFinalDecision() && getMissingInfo().length > 0 ? (
-                  <Card className="border-2 border-amber-300 bg-gradient-to-br from-amber-50 to-orange-50 shadow-lg">
-                    <CardHeader className="pb-4 border-b border-amber-200">
-                      <div className="flex items-center gap-2">
-                        <AlertCircle className="h-6 w-6 text-amber-600" />
-                        <CardTitle className="text-xl font-bold text-amber-900">Additional Information Needed</CardTitle>
-                      </div>
-                      <CardDescription className="text-amber-700 mt-2">
-                        Please provide the following information to complete the evaluation
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent className="pt-6 space-y-6">
-                      {/* Missing Info by Gate */}
-                      {getMissingInfo().map((gateInfo) => (
-                        <div key={gateInfo.gateId} className="bg-white rounded-lg p-4 border border-amber-200">
-                          <div className="flex items-center gap-2 mb-3">
-                            <Badge className="bg-blue-600 text-white font-mono font-bold">
-                              {gateInfo.gateId}
-                            </Badge>
-                            <h3 className="font-semibold text-slate-900">{gateInfo.gateName}</h3>
-                          </div>
-                          <ul className="space-y-2 ml-1">
-                            {gateInfo.questions.map((question, idx) => (
-                              <li key={idx} className="flex items-start gap-2 text-sm text-slate-700">
-                                <span className="text-amber-600 mt-0.5">•</span>
-                                <span>{question}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-
-                      {/* Reassessment Input */}
-                      <div className="bg-white rounded-lg p-5 border-2 border-amber-300 space-y-3">
-                        <label className="block">
-                          <span className="text-sm font-semibold text-slate-900 mb-2 block">
-                            Provide the missing information:
-                          </span>
-                          <Textarea
-                            placeholder="Answer the questions above...&#10;&#10;Example:&#10;G1 - Integration Level:&#10;The experience has a standalone entry point at ebay.com/newfeature&#10;Users must complete a separate enrollment form&#10;Checkout uses the standard eBay checkout flow"
-                            value={additionalContext}
-                            onChange={(e) => setAdditionalContext(e.target.value)}
-                            className="min-h-[180px] text-sm border-amber-300 focus:border-amber-500 focus:ring-amber-500 bg-white"
-                          />
-                        </label>
-                        <Button
-                          onClick={() => runEvaluation(true)}
-                          disabled={loading || !additionalContext.trim()}
-                          className="w-full bg-amber-600 hover:bg-amber-700 active:bg-amber-800 disabled:bg-slate-300 gap-2 shadow-md hover:shadow-lg transition-all duration-200"
-                        >
-                          <RefreshCw className="h-4 w-4" />
-                          Reassess with Additional Context
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ) : getDecisionSummary().length > 0 ? (
-                  <Card className="border-slate-200 bg-slate-50">
-                    <CardContent className="pt-6">
-                      <ul className="space-y-3 text-slate-700">
-                        {getDecisionSummary().map((summary, idx) => (
-                          <li key={idx} className="flex items-start gap-3">
-                            <span className="text-blue-600 mt-1">•</span>
-                            <span>{summary}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                ) : null}
-
-                <Button
-                  onClick={copyAuditReport}
-                  variant="outline"
-                  className="gap-2 border-slate-300 hover:bg-slate-50 hover:border-blue-500 transition-colors"
-                >
-                  <Copy className="h-4 w-4" />
-                  Copy Audit Report
-                </Button>
               </div>
             </div>
 
-            {/* Decision Logic Audit */}
-            <Card className="border-slate-200 shadow-sm">
-              <CardHeader className="bg-slate-50 border-b border-slate-200">
-                <CardTitle className="text-lg font-semibold">Decision Logic Audit</CardTitle>
-                <CardDescription className="text-slate-600">
-                  Six-gate existence framework evaluation
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-0">
-                <div className="overflow-x-auto">
-                  <Table>
-                    <TableHeader>
-                      <TableRow className="bg-slate-100 hover:bg-slate-100 border-b-2 border-slate-300">
-                        <TableHead className="w-16 font-bold text-slate-900">Gate</TableHead>
-                        <TableHead className="w-36 font-bold text-slate-900">Result</TableHead>
-                        <TableHead className="w-48 font-bold text-slate-900">Criterion</TableHead>
-                        <TableHead className="font-bold text-slate-900">Evidence & Rationale</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {[
-                        { id: "G0", name: "Interaction Model", gate: result.gatekeeperResult.G0 },
-                        { id: "G1", name: "Integration Level", gate: result.gatekeeperResult.G1 },
-                        { id: "G2", name: "UX & Service Boundary", gate: result.gatekeeperResult.G2 },
-                        { id: "G3", name: "Strategic Lifespan", gate: result.gatekeeperResult.G3 },
-                        { id: "G4", name: "Portfolio Alignment", gate: result.gatekeeperResult.G4 },
-                        { id: "G5", name: "Legal & Localization", gate: result.gatekeeperResult.G5 },
-                      ].map((item, idx) => (
-                        <TableRow
-                          key={item.id}
-                          className={`hover:bg-blue-50 transition-colors border-b border-slate-200 ${
-                            idx % 2 === 0 ? 'bg-white' : 'bg-slate-50'
-                          }`}
-                        >
-                          <TableCell className="font-mono font-bold text-blue-600 text-base align-top py-4">
-                            {item.id}
-                          </TableCell>
-                          <TableCell className="align-top py-4">
-                            <div className="flex items-center gap-2">
-                              {getStatusIcon(item.gate.status)}
-                              {getStatusBadge(item.gate.status)}
-                            </div>
-                          </TableCell>
-                          <TableCell className="font-semibold text-slate-900 align-top py-4">
-                            {item.name}
-                          </TableCell>
-                          <TableCell className="text-sm text-slate-700 leading-relaxed align-top py-4">
-                            <div className="max-w-3xl">
-                              {formatReasoning(item.gate.reasoning)}
-                            </div>
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Naming Score (Conditional) */}
-            {result.scorerResult && (
-              <Card className="border-slate-200 shadow-sm">
-                <CardHeader className="bg-slate-50 border-b border-slate-200">
-                  <CardTitle className="text-lg font-semibold">Naming Score</CardTitle>
-                  <CardDescription className="text-slate-600">
-                    Quantitative evaluation (Threshold: 60/70)
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="pt-6">
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-center py-2 border-b border-slate-100">
-                      <span className="font-medium text-slate-900">Standalone Quality</span>
-                      <Badge className="bg-blue-100 text-blue-700 hover:bg-blue-200 font-semibold">{result.scorerResult.standalone}/25</Badge>
-                    </div>
-                    <div className="flex justify-between items-center py-2 border-b border-slate-100">
-                      <span className="font-medium text-slate-900">Longevity</span>
-                      <Badge className="bg-blue-100 text-blue-700 hover:bg-blue-200 font-semibold">{result.scorerResult.longevity}/15</Badge>
-                    </div>
-                    <div className="flex justify-between items-center py-2 border-b border-slate-100">
-                      <span className="font-medium text-slate-900">Legal Clarity</span>
-                      <Badge className="bg-blue-100 text-blue-700 hover:bg-blue-200 font-semibold">{result.scorerResult.legal}/10</Badge>
-                    </div>
-                    <div className="flex justify-between items-center py-2 border-b border-slate-100">
-                      <span className="font-medium text-slate-900">Global Viability</span>
-                      <Badge className="bg-blue-100 text-blue-700 hover:bg-blue-200 font-semibold">{result.scorerResult.global}/10</Badge>
-                    </div>
-                    <div className="flex justify-between items-center py-2 border-b border-slate-100">
-                      <span className="font-medium text-slate-900">Clarity & Distinctiveness</span>
-                      <Badge className="bg-blue-100 text-blue-700 hover:bg-blue-200 font-semibold">{result.scorerResult.clarity}/10</Badge>
-                    </div>
-                    <div className="pt-4 border-t-2 border-slate-200">
-                      <div className="flex justify-between items-center">
-                        <span className="text-lg font-bold text-slate-900">Total Score</span>
-                        <Badge className={`text-lg px-4 py-2 ${result.totalScore >= 60 ? 'bg-green-600 hover:bg-green-700' : 'bg-red-600 hover:bg-red-700'} text-white`}>
-                          {result.totalScore}/70
-                        </Badge>
-                      </div>
-                    </div>
-                    <p className="text-sm text-slate-600 mt-4 bg-slate-50 p-4 rounded-md border border-slate-200">
-                      {result.scorerResult.reasoning}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-
-
-            {/* Brand Coach Chat - ONLY shown after final decision */}
-            {isFinalDecision() && (
-              <Card className="border-slate-200 shadow-sm">
-                <CardHeader className="bg-gradient-to-r from-blue-50 to-slate-50 border-b border-slate-200">
-                  <CardTitle className="text-lg font-semibold flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-sm font-bold">
-                      BC
-                    </div>
-                    Brand Coach
-                  </CardTitle>
-                  <CardDescription className="text-slate-600">
-                    Ask me anything about your naming evaluation
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4 pt-6">
-                  {/* Chat Messages */}
-                  {chatMessages.length > 0 && (
-                    <div className="space-y-3 max-h-[500px] overflow-y-auto pr-2">
-                      {chatMessages.map((msg, idx) => (
-                        <div
-                          key={idx}
-                          className={`flex gap-3 ${
-                            msg.role === "user" ? "justify-end" : "justify-start"
-                          }`}
-                        >
-                          {msg.role === "assistant" && (
-                            <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0 mt-1">
-                              BC
-                            </div>
-                          )}
-                          <div
-                            className={`max-w-[85%] rounded-2xl px-4 py-3 ${
-                              msg.role === "user"
-                                ? "bg-blue-600 text-white rounded-br-sm"
-                                : "bg-slate-100 text-slate-900 border border-slate-200 rounded-bl-sm"
-                            }`}
-                          >
-                            <p className="text-sm whitespace-pre-wrap leading-relaxed">{msg.content}</p>
-                          </div>
-                          {msg.role === "user" && (
-                            <div className="w-8 h-8 rounded-full bg-slate-400 flex items-center justify-center text-white text-xs font-bold flex-shrink-0 mt-1">
-                              YOU
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                      {chatLoading && (
-                        <div className="flex gap-3 justify-start">
-                          <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-xs font-bold flex-shrink-0 mt-1">
-                            BC
-                          </div>
-                          <div className="bg-slate-100 border border-slate-200 rounded-2xl rounded-bl-sm px-4 py-3 flex items-center gap-2">
-                            <Loader2 className="h-4 w-4 animate-spin text-blue-600" />
-                            <span className="text-sm text-slate-600">Thinking...</span>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  )}
-
-                  {/* Chat Input */}
-                  <div className="space-y-2">
-                    <Textarea
-                      placeholder="Message Brand Coach... (Shift+Enter for new line)"
-                      value={chatInput}
-                      onChange={(e) => setChatInput(e.target.value)}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter" && !e.shiftKey) {
-                          e.preventDefault();
-                          sendChatMessage();
-                        }
-                      }}
-                      className="min-h-[100px] resize-none border-slate-300 focus:border-blue-500 focus:ring-blue-500"
-                    />
-                    <div className="flex justify-end">
-                      <Button
-                        onClick={sendChatMessage}
-                        disabled={chatLoading || !chatInput.trim()}
-                        className="bg-blue-600 hover:bg-blue-700 active:bg-blue-800 disabled:bg-slate-300 gap-2"
-                      >
-                        <Send className="h-4 w-4" />
-                        Send
-                      </Button>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-          </motion.div>
-        )}
-        </main>
+            <p className="text-center text-[11px] text-slate-400 mt-2">
+              <kbd className="px-1 py-0.5 bg-slate-200 rounded text-[9px] font-mono">⏎</kbd> send ·{" "}
+              <kbd className="px-1 py-0.5 bg-slate-200 rounded text-[9px] font-mono">⇧⏎</kbd> newline ·{" "}
+              <kbd className="px-1 py-0.5 bg-slate-200 rounded text-[9px] font-mono">⌘K</kbd> focus ·{" "}
+              <kbd className="px-1 py-0.5 bg-slate-200 rounded text-[9px] font-mono">⌘B</kbd> sidebar ·{" "}
+              <span className="font-medium">{modelLabel}</span>
+            </p>
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   );
 }

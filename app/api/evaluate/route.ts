@@ -116,7 +116,7 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const { brief, customPrompt, model } = await req.json();
+    const { brief, model } = await req.json();
 
     if (!brief || typeof brief !== "string") {
       return NextResponse.json(
@@ -125,10 +125,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Use custom prompt if provided, otherwise use default
-    const gatekeeperPrompt = customPrompt && typeof customPrompt === "string"
-      ? customPrompt
-      : GATEKEEPER_PROMPT;
+    const gatekeeperPrompt = GATEKEEPER_PROMPT;
 
     // 🔍 OBSERVABILITY INJECTION POINT #1
     // TODO: Inject LangSmith or Vercel AI SDK tracing here
@@ -154,8 +151,6 @@ export async function POST(req: NextRequest) {
         },
       ],
     });
-
-    console.log("Gatekeeper Result:", gatekeeperResult.object);
 
     // Check if all gates passed
     const allGatesPassed = [
@@ -199,15 +194,11 @@ export async function POST(req: NextRequest) {
         scorerResult.legal +
         scorerResult.global +
         scorerResult.clarity;
-
-      console.log("Scorer Result:", scorerResult, "Total Score:", totalScore);
     }
 
     // Step 3: The Verdict Engine (TypeScript Logic)
     console.log("Step 3: Calculating Verdict...");
     const verdict = calculateVerdict(gatekeeperResult.object, scorerResult);
-
-    console.log("Final Verdict:", verdict);
 
     const result: EvaluationResult = {
       verdict,
@@ -220,7 +211,7 @@ export async function POST(req: NextRequest) {
 
   } catch (error) {
     console.error("Evaluation error:", error);
-    const errorMessage = error instanceof Error ? error.message : "Evaluation failed";
+    const errorMessage = "Evaluation failed. Please check your brief and try again.";
     return NextResponse.json(
       { error: errorMessage },
       { status: 500 }

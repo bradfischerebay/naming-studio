@@ -66,3 +66,21 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
+
+@media print {
+  /* Ensure badge/card background colors render in print */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+  /* Force light mode for print regardless of system dark mode */
+  :root {
+    --background: 0 0% 100% !important;
+    --foreground: 222.2 84% 4.9% !important;
+  }
+  /* Hide nav, toolbar, input area — show only the chat content */
+  header, nav, footer, form, [data-print-hide] {
+    display: none !important;
+  }
+}

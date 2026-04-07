@@ -7,7 +7,9 @@ export type GateStatus = z.infer<typeof GateStatus>;
 // Individual gate schema
 export const GateSchema = z.object({
   status: GateStatus,
+  label: z.string().optional(),
   reasoning: z.string(),
+  evidence: z.string().optional(),
 });
 
 // Step 1: Gatekeeper output schema
@@ -29,6 +31,8 @@ export const ScorerSchema = z.object({
   legal: z.number().describe("Legal clarity: 0 or 10 points"),
   global: z.number().describe("Global viability: 0 or 10 points"),
   clarity: z.number().describe("Clarity & distinctiveness: 0 or 10 points"),
+  portfolio_risk: z.number().optional().describe("Portfolio collision penalty: 0 or -20"),
+  trademark_risk: z.number().optional().describe("Trademark/legal risk penalty: 0 or -20"),
   reasoning: z.string().describe("Overall scoring rationale"),
 });
 
@@ -40,4 +44,6 @@ export interface EvaluationResult {
   gatekeeperResult: GatekeeperResult;
   scorerResult?: ScorerResult;
   totalScore?: number;
+  requiresClarification?: boolean;
+  questions?: string[];
 }

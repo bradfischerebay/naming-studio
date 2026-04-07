@@ -1,0 +1,275 @@
+/**
+ * Naming Evaluation API v2
+ * Production-ready modular agent system
+ */
+
+import { NextRequest, NextResponse } from "next/server";
+import { orchestrator } from "@/lib/orchestrator";
+import { toMachinePayload } from "@/lib/modules/formatter";
+import { analytics } from "@/lib/analytics";
+import type { AnalyticsEvent } from "@/lib/analytics";
+
+export const runtime = "nodejs";
+export const maxDuration = 240; // 4 minutes — pipeline makes 4-6 sequential LLM calls
+
+export async function POST(request: NextRequest) {
+  const startTime = Date.now();
+  let sessionId = "unknown";
+  let modelUsed = "unknown";
+  let briefLength = 0;
+  let isClarificationRetry = false;
+  let retryCount = 0;
+
+  try {
+    const body = await request.json();
+    const { brief, skipWebResearch = false, clarification, previousResult, model } = body;
+
+    // Extract session ID from headers or generate one
+    sessionId = request.headers.get("x-session-id") ||
+                request.headers.get("x-request-id") ||
+                `${Date.now()}-${Math.random().toString(36).substring(7)}`;
+
+    if (!brief || typeof brief !== "string" || !brief.trim()) {
+      return NextResponse.json(
+        { error: "Brief text is required" },
+        { status: 400 }
+      );
+    }
+
+    briefLength = brief.length;
+    modelUsed = model || process.env.CHOMSKY_MODEL || "unknown";
+    isClarificationRetry = !!(clarification && previousResult);
+    retryCount = isClarificationRetry ? (previousResult?.retryCount || 0) + 1 : 0;
+
+    // Thin-brief detection is now handled by the orchestrator via buildNoBriefVerdict,
+    // which returns a helpful PATH_B response instead of a hard error.
+
+    const config = { skipWebResearch, model };
+
+    // Handle clarification flow (retry)
+    if (clarification && previousResult) {
+      const result = await orchestrator.evaluateWithClarification({
+        brief,
+        userClarification: clarification,
+        previousResult,
+        config,
+      });
+
+      // Track analytics (fire-and-forget)
+      trackEvaluation({
+        timestamp: new Date().toISOString(),
+        sessionId,
+        model: modelUsed,
+        verdictPath: result.verdict.path,
+        gateResults: result.gateEvaluation,
+        scoringTotal: result.scoringResult?.scores.total ?? null,
+        requiresClarification: result.requiresClarification,
+        isClarificationRetry: true,
+        durationMs: Date.now() - startTime,
+        briefLength,
+        error: null,
+        briefText: brief,
+        briefSummary: result.compiledBrief?.offering_description ?? null,
+        targetGeographies: result.compiledBrief?.target_geographies ?? null,
+        targetCustomers: result.compiledBrief?.target_customers ?? null,
+        timing: result.compiledBrief?.timing ?? null,
+        gateResultsFull: result.gateEvaluation?.gate_results ?? null,
+        verdictTitle: result.verdict.title,
+        verdictSummary: result.verdict.summary?.find(s => s.trim()) ?? null,
+        scoringBreakdown: result.scoringResult?.scores?.breakdown ?? null,
+        questionCount: result.questions?.length ?? 0,
+        retryCount,
+      });
+
+      return NextResponse.json({
+        success: true,
+        result,
+        payload: toMachinePayload(result),
+        requiresClarification: result.requiresClarification,
+        questions: result.questions,
+      });
+    }
+
+    // Handle initial evaluation
+    const result = await orchestrator.evaluate({
+      brief,
+      config,
+    });
+
+    // Track analytics (fire-and-forget)
+    trackEvaluation({
+      timestamp: new Date().toISOString(),
+      sessionId,
+      model: modelUsed,
+      verdictPath: result.verdict.path,
+      gateResults: result.gateEvaluation,
+      scoringTotal: result.scoringResult?.scores.total ?? null,
+      requiresClarification: result.requiresClarification,
+      isClarificationRetry: false,
+      durationMs: Date.now() - startTime,
+      briefLength,
+      error: null,
+      briefText: brief,
+      briefSummary: result.compiledBrief?.offering_description ?? null,
+      targetGeographies: result.compiledBrief?.target_geographies ?? null,
+      targetCustomers: result.compiledBrief?.target_customers ?? null,
+      timing: result.compiledBrief?.timing ?? null,
+      gateResultsFull: result.gateEvaluation?.gate_results ?? null,
+      verdictTitle: result.verdict.title,
+      verdictSummary: result.verdict.summary?.find(s => s.trim()) ?? null,
+      scoringBreakdown: result.scoringResult?.scores?.breakdown ?? null,
+      questionCount: result.questions?.length ?? 0,
+      retryCount: 0,
+    });
+
+    return NextResponse.json({
+      success: true,
+      result,
+      payload: toMachinePayload(result),
+      requiresClarification: result.requiresClarification,
+      questions: result.questions,
+    });
+  } catch (error) {
+    // Surface the real error so the UI can show it
+    const message = error instanceof Error ? error.message : String(error);
+    console.error("Evaluation error:", message);
+
+    // Track error (fire-and-forget)
+    trackEvaluation({
+      timestamp: new Date().toISOString(),
+      sessionId,
+      model: modelUsed,
+      verdictPath: "PATH_B",
+      gateResults: {
+        pass: 0,
+        fail: 0,
+        unknown: 6,
+      },
+      scoringTotal: null,
+      requiresClarification: false,
+      isClarificationRetry,
+      durationMs: Date.now() - startTime,
+      briefLength,
+      error: message,
+      briefText: "",
+      briefSummary: null,
+      targetGeographies: null,
+      targetCustomers: null,
+      timing: null,
+      gateResultsFull: null,
+      verdictTitle: "Error",
+      verdictSummary: null,
+      scoringBreakdown: null,
+      questionCount: 0,
+      retryCount,
+    });
+
+    const isVpn = message.includes("403") || message.includes("ECONNREFUSED") || message.includes("ETIMEDOUT");
+
+    return NextResponse.json(
+      {
+        success: false,
+        error: isVpn
+          ? "Cannot reach the Chomsky gateway — make sure you're on the eBay VPN."
+          : message,
+      },
+      { status: 500 }
+    );
+  }
+}
+
+/**
+ * Helper to track analytics event
+ * Extracts gate result counts and fires analytics.track()
+ */
+function trackEvaluation(params: {
+  timestamp: string;
+  sessionId: string;
+  model: string;
+  verdictPath: any;
+  gateResults: any;
+  scoringTotal: number | null;
+  requiresClarification: boolean;
+  isClarificationRetry: boolean;
+  durationMs: number;
+  briefLength: number;
+  error: string | null;
+  briefText: string;
+  briefSummary: string | null;
+  targetGeographies: string | null;
+  targetCustomers: string | null;
+  timing: string | null;
+  gateResultsFull: Record<string, any> | null;
+  verdictTitle: string;
+  verdictSummary: string | null;
+  scoringBreakdown: Record<string, number> | null;
+  questionCount: number;
+  retryCount: number;
+}): void {
+  try {
+    const gateResultCounts = {
+      pass: 0,
+      fail: 0,
+      unknown: 0,
+    };
+
+    // Extract gate counts if available
+    if (params.gateResults && typeof params.gateResults === 'object') {
+      if ('gate_results' in params.gateResults) {
+        const gates = params.gateResults.gate_results;
+        for (const gate of Object.values(gates)) {
+          const gateObj = gate as any;
+          if (gateObj && gateObj.status) {
+            if (gateObj.status === 'Pass') gateResultCounts.pass++;
+            else if (gateObj.status === 'Fail') gateResultCounts.fail++;
+            else gateResultCounts.unknown++;
+          }
+        }
+      } else if ('pass' in params.gateResults) {
+        // Already in summary format
+        gateResultCounts.pass = params.gateResults.pass;
+        gateResultCounts.fail = params.gateResults.fail;
+        gateResultCounts.unknown = params.gateResults.unknown;
+      }
+    }
+
+    const event: AnalyticsEvent = {
+      timestamp: params.timestamp,
+      sessionId: params.sessionId,
+      model: params.model,
+      verdictPath: params.verdictPath,
+      gateResults: gateResultCounts,
+      scoringTotal: params.scoringTotal,
+      requiresClarification: params.requiresClarification,
+      isClarificationRetry: params.isClarificationRetry,
+      durationMs: params.durationMs,
+      briefLength: params.briefLength,
+      error: params.error,
+      briefText: params.briefText,
+      briefSummary: params.briefSummary,
+      targetGeographies: params.targetGeographies,
+      targetCustomers: params.targetCustomers,
+      timing: params.timing,
+      gateResultsFull: params.gateResultsFull,
+      verdictTitle: params.verdictTitle,
+      verdictSummary: params.verdictSummary,
+      scoringBreakdown: params.scoringBreakdown,
+      questionCount: params.questionCount,
+      retryCount: params.retryCount,
+    };
+
+    // Fire-and-forget - never blocks
+    void analytics.track(event);
+  } catch (err) {
+    // Never throw - analytics should never crash the main flow
+    console.warn("[Analytics] Failed to track:", err);
+  }
+}
+
+export async function GET() {
+  return NextResponse.json({
+    status: "ok",
+    version: "2.0",
+    description: "Naming Agent v2 - Modular Production System",
+  });
+}
