@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { chomsky } from "@/lib/chomsky";
+import { glean } from "@/lib/glean";
 import { rateLimit } from "@/lib/rate-limit";
 
 // Maximum message length: 5,000 characters
@@ -118,9 +119,33 @@ export async function POST(req: NextRequest) {
 
     // ── Knowledge mode: conversational eBay naming expert ─────────────────────
     if (mode === "knowledge") {
+      let systemPrompt = KNOWLEDGE_SYSTEM_PROMPT;
+
+      // Augment with Glean context if available
+      if (process.env.GLEAN_API_TOKEN) {
+        try {
+          const gleanResult = await glean.query(message);
+
+          // Prepend Glean context to system prompt
+          const gleanContext = `[INTERNAL EBAY CONTEXT FROM GLEAN]
+${gleanResult.answer}
+
+Sources: ${gleanResult.sources.map(s => `${s.title}${s.url ? ` (${s.url})` : ""}`).join(", ")}
+
+---
+
+`;
+          systemPrompt = gleanContext + systemPrompt;
+        } catch (error) {
+          // Log but don't block — continue with Chomsky-only response
+          const gleanError = error instanceof Error ? error.message : String(error);
+          console.warn("Glean query failed (non-blocking):", gleanError);
+        }
+      }
+
       const responseText = await chomsky.generateText({
         messages: [
-          { role: "system", content: KNOWLEDGE_SYSTEM_PROMPT },
+          { role: "system", content: systemPrompt },
           { role: "user", content: message }, // Already validated length above
         ],
         maxTokens: 1500,
