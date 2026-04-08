@@ -20,6 +20,7 @@ export interface Message {
     verdictPath?: string;
     verdictSummary?: string[];
     uploadedFile?: string;
+    compiledBrief?: Record<string, unknown> | null;
   };
 }
 
@@ -309,6 +310,105 @@ function buildConfluenceExport(message: Message): string {
   return out;
 }
 
+// ─── Compiled Brief Summary ──────────────────────────────────────────────────
+
+function CompiledBriefSummary({ brief }: { brief: Record<string, unknown> }) {
+  const [open, setOpen] = useState(false);
+
+  const fields = [
+    { key: "offering_description", label: "Offering" },
+    { key: "product_type", label: "Product type" },
+    { key: "target_customers", label: "Target users" },
+    { key: "target_geographies", label: "Markets" },
+    { key: "timing", label: "Timing" },
+    { key: "strategic_lifespan", label: "Lifespan" },
+  ].filter(({ key }) => {
+    const val = brief[key];
+    return val !== null && val !== undefined && val !== "" && !(Array.isArray(val) && val.length === 0);
+  });
+
+  if (fields.length === 0) return null;
+
+  return (
+    <div className="mt-4 border border-slate-200 rounded-xl overflow-hidden">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className="w-full flex items-center justify-between px-3 py-2.5 bg-slate-50 hover:bg-slate-100 transition-colors"
+      >
+        <span className="text-xs font-semibold text-slate-500 uppercase tracking-wide">What I understood from your brief</span>
+        <span className="text-slate-400 text-xs">{open ? "▲" : "▼"}</span>
+      </button>
+      {open && (
+        <div className="divide-y divide-slate-100">
+          {fields.map(({ key, label }) => {
+            const val = brief[key];
+            const display = Array.isArray(val) ? val.join(", ") : String(val);
+            return (
+              <div key={key} className="flex gap-3 px-3 py-2">
+                <span className="text-xs font-medium text-slate-500 w-28 flex-shrink-0">{label}</span>
+                <span className="text-xs text-slate-800 leading-snug">{display}</span>
+              </div>
+            );
+          })}
+          <div className="px-3 py-2 bg-blue-50">
+            <p className="text-xs text-blue-700">If any of these are wrong, reply with a correction and I&apos;ll re-evaluate.</p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─── Verdict Guidance ─────────────────────────────────────────────────────────
+
+function VerdictGuidance({ path }: { path: string }) {
+  if (path === "PATH_C") return null; // Proceed — no alternative guidance needed
+
+  const guidance: Record<string, { heading: string; body: string; examples?: string[] }> = {
+    PATH_A0: {
+      heading: "Use inline copy instead of a name",
+      body: "This initiative runs automatically in the background — users never see or select it by name. eBay's naming standards reserve proper names for user-facing, opt-in products. Work with Content Design to write clear UI copy that describes what happens.",
+      examples: ["'Listings are automatically optimized for search'", "'Your returns are protected by eBay's guarantee'"],
+    },
+    PATH_A1: {
+      heading: "Use a descriptive label instead",
+      body: "This initiative doesn't yet qualify as a standalone named product. Use a descriptive label that explains what users do or get — following the '[eBay] + [job to be done]' pattern. Re-evaluate if the scope expands to separate enrollment or multi-year strategy.",
+      examples: ["'eBay standard shipping'", "'Verified returns'", "'Managed payments protection'"],
+    },
+    PATH_A2: {
+      heading: "Use a descriptive label for now",
+      body: "The architectural gates pass, but the strategic score is below threshold. This usually means the initiative is too integrated, too short-term, or not yet global enough to justify naming investment. Use a descriptive label and re-evaluate when scope increases.",
+      examples: ["Consider: '[eBay] + [feature description]' pattern", "'Re-evaluate when: standalone enrollment, 12+ month plan, or multi-market scope'"],
+    },
+    PATH_B: {
+      heading: "Provide the missing information above",
+      body: "Reply with the answers to the questions listed above. Be specific about enrollment model, timing, and markets — these are the most common factors that determine naming eligibility.",
+    },
+  };
+
+  const g = guidance[path];
+  if (!g) return null;
+
+  const borderColor = path === "PATH_B" ? "border-blue-200 bg-blue-50" : "border-amber-200 bg-amber-50";
+  const textColor = path === "PATH_B" ? "text-blue-800" : "text-amber-900";
+  const headingColor = path === "PATH_B" ? "text-blue-700" : "text-amber-800";
+
+  return (
+    <div className={`mt-3 rounded-xl border ${borderColor} p-4`}>
+      <p className={`text-xs font-semibold mb-1.5 ${headingColor}`}>{g.heading}</p>
+      <p className={`text-xs leading-relaxed ${textColor}`}>{g.body}</p>
+      {g.examples && (
+        <div className="mt-2 space-y-1">
+          {g.examples.map((ex, i) => (
+            <p key={i} className={`text-xs italic ${textColor} opacity-80`}>{ex}</p>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ─── Export menu ──────────────────────────────────────────────────────────────
 
 function ExportMenu({ message }: { message: Message }) {
@@ -481,6 +581,11 @@ export function ChatMessage({ message }: ChatMessageProps) {
               </div>
             )}
 
+            {/* Compiled brief summary */}
+            {message.metadata?.compiledBrief && (
+              <CompiledBriefSummary brief={message.metadata.compiledBrief} />
+            )}
+
             {/* Scoring breakdown */}
             {message.metadata?.scoringResults && (
               <div className="mt-5">
@@ -635,6 +740,9 @@ export function ChatMessage({ message }: ChatMessageProps) {
                 path={message.metadata.verdictPath}
               />
               <ExportMenu message={message} />
+              {message.metadata?.verdictPath && (
+                <VerdictGuidance path={message.metadata.verdictPath} />
+              )}
             </div>
           )}
         </div>

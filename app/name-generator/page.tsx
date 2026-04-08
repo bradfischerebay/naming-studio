@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { Wand2, Loader2, Copy, Check } from "lucide-react";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -52,6 +53,7 @@ const PROGRESS_MESSAGES = [
 // ─── Page Component ──────────────────────────────────────────────────────────
 
 export default function NameGeneratorPage() {
+  const router = useRouter();
   const [brief, setBrief] = useState("");
   const [markets, setMarkets] = useState<string[]>(["US"]);
   const [strategies, setStrategies] = useState<string[]>([
@@ -118,6 +120,21 @@ export default function NameGeneratorPage() {
     } catch {
       // Clipboard unavailable (non-HTTPS or permission denied) — silent fail
     }
+  };
+
+  const handleSendToValidator = (name: string) => {
+    // Store the name so the validator can pre-populate it
+    try {
+      const existing = JSON.parse(localStorage.getItem("prefill-validator-names") ?? "[]") as string[];
+      const uniqueNames = Array.from(new Set([...existing, name]));
+      const updated = uniqueNames.slice(0, 10);
+      localStorage.setItem("prefill-validator-names", JSON.stringify(updated));
+    } catch {
+      localStorage.setItem("prefill-validator-names", JSON.stringify([name]));
+    }
+    // Also store the brief for context
+    localStorage.setItem("prefill-validator-brief", brief);
+    router.push("/name-validator");
   };
 
   const toggleMarket = (market: string) => {
@@ -389,21 +406,36 @@ export default function NameGeneratorPage() {
                       {activeSubtypeData && (
                         <div className="grid grid-cols-2 gap-2">
                           {activeSubtypeData.candidates.map((candidate) => (
-                            <button
+                            <div
                               key={candidate.name}
-                              type="button"
-                              onClick={() => handleCopyName(candidate.name)}
                               className="text-left p-3 rounded-lg border border-slate-200 hover:border-blue-400 hover:bg-blue-50 transition-all group relative"
                             >
                               <div className="flex items-start justify-between gap-2 mb-1">
                                 <div className="font-semibold text-slate-900 text-lg">
                                   {candidate.name}
                                 </div>
-                                {copiedName === candidate.name ? (
-                                  <Check className="h-4 w-4 text-green-600 flex-shrink-0" />
-                                ) : (
-                                  <Copy className="h-4 w-4 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
-                                )}
+                                <div className="flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                                  <button
+                                    type="button"
+                                    onClick={() => handleSendToValidator(candidate.name)}
+                                    title="Send to Name Validator"
+                                    className="text-[10px] font-medium text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 border border-blue-200 px-2 py-0.5 rounded-full transition-colors whitespace-nowrap"
+                                  >
+                                    Validate →
+                                  </button>
+                                  <button
+                                    type="button"
+                                    onClick={() => handleCopyName(candidate.name)}
+                                    title="Copy name"
+                                    className="flex items-center justify-center"
+                                  >
+                                    {copiedName === candidate.name ? (
+                                      <Check className="h-4 w-4 text-green-600 flex-shrink-0" />
+                                    ) : (
+                                      <Copy className="h-4 w-4 text-slate-400 flex-shrink-0" />
+                                    )}
+                                  </button>
+                                </div>
                               </div>
                               {candidate.tagline && (
                                 <div className="text-xs text-slate-500 mb-1 italic">
@@ -413,7 +445,7 @@ export default function NameGeneratorPage() {
                               <div className="text-xs text-slate-600 mt-1 opacity-0 group-hover:opacity-100 transition-opacity">
                                 {candidate.rationale}
                               </div>
-                            </button>
+                            </div>
                           ))}
                         </div>
                       )}

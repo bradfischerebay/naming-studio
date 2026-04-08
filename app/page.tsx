@@ -556,6 +556,7 @@ export default function Home() {
             verdict: result.verdict?.title || result.verdict?.path,
             verdictPath: result.verdict?.path,
             verdictSummary: result.verdict?.summary,
+            compiledBrief: result.compiledBrief ?? null,
           },
         },
       ]);
@@ -996,33 +997,64 @@ export default function Home() {
         <div className="flex-1 overflow-y-auto">
           <div className="max-w-5xl mx-auto px-4 py-8">
             {messages.length === 0 ? (
-              <div className="flex items-center justify-center min-h-[50vh]">
-                <div className="text-center max-w-xl">
-                  <h2 className="text-3xl font-bold text-slate-900 mb-3">
-                    What would you like to name?
-                  </h2>
-                  <p className="text-slate-400 mb-8 text-sm leading-relaxed">
-                    Paste a product brief and I&apos;ll evaluate it against eBay&apos;s naming framework — or upload a document using the attachment button below.
-                  </p>
-                  <div className="grid grid-cols-2 gap-3 text-left">
+              <div className="flex items-center justify-center min-h-[50vh] py-8">
+                <div className="w-full max-w-2xl">
+                  <div className="text-center mb-8">
+                    <h2 className="text-2xl font-bold text-slate-900 mb-2">
+                      Evaluate your naming brief
+                    </h2>
+                    <p className="text-slate-400 text-sm leading-relaxed max-w-lg mx-auto">
+                      Paste or upload your brief below. The system evaluates it against eBay&apos;s 6-gate naming framework and gives you a defensible, documented verdict in under 2 minutes.
+                    </p>
+                  </div>
+
+                  {/* 3-step workflow strip */}
+                  <div className="flex items-center gap-2 mb-8 justify-center">
                     {[
-                      { title: "Paste a brief", desc: "Type or paste text describing your product" },
-                      { title: "Upload a file", desc: "Attach a .docx, .pdf, or .txt file" },
-                      { title: "Clarify as you go", desc: "I'll ask follow-up questions when needed" },
-                      { title: "Instant decision", desc: "Get a verdict across 6 gates with rationale" },
-                    ].map((card) => (
-                      <div
-                        key={card.title}
-                        className="bg-white rounded-2xl border border-slate-200 p-4 text-left"
-                      >
-                        <div className="font-medium text-slate-900 text-sm">{card.title}</div>
-                        <div className="text-xs text-slate-400 mt-1">{card.desc}</div>
+                      { step: "1", label: "Evaluate Brief", active: true },
+                      { step: "2", label: "Generate Names", active: false },
+                      { step: "3", label: "Validate Names", active: false },
+                    ].map((item, idx) => (
+                      <div key={idx} className="flex items-center gap-2">
+                        <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium ${
+                          item.active
+                            ? "bg-slate-900 text-white"
+                            : "bg-slate-100 text-slate-400"
+                        }`}>
+                          <span className={`text-[10px] font-bold px-1 rounded ${item.active ? "bg-white/20 text-white" : "bg-slate-200 text-slate-400"}`}>{item.step}</span>
+                          {item.label}
+                        </div>
+                        {idx < 2 && <span className="text-slate-300 text-xs">→</span>}
                       </div>
                     ))}
                   </div>
 
-                  <div className="mt-8 pt-6 border-t border-slate-200">
-                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-3">Try an example</p>
+                  {/* Template quick-fill */}
+                  <div className="bg-white rounded-2xl border border-slate-200 p-4 mb-4">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Brief template</span>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setInputValue(`Offering: [What is this product or feature?]
+Target users: [Sellers / Buyers / Both — and which segment?]
+Markets: [US / UK / DE / AU / global?]
+How users access it: [Separate enrollment, toggle in settings, automatic, etc.]
+Timing: [Launch date + planned duration — permanent or time-limited?]
+Strategic context: [Why this exists, what problem it solves]`);
+                          textareaRef.current?.focus();
+                        }}
+                        className="text-xs text-blue-600 hover:text-blue-800 font-medium transition-colors"
+                      >
+                        Use template →
+                      </button>
+                    </div>
+                    <p className="text-xs text-slate-400 leading-relaxed">Fill in the key fields to get the most accurate evaluation. You can also paste a brief in your own words — the system will structure it automatically.</p>
+                  </div>
+
+                  {/* Example briefs */}
+                  <div>
+                    <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2">Or try an example</p>
                     <div className="space-y-2">
                       {[
                         "eBay is launching a managed shipping service for high-volume sellers in the US and UK. Sellers opt in separately, eBay negotiates bulk carrier rates, and the service includes a dedicated dashboard and shipment tracking. Planned as a permanent addition launching Q3 2026.",

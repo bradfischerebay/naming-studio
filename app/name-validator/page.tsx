@@ -100,6 +100,27 @@ export default function NameValidatorPage() {
     return () => { document.title = "eBay Naming Studio"; };
   }, []);
 
+  useEffect(() => {
+    // Pre-fill names from Name Generator handoff
+    const prefillNames = localStorage.getItem("prefill-validator-names");
+    if (prefillNames) {
+      try {
+        const nameList = JSON.parse(prefillNames) as string[];
+        if (Array.isArray(nameList) && nameList.length > 0) {
+          setNames(nameList.slice(0, 10));
+        }
+      } catch { /* ignore */ }
+      localStorage.removeItem("prefill-validator-names");
+    }
+
+    // Pre-fill brief from Name Generator handoff
+    const prefillBrief = localStorage.getItem("prefill-validator-brief");
+    if (prefillBrief) {
+      setBrief(prefillBrief);
+      localStorage.removeItem("prefill-validator-brief");
+    }
+  }, []);
+
   const handleCheck = async () => {
     // Flush any unsubmitted name in the text input
     const pendingName = nameInput.trim().replace(/,/g, "");
