@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import type { UsageEvent } from "@/lib/usage-log";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -382,6 +383,11 @@ export default function AnalyticsPage() {
   const [fetchError, setFetchError] = useState<string | null>(null);
   const [countdown, setCountdown] = useState(30);
   const [expandedRow, setExpandedRow] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<"evaluations" | "usage">("evaluations");
+  const [usageEvents, setUsageEvents] = useState<UsageEvent[]>([]);
+  const [usageLoading, setUsageLoading] = useState(false);
+  const [usageTotal, setUsageTotal] = useState(0);
+  const [usageTypeFilter, setUsageTypeFilter] = useState<string>("all");
 
   const fetchData = async () => {
     setLoading(true);
@@ -418,6 +424,19 @@ export default function AnalyticsPage() {
     }, 1000);
     return () => clearInterval(timer);
   }, [data, loading]);
+
+  useEffect(() => {
+    if (activeTab !== "usage" || usageEvents.length > 0) return;
+    setUsageLoading(true);
+    fetch("/api/usage?limit=200")
+      .then((r) => r.json())
+      .then((d: { events?: UsageEvent[]; total?: number }) => {
+        if (d.events) setUsageEvents(d.events);
+        if (d.total) setUsageTotal(d.total);
+      })
+      .catch(() => {})
+      .finally(() => setUsageLoading(false));
+  }, [activeTab, usageEvents.length]);
 
   // ── Loading ──
 
@@ -490,7 +509,30 @@ export default function AnalyticsPage() {
     <div className="min-h-screen bg-[#f4f4f4]">
       <PageHeader loading={loading} countdown={countdown} onRefresh={fetchData} />
 
-      <div className="max-w-7xl mx-auto px-6 py-8 space-y-6">
+      {/* Tab bar */}
+      <div className="border-b border-slate-200 bg-white sticky top-[61px] z-10">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex gap-1 pt-2">
+            {(["evaluations", "usage"] as const).map((tab) => (
+              <button
+                key={tab}
+                type="button"
+                onClick={() => setActiveTab(tab)}
+                className={`px-4 py-2.5 text-sm font-medium rounded-t-lg transition-colors capitalize ${
+                  activeTab === tab
+                    ? "text-slate-900 border-b-2 border-slate-900 bg-white"
+                    : "text-slate-500 hover:text-slate-700"
+                }`}
+              >
+                {tab === "evaluations" ? "Evaluations" : "Usage Log"}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {activeTab === "evaluations" && (
+        <div className="max-w-7xl mx-auto px-6 py-8 space-y-6">
 
         {/* Triage Impact Hero */}
         {(() => {
@@ -813,7 +855,123 @@ export default function AnalyticsPage() {
           </div>
         </motion.div>
 
-      </div>
+        </div>
+      )}
+
+      {activeTab === "usage" && (
+        <div className="max-w-7xl mx-auto px-6 py-8 space-y-4">
+          {/* Type filter pills */}
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Filter:</span>
+            {(["all", "chat", "name_generation", "name_validation", "lab_run"] as const).map((type) => {
+              const labels: Record<string, string> = {
+                all: "All",
+                chat: "Chat",
+                name_generation: "Name Generation",
+                name_validation: "Name Validation",
+                lab_run: "Lab",
+              };
+              return (
+                <button
+                  key={type}
+                  type="button"
+                  onClick={() => setUsageTypeFilter(type)}
+                  className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+                    usageTypeFilter === type
+                      ? "bg-slate-900 text-white"
+                      : "bg-white border border-slate-200 text-slate-600 hover:bg-slate-50"
+                  }`}
+                >
+                  {labels[type]}
+                </button>
+              );
+            })}
+            <span className="ml-auto text-xs text-slate-400">{usageTotal.toLocaleString()} total events</span>
+          </div>
+
+          {usageLoading ? (
+            <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center">
+              <Loader2 className="h-8 w-8 text-slate-300 mx-auto mb-3 animate-spin" />
+              <p className="text-sm text-slate-400">Loading usage log...</p>
+            </div>
+          ) : (
+            <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b border-slate-100 bg-slate-50">
+                      <th className="px-5 py-3 text-left text-[11px] font-semibold text-slate-400 uppercase tracking-wide w-24">When</th>
+                      <th className="px-5 py-3 text-left text-[11px] font-semibold text-slate-400 uppercase tracking-wide w-36">Type</th>
+                      <th className="px-5 py-3 text-left text-[11px] font-semibold text-slate-400 uppercase tracking-wide">Summary</th>
+                      <th className="px-5 py-3 text-left text-[11px] font-semibold text-slate-400 uppercase tracking-wide w-20">Duration</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {usageEvents
+                      .filter((e) => usageTypeFilter === "all" || e.type === usageTypeFilter)
+                      .map((event) => {
+                        const TYPE_META: Record<string, { label: string; badge: string }> = {
+                          chat: { label: "Chat", badge: "bg-blue-50 text-blue-700 border-blue-200" },
+                          name_generation: { label: "Name Gen", badge: "bg-purple-50 text-purple-700 border-purple-200" },
+                          name_validation: { label: "Validation", badge: "bg-amber-50 text-amber-700 border-amber-200" },
+                          lab_run: { label: "Lab Run", badge: "bg-emerald-50 text-emerald-700 border-emerald-200" },
+                        };
+                        const meta = TYPE_META[event.type] ?? { label: event.type, badge: "bg-slate-100 text-slate-600 border-slate-200" };
+
+                        let summary = "";
+                        if (event.type === "chat") {
+                          summary = `${event.mode} mode · ${event.messageLength} chars → ${event.responseLength} chars`;
+                        } else if (event.type === "name_generation") {
+                          summary = `${event.totalNamesGenerated} names · ${event.bucketCount} buckets · ${event.briefSnippet.slice(0, 60)}…`;
+                        } else if (event.type === "name_validation") {
+                          summary = `${event.nameCount} names: ${event.proceedCount} proceed, ${event.cautionCount} caution, ${event.avoidCount} avoid · ${event.names.slice(0, 3).join(", ")}${event.names.length > 3 ? "…" : ""}`;
+                        } else if (event.type === "lab_run") {
+                          const passCount = Object.values(event.gateResults).filter((s) => s === "Pass").length;
+                          const failCount = Object.values(event.gateResults).filter((s) => s === "Fail").length;
+                          summary = `${event.verdictPath ?? "scorer"} · ${passCount} pass / ${failCount} fail · ${event.briefSnippet.slice(0, 60)}…`;
+                        }
+
+                        return (
+                          <tr key={event.id} className="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                            <td className="px-5 py-3.5 text-xs text-slate-400 whitespace-nowrap">
+                              {relativeTime(event.timestamp)}
+                            </td>
+                            <td className="px-5 py-3.5">
+                              <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-[11px] font-semibold border ${meta.badge}`}>
+                                {meta.label}
+                              </span>
+                            </td>
+                            <td className="px-5 py-3.5 text-xs text-slate-600 max-w-md">
+                              <span className="line-clamp-1">{summary}</span>
+                            </td>
+                            <td className="px-5 py-3.5 text-xs text-slate-500 tabular-nums whitespace-nowrap">
+                              {event.durationMs > 0 ? `${(event.durationMs / 1000).toFixed(1)}s` : "—"}
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    {usageEvents.filter((e) => usageTypeFilter === "all" || e.type === usageTypeFilter).length === 0 && (
+                      <tr>
+                        <td colSpan={4} className="px-5 py-12 text-center text-sm text-slate-400">
+                          No usage events recorded yet
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
+                </table>
+              </div>
+              {usageEvents.length > 0 && (
+                <div className="px-5 py-3 border-t border-slate-100 bg-slate-50">
+                  <p className="text-[11px] text-slate-400">
+                    Showing last {usageEvents.filter((e) => usageTypeFilter === "all" || e.type === usageTypeFilter).length} events · {usageTotal.toLocaleString()} total stored
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      )}
+
     </div>
   );
 }

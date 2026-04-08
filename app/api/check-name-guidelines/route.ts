@@ -3,6 +3,7 @@ import { z } from "zod";
 import { chomsky } from "@/lib/chomsky";
 import { rateLimit } from "@/lib/rate-limit";
 import { NAMING_PROTOCOLS } from "@/lib/data/naming-framework";
+import { usageLog } from "@/lib/usage-log";
 
 export const runtime = "nodejs";
 export const maxDuration = 90;
@@ -140,6 +141,8 @@ Evaluate this name against all criteria and provide structured feedback.`;
  * Validate product names against eBay naming guidelines
  */
 export async function POST(req: NextRequest) {
+  const startTime = Date.now();
+
   // Rate limiting: 10 requests per minute
   const rateLimitResult = await rateLimit(req, {
     interval: 60 * 1000,
@@ -215,6 +218,21 @@ export async function POST(req: NextRequest) {
           ...createFallbackResult(sanitizedNames[index]),
         };
       }
+    });
+
+    void usageLog.log({
+      type: "name_validation",
+      nameCount: sanitizedNames.length,
+      names: sanitizedNames,
+      briefSnippet: brief.slice(0, 200),
+      briefLength: brief.length,
+      markets,
+      results: results.map((r) => ({ name: r.name, overall: r.overall, score: r.score })),
+      proceedCount: results.filter((r) => r.overall === "proceed").length,
+      cautionCount: results.filter((r) => r.overall === "caution").length,
+      avoidCount: results.filter((r) => r.overall === "avoid").length,
+      durationMs: Date.now() - startTime,
+      error: null,
     });
 
     return NextResponse.json({

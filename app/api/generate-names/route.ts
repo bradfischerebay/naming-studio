@@ -3,6 +3,7 @@ import { z } from "zod";
 import { chomsky } from "@/lib/chomsky";
 import { rateLimit } from "@/lib/rate-limit";
 import { deepsights } from "@/lib/deepsights";
+import { usageLog } from "@/lib/usage-log";
 import {
   STRATEGY_BUCKETS,
   NAMING_PROTOCOLS,
@@ -207,6 +208,8 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  const startTime = Date.now();
+
   try {
     const body = (await req.json()) as {
       brief?: string;
@@ -273,6 +276,24 @@ export async function POST(req: NextRequest) {
     );
 
     const results = await Promise.all(generationPromises);
+
+    const totalNamesGenerated = results.reduce(
+      (sum, r) => sum + r.subtypes.reduce((s, sub) => s + sub.candidates.length, 0),
+      0
+    );
+    void usageLog.log({
+      type: "name_generation",
+      briefSnippet: brief.slice(0, 200),
+      briefLength: brief.length,
+      markets: validatedMarkets,
+      strategies: selectedBuckets.map((b) => b.key),
+      namesPerSubtype: validCount,
+      useDeepSights,
+      totalNamesGenerated,
+      bucketCount: selectedBuckets.length,
+      durationMs: Date.now() - startTime,
+      error: null,
+    });
 
     return NextResponse.json({
       success: true,

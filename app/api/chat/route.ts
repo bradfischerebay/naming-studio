@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { chomsky } from "@/lib/chomsky";
 import { glean } from "@/lib/glean";
 import { rateLimit } from "@/lib/rate-limit";
+import { usageLog } from "@/lib/usage-log";
 
 // Maximum message length: 5,000 characters
 const MAX_MESSAGE_LENGTH = 5000;
@@ -150,6 +151,16 @@ Sources: ${gleanResult.sources.map(s => `${s.title}${s.url ? ` (${s.url})` : ""}
         ],
         maxTokens: 1500,
       });
+      void usageLog.log({
+        type: "chat",
+        mode: "knowledge",
+        messageLength: message.length,
+        responseLength: responseText.length,
+        model: process.env.CHOMSKY_MODEL ?? "unknown",
+        hasEvaluationContext: false,
+        durationMs: 0,  // chat doesn't track duration currently
+        error: null,
+      });
       return NextResponse.json({ response: responseText });
     }
 
@@ -191,6 +202,17 @@ Your job is to help the user understand why their brief failed or passed the eva
         { role: "system", content: systemPrompt },
         { role: "user", content: message },
       ],
+    });
+
+    void usageLog.log({
+      type: "chat",
+      mode: "coaching",
+      messageLength: message.length,
+      responseLength: responseText.length,
+      model: process.env.CHOMSKY_MODEL ?? "unknown",
+      hasEvaluationContext: true,
+      durationMs: 0,
+      error: null,
     });
 
     return NextResponse.json({ response: responseText });

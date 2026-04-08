@@ -3,6 +3,7 @@ import { runGateAgent, runScorerAgent } from "@/lib/modules/gate-agents";
 import type { GateAgentEvent, ScorerAgentEvent, CustomGateDef, CustomScoringConfig } from "@/lib/modules/gate-agents";
 import { rateLimit } from "@/lib/rate-limit";
 import { validateModel } from "@/lib/config/models";
+import { usageLog } from "@/lib/usage-log";
 
 export const maxDuration = 120;
 
@@ -88,6 +89,7 @@ export async function POST(req: NextRequest) {
   (async () => {
     try {
       const gateDecisions: Record<string, { status: string }> = {};
+      const startTime = Date.now();
 
       // Restore already-done gate decisions so we don't re-run them
       for (const [gate, state] of Object.entries(gateStates)) {
@@ -133,6 +135,20 @@ export async function POST(req: NextRequest) {
       if (g0Decision?.status === "Fail") {
         const verdictEvent = { type: "verdict", path: "PATH_A0" };
         await writer.write(sseEvent(verdictEvent));
+        void usageLog.log({
+          type: "lab_run",
+          briefSnippet: brief.slice(0, 200),
+          briefLength: brief.trim().length,
+          model: validatedModel ?? process.env.CHOMSKY_MODEL ?? "unknown",
+          verdictPath: "PATH_A0",
+          gateResults: Object.fromEntries(
+            Object.entries(gateDecisions).map(([k, v]) => [k, v.status])
+          ),
+          hasCustomGates: Object.keys(customGates).length > 0,
+          customGateCount: Object.keys(customGates).length,
+          durationMs: Date.now() - startTime,
+          error: null,
+        });
         await writer.write(sseEvent({ type: "complete", model: validatedModel ?? process.env.CHOMSKY_MODEL ?? "unknown" }));
         return;
       }
@@ -152,6 +168,20 @@ export async function POST(req: NextRequest) {
         );
         if (anyBlockerFailed) {
           await writer.write(sseEvent({ type: "verdict", path: "PATH_A1" }));
+          void usageLog.log({
+            type: "lab_run",
+            briefSnippet: brief.slice(0, 200),
+            briefLength: brief.trim().length,
+            model: validatedModel ?? process.env.CHOMSKY_MODEL ?? "unknown",
+            verdictPath: "PATH_A1",
+            gateResults: Object.fromEntries(
+              Object.entries(gateDecisions).map(([k, v]) => [k, v.status])
+            ),
+            hasCustomGates: Object.keys(customGates).length > 0,
+            customGateCount: Object.keys(customGates).length,
+            durationMs: Date.now() - startTime,
+            error: null,
+          });
           await writer.write(sseEvent({ type: "complete", model: validatedModel ?? process.env.CHOMSKY_MODEL ?? "unknown" }));
           return;
         }
@@ -185,15 +215,33 @@ export async function POST(req: NextRequest) {
       const allDecisions = allGates.map((g) => gateDecisions[g] ?? gateStates[g]?.decision);
       const allPassed = allDecisions.every((d) => d && (d as { status: string }).status === "Pass");
 
+      let labVerdictPath: string | null = null;
+
       if (allPassed) {
         // ── Scorer agent ───────────────────────────────────────────────────
         await runScorerAgent(brief, contextHistory, emitScorer, undefined, customScoring);
+        labVerdictPath = null; // scorer determines PATH_C or PATH_A2 client-side
       } else {
         // Determine verdict path based on gate results
-        const verdictEvent = { type: "verdict", path: determineFailPath(gateDecisions) };
+        labVerdictPath = determineFailPath(gateDecisions);
+        const verdictEvent = { type: "verdict", path: labVerdictPath };
         await writer.write(sseEvent(verdictEvent));
       }
 
+      void usageLog.log({
+        type: "lab_run",
+        briefSnippet: brief.slice(0, 200),
+        briefLength: brief.trim().length,
+        model: validatedModel ?? process.env.CHOMSKY_MODEL ?? "unknown",
+        verdictPath: labVerdictPath,
+        gateResults: Object.fromEntries(
+          Object.entries(gateDecisions).map(([k, v]) => [k, v.status])
+        ),
+        hasCustomGates: Object.keys(customGates).length > 0,
+        customGateCount: Object.keys(customGates).length,
+        durationMs: Date.now() - startTime,
+        error: null,
+      });
       await writer.write(sseEvent({ type: "complete", model: validatedModel ?? process.env.CHOMSKY_MODEL ?? "unknown" }));
     } catch (err) {
       try {
