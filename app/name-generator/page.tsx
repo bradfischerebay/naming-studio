@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Link from "next/link";
 import { Wand2, Loader2, Copy, Check } from "lucide-react";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -68,6 +69,7 @@ export default function NameGeneratorPage() {
   const [copiedName, setCopiedName] = useState<string | null>(null);
   const [activeSubtype, setActiveSubtype] = useState<Record<string, string>>({});
   const [progressIndex, setProgressIndex] = useState(0);
+  const [generatedAt, setGeneratedAt] = useState<string | null>(null);
 
   const handleGenerate = async () => {
     if (!brief.trim() || isGenerating) return;
@@ -90,6 +92,7 @@ export default function NameGeneratorPage() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? "Generation failed");
       setResults(data);
+      setGeneratedAt(new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }));
 
       // Initialize active subtypes to first subtype of each strategy
       const initialSubtypes: Record<string, string> = {};
@@ -132,18 +135,23 @@ export default function NameGeneratorPage() {
     );
   };
 
+  useEffect(() => {
+    document.title = "Name Generator · eBay Naming Studio";
+    return () => { document.title = "eBay Naming Studio"; };
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#f4f4f4]">
       {/* Header */}
       <header className="bg-white border-b border-slate-200 px-6 py-4">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-3 mb-1">
-            <a
+            <Link
               href="/"
               className="text-slate-500 hover:text-slate-700 text-sm flex items-center gap-1 transition-colors"
             >
               ← Back
-            </a>
+            </Link>
             <span className="text-slate-300">|</span>
             <h1 className="text-xl font-semibold text-slate-900 flex items-center gap-2">
               <Wand2 className="h-5 w-5" />
@@ -172,6 +180,12 @@ export default function NameGeneratorPage() {
                 placeholder="Describe your product, target audience, key features, and market positioning..."
                 className="w-full h-32 text-sm border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:border-blue-400 resize-none bg-slate-50 focus:bg-white transition-colors"
               />
+              <div className="flex justify-between mt-1">
+                <span className="text-xs text-slate-400">Describe the product, audience, and key features</span>
+                <span className={`text-xs ${brief.length > 4500 ? "text-red-500 font-medium" : "text-slate-400"}`}>
+                  {brief.length.toLocaleString()}/5,000
+                </span>
+              </div>
             </div>
 
             {/* Markets */}
@@ -186,6 +200,7 @@ export default function NameGeneratorPage() {
                     type="button"
                     onClick={() => toggleMarket(market)}
                     disabled={market === "US"}
+                    title={market === "US" ? "US market is always included" : undefined}
                     className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
                       markets.includes(market)
                         ? "bg-blue-600 text-white"
@@ -278,6 +293,12 @@ export default function NameGeneratorPage() {
                 </>
               )}
             </button>
+            {!brief.trim() && !isGenerating && (
+              <p className="text-xs text-center text-slate-400 mt-1">Enter a product brief to generate names</p>
+            )}
+            {brief.trim() && strategies.length === 0 && !isGenerating && (
+              <p className="text-xs text-center text-slate-400 mt-1">Select at least one strategy bucket</p>
+            )}
           </div>
 
           {/* Right Panel - Results */}
@@ -314,6 +335,10 @@ export default function NameGeneratorPage() {
 
             {results && results.results.length > 0 && (
               <div className="space-y-4">
+                <div className="flex items-center justify-between mb-2 px-1">
+                  <span className="text-xs text-slate-400">{results.results.length} strategy bucket{results.results.length !== 1 ? "s" : ""} · {results.markets.join(", ")}</span>
+                  {generatedAt && <span className="text-xs text-slate-400">Generated at {generatedAt}</span>}
+                </div>
                 {results.results.map((result) => {
                   const activeSubtypeKey = activeSubtype[result.strategyKey];
                   const activeSubtypeData = result.subtypes.find(

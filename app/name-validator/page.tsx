@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Link from "next/link";
 import { BadgeCheck, Loader2, X } from "lucide-react";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -70,6 +71,7 @@ export default function NameValidatorPage() {
   const [isChecking, setIsChecking] = useState(false);
   const [results, setResults] = useState<CheckResult[] | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [checkedAt, setCheckedAt] = useState<string | null>(null);
 
   const handleNameKeyDown = (e: React.KeyboardEvent) => {
     if ((e.key === "Enter" || e.key === ",") && nameInput.trim()) {
@@ -92,6 +94,11 @@ export default function NameValidatorPage() {
       prev.includes(market) ? prev.filter((m) => m !== market) : [...prev, market]
     );
   };
+
+  useEffect(() => {
+    document.title = "Name Validator · eBay Naming Studio";
+    return () => { document.title = "eBay Naming Studio"; };
+  }, []);
 
   const handleCheck = async () => {
     // Flush any unsubmitted name in the text input
@@ -123,6 +130,7 @@ export default function NameValidatorPage() {
           sortOrder[a.overall] - sortOrder[b.overall]
       );
       setResults(sortedResults);
+      setCheckedAt(new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }));
     } catch (e) {
       setError(e instanceof Error ? e.message : "Something went wrong");
     } finally {
@@ -136,12 +144,12 @@ export default function NameValidatorPage() {
       <header className="bg-white border-b border-slate-200 px-6 py-4">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-3 mb-1">
-            <a
+            <Link
               href="/"
               className="text-slate-500 hover:text-slate-700 text-sm flex items-center gap-1 transition-colors"
             >
               ← Back
-            </a>
+            </Link>
             <span className="text-slate-300">|</span>
             <h1 className="text-xl font-semibold text-slate-900 flex items-center gap-2">
               <BadgeCheck className="h-5 w-5" />
@@ -161,12 +169,15 @@ export default function NameValidatorPage() {
           <div className="w-[40%] space-y-4">
             {/* Names Input */}
             <div className="bg-white rounded-2xl border border-slate-200 p-5">
-              <label className="block text-sm font-semibold text-slate-700 mb-2">
-                Names to Check{" "}
-                <span className="text-slate-400 font-normal">
-                  (up to 10, press Enter or comma)
+              <div className="flex items-center justify-between mb-2">
+                <label className="text-sm font-semibold text-slate-700">
+                  Names to Check{" "}
+                  <span className="text-slate-400 font-normal text-xs">(Enter or comma to add)</span>
+                </label>
+                <span className={`text-xs font-medium ${names.length >= 10 ? "text-red-500" : "text-slate-400"}`}>
+                  {names.length}/10
                 </span>
-              </label>
+              </div>
               <div className="flex flex-wrap gap-2 mb-2">
                 {names.map((name) => (
                   <div
@@ -193,9 +204,6 @@ export default function NameValidatorPage() {
                 disabled={names.length >= 10}
                 className="w-full text-sm border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:border-blue-400 bg-slate-50 focus:bg-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               />
-              <div className="text-xs text-slate-400 mt-1">
-                {names.length}/10 names added
-              </div>
             </div>
 
             {/* Brief Context */}
@@ -209,6 +217,12 @@ export default function NameValidatorPage() {
                 placeholder="Provide context about your product to evaluate name alignment..."
                 className="w-full h-32 text-sm border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:border-blue-400 resize-none bg-slate-50 focus:bg-white transition-colors"
               />
+              <div className="flex justify-between mt-1">
+                <span className="text-xs text-slate-400">Provide context for accurate evaluation</span>
+                <span className={`text-xs ${brief.length > 4500 ? "text-red-500 font-medium" : "text-slate-400"}`}>
+                  {brief.length.toLocaleString()}/5,000
+                </span>
+              </div>
             </div>
 
             {/* Markets */}
@@ -223,6 +237,7 @@ export default function NameValidatorPage() {
                     type="button"
                     onClick={() => toggleMarket(market)}
                     disabled={market === "US"}
+                    title={market === "US" ? "US market is always included" : undefined}
                     className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
                       markets.includes(market)
                         ? "bg-blue-600 text-white"
@@ -254,6 +269,12 @@ export default function NameValidatorPage() {
                 </>
               )}
             </button>
+            {!names.length && !nameInput.trim() && !isChecking && (
+              <p className="text-xs text-center text-slate-400 mt-1">Add at least one name to check</p>
+            )}
+            {(names.length > 0 || nameInput.trim()) && !brief.trim() && !isChecking && (
+              <p className="text-xs text-center text-slate-400 mt-1">Add a product brief for context</p>
+            )}
           </div>
 
           {/* Right Panel - Results */}
@@ -290,6 +311,10 @@ export default function NameValidatorPage() {
 
             {results && results.length > 0 && (
               <div className="space-y-4">
+                <div className="flex items-center justify-between mb-2 px-1">
+                  <span className="text-xs text-slate-400">{results.length} name{results.length !== 1 ? "s" : ""} evaluated · {markets.join(", ")}</span>
+                  {checkedAt && <span className="text-xs text-slate-400">Checked at {checkedAt}</span>}
+                </div>
                 {results.map((result) => {
                   const overallColor = overallColors[result.overall];
                   const scoreColor =

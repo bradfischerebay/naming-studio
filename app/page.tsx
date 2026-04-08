@@ -6,6 +6,7 @@ import { toast, Toaster } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChatMessage, type Message } from "@/components/ChatMessage";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -241,6 +242,7 @@ function NameValidatorPanel({
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function Home() {
+  const pathname = usePathname();
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [activeId, setActiveId] = useState<string>("");
   const [inputValue, setInputValue] = useState("");
@@ -801,7 +803,11 @@ export default function Home() {
           <Link
             href="/analytics"
             title="Analytics"
-            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/10 transition-colors text-sm text-white/60 hover:text-white ${!sidebarOpen ? "justify-center" : ""}`}
+            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg transition-colors text-sm ${
+              pathname === "/analytics"
+                ? "bg-white/10 text-white"
+                : "text-white/60 hover:bg-white/10 hover:text-white"
+            } ${!sidebarOpen ? "justify-center" : ""}`}
           >
             <BarChart2 className="h-4 w-4 flex-shrink-0" />
             {sidebarOpen && <span>Analytics</span>}
@@ -810,7 +816,11 @@ export default function Home() {
           <Link
             href="/lab"
             title="Lab"
-            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/10 transition-colors text-sm text-white/60 hover:text-white ${!sidebarOpen ? "justify-center" : ""}`}
+            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg transition-colors text-sm ${
+              pathname === "/lab"
+                ? "bg-white/10 text-white"
+                : "text-white/60 hover:bg-white/10 hover:text-white"
+            } ${!sidebarOpen ? "justify-center" : ""}`}
           >
             <TestTube2 className="h-4 w-4 flex-shrink-0" />
             {sidebarOpen && (
@@ -824,7 +834,11 @@ export default function Home() {
           <Link
             href="/registry"
             title="Naming Registry"
-            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/10 transition-colors text-sm text-white/60 hover:text-white ${!sidebarOpen ? "justify-center" : ""}`}
+            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg transition-colors text-sm ${
+              pathname === "/registry"
+                ? "bg-white/10 text-white"
+                : "text-white/60 hover:bg-white/10 hover:text-white"
+            } ${!sidebarOpen ? "justify-center" : ""}`}
           >
             <Database className="h-4 w-4 flex-shrink-0" />
             {sidebarOpen && <span>Registry</span>}
@@ -833,7 +847,11 @@ export default function Home() {
           <Link
             href="/governance"
             title="AI Governance"
-            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/10 transition-colors text-sm text-white/60 hover:text-white ${!sidebarOpen ? "justify-center" : ""}`}
+            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg transition-colors text-sm ${
+              pathname === "/governance"
+                ? "bg-white/10 text-white"
+                : "text-white/60 hover:bg-white/10 hover:text-white"
+            } ${!sidebarOpen ? "justify-center" : ""}`}
           >
             <Shield className="h-4 w-4 flex-shrink-0" />
             {sidebarOpen && <span>Governance</span>}
@@ -842,7 +860,11 @@ export default function Home() {
           <Link
             href="/name-generator"
             title="Name Generator"
-            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/10 transition-colors text-sm text-white/60 hover:text-white ${!sidebarOpen ? "justify-center" : ""}`}
+            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg transition-colors text-sm ${
+              pathname === "/name-generator"
+                ? "bg-white/10 text-white"
+                : "text-white/60 hover:bg-white/10 hover:text-white"
+            } ${!sidebarOpen ? "justify-center" : ""}`}
           >
             <Wand2 className="h-4 w-4 flex-shrink-0" />
             {sidebarOpen && <span>Name Generator</span>}
@@ -851,7 +873,11 @@ export default function Home() {
           <Link
             href="/name-validator"
             title="Name Validator"
-            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/10 transition-colors text-sm text-white/60 hover:text-white ${!sidebarOpen ? "justify-center" : ""}`}
+            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg transition-colors text-sm ${
+              pathname === "/name-validator"
+                ? "bg-white/10 text-white"
+                : "text-white/60 hover:bg-white/10 hover:text-white"
+            } ${!sidebarOpen ? "justify-center" : ""}`}
           >
             <BadgeCheck className="h-4 w-4 flex-shrink-0" />
             {sidebarOpen && <span>Name Validator</span>}
