@@ -65,9 +65,10 @@ class AnalyticsClient {
   private enabled = false;
   private readonly MAX_EVENTS = 10000;
   private readonly EVENTS_KEY = "analytics:events";
+  private readonly initPromise: Promise<void>;
 
   constructor() {
-    this.initialize();
+    this.initPromise = this.initialize();
   }
 
   private async initialize() {
@@ -104,6 +105,7 @@ class AnalyticsClient {
    * Fire-and-forget - never blocks the main request
    */
   async track(event: AnalyticsEvent): Promise<void> {
+    await this.initPromise;
     if (!this.enabled || !this.redis) {
       return; // Silent no-op
     }

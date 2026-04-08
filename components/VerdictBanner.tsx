@@ -20,9 +20,9 @@ function inlineMarkdown(text: string): React.ReactNode {
 }
 
 // Maps internal path codes to user-facing labels
+// PATH_A1 is intentionally excluded — it is an internal routing qualifier; the verdict title is sufficient
 const PATH_LABELS: Record<string, string> = {
   PATH_A0: "Do Not Name — Use Inline Copy",
-  PATH_A1: "Use a Descriptive Label",
   PATH_A2: "Use a Descriptive Label — Score Below Threshold",
   PATH_B: "More Information Needed",
   PATH_C: "Approved for Naming",
@@ -78,7 +78,9 @@ export function VerdictBanner({ verdict, summary, path }: VerdictBannerProps) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
-    const text = [verdict, path ? `(${path})` : "", "", ...(summary?.filter(Boolean) ?? [])].join("\n").trim();
+    // PATH_A1 is internal — omit raw path code from copied text
+    const pathLabel = path && path !== "PATH_A1" ? `(${path})` : "";
+    const text = [verdict, pathLabel, "", ...(summary?.filter(Boolean) ?? [])].join("\n").trim();
     navigator.clipboard.writeText(text).then(() => {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
@@ -115,6 +117,9 @@ export function VerdictBanner({ verdict, summary, path }: VerdictBannerProps) {
               ))}
             </ul>
           )}
+          <p className="text-[10px] mt-3 opacity-50 leading-snug">
+            AI-generated recommendation — human review recommended before implementation.
+          </p>
         </div>
       </div>
     </div>

@@ -102,7 +102,7 @@ export default function InsightsPage() {
             </Link>
             <div className="h-6 w-px bg-slate-200" />
             <div className="flex-1">
-              <h1 className="text-xl font-bold text-slate-900">Market Intelligence</h1>
+              <h1 className="text-xl font-bold text-slate-900">DeepSights</h1>
               <p className="text-xs text-slate-500 mt-0.5">
                 Search internal research, reports, and news
               </p>

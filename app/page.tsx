@@ -1,13 +1,23 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
-import { Loader2, ArrowUp, Plus, ChevronLeft, ChevronRight, PlusCircle, Check, BarChart2, Paperclip, X, TestTube2, Globe, TrendingUp } from "lucide-react";
+import { Loader2, ArrowUp, Plus, ChevronLeft, ChevronRight, PlusCircle, Check, BarChart2, Paperclip, X, TestTube2, Globe, Database, Shield, ExternalLink, Ticket } from "lucide-react";
 import { toast, Toaster } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChatMessage, type Message } from "@/components/ChatMessage";
 import Link from "next/link";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
+
+interface SimilarBrief {
+  id: string;
+  createdAt: string;
+  briefSnippet: string;
+  verdictPath: string;
+  verdictTitle: string;
+  score: number | null;
+  similarity: number;
+}
 
 interface Conversation {
   id: string;
@@ -22,14 +32,15 @@ interface Conversation {
 // ─── Models ──────────────────────────────────────────────────────────────────
 
 const MODELS = [
-  { value: "azure-chat-completions-gpt-5-2-2025-12-11-sandbox", label: "GPT-5.2", group: "GPT", badge: "⭐" },
+  { value: "azure-chat-completions-gpt-5-2-2025-12-11-sandbox", label: "GPT-5.2", group: "GPT", badge: "⭐ Best quality" },
+  { value: "azure-chat-completions-gpt-4.1-sandbox", label: "GPT-4.1", group: "GPT", badge: "Recommended" },
+  { value: "azure-chat-completions-gpt-4-1-mini-2025-04-14-sandbox", label: "GPT-4.1 Mini", group: "GPT", badge: "Fast" },
   { value: "azure-chat-completions-gpt-5-latest-sandbox", label: "GPT-5 Latest", group: "GPT" },
   { value: "azure-chat-completions-gpt-5-mini-2025-01-31-sandbox", label: "GPT-5 Mini", group: "GPT" },
-  { value: "azure-chat-completions-gpt-4.1-sandbox", label: "GPT-4.1", group: "GPT" },
   { value: "gcp-chat-completions-anthropic-claude-sonnet-4.6-sandbox", label: "Claude Sonnet 4.6", group: "Claude", badge: "⚠️ 6/min" },
   { value: "gcp-chat-completions-anthropic-claude-opus-4.6-sandbox", label: "Claude Opus 4.6", group: "Claude", badge: "⚠️ 6/min" },
-  { value: "gcp-chat-completions-chat-gemini-3.1-pro-preview-sandbox", label: "Gemini 3.1 Pro", group: "Gemini" },
-  { value: "gcp-chat-completions-chat-gemini-3.1-flash-preview-sandbox", label: "Gemini 3.1 Flash", group: "Gemini" },
+  { value: "gcp-chat-completions-chat-gemini-3.1-pro-preview-sandbox", label: "Gemini 3.1 Pro", group: "Gemini", badge: "300/min" },
+  { value: "gcp-chat-completions-chat-gemini-3.1-flash-preview-sandbox", label: "Gemini 3.1 Flash", group: "Gemini", badge: "Fast · 300/min" },
 ];
 
 const DEFAULT_MODEL = "azure-chat-completions-gpt-5-2-2025-12-11-sandbox";
@@ -55,6 +66,61 @@ function titleFromMessage(content: string): string {
   return clean.length > 50 ? clean.slice(0, 50) + "…" : clean;
 }
 
+// ─── Verdict badge colors ─────────────────────────────────────────────────────
+
+// PATH_A1 is an internal routing qualifier — display same as PATH_A0 to users
+const VERDICT_BADGE: Record<string, { bg: string; text: string; label: string }> = {
+  PATH_C:  { bg: "bg-emerald-100", text: "text-emerald-700", label: "Proceed" },
+  PATH_A2: { bg: "bg-amber-100",   text: "text-amber-700",   label: "Low Score" },
+  PATH_A1: { bg: "bg-slate-100",   text: "text-slate-600",   label: "Do Not Name" },
+  PATH_A0: { bg: "bg-slate-100",   text: "text-slate-600",   label: "Do Not Name" },
+  PATH_B:  { bg: "bg-blue-100",    text: "text-blue-700",    label: "More Info Needed" },
+};
+
+// ─── SimilarBriefsCard ────────────────────────────────────────────────────────
+
+function SimilarBriefsCard({ briefs, isLoading }: { briefs: SimilarBrief[]; isLoading: boolean }) {
+  return (
+    <div className="mt-4 mb-2">
+      <div className="flex items-center gap-2 mb-2 px-1">
+        <span className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Similar past decisions</span>
+        {isLoading && <span className="text-[10px] text-slate-400 animate-pulse">Searching memory…</span>}
+      </div>
+      {isLoading && briefs.length === 0 ? (
+        <div className="flex gap-3">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="flex-1 bg-slate-50 border border-slate-200 rounded-2xl p-4 animate-pulse h-24" />
+          ))}
+        </div>
+      ) : briefs.length === 0 ? (
+        <p className="text-xs text-slate-400 px-1">No similar briefs found yet — submit more evaluations to build institutional memory.</p>
+      ) : (
+        <div className="flex gap-3">
+          {briefs.map((b) => {
+            const badge = VERDICT_BADGE[b.verdictPath] ?? { bg: "bg-slate-100", text: "text-slate-600", label: b.verdictPath };
+            const simPct = Math.round(b.similarity * 100);
+            const date = new Date(b.createdAt).toLocaleDateString(undefined, { month: "short", day: "numeric" });
+            return (
+              <div key={b.id} className="flex-1 bg-white border border-slate-200 rounded-2xl p-4 min-w-0">
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold ${badge.bg} ${badge.text}`}>
+                    {badge.label}
+                  </span>
+                  <span className="text-[10px] text-slate-400 flex-shrink-0">{simPct}% match · {date}</span>
+                </div>
+                <p className="text-xs text-slate-600 leading-relaxed line-clamp-3">{b.briefSnippet}</p>
+                {b.score !== null && (
+                  <p className="text-[10px] text-slate-400 mt-2">Score: {b.score}/70</p>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function Home() {
@@ -64,9 +130,14 @@ export default function Home() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [selectedModel, setSelectedModel] = useState(DEFAULT_MODEL);
   const [includeResearch, setIncludeResearch] = useState(false);
-  const [useDeepSights, setUseDeepSights] = useState(false);
+
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [modelPickerOpen, setModelPickerOpen] = useState(false);
+  const [similarBriefs, setSimilarBriefs] = useState<SimilarBrief[]>([]);
+  const [isFetchingSimilar, setIsFetchingSimilar] = useState(false);
+  const [jiraTicketKey, setJiraTicketKey] = useState<string | null>(null);
+  const [jiraTicketUrl, setJiraTicketUrl] = useState<string | null>(null);
+  const [isCreatingJiraTicket, setIsCreatingJiraTicket] = useState(false);
 
   // Upload state — stored separately so file shows as pill, not as textarea text
   const [uploadedFileName, setUploadedFileName] = useState<string | null>(null);
@@ -180,6 +251,9 @@ export default function Home() {
     setInputValue("");
     setUploadedFileName(null);
     setPendingUploadText(null);
+    setSimilarBriefs([]);
+    setJiraTicketKey(null);
+    setJiraTicketUrl(null);
   };
 
   // ── Upload — shows file as attachment pill; text extracted but NOT put in textarea ──
@@ -302,7 +376,6 @@ export default function Home() {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const payload: any = {
         skipWebResearch: !includeResearch,
-        useDeepSights,
         model: selectedModel
       };
 
@@ -337,7 +410,31 @@ export default function Home() {
       removeLoadingMessage(conv.id);
       updateConversation(conv.id, { evaluation: result });
 
+      // Fetch similar past briefs for final, non-clarification verdicts
       const isFinal = !data.requiresClarification;
+
+      // Show Slack notification toast for PATH_C verdicts
+      if (isFinal && data.slackNotified) {
+        toast.success("Team notified via Slack");
+      }
+
+      if (isFinal && !isClarification) {
+        setSimilarBriefs([]);
+        setIsFetchingSimilar(true);
+        fetch("/api/similar-briefs", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ brief: payload.brief }),
+        })
+          .then((r) => r.json())
+          .then((d) => {
+            if (Array.isArray(d.similar)) setSimilarBriefs(d.similar);
+          })
+          .catch(() => {})
+          .finally(() => setIsFetchingSimilar(false));
+      } else {
+        setSimilarBriefs([]);
+      }
 
       addMessages(conv.id, [
         {
@@ -420,6 +517,44 @@ export default function Home() {
       addMessages(conv.id, [{ role: "assistant", content: helpfulMsg }]);
     } finally {
       setIsProcessing(false);
+    }
+  };
+
+  const handleCreateJiraTicket = async () => {
+    if (!currentEvaluation || isCreatingJiraTicket) return;
+
+    setIsCreatingJiraTicket(true);
+    try {
+      const briefMsg = messages.find((m) => m.metadata?.type === "brief")?.content ?? "";
+      const res = await fetch("/api/jira/create-ticket", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          verdictTitle: currentEvaluation.verdict?.title ?? "",
+          verdictPath: currentEvaluation.verdict?.path ?? "PATH_C",
+          verdictSummary: currentEvaluation.verdict?.summary ?? [],
+          score: currentEvaluation.scoringResult?.scores?.total ?? null,
+          briefSnippet: briefMsg.slice(0, 500),
+          offeringDescription: currentEvaluation.compiledBrief?.offering_description ?? null,
+          gateResults: currentEvaluation.gateEvaluation?.gate_results ?? null,
+          scoringBreakdown: currentEvaluation.scoringResult?.scores?.breakdown ?? null,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        throw new Error(data.error ?? "Failed to create ticket");
+      }
+
+      setJiraTicketKey(data.ticket.key);
+      setJiraTicketUrl(data.ticket.url);
+      toast.success(`Jira ticket created: ${data.ticket.key}`);
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "Failed to create Jira ticket";
+      toast.error(msg);
+    } finally {
+      setIsCreatingJiraTicket(false);
     }
   };
 
@@ -527,14 +662,7 @@ export default function Home() {
             <BarChart2 className="h-4 w-4 flex-shrink-0" />
             {sidebarOpen && <span>Analytics</span>}
           </Link>
-          <Link
-            href="/insights"
-            title="Market Intelligence"
-            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/10 transition-colors text-sm text-white/60 hover:text-white ${!sidebarOpen ? "justify-center" : ""}`}
-          >
-            <TrendingUp className="h-4 w-4 flex-shrink-0" />
-            {sidebarOpen && <span>Insights</span>}
-          </Link>
+
           <Link
             href="/lab"
             title="Lab"
@@ -547,6 +675,24 @@ export default function Home() {
                 <span className="text-[9px] font-bold text-blue-300 bg-blue-900/40 px-1 py-0.5 rounded uppercase tracking-wide">Beta</span>
               </span>
             )}
+          </Link>
+
+          <Link
+            href="/registry"
+            title="Naming Registry"
+            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/10 transition-colors text-sm text-white/60 hover:text-white ${!sidebarOpen ? "justify-center" : ""}`}
+          >
+            <Database className="h-4 w-4 flex-shrink-0" />
+            {sidebarOpen && <span>Registry</span>}
+          </Link>
+
+          <Link
+            href="/governance"
+            title="AI Governance"
+            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/10 transition-colors text-sm text-white/60 hover:text-white ${!sidebarOpen ? "justify-center" : ""}`}
+          >
+            <Shield className="h-4 w-4 flex-shrink-0" />
+            {sidebarOpen && <span>Governance</span>}
           </Link>
         </div>
 
@@ -563,6 +709,9 @@ export default function Home() {
                   onClick={() => {
                     setActiveId(conv.id);
                     setSelectedModel(conv.model);
+                    setSimilarBriefs([]);
+                    setJiraTicketKey(null);
+                    setJiraTicketUrl(null);
                   }}
                   className={`w-full text-left px-3 py-2.5 rounded-lg text-sm transition-colors ${
                     conv.id === activeId
@@ -665,6 +814,39 @@ export default function Home() {
                 {messages.map((message, idx) => (
                   <ChatMessage key={idx} message={message} isLatest={idx === messages.length - 1} />
                 ))}
+                {(isFetchingSimilar || similarBriefs.length > 0) && (
+                  <SimilarBriefsCard briefs={similarBriefs} isLoading={isFetchingSimilar} />
+                )}
+                {currentEvaluation?.verdict?.path === "PATH_C" && (
+                  <div className="mt-3 mb-2 flex items-center gap-3 px-1">
+                    {jiraTicketKey ? (
+                      <a
+                        href={jiraTicketUrl ?? "#"}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-lg hover:bg-emerald-100 transition-colors font-medium"
+                      >
+                        <Ticket className="h-3.5 w-3.5" />
+                        {jiraTicketKey}
+                        <ExternalLink className="h-3 w-3 opacity-60" />
+                      </a>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={handleCreateJiraTicket}
+                        disabled={isCreatingJiraTicket}
+                        className="inline-flex items-center gap-1.5 text-xs text-slate-600 bg-white border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-50 hover:border-slate-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-medium"
+                      >
+                        {isCreatingJiraTicket ? (
+                          <Loader2 className="h-3.5 w-3.5 animate-spin" />
+                        ) : (
+                          <Ticket className="h-3.5 w-3.5" />
+                        )}
+                        {isCreatingJiraTicket ? "Creating ticket…" : "Create Jira Ticket"}
+                      </button>
+                    )}
+                  </div>
+                )}
                 <div ref={chatEndRef} />
               </div>
             )}
@@ -814,22 +996,6 @@ export default function Home() {
                   >
                     <Globe className="h-3.5 w-3.5" />
                     Research
-                  </button>
-
-                  {/* DeepSights toggle */}
-                  <button
-                    type="button"
-                    onClick={() => setUseDeepSights((v) => !v)}
-                    disabled={isProcessing}
-                    title={useDeepSights ? "DeepSights market intelligence on — click to turn off" : "DeepSights market intelligence off — click to include internal research"}
-                    className={`flex-shrink-0 flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium transition-colors disabled:opacity-40 ${
-                      useDeepSights
-                        ? "bg-purple-100 text-purple-700 hover:bg-purple-200"
-                        : "bg-slate-100 text-slate-500 hover:bg-slate-200"
-                    }`}
-                  >
-                    <TrendingUp className="h-3.5 w-3.5" />
-                    Insights
                   </button>
 
                   <div className="flex-1" />

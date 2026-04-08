@@ -9,6 +9,8 @@ import { toMachinePayload } from "@/lib/modules/formatter";
 import { analytics } from "@/lib/analytics";
 import type { AnalyticsEvent } from "@/lib/analytics";
 import { validateModel } from "@/lib/config/models";
+import { storeBriefMemory } from "@/lib/brief-memory";
+import { notifySlackPathC } from "@/lib/slack";
 
 export const runtime = "nodejs";
 export const maxDuration = 240; // 4 minutes — pipeline makes 4-6 sequential LLM calls
@@ -108,12 +110,39 @@ export async function POST(request: NextRequest) {
         retryCount,
       });
 
+      // Store embedding for future similarity lookup (fire-and-forget)
+      void storeBriefMemory({
+        brief,
+        verdictPath: result.verdict.path,
+        verdictTitle: result.verdict.title,
+        score: result.scoringResult?.scores.total ?? null,
+        offeringDescription: result.compiledBrief?.offering_description ?? null,
+        gateSummary: buildGateSummary(result.gateEvaluation?.gate_results),
+      });
+
+      // Notify Slack on PATH_C verdicts (fire-and-forget)
+      let slackNotified = false;
+      if (result.verdict.path === "PATH_C") {
+        slackNotified = await notifySlackPathC({
+          verdictTitle: result.verdict.title,
+          score: result.scoringResult?.scores.total ?? null,
+          briefSnippet: brief.slice(0, 200),
+          gateSummary: result.gateEvaluation?.gate_results
+            ? Object.entries(result.gateEvaluation.gate_results)
+                .map(([k, g]) => `${k}${(g as any).status === "Pass" ? "✓" : "✗"}`)
+                .join(" ")
+            : null,
+          offeringDescription: result.compiledBrief?.offering_description ?? null,
+        });
+      }
+
       return NextResponse.json({
         success: true,
         result,
         payload: toMachinePayload(result),
         requiresClarification: result.requiresClarification,
         questions: result.questions,
+        slackNotified,
       });
     }
 
@@ -149,12 +178,39 @@ export async function POST(request: NextRequest) {
       retryCount: 0,
     });
 
+    // Store embedding for future similarity lookup (fire-and-forget)
+    void storeBriefMemory({
+      brief,
+      verdictPath: result.verdict.path,
+      verdictTitle: result.verdict.title,
+      score: result.scoringResult?.scores.total ?? null,
+      offeringDescription: result.compiledBrief?.offering_description ?? null,
+      gateSummary: buildGateSummary(result.gateEvaluation?.gate_results),
+    });
+
+    // Notify Slack on PATH_C verdicts (fire-and-forget)
+    let slackNotified = false;
+    if (result.verdict.path === "PATH_C") {
+      slackNotified = await notifySlackPathC({
+        verdictTitle: result.verdict.title,
+        score: result.scoringResult?.scores.total ?? null,
+        briefSnippet: brief.slice(0, 200),
+        gateSummary: result.gateEvaluation?.gate_results
+          ? Object.entries(result.gateEvaluation.gate_results)
+              .map(([k, g]) => `${k}${(g as any).status === "Pass" ? "✓" : "✗"}`)
+              .join(" ")
+          : null,
+        offeringDescription: result.compiledBrief?.offering_description ?? null,
+      });
+    }
+
     return NextResponse.json({
       success: true,
       result,
       payload: toMachinePayload(result),
       requiresClarification: result.requiresClarification,
       questions: result.questions,
+      slackNotified,
     });
   } catch (error) {
     // Sanitize error message before sending to client
@@ -220,6 +276,17 @@ export async function POST(request: NextRequest) {
       { status: statusCode }
     );
   }
+}
+
+/**
+ * Build a concise gate summary string from gate results
+ */
+function buildGateSummary(gateResults: Record<string, { status: string }> | undefined): string | null {
+  if (!gateResults) return null;
+  const icons: Record<string, string> = { Pass: "✓", Fail: "✗", Unknown: "?", Pending: "?" };
+  const parts = Object.entries(gateResults).map(([key, g]) => `${key}${icons[g.status] ?? "?"}`);
+  const allPass = Object.values(gateResults).every(g => g.status === "Pass");
+  return allPass ? "All gates passed" : parts.join(" ");
 }
 
 /**

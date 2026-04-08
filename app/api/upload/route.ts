@@ -156,11 +156,7 @@ export async function POST(req: NextRequest) {
     console.error(`[Upload] Failed after ${elapsed}ms:`, error instanceof Error ? error.message : error);
 
     return NextResponse.json(
-      {
-        error: error instanceof Error && error.message.startsWith("Failed to")
-          ? error.message
-          : "Failed to process file. Please try again.",
-      },
+      { error: "Failed to process file. Please try again." },
       { status: 500 }
     );
   }

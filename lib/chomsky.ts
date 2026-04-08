@@ -38,13 +38,15 @@ export class ChomskyClient {
   }
 
   /**
-   * Create an AbortController with timeout for fetch requests
+   * Create an AbortController with timeout for fetch requests.
+   * Returns the controller and a cleanup function — always call cleanup() in a
+   * finally block so the timer is cleared even when the request succeeds early.
    */
-  private createTimeoutController(timeoutMs?: number): AbortController {
+  private createTimeoutController(timeoutMs?: number): { controller: AbortController; cleanup: () => void } {
     const controller = new AbortController();
     const timeout = timeoutMs || this.config.timeout || 60000;
-    setTimeout(() => controller.abort(), timeout);
-    return controller;
+    const timerId = setTimeout(() => controller.abort(), timeout);
+    return { controller, cleanup: () => clearTimeout(timerId) };
   }
 
   /**
@@ -57,8 +59,8 @@ export class ChomskyClient {
       return this.tokenCache.token;
     }
 
+    const { controller: tokenController, cleanup: tokenCleanup } = this.createTimeoutController(10000);
     try {
-      const controller = this.createTimeoutController(10000); // 10s timeout for token fetch
       const response = await fetch(this.config.tokenEndpoint!, {
         method: "POST",
         headers: {
@@ -67,7 +69,7 @@ export class ChomskyClient {
         body: JSON.stringify({
           appName: "chomskygw",
         }),
-        signal: controller.signal,
+        signal: tokenController.signal,
       });
 
       if (!response.ok) {
@@ -93,6 +95,8 @@ export class ChomskyClient {
         throw new Error("Token fetch timed out. Check your network connection.");
       }
       throw new Error(`Failed to get Chomsky access token: ${error instanceof Error ? error.message : String(error)}`);
+    } finally {
+      tokenCleanup();
     }
   }
 
@@ -144,7 +148,7 @@ export class ChomskyClient {
       [maxTokensKey]: this.config.maxTokens,
     };
 
-    const controller = this.createTimeoutController();
+    const { controller, cleanup } = this.createTimeoutController();
     try {
       const response = await fetch(this.config.endpoint, {
         method: "POST",
@@ -186,6 +190,8 @@ export class ChomskyClient {
         throw new Error("Request timed out. The brief may be too complex or Chomsky is slow to respond.");
       }
       throw error;
+    } finally {
+      cleanup();
     }
   }
 
@@ -227,27 +233,31 @@ export class ChomskyClient {
       [maxTokensKey]: params.maxTokens ?? this.config.maxTokens,
     };
 
-    const controller = this.createTimeoutController();
-    const response = await fetch(this.config.endpoint, {
-      method: "POST",
-      headers,
-      body: JSON.stringify(requestBody),
-      signal: controller.signal,
-    });
+    const { controller, cleanup } = this.createTimeoutController();
+    try {
+      const response = await fetch(this.config.endpoint, {
+        method: "POST",
+        headers,
+        body: JSON.stringify(requestBody),
+        signal: controller.signal,
+      });
 
-    if (!response.ok) {
-      const error = await response.text();
-      throw new Error(`Chomsky API error: ${response.status} - ${error}`);
+      if (!response.ok) {
+        const error = await response.text();
+        throw new Error(`Chomsky API error: ${response.status} - ${error}`);
+      }
+
+      const data = await response.json();
+      const content = data.choices?.[0]?.message?.content || data.content || "";
+
+      if (!content) {
+        throw new Error("No content returned from Chomsky API");
+      }
+
+      return content;
+    } finally {
+      cleanup();
     }
-
-    const data = await response.json();
-    const content = data.choices?.[0]?.message?.content || data.content || "";
-
-    if (!content) {
-      throw new Error("No content returned from Chomsky API");
-    }
-
-    return content;
   }
 
   /**
@@ -303,6 +313,7 @@ export class ChomskyClient {
     const decoder = new TextDecoder();
     let buffer = "";
 
+    try {
     while (true) {
       const { done, value } = await reader.read();
       if (done) break;
@@ -323,6 +334,57 @@ export class ChomskyClient {
           // malformed chunk — skip
         }
       }
+    }
+    } finally {
+      reader.releaseLock();
+    }
+  }
+
+  /**
+   * Generate an embedding vector for the given text using Vector Prime 2.
+   * Returns a number[] embedding (normalized, ~1536 dims).
+   */
+  async embed(text: string): Promise<number[]> {
+    const token = await this.getAccessToken();
+    // VP2 embeddings use the same base URL but /embeddings path
+    const embeddingsEndpoint = this.config.endpoint.replace(/\/genai$/, "/embeddings");
+
+    const { controller, cleanup } = this.createTimeoutController(30000);
+    try {
+      const response = await fetch(embeddingsEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+          "X-genai-api-provider": "azure",
+          "X-EBAY-USER-ID": process.env.USER || "naming-studio",
+          "X-EBAY-CHOMSKY-MODEL-NAME": "ebay-internal-sandbox-vector-prime-2",
+        },
+        body: JSON.stringify({
+          model: "ebay-internal-sandbox-vector-prime-2",
+          input: text,
+        }),
+        signal: controller.signal,
+      });
+
+      if (!response.ok) {
+        const error = await response.text();
+        throw new Error(`Chomsky embeddings error: ${response.status} - ${error}`);
+      }
+
+      const data = await response.json();
+      const embedding = data.data?.[0]?.embedding;
+      if (!Array.isArray(embedding)) {
+        throw new Error("No embedding returned from Chomsky embeddings API");
+      }
+      return embedding as number[];
+    } catch (error) {
+      if (error instanceof Error && error.name === "AbortError") {
+        throw new Error("Embedding request timed out.");
+      }
+      throw error;
+    } finally {
+      cleanup();
     }
   }
 

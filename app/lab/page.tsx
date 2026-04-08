@@ -26,7 +26,6 @@ import {
   BarChart2,
   MessageSquare,
   Wand2,
-  Zap,
   TestTube2,
 } from "lucide-react";
 import { toast, Toaster } from "sonner";
@@ -1654,6 +1653,7 @@ export default function LabPage() {
 
   // Tab state
   const [activeTab, setActiveTab] = useState<"evaluate" | "configure">("evaluate");
+  const [configureView, setConfigureView] = useState<"setup" | "audit">("setup");
 
   // Custom gate/scoring config
   const [customConfig, setCustomConfig] = useState<CustomConfig>(DEFAULT_CUSTOM_CONFIG);
@@ -2432,74 +2432,112 @@ export default function LabPage() {
           {/* ── Tab 2: Configure & Audit ── */}
           {activeTab === "configure" && (
             <div className="py-6">
-              <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
 
-                {/* Left: Gate + Scoring + Quick Test (3/5 width) */}
-                <div className="lg:col-span-3 space-y-6">
-                  {/* Gate configuration */}
-                  <div>
-                    <div className="flex items-center gap-2 mb-3">
-                      <Settings2 className="h-4 w-4 text-slate-500" />
-                      <h2 className="text-sm font-semibold text-slate-800">Gate Configuration</h2>
-                      {hasCustomGates && (
-                        <span className="text-[10px] font-bold text-blue-600 bg-blue-50 border border-blue-200 px-1.5 py-0.5 rounded-full">
-                          Custom active
-                        </span>
-                      )}
+              {/* Inner tab strip: Configure / Audit */}
+              <div className="flex items-center gap-0.5 mb-6 bg-slate-100 p-0.5 rounded-lg self-start inline-flex w-fit">
+                <button
+                  type="button"
+                  onClick={() => setConfigureView("setup")}
+                  aria-current={configureView === "setup" ? "page" : undefined}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
+                    configureView === "setup"
+                      ? "bg-white text-slate-800 shadow-sm"
+                      : "text-slate-500 hover:text-slate-700"
+                  }`}
+                >
+                  <Settings2 className="h-3 w-3" />
+                  Configure
+                  {hasCustomGates && configureView !== "setup" && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0" />
+                  )}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setConfigureView("audit")}
+                  aria-current={configureView === "audit" ? "page" : undefined}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${
+                    configureView === "audit"
+                      ? "bg-white text-slate-800 shadow-sm"
+                      : "text-slate-500 hover:text-slate-700"
+                  }`}
+                >
+                  <BarChart2 className="h-3 w-3" />
+                  Run Audit
+                  {labHistory.length > 0 && (
+                    <span className="text-[10px] text-slate-400 ml-0.5">{labHistory.length}</span>
+                  )}
+                </button>
+              </div>
+
+              {/* ── Configure view ── */}
+              {configureView === "setup" && (
+                <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+
+                  {/* Left: Gate + Scoring + Quick Test (3/5 width) */}
+                  <div className="lg:col-span-3 space-y-8">
+
+                    {/* Step 1: Gate Configuration */}
+                    <div>
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="flex-shrink-0 w-5 h-5 rounded-full bg-slate-800 text-white text-[10px] font-bold flex items-center justify-center">1</span>
+                        <h2 className="text-sm font-semibold text-slate-800">Gate Configuration</h2>
+                        {hasCustomGates && (
+                          <span className="text-[10px] font-bold text-blue-600 bg-blue-50 border border-blue-200 px-1.5 py-0.5 rounded-full">
+                            Custom active
+                          </span>
+                        )}
+                      </div>
+                      <GateConfigPanel
+                        config={customConfig.gates}
+                        additionalGates={customConfig.additionalGates}
+                        onChangeGates={(gates) => setCustomConfig(prev => ({ ...prev, gates }))}
+                        onChangeAdditional={(additionalGates) => setCustomConfig(prev => ({ ...prev, additionalGates }))}
+                      />
                     </div>
-                    <GateConfigPanel
-                      config={customConfig.gates}
-                      additionalGates={customConfig.additionalGates}
-                      onChangeGates={(gates) => setCustomConfig(prev => ({ ...prev, gates }))}
-                      onChangeAdditional={(additionalGates) => setCustomConfig(prev => ({ ...prev, additionalGates }))}
-                    />
+
+                    {/* Step 2: Scoring Configuration */}
+                    <div>
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="flex-shrink-0 w-5 h-5 rounded-full bg-slate-800 text-white text-[10px] font-bold flex items-center justify-center">2</span>
+                        <h2 className="text-sm font-semibold text-slate-800">Scoring Configuration</h2>
+                      </div>
+                      <ScoringConfigPanel
+                        config={customConfig.scoring}
+                        onChange={(scoring) => setCustomConfig(prev => ({ ...prev, scoring }))}
+                      />
+                    </div>
+
+                    {/* Step 3: Quick Test */}
+                    <div>
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="flex-shrink-0 w-5 h-5 rounded-full bg-slate-800 text-white text-[10px] font-bold flex items-center justify-center">3</span>
+                        <h2 className="text-sm font-semibold text-slate-800">Quick Test</h2>
+                        <span className="text-[10px] text-slate-400">Validate your config against sample briefs</span>
+                      </div>
+                      <QuickTestPanel
+                        customGates={{
+                          ...customConfig.gates,
+                          ...Object.fromEntries(
+                            customConfig.additionalGates
+                              .filter(g => g.key.trim() && g.label.trim())
+                              .map(g => [g.key, g])
+                          ),
+                        }}
+                        customScoring={(() => {
+                          const s = customConfig.scoring;
+                          const modified = !s.includeDefaultFactors ||
+                            s.additionalFactors.filter(f => f.label.trim() && f.maxPoints > 0 && f.criteria.trim()).length > 0 ||
+                            Object.keys(s.factorOverrides).length > 0 ||
+                            s.threshold !== 60;
+                          return modified ? s : undefined;
+                        })()}
+                        disabledGates={disabledStandardGateKeys}
+                      />
+                    </div>
                   </div>
 
-                  {/* Scoring configuration */}
-                  <div>
-                    <div className="flex items-center gap-2 mb-3">
-                      <BarChart2 className="h-4 w-4 text-slate-500" />
-                      <h2 className="text-sm font-semibold text-slate-800">Scoring Configuration</h2>
-                    </div>
-                    <ScoringConfigPanel
-                      config={customConfig.scoring}
-                      onChange={(scoring) => setCustomConfig(prev => ({ ...prev, scoring }))}
-                    />
-                  </div>
-
-                  {/* Quick Test */}
-                  <div>
-                    <div className="flex items-center gap-2 mb-3">
-                      <TestTube2 className="h-4 w-4 text-slate-500" />
-                      <h2 className="text-sm font-semibold text-slate-800">Quick Test</h2>
-                      <span className="text-[10px] font-bold text-green-600 bg-green-50 border border-green-200 px-1.5 py-0.5 rounded-full">Enabled</span>
-                    </div>
-                    <QuickTestPanel
-                      customGates={{
-                        ...customConfig.gates,
-                        ...Object.fromEntries(
-                          customConfig.additionalGates
-                            .filter(g => g.key.trim() && g.label.trim())
-                            .map(g => [g.key, g])
-                        ),
-                      }}
-                      customScoring={(() => {
-                        const s = customConfig.scoring;
-                        const modified = !s.includeDefaultFactors ||
-                          s.additionalFactors.filter(f => f.label.trim() && f.maxPoints > 0 && f.criteria.trim()).length > 0 ||
-                          Object.keys(s.factorOverrides).length > 0 ||
-                          s.threshold !== 60;
-                        return modified ? s : undefined;
-                      })()}
-                      disabledGates={disabledStandardGateKeys}
-                    />
-                  </div>
-                </div>
-
-                {/* Right: Presets + Run audit (2/5 width) */}
-                <div className="lg:col-span-2 space-y-6">
-                  {/* Preset management */}
-                  <div>
+                  {/* Right: Save / Load presets (2/5 width) */}
+                  <div className="lg:col-span-2">
                     <div className="flex items-center gap-2 mb-3">
                       <Sparkles className="h-4 w-4 text-slate-500" />
                       <h2 className="text-sm font-semibold text-slate-800">Save Configuration</h2>
@@ -2643,47 +2681,14 @@ export default function LabPage() {
                       )}
                     </div>
                   </div>
-
-                  {/* Advanced Capabilities */}
-                  <div>
-                    <div className="flex items-center gap-2 mb-3">
-                      <Zap className="h-4 w-4 text-slate-500" />
-                      <h2 className="text-sm font-semibold text-slate-800">Advanced Capabilities</h2>
-                    </div>
-                    <div className="bg-white rounded-xl border border-slate-200 p-4 space-y-3">
-                      {[
-                        { label: "Quick Test", description: "Batch-test gate logic against 5 sample briefs", enabled: true },
-                        { label: "Q&A in Evaluate", description: "Ask questions about the evaluation in real time", enabled: true },
-                        { label: "AI-Generated Conditions", description: "Auto-fill pass/fail conditions from gate label + description", enabled: true },
-                        { label: "Glean Knowledge Base", description: "Pull live context from eBay's internal Glean workspace", enabled: false },
-                        { label: "Portfolio Conflict Scan", description: "Check proposed names against eBay's product portfolio registry", enabled: false },
-                        { label: "Trademark Pre-Check", description: "Early trademark risk screening via legal API integration", enabled: false },
-                      ].map(({ label, description, enabled }) => (
-                        <div key={label} className={`flex items-start gap-3 ${!enabled ? "opacity-50" : ""}`}>
-                          <div className={`flex-shrink-0 w-7 h-4 rounded-full mt-0.5 flex items-center transition-colors ${enabled ? "bg-blue-500" : "bg-slate-200"}`}>
-                            <span className={`w-3 h-3 rounded-full bg-white shadow transition-transform ${enabled ? "translate-x-3.5" : "translate-x-0.5"}`} />
-                          </div>
-                          <div className="min-w-0">
-                            <p className="text-xs font-medium text-slate-700">{label}</p>
-                            <p className="text-[10px] text-slate-400 leading-snug">{description}</p>
-                            {!enabled && <p className="text-[9px] text-slate-300 mt-0.5 uppercase tracking-wide font-semibold">Coming soon</p>}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Run audit */}
-                  <div>
-                    <div className="flex items-center gap-2 mb-3">
-                      <BarChart2 className="h-4 w-4 text-slate-500" />
-                      <h2 className="text-sm font-semibold text-slate-800">Run Audit</h2>
-                      <span className="text-[10px] text-slate-400">{labHistory.length} run{labHistory.length !== 1 ? "s" : ""}</span>
-                    </div>
-                    <RunAuditPanel runs={labHistory} />
-                  </div>
                 </div>
-              </div>
+              )}
+
+              {/* ── Audit view ── */}
+              {configureView === "audit" && (
+                <RunAuditPanel runs={labHistory} />
+              )}
+
             </div>
           )}
 
