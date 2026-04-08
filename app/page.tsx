@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
-import { Loader2, ArrowUp, Plus, ChevronLeft, ChevronRight, PlusCircle, Check, BarChart2, Paperclip, X, TestTube2, Globe, Database, Shield, ExternalLink, Ticket } from "lucide-react";
+import { Loader2, ArrowUp, Plus, ChevronLeft, ChevronRight, PlusCircle, Check, BarChart2, Paperclip, X, TestTube2, Globe, Database, Shield, ExternalLink, Ticket, Wand2, BadgeCheck } from "lucide-react";
 import { toast, Toaster } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChatMessage, type Message } from "@/components/ChatMessage";
@@ -837,6 +837,24 @@ export default function Home() {
           >
             <Shield className="h-4 w-4 flex-shrink-0" />
             {sidebarOpen && <span>Governance</span>}
+          </Link>
+
+          <Link
+            href="/name-generator"
+            title="Name Generator"
+            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/10 transition-colors text-sm text-white/60 hover:text-white ${!sidebarOpen ? "justify-center" : ""}`}
+          >
+            <Wand2 className="h-4 w-4 flex-shrink-0" />
+            {sidebarOpen && <span>Name Generator</span>}
+          </Link>
+
+          <Link
+            href="/name-validator"
+            title="Name Validator"
+            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg hover:bg-white/10 transition-colors text-sm text-white/60 hover:text-white ${!sidebarOpen ? "justify-center" : ""}`}
+          >
+            <BadgeCheck className="h-4 w-4 flex-shrink-0" />
+            {sidebarOpen && <span>Name Validator</span>}
           </Link>
         </div>
 
