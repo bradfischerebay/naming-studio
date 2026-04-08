@@ -24,7 +24,8 @@ export async function analyzeLandscape(
   options?: {
     skipWebResearch?: boolean;
     useDeepSights?: boolean;
-  }
+  },
+  model?: string
 ): Promise<LandscapeSynthesis> {
   if (options?.skipWebResearch && !options?.useDeepSights) {
     // Return empty landscape when web research is skipped
@@ -81,6 +82,7 @@ export async function analyzeLandscape(
 
   try {
     const result = await chomsky.generateObject({
+      model,
       schema: LandscapeSynthesisSchema,
       messages: [
         {

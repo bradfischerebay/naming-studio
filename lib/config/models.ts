@@ -6,6 +6,8 @@
 export const ALLOWED_MODELS = [
   // Azure OpenAI Models
   "azure-chat-completions-gpt-5-2-2025-12-11-sandbox",
+  "azure-chat-completions-gpt-4-1-2025-04-14-sandbox",
+  "azure-chat-completions-gpt-4-1-mini-2025-04-14-sandbox",
 
   // Anthropic Claude Models (GCP)
   "gcp-chat-completions-anthropic-claude-sonnet-4.6-sandbox",
@@ -51,4 +53,29 @@ export function validateModel(model: unknown): string {
   }
 
   return model;
+}
+
+/**
+ * Pipeline model routing interface
+ * Allows per-step model selection for optimal cost/quality tradeoffs
+ */
+export interface PipelineModelRouting {
+  parser: string;
+  researcher: string;
+  extractor: string;
+  questioner: string;
+}
+
+/**
+ * Get per-pipeline-step model routing from environment variables
+ * Falls back to default model if step-specific env vars are not set
+ */
+export function getPipelineModels(): PipelineModelRouting {
+  const defaultModel = getDefaultModel();
+  return {
+    parser:     process.env.CHOMSKY_MODEL_PARSER     || defaultModel,
+    researcher: process.env.CHOMSKY_MODEL_RESEARCHER || defaultModel,
+    extractor:  process.env.CHOMSKY_MODEL_EXTRACTOR  || defaultModel,
+    questioner: process.env.CHOMSKY_MODEL_EXTRACTOR  || defaultModel, // same default as extractor
+  };
 }

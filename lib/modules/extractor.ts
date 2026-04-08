@@ -20,7 +20,8 @@ import { buildExtractFactsPrompt } from "../prompts/extract-facts";
  */
 export async function extractFacts(
   brief: CompiledBrief,
-  landscape?: LandscapeSynthesis
+  landscape?: LandscapeSynthesis,
+  model?: string
 ): Promise<NamingFacts> {
   const briefJson = JSON.stringify(brief, null, 2);
   const landscapeJson = landscape ? JSON.stringify(landscape, null, 2) : undefined;
@@ -29,6 +30,7 @@ export async function extractFacts(
 
   try {
     const result = await chomsky.generateObject({
+      model,
       schema: NamingFactsSchema,
       messages: [
         {
@@ -56,7 +58,8 @@ export async function extractFacts(
  */
 export async function patchFacts(
   originalFacts: NamingFacts,
-  userClarification: string
+  userClarification: string,
+  model?: string
 ): Promise<NamingFacts> {
   const patchPrompt = `You are updating naming facts based on user clarification.
 
@@ -98,6 +101,7 @@ Output the updated facts as JSON (no markdown code blocks).`;
 
   try {
     const result = await chomsky.generateObject({
+      model,
       schema: NamingFactsSchema,
       messages: [
         {

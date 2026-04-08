@@ -22,7 +22,8 @@ import { buildGenerateQuestionsPrompt, GENERATE_QUESTIONS_SYSTEM_PROMPT } from "
  */
 export async function generateQuestions(
   gateEvaluation: GateEvaluation,
-  facts?: NamingFacts
+  facts?: NamingFacts,
+  model?: string
 ): Promise<string[]> {
   const allPendingGates = getPendingGates(gateEvaluation);
 
@@ -51,6 +52,7 @@ export async function generateQuestions(
 
   try {
     const response = await chomsky.generateText({
+      model,
       messages: [
         { role: "system", content: GENERATE_QUESTIONS_SYSTEM_PROMPT },
         { role: "user", content: prompt },

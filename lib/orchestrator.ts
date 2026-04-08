@@ -25,6 +25,7 @@ import { formatAsMarkdown, formatAsEscalation } from "./modules/formatter";
 import { getPendingGates } from "./models/gates";
 import type { GateEvaluation } from "./models/gates";
 import type { ScoringResult } from "./models/scoring";
+import { getPipelineModels } from "./config/models";
 
 /**
  * Main evaluation interface
@@ -56,6 +57,14 @@ export async function evaluate(options: EvaluateOptions): Promise<EvaluateResult
     chomsky.overrideModel(config.model);
   }
 
+  // Determine per-step model routing
+  // If user selected a specific model via UI, use it for all steps
+  // Otherwise, use per-step routing from env vars
+  const userSelectedModel = config?.model;
+  const pipelineModels = userSelectedModel
+    ? { parser: userSelectedModel, researcher: userSelectedModel, extractor: userSelectedModel, questioner: userSelectedModel }
+    : getPipelineModels();
+
   const log = (phase: WorkflowPhase, message: string) => {
     state.phase = phase;
     onProgress?.(phase, message);
@@ -64,7 +73,7 @@ export async function evaluate(options: EvaluateOptions): Promise<EvaluateResult
   try {
     // Phase 1: Parse Brief
     log(WorkflowPhase.PARSING, "Parsing brief...");
-    const parsedBrief = await parseBrief(brief);
+    const parsedBrief = await parseBrief(brief, pipelineModels.parser);
     state.parsedBrief = parsedBrief.compiled_brief;
 
     // Pre-flight: if the parsed brief is missing critical fields, return PATH_B immediately
@@ -89,12 +98,12 @@ export async function evaluate(options: EvaluateOptions): Promise<EvaluateResult
       state.landscapeData = await analyzeLandscape(state.parsedBrief, {
         skipWebResearch: config?.skipWebResearch,
         useDeepSights: config?.useDeepSights,
-      });
+      }, pipelineModels.researcher);
     }
 
     // Phase 3: Extract Facts
     log(WorkflowPhase.EXTRACTION, "Extracting naming facts...");
-    state.factsData = await extractFacts(state.parsedBrief, state.landscapeData);
+    state.factsData = await extractFacts(state.parsedBrief, state.landscapeData, pipelineModels.extractor);
 
     // Phase 4: Evaluate Gates
     log(WorkflowPhase.GATES, "Evaluating gates...");
@@ -120,7 +129,7 @@ export async function evaluate(options: EvaluateOptions): Promise<EvaluateResult
     let questions: string[] | undefined;
     if (requiresClarification) {
       log(WorkflowPhase.FORMATTING, "Generating clarification questions...");
-      questions = await generateQuestions(state.gateEvaluation, state.factsData);
+      questions = await generateQuestions(state.gateEvaluation, state.factsData, pipelineModels.questioner);
     }
 
     // Phase 9: Format output
@@ -164,6 +173,14 @@ export async function evaluateWithClarification(
     chomsky.overrideModel(config.model);
   }
 
+  // Determine per-step model routing
+  // If user selected a specific model via UI, use it for all steps
+  // Otherwise, use per-step routing from env vars
+  const userSelectedModel = config?.model;
+  const pipelineModels = userSelectedModel
+    ? { parser: userSelectedModel, researcher: userSelectedModel, extractor: userSelectedModel, questioner: userSelectedModel }
+    : getPipelineModels();
+
   const log = (phase: WorkflowPhase, message: string) => {
     state.phase = phase;
     onProgress?.(phase, message);
@@ -176,7 +193,7 @@ export async function evaluateWithClarification(
 
   try {
     // Reuse previous parsed data (re-parse only if not available)
-    state.parsedBrief = previousResult.compiledBrief ?? await parseBrief(brief).then(p => p.compiled_brief);
+    state.parsedBrief = previousResult.compiledBrief ?? await parseBrief(brief, pipelineModels.parser).then(p => p.compiled_brief);
     state.landscapeData = previousResult.landscapeData as LandscapeSynthesis | undefined;
 
     // Phase 1: Patch facts with user clarification
@@ -184,7 +201,7 @@ export async function evaluateWithClarification(
     if (!previousResult.factsData) {
       throw new Error("No facts data from previous evaluation");
     }
-    state.factsData = await patchFacts(previousResult.factsData as NamingFacts, userClarification);
+    state.factsData = await patchFacts(previousResult.factsData as NamingFacts, userClarification, pipelineModels.extractor);
 
     // Phase 2: Re-evaluate gates
     log(WorkflowPhase.GATES, "Re-evaluating gates...");
@@ -236,7 +253,7 @@ export async function evaluateWithClarification(
 
     if (requiresClarification) {
       log(WorkflowPhase.FORMATTING, "Generating additional clarification questions...");
-      questions = await generateQuestions(state.gateEvaluation, state.factsData);
+      questions = await generateQuestions(state.gateEvaluation, state.factsData, pipelineModels.questioner);
 
       // If still missing info after retry, escalate
       state.retryCount = incrementRetry(state).retryCount;

@@ -15,11 +15,12 @@ import { buildParsePrompt } from "../prompts/parse-brief";
 /**
  * Parse raw brief text into structured CompiledBrief
  */
-export async function parseBrief(rawBriefText: string): Promise<ParsedBrief> {
+export async function parseBrief(rawBriefText: string, model?: string): Promise<ParsedBrief> {
   const prompt = buildParsePrompt(rawBriefText);
 
   try {
     const result = await chomsky.generateObject({
+      model,
       schema: ParsedBriefSchema,
       messages: [
         {

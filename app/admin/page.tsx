@@ -353,18 +353,19 @@ export default function AdminPage() {
           <h2 className="text-sm font-bold text-slate-900 mb-4">Admin Endpoints</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             {[
-              { label: "Brief Corpus", href: "/api/corpus?limit=20", desc: "Paginated unique briefs with run counts" },
-              { label: "Export PATH_C JSONL", href: "/api/corpus?export=jsonl&verdict=PATH_C&format=anthropic", desc: "Fine-tuning dataset — approved entries only" },
-              { label: "Analytics Summary", href: "/api/analytics", desc: "Evaluation stats from Redis" },
-              { label: "Naming Registry", href: "/registry", desc: "All PATH_C decisions" },
-              { label: "Governance", href: "/governance", desc: "AI transparency disclosure" },
-              { label: "Lab", href: "/lab", desc: "Streaming gate evaluation workbench" },
+              { label: "Corpus Browser", href: "/corpus", desc: "Review and approve briefs for fine-tuning", target: false },
+              { label: "Brief Corpus API", href: "/api/corpus?limit=20", desc: "Paginated unique briefs with run counts", target: true },
+              { label: "Export PATH_C JSONL", href: "/api/corpus?export=jsonl&verdict=PATH_C&format=anthropic", desc: "Fine-tuning dataset — approved entries only", target: true },
+              { label: "Analytics Summary", href: "/api/analytics", desc: "Evaluation stats from Redis", target: true },
+              { label: "Naming Registry", href: "/registry", desc: "All PATH_C decisions", target: false },
+              { label: "Governance", href: "/governance", desc: "AI transparency disclosure", target: false },
+              { label: "Lab", href: "/lab", desc: "Streaming gate evaluation workbench", target: false },
             ].map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
+                target={link.target ? "_blank" : undefined}
+                rel={link.target ? "noopener noreferrer" : undefined}
                 className="bg-white rounded-2xl border border-slate-200 p-4 hover:border-slate-300 hover:shadow-sm transition-all group"
               >
                 <div className="flex items-center justify-between mb-1">

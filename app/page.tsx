@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
-import { Loader2, ArrowUp, Plus, ChevronLeft, ChevronRight, PlusCircle, Check, BarChart2, Paperclip, X, TestTube2, Globe, Database, Shield, ExternalLink, Ticket, Wand2, BadgeCheck } from "lucide-react";
+import { Loader2, ArrowUp, Plus, ChevronLeft, ChevronRight, PlusCircle, Check, BarChart2, Paperclip, X, TestTube2, Globe, Database, Shield, ExternalLink, Ticket, Wand2, BadgeCheck, BookOpen } from "lucide-react";
 import { toast, Toaster } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChatMessage, type Message } from "@/components/ChatMessage";
@@ -881,6 +881,19 @@ export default function Home() {
           >
             <BadgeCheck className="h-4 w-4 flex-shrink-0" />
             {sidebarOpen && <span>Name Validator</span>}
+          </Link>
+
+          <Link
+            href="/corpus"
+            title="Brief Corpus"
+            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg transition-colors text-sm ${
+              pathname === "/corpus"
+                ? "bg-white/10 text-white"
+                : "text-white/60 hover:bg-white/10 hover:text-white"
+            } ${!sidebarOpen ? "justify-center" : ""}`}
+          >
+            <BookOpen className="h-4 w-4 flex-shrink-0" />
+            {sidebarOpen && <span>Brief Corpus</span>}
           </Link>
         </div>
 
