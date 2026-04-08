@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { BadgeCheck, Loader2, X } from "lucide-react";
+import { BadgeCheck, Loader2, X, Download } from "lucide-react";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -334,7 +334,40 @@ export default function NameValidatorPage() {
               <div className="space-y-4">
                 <div className="flex items-center justify-between mb-2 px-1">
                   <span className="text-xs text-slate-400">{results.length} name{results.length !== 1 ? "s" : ""} evaluated · {markets.join(", ")}</span>
-                  {checkedAt && <span className="text-xs text-slate-400">Checked at {checkedAt}</span>}
+                  <div className="flex items-center gap-3">
+                    {checkedAt && <span className="text-xs text-slate-400">Checked at {checkedAt}</span>}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const rows = [
+                          ["Name", "Verdict", "Score", "Naming Protocol", "Portfolio Conflict", "Brief Alignment", "Distinctiveness", "Cross-Market Fit", "Recommendation"],
+                          ...results.map((r) => [
+                            r.name,
+                            r.overall,
+                            String(r.score),
+                            r.checks.naming_protocol.status,
+                            r.checks.portfolio_conflict.status,
+                            r.checks.brief_alignment.status,
+                            r.checks.distinctiveness.status,
+                            r.checks.cross_market_fit.status,
+                            r.recommendation.replace(/,/g, ";"),
+                          ]),
+                        ];
+                        const csv = rows.map((r) => r.map((v) => `"${v}"`).join(",")).join("\n");
+                        const blob = new Blob([csv], { type: "text/csv" });
+                        const url = URL.createObjectURL(blob);
+                        const a = document.createElement("a");
+                        a.href = url;
+                        a.download = `name-validation-${new Date().toISOString().slice(0, 10)}.csv`;
+                        a.click();
+                        URL.revokeObjectURL(url);
+                      }}
+                      className="flex items-center gap-1.5 text-xs text-slate-500 hover:text-slate-900 border border-slate-200 rounded-lg px-2.5 py-1.5 hover:bg-white transition-colors"
+                    >
+                      <Download className="h-3.5 w-3.5" />
+                      Export CSV
+                    </button>
+                  </div>
                 </div>
                 {results.map((result) => {
                   const overallColor = overallColors[result.overall];

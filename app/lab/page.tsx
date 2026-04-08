@@ -2666,6 +2666,59 @@ export default function LabPage() {
                         </div>
                       )}
 
+                      {/* Export / Import */}
+                      <div className="border-t border-slate-100 pt-3 space-y-1.5">
+                        <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-wide">Share config</p>
+                        <div className="flex gap-2">
+                          <button
+                            type="button"
+                            onClick={() => {
+                              const payload = { version: 1, exportedAt: new Date().toISOString(), config: customConfig };
+                              const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+                              const url = URL.createObjectURL(blob);
+                              const a = document.createElement("a");
+                              a.href = url;
+                              a.download = `lab-config-${new Date().toISOString().slice(0, 10)}.json`;
+                              a.click();
+                              URL.revokeObjectURL(url);
+                            }}
+                            className="flex-1 flex items-center justify-center gap-1.5 text-[11px] font-medium text-slate-600 hover:text-slate-900 border border-slate-200 rounded-lg py-1.5 hover:bg-slate-50 transition-colors"
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Export JSON
+                          </button>
+                          <label className="flex-1 flex items-center justify-center gap-1.5 text-[11px] font-medium text-slate-600 hover:text-slate-900 border border-slate-200 rounded-lg py-1.5 hover:bg-slate-50 transition-colors cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                            Import JSON
+                            <input
+                              type="file"
+                              accept=".json"
+                              className="hidden"
+                              onChange={(e) => {
+                                const file = e.target.files?.[0];
+                                if (!file) return;
+                                const reader = new FileReader();
+                                reader.onload = (ev) => {
+                                  try {
+                                    const parsed = JSON.parse(ev.target?.result as string) as { version?: number; config?: CustomConfig };
+                                    if (parsed.config) {
+                                      setCustomConfig(parsed.config);
+                                      toast.success("Config imported successfully");
+                                    } else {
+                                      toast.error("Invalid config file — missing config field");
+                                    }
+                                  } catch {
+                                    toast.error("Could not parse JSON file");
+                                  }
+                                };
+                                reader.readAsText(file);
+                                e.target.value = "";
+                              }}
+                            />
+                          </label>
+                        </div>
+                      </div>
+
                       {/* Reset all */}
                       {hasCustomGates && (
                         <div className="border-t border-slate-100 pt-3">

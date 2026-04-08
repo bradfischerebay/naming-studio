@@ -492,6 +492,63 @@ export default function AnalyticsPage() {
 
       <div className="max-w-7xl mx-auto px-6 py-8 space-y-6">
 
+        {/* Triage Impact Hero */}
+        {(() => {
+          const pathCCount = data.verdictBreakdown["PATH_C"] ?? 0;
+          const pathBCount = data.verdictBreakdown["PATH_B"] ?? 0;
+          const deflectedCount = data.totalEvaluations - pathCCount;
+          const hoursSaved = deflectedCount * 40; // each deflected naming cycle saves ~40h
+          const pathCRate = data.totalEvaluations > 0 ? (pathCCount / data.totalEvaluations) * 100 : 0;
+          const pathBResolved = data.totalEvaluations > 0 && pathBCount > 0
+            ? (((data.totalEvaluations - pathBCount) / data.totalEvaluations) * 100).toFixed(0)
+            : null;
+
+          return (
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0 }}
+              className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-2xl p-6 text-white"
+            >
+              <div className="flex items-start justify-between mb-4">
+                <div>
+                  <h2 className="text-sm font-semibold text-white/80 uppercase tracking-wider mb-0.5">Triage Impact</h2>
+                  <p className="text-xs text-white/40">Estimating governance value across {data.totalEvaluations.toLocaleString()} evaluation{data.totalEvaluations !== 1 ? "s" : ""}</p>
+                </div>
+                <span className="text-[10px] font-semibold text-white/30 uppercase tracking-widest bg-white/5 px-2 py-1 rounded-lg">~40h per naming cycle</span>
+              </div>
+              <div className="grid grid-cols-4 gap-4">
+                <div>
+                  <div className="text-3xl font-bold tabular-nums text-white">
+                    {hoursSaved >= 1000 ? `${(hoursSaved / 1000).toFixed(1)}k` : hoursSaved.toLocaleString()}
+                  </div>
+                  <div className="text-xs text-white/50 mt-0.5">Est. hours saved</div>
+                  <div className="text-[10px] text-white/30 mt-0.5">{deflectedCount} cycles deflected × 40h</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold tabular-nums text-white">{deflectedCount.toLocaleString()}</div>
+                  <div className="text-xs text-white/50 mt-0.5">Naming cycles avoided</div>
+                  <div className="text-[10px] text-white/30 mt-0.5">PATH_A0/A1/A2 verdicts</div>
+                </div>
+                <div>
+                  <div className={`text-3xl font-bold tabular-nums ${pathCRate > 30 ? "text-emerald-400" : "text-white"}`}>
+                    {pathCRate.toFixed(0)}%
+                  </div>
+                  <div className="text-xs text-white/50 mt-0.5">Proceed-with-naming rate</div>
+                  <div className="text-[10px] text-white/30 mt-0.5">{pathCCount} PATH_C verdicts</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold tabular-nums text-white">{pathBCount.toLocaleString()}</div>
+                  <div className="text-xs text-white/50 mt-0.5">Need more info (PATH_B)</div>
+                  {pathBResolved && (
+                    <div className="text-[10px] text-white/30 mt-0.5">{pathBResolved}% resolved without PATH_B</div>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          );
+        })()}
+
         {/* Row 1 – Stat cards */}
         <div className="grid grid-cols-4 gap-4">
           <StatCard
