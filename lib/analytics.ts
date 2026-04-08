@@ -149,11 +149,11 @@ class AnalyticsClient {
         return this.getEmptySummary();
       }
 
-      // Parse events
+      // Parse events — Upstash may return items as already-parsed objects or as strings
       const events: AnalyticsEvent[] = eventJsons
-        .map((json: string) => {
+        .map((json: unknown) => {
           try {
-            return JSON.parse(json) as AnalyticsEvent;
+            return (typeof json === "string" ? JSON.parse(json) : json) as AnalyticsEvent;
           } catch {
             return null;
           }
