@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { Download, Loader2, Search } from "lucide-react";
 import Sidebar from "@/components/Sidebar";
 

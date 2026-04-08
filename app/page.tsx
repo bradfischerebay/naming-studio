@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { Loader2, ArrowUp, Plus, ChevronLeft, ChevronRight, PlusCircle, Check, BarChart2, Paperclip, X, TestTube2, Globe, Database, Shield, ExternalLink, Ticket, Wand2, BadgeCheck, BookOpen, Save, ArrowRight, Settings, Bell } from "lucide-react";
 import { toast, Toaster } from "sonner";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ChatMessage, type Message } from "@/components/ChatMessage";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -30,10 +30,6 @@ interface Conversation {
   model?: string;
   createdAt: string;
 }
-
-// ─── Fixed Model ─────────────────────────────────────────────────────────────
-
-const FIXED_MODEL = "azure-chat-completions-gpt-5-2-2025-12-11-sandbox";
 
 // Max textarea height ≈ 15 lines (14px × 1.625 line-height × 15 + top/bottom padding)
 const MAX_TEXTAREA_HEIGHT = 340;

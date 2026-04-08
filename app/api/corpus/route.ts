@@ -11,6 +11,18 @@ import { getCorpusEntries, exportCorpusJSONL } from "@/lib/brief-corpus";
 
 export const runtime = "nodejs";
 
+function requireAdmin(request: NextRequest): NextResponse | null {
+  const adminPassword = process.env.ADMIN_PASSWORD;
+  if (!adminPassword) return null; // No password configured — open (dev mode)
+  const providedKey =
+    request.nextUrl.searchParams.get("key") ??
+    request.headers.get("x-admin-key");
+  if (providedKey !== adminPassword) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+  return null;
+}
+
 export async function GET(request: NextRequest) {
   const { searchParams } = request.nextUrl;
   const isExport = searchParams.get("export") === "jsonl";
@@ -34,6 +46,9 @@ export async function GET(request: NextRequest) {
 }
 
 export async function PATCH(request: NextRequest) {
+  const authError = requireAdmin(request);
+  if (authError) return authError;
+
   const body = await request.json() as { hash?: string; approved?: boolean };
   const { hash, approved } = body;
 
@@ -66,6 +81,9 @@ export async function PATCH(request: NextRequest) {
 }
 
 export async function DELETE(request: NextRequest) {
+  const authError = requireAdmin(request);
+  if (authError) return authError;
+
   const hash = request.nextUrl.searchParams.get("hash");
   if (!hash) return NextResponse.json({ error: "hash required" }, { status: 400 });
 

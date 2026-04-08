@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Wand2, Loader2, Copy, Check, Paperclip } from "lucide-react";
 import Sidebar from "@/components/Sidebar";

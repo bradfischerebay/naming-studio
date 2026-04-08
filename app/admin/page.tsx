@@ -6,7 +6,7 @@ import {
   Zap, Database, Globe, Search, MessageSquare, Ticket, ShoppingBag,
   CheckCircle2, XCircle, Lock, ChevronRight, Download, BarChart2,
   GitBranch, Layers, FileText, Brain, Languages, Star, Cpu,
-  Archive, BookOpen, Share2, Workflow, ArrowLeft
+  Archive, BookOpen, Share2, Workflow
 } from "lucide-react";
 import Sidebar from "@/components/Sidebar";
 

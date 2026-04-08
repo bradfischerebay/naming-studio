@@ -378,7 +378,17 @@ const DUMMY_EVENTS: AnalyticsEvent[] = [
   },
 ];
 
-export async function POST() {
+export async function POST(request: Request) {
+  // Require admin password to prevent unauthorized data seeding
+  const adminPassword = process.env.ADMIN_PASSWORD;
+  if (adminPassword) {
+    const { searchParams } = new URL(request.url);
+    const providedKey = searchParams.get("key") ?? request.headers.get("x-admin-key");
+    if (providedKey !== adminPassword) {
+      return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
+    }
+  }
+
   if (!analytics.isEnabled()) {
     return NextResponse.json({
       success: false,

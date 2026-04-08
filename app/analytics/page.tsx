@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import {
   Loader2,
   BarChart2,
-  ArrowLeft,
   RefreshCw,
   Clock,
   AlertCircle,
