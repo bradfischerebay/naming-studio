@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Wand2, Loader2, Copy, Check } from "lucide-react";
+import { Wand2, Loader2, Copy, Check, Paperclip } from "lucide-react";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -42,7 +42,7 @@ const STRATEGY_OPTIONS = [
   { key: "market", label: "Market Position", icon: "🎯" },
 ];
 
-const MARKET_OPTIONS = ["US", "UK", "DE", "AU", "CA", "JP"];
+const MARKET_OPTIONS = ["Global", "US", "UK", "DE", "AU", "CA", "JP"];
 
 const PROGRESS_MESSAGES = [
   "Analyzing brief...",
@@ -72,6 +72,8 @@ export default function NameGeneratorPage() {
   const [activeSubtype, setActiveSubtype] = useState<Record<string, string>>({});
   const [progressIndex, setProgressIndex] = useState(0);
   const [generatedAt, setGeneratedAt] = useState<string | null>(null);
+  const [isUploadingBrief, setIsUploadingBrief] = useState(false);
+  const briefFileInputRef = useRef<HTMLInputElement>(null);
 
   const handleGenerate = async () => {
     if (!brief.trim() || isGenerating) return;
@@ -138,9 +140,20 @@ export default function NameGeneratorPage() {
   };
 
   const toggleMarket = (market: string) => {
+    if (market === "Global") {
+      // Global toggles all individual markets on/off
+      if (markets.includes("Global")) {
+        setMarkets(["US"]); // revert to US only
+      } else {
+        setMarkets(["Global", "US", "UK", "DE", "AU", "CA", "JP"]);
+      }
+      return;
+    }
     if (market === "US") return; // Always keep US
     setMarkets((prev) =>
-      prev.includes(market) ? prev.filter((m) => m !== market) : [...prev, market]
+      prev.includes(market)
+        ? prev.filter((m) => m !== market)
+        : [...prev, market].filter((m) => m !== "Global") // deselect Global when picking individual
     );
   };
 
@@ -150,6 +163,24 @@ export default function NameGeneratorPage() {
         ? prev.filter((s) => s !== strategyKey)
         : [...prev, strategyKey]
     );
+  };
+
+  const handleBriefFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setIsUploadingBrief(true);
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      const res = await fetch("/api/upload", { method: "POST", body: formData });
+      const data = await res.json() as { text?: string; error?: string };
+      if (data.text) {
+        setBrief((prev) => prev ? prev + "\n\n" + data.text : data.text ?? "");
+      }
+    } catch { /* silent */ } finally {
+      setIsUploadingBrief(false);
+      if (briefFileInputRef.current) briefFileInputRef.current.value = "";
+    }
   };
 
   useEffect(() => {
@@ -207,9 +238,21 @@ export default function NameGeneratorPage() {
               />
               <div className="flex justify-between mt-1">
                 <span className="text-xs text-slate-400">Describe the product, audience, and key features</span>
-                <span className={`text-xs ${brief.length > 4500 ? "text-red-500 font-medium" : "text-slate-400"}`}>
-                  {brief.length.toLocaleString()}/5,000
-                </span>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => briefFileInputRef.current?.click()}
+                    disabled={isUploadingBrief}
+                    className="flex items-center gap-1 text-xs text-slate-400 hover:text-slate-700 transition-colors disabled:opacity-40"
+                  >
+                    {isUploadingBrief ? <Loader2 className="h-3 w-3 animate-spin" /> : <Paperclip className="h-3 w-3" />}
+                    {isUploadingBrief ? "Uploading…" : "Upload brief"}
+                  </button>
+                  <input ref={briefFileInputRef} type="file" accept=".pdf,.docx,.doc,.txt" onChange={handleBriefFileUpload} className="hidden" />
+                  <span className={`text-xs ${brief.length > 4500 ? "text-red-500 font-medium" : "text-slate-400"}`}>
+                    {brief.length.toLocaleString()}/5,000
+                  </span>
+                </div>
               </div>
             </div>
 
@@ -224,11 +267,12 @@ export default function NameGeneratorPage() {
                     key={market}
                     type="button"
                     onClick={() => toggleMarket(market)}
-                    disabled={market === "US"}
                     title={market === "US" ? "US market is always included" : undefined}
                     className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
                       markets.includes(market)
-                        ? "bg-blue-600 text-white"
+                        ? market === "Global"
+                          ? "bg-slate-800 text-white"
+                          : "bg-blue-600 text-white"
                         : "bg-slate-100 text-slate-600 hover:bg-slate-200"
                     } ${market === "US" ? "cursor-default" : "cursor-pointer"}`}
                   >

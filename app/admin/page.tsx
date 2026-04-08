@@ -6,7 +6,7 @@ import {
   Zap, Database, Globe, Search, MessageSquare, Ticket, ShoppingBag,
   CheckCircle2, XCircle, Lock, ChevronRight, Download, BarChart2,
   GitBranch, Layers, FileText, Brain, Languages, Star, Cpu,
-  Archive, BookOpen, Share2, Workflow
+  Archive, BookOpen, Share2, Workflow, ArrowLeft
 } from "lucide-react";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -190,8 +190,17 @@ export default function AdminPage() {
   // Password gate
   if (!status) {
     return (
-      <div className="min-h-screen bg-[#f4f4f4] flex items-center justify-center">
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8 w-full max-w-sm">
+      <div className="min-h-screen bg-[#f4f4f4] flex flex-col">
+        {/* Navigation */}
+        <div className="px-6 py-4 flex items-center">
+          <Link href="/" className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-900 transition-colors">
+            <ArrowLeft className="h-4 w-4" />
+            Back to Naming Studio
+          </Link>
+        </div>
+        {/* Centered auth card */}
+        <div className="flex-1 flex items-center justify-center">
+          <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8 w-full max-w-sm">
           <div className="flex items-center gap-2 mb-6">
             <Lock className="h-5 w-5 text-slate-400" />
             <span className="font-semibold text-slate-900">Admin access</span>
@@ -221,6 +230,7 @@ export default function AdminPage() {
           <p className="text-[10px] text-slate-400 mt-4 text-center">
             If ADMIN_PASSWORD is not set, any key will work.
           </p>
+          </div>
         </div>
       </div>
     );

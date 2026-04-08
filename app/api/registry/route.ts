@@ -11,9 +11,9 @@ export async function GET() {
       token: process.env.UPSTASH_REDIS_REST_TOKEN,
     });
 
-    const raw = await redis.lrange("brief-memory:embeddings", 0, -1) as string[];
+    const raw = await redis.lrange("brief-memory:embeddings", 0, -1);
     const entries = raw
-      .map((item: string) => {
+      .map((item) => {
         try {
           const parsed = typeof item === "string" ? JSON.parse(item) : item;
           // eslint-disable-next-line @typescript-eslint/no-unused-vars

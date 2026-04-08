@@ -133,6 +133,7 @@ export default function Home() {
   const [slackNotified, setSlackNotified] = useState(false);
   const [isRequestingReview, setIsRequestingReview] = useState(false);
   const [reviewRequested, setReviewRequested] = useState(false);
+  const [templateFlash, setTemplateFlash] = useState(false);
 
   // Upload state — stored separately so file shows as pill, not as textarea text
   const [uploadedFileName, setUploadedFileName] = useState<string | null>(null);
@@ -982,6 +983,8 @@ How users access it: [Separate enrollment, toggle in settings, automatic, etc.]
 Timing: [Launch date + planned duration — permanent or time-limited?]
 Strategic context: [Why this exists, what problem it solves]`);
                           textareaRef.current?.focus();
+                          setTemplateFlash(true);
+                          setTimeout(() => setTemplateFlash(false), 1200);
                         }}
                         className="text-xs text-blue-600 hover:text-blue-800 font-medium transition-colors"
                       >
@@ -1006,6 +1009,8 @@ Strategic context: [Why this exists, what problem it solves]`);
                           onClick={() => {
                             setInputValue(example);
                             textareaRef.current?.focus();
+                            setTemplateFlash(true);
+                            setTimeout(() => setTemplateFlash(false), 1200);
                           }}
                           className="w-full text-left px-4 py-3 bg-white hover:bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-600 hover:text-slate-900 transition-colors leading-relaxed"
                         >
@@ -1013,6 +1018,7 @@ Strategic context: [Why this exists, what problem it solves]`);
                         </button>
                       ))}
                     </div>
+                    <p className="text-[10px] text-slate-300 text-center mt-3">Clicking fills the input at the bottom of the page</p>
                   </div>
                 </div>
               </div>
@@ -1155,7 +1161,7 @@ Strategic context: [Why this exists, what problem it solves]`);
                   disabled={isProcessing}
                   rows={1}
                   style={{ maxHeight: `${MAX_TEXTAREA_HEIGHT}px` }}
-                  className="w-full px-5 pt-4 pb-2 text-sm text-slate-900 bg-transparent resize-none focus:outline-none placeholder:text-slate-400 min-h-[52px] leading-relaxed overflow-y-auto disabled:opacity-50 disabled:cursor-not-allowed"
+                  className={`w-full px-5 pt-4 pb-2 text-sm text-slate-900 bg-transparent resize-none focus:outline-none placeholder:text-slate-400 min-h-[52px] leading-relaxed overflow-y-auto disabled:opacity-50 disabled:cursor-not-allowed ${templateFlash ? "ring-2 ring-blue-400" : ""}`}
                 />
 
                 {/* Character counter */}

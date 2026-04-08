@@ -29,7 +29,7 @@ interface CheckResult {
 
 // ─── Constants ───────────────────────────────────────────────────────────────
 
-const MARKET_OPTIONS = ["US", "UK", "DE", "AU", "CA", "JP"];
+const MARKET_OPTIONS = ["Global", "US", "UK", "DE", "AU", "CA", "JP"];
 
 const statusColors = {
   pass: { bg: "bg-green-50", text: "text-green-700", icon: "✅", label: "Pass" },
@@ -89,9 +89,19 @@ export default function NameValidatorPage() {
   };
 
   const toggleMarket = (market: string) => {
-    if (market === "US") return; // Always keep US
+    if (market === "Global") {
+      if (markets.includes("Global")) {
+        setMarkets(["US"]);
+      } else {
+        setMarkets(["Global", "US", "UK", "DE", "AU", "CA", "JP"]);
+      }
+      return;
+    }
+    if (market === "US") return;
     setMarkets((prev) =>
-      prev.includes(market) ? prev.filter((m) => m !== market) : [...prev, market]
+      prev.includes(market)
+        ? prev.filter((m) => m !== market)
+        : [...prev, market].filter((m) => m !== "Global")
     );
   };
 
@@ -257,11 +267,12 @@ export default function NameValidatorPage() {
                     key={market}
                     type="button"
                     onClick={() => toggleMarket(market)}
-                    disabled={market === "US"}
                     title={market === "US" ? "US market is always included" : undefined}
                     className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
                       markets.includes(market)
-                        ? "bg-blue-600 text-white"
+                        ? market === "Global"
+                          ? "bg-slate-800 text-white"
+                          : "bg-blue-600 text-white"
                         : "bg-slate-100 text-slate-600 hover:bg-slate-200"
                     } ${market === "US" ? "cursor-default" : "cursor-pointer"}`}
                   >

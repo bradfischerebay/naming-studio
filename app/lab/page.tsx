@@ -3032,7 +3032,7 @@ export default function LabPage() {
                   type="button"
                   onClick={() => setModelPickerOpen((v) => !v)}
                   disabled={isBusy}
-                  title={`Model: ${modelLabel}`}
+                  title={`Select AI model — ${modelLabel}`}
                   className="flex-shrink-0 w-8 h-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center text-slate-400 hover:text-slate-600 transition-colors disabled:opacity-40"
                 >
                   <Settings2 className="h-4 w-4" />

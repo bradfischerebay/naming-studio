@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Download, Loader2, ArrowLeft } from "lucide-react";
+import { Download, Loader2, ArrowLeft, Archive } from "lucide-react";
 import Link from "next/link";
 
 interface RegistryEntry {
@@ -135,19 +135,20 @@ export default function RegistryPage() {
 
         {/* Empty state */}
         {!isLoading && entries.length === 0 && (
-          <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center">
-            <div className="max-w-md mx-auto">
-              <h2 className="text-lg font-semibold text-slate-900 mb-2">
-                No approved names yet
-              </h2>
-              <p className="text-sm text-slate-500">
-                Decisions marked PATH_C will appear here. Start evaluating briefs in the{" "}
-                <Link href="/" className="text-blue-600 hover:text-blue-700 font-medium">
-                  Naming Assistant
-                </Link>{" "}
-                to build your registry.
-              </p>
+          <div className="text-center py-16">
+            <div className="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto mb-4">
+              <Archive className="h-6 w-6 text-slate-300" />
             </div>
+            <h3 className="text-base font-semibold text-slate-900 mb-2">No approved names yet</h3>
+            <p className="text-sm text-slate-400 max-w-sm mx-auto leading-relaxed mb-4">
+              The Naming Registry shows products that received a <strong className="text-slate-600">PATH_C — Approved for Naming</strong> verdict. Once a brief passes all 6 gates and scores ≥ 60/70, it will appear here.
+            </p>
+            <Link
+              href="/"
+              className="inline-flex items-center gap-1.5 text-sm text-slate-600 hover:text-slate-900 border border-slate-200 bg-white rounded-xl px-4 py-2 transition-colors hover:bg-slate-50"
+            >
+              ← Evaluate a brief
+            </Link>
           </div>
         )}
 
