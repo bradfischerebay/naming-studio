@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
-import { Loader2, ArrowUp, Plus, ChevronLeft, ChevronRight, PlusCircle, Check, BarChart2, Paperclip, X, TestTube2, Globe, Database, Shield, ExternalLink, Ticket, Wand2, BadgeCheck, BookOpen, Save, ArrowRight, Settings } from "lucide-react";
+import { Loader2, ArrowUp, Plus, ChevronLeft, ChevronRight, PlusCircle, Check, BarChart2, Paperclip, X, TestTube2, Globe, Database, Shield, ExternalLink, Ticket, Wand2, BadgeCheck, BookOpen, Save, ArrowRight, Settings, Bell } from "lucide-react";
 import { toast, Toaster } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChatMessage, type Message } from "@/components/ChatMessage";
@@ -20,18 +20,6 @@ interface SimilarBrief {
   similarity: number;
 }
 
-interface NameMarketResult {
-  market: string;
-  score: number;
-  pronunciation: string;
-  meaning: string;
-  risks: string[];
-  recommendation: "safe" | "caution" | "avoid";
-}
-interface ValidatorResult {
-  markets: string[];
-  results: Array<{ name: string; markets: NameMarketResult[] }>;
-}
 
 interface Conversation {
   id: string;
@@ -123,110 +111,6 @@ function SimilarBriefsCard({ briefs, isLoading }: { briefs: SimilarBrief[]; isLo
   );
 }
 
-// ─── NameValidatorPanel ────────────────────────────────────────────────────────
-
-function NameValidatorPanel({
-  brief,
-  names,
-  onNamesChange,
-  results,
-  isLoading,
-  onAnalyze,
-}: {
-  brief: string;
-  names: [string, string, string];
-  onNamesChange: (n: [string, string, string]) => void;
-  results: ValidatorResult | null;
-  isLoading: boolean;
-  onAnalyze: () => void;
-}) {
-  const recColor = (r: string) =>
-    r === "safe" ? "bg-emerald-50 text-emerald-700 border-emerald-200" :
-    r === "caution" ? "bg-amber-50 text-amber-700 border-amber-200" :
-    "bg-red-50 text-red-700 border-red-200";
-
-  const recDot = (r: string) =>
-    r === "safe" ? "bg-emerald-400" : r === "caution" ? "bg-amber-400" : "bg-red-400";
-
-  const hasAnyName = names.some((n) => n.trim().length > 0);
-
-  return (
-    <div className="mt-4 mb-2">
-      <div className="flex items-center gap-2 mb-2 px-1">
-        <span className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Validate candidate names</span>
-        <span className="text-[10px] text-slate-400">· Linguistic & cultural fit across target markets</span>
-      </div>
-      <div className="bg-white border border-slate-200 rounded-2xl p-4 space-y-3">
-        <div className="flex gap-2">
-          {names.map((name, i) => (
-            <input
-              key={i}
-              type="text"
-              value={name}
-              onChange={(e) => {
-                const next = [...names] as [string, string, string];
-                next[i] = e.target.value.slice(0, 50);
-                onNamesChange(next);
-              }}
-              placeholder={`Candidate ${i + 1}`}
-              className="flex-1 text-xs border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:border-blue-400 bg-slate-50 focus:bg-white transition-colors placeholder:text-slate-300"
-            />
-          ))}
-          <button
-            type="button"
-            onClick={onAnalyze}
-            disabled={!hasAnyName || isLoading}
-            className="flex-shrink-0 text-xs font-medium px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
-          >
-            {isLoading ? "Analyzing…" : "Analyze"}
-          </button>
-        </div>
-
-        {results && (
-          <div className="overflow-x-auto">
-            <table className="w-full text-[10px] border-collapse">
-              <thead>
-                <tr>
-                  <th className="text-left py-1.5 pr-3 font-semibold text-slate-400 w-20">Market</th>
-                  {results.results.map((r) => (
-                    <th key={r.name} className="px-2 py-1.5 font-semibold text-slate-700 text-center">{r.name}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {results.markets.map((market) => (
-                  <tr key={market} className="border-t border-slate-100">
-                    <td className="py-2 pr-3 font-mono font-semibold text-slate-500">{market}</td>
-                    {results.results.map((nameResult) => {
-                      const cell = nameResult.markets.find((m) => m.market === market);
-                      if (!cell) return <td key={nameResult.name} className="px-2 py-2 text-center text-slate-300">—</td>;
-                      return (
-                        <td key={nameResult.name} className="px-2 py-2">
-                          <div className={`rounded-lg border px-2 py-1.5 ${recColor(cell.recommendation)}`}>
-                            <div className="flex items-center gap-1 mb-0.5">
-                              <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${recDot(cell.recommendation)}`} />
-                              <span className="font-semibold capitalize">{cell.recommendation}</span>
-                              <span className="ml-auto font-mono text-[9px] opacity-60">{cell.score}/10</span>
-                            </div>
-                            <p className="leading-snug opacity-80">{cell.pronunciation}</p>
-                            {cell.risks.length > 0 && (
-                              <p className="mt-0.5 opacity-70">⚠ {cell.risks.join("; ")}</p>
-                            )}
-                          </div>
-                        </td>
-                      );
-                    })}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function Home() {
@@ -244,12 +128,11 @@ export default function Home() {
   const [jiraTicketKey, setJiraTicketKey] = useState<string | null>(null);
   const [jiraTicketUrl, setJiraTicketUrl] = useState<string | null>(null);
   const [isCreatingJiraTicket, setIsCreatingJiraTicket] = useState(false);
-  const [validatorNames, setValidatorNames] = useState<[string, string, string]>(["", "", ""]);
-  const [validatorResults, setValidatorResults] = useState<ValidatorResult | null>(null);
-  const [isValidatingNames, setIsValidatingNames] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [slackNotified, setSlackNotified] = useState(false);
+  const [isRequestingReview, setIsRequestingReview] = useState(false);
+  const [reviewRequested, setReviewRequested] = useState(false);
 
   // Upload state — stored separately so file shows as pill, not as textarea text
   const [uploadedFileName, setUploadedFileName] = useState<string | null>(null);
@@ -259,6 +142,7 @@ export default function Home() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const chatEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const hasLoaded = useRef(false);
 
   // Derived state
   const activeConversation = conversations.find((c) => c.id === activeId) ?? null;
@@ -268,7 +152,48 @@ export default function Home() {
   // Whether there's something ready to send
   const hasContent = inputValue.trim().length > 0 || !!pendingUploadText;
 
+  // Brief quality hint
+  const briefQualityHint = (() => {
+    const text = inputValue.toLowerCase();
+    if (inputValue.trim().length < 50) return null;
+    if (!/(enroll|opt.?in|toggle|setting|access|select|choose|dashboard|sign.?up)/i.test(inputValue)) {
+      return "Tip: mention how users access or interact with this feature";
+    }
+    if (!/(permanent|q[1-4]\s*20\d\d|20\d\d|\d+ month|\d+ year|year|ongoing|launch|season|campaign|week)/i.test(inputValue)) {
+      return "Tip: mention the planned duration or launch timing";
+    }
+    if (!/(us|uk|de|au|ca|jp|global|international|worldwide|market)/i.test(text)) {
+      return "Tip: mention which markets or regions this targets";
+    }
+    return null;
+  })();
+
   // ── Effects ──
+
+  // Load conversations from localStorage on mount
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem("naming-studio-conversations-v1");
+      if (raw) {
+        const saved = JSON.parse(raw) as { conversations: Conversation[]; activeId: string };
+        if (Array.isArray(saved.conversations) && saved.conversations.length > 0) {
+          setConversations(saved.conversations);
+          setActiveId(saved.activeId ?? saved.conversations[0]?.id ?? "");
+        }
+      }
+    } catch { /* ignore corrupted storage */ }
+    hasLoaded.current = true;
+  }, []);
+
+  // Save conversations to localStorage on change
+  useEffect(() => {
+    if (!hasLoaded.current) return; // Don't overwrite with empty state before initial load
+    try {
+      // Keep max 30 conversations, newest first
+      const trimmed = conversations.slice(0, 30);
+      localStorage.setItem("naming-studio-conversations-v1", JSON.stringify({ conversations: trimmed, activeId }));
+    } catch { /* storage quota */ }
+  }, [conversations, activeId]);
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -353,11 +278,11 @@ export default function Home() {
     setSimilarBriefs([]);
     setJiraTicketKey(null);
     setJiraTicketUrl(null);
-    setValidatorNames(["", "", ""]);
-    setValidatorResults(null);
     setIsSaved(false);
     setIsSaving(false);
     setSlackNotified(false);
+    setIsRequestingReview(false);
+    setReviewRequested(false);
   };
 
   // ── Upload — shows file as attachment pill; text extracted but NOT put in textarea ──
@@ -664,27 +589,6 @@ export default function Home() {
     }
   };
 
-  const handleValidateNames = async () => {
-    const filledNames = validatorNames.filter((n) => n.trim().length > 0);
-    if (!filledNames.length || isValidatingNames) return;
-    const briefText = messages.find((m) => m.metadata?.type === "brief")?.content ?? "";
-    setIsValidatingNames(true);
-    setValidatorResults(null);
-    try {
-      const res = await fetch("/api/validate-names", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ names: filledNames, brief: briefText }),
-      });
-      const data = await res.json();
-      if (!res.ok || !data.success) throw new Error(data.error ?? "Validation failed");
-      setValidatorResults(data);
-    } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Name validation failed");
-    } finally {
-      setIsValidatingNames(false);
-    }
-  };
 
   const handleSaveDecision = async () => {
     if (!currentEvaluation || isSaved || isSaving) return;
@@ -710,6 +614,30 @@ export default function Home() {
       toast.error("Couldn't save decision — try again");
     } finally {
       setIsSaving(false);
+    }
+  };
+
+  const handleRequestReview = async () => {
+    if (isRequestingReview || reviewRequested || !currentEvaluation) return;
+    setIsRequestingReview(true);
+    try {
+      const briefText = messages.find((m) => m.metadata?.type === "brief")?.content ?? "";
+      await fetch("/api/slack-escalate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          verdictPath: currentEvaluation.verdict?.path,
+          verdictTitle: currentEvaluation.verdict?.title ?? "",
+          briefSnippet: briefText.slice(0, 300),
+          score: currentEvaluation.scoringResult?.scores?.total ?? null,
+        }),
+      });
+      setReviewRequested(true);
+      toast.success("Review request sent to naming team");
+    } catch {
+      toast.error("Couldn't send review request");
+    } finally {
+      setIsRequestingReview(false);
     }
   };
 
@@ -856,6 +784,19 @@ export default function Home() {
               </span>
             )}
           </Link>
+          <div
+            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg text-sm opacity-40 cursor-default ${!sidebarOpen ? "justify-center" : ""}`}
+            title="Legal Screen — coming soon"
+          >
+            <Shield className="h-4 w-4 flex-shrink-0" />
+            {sidebarOpen && (
+              <span className="flex items-center gap-1.5">
+                <span className="text-[10px] font-bold bg-white/15 text-white/70 px-1 rounded">4</span>
+                Legal Screen
+                <span className="text-[8px] font-semibold text-white/40 uppercase tracking-wide ml-1">Soon</span>
+              </span>
+            )}
+          </div>
         </div>
 
         {/* ── REPOSITORY group ── */}
@@ -947,8 +888,6 @@ export default function Home() {
                     setSimilarBriefs([]);
                     setJiraTicketKey(null);
                     setJiraTicketUrl(null);
-                    setValidatorNames(["", "", ""]);
-                    setValidatorResults(null);
                   }}
                   className={`w-full text-left px-3 py-2.5 rounded-lg text-sm transition-colors ${
                     conv.id === activeId
@@ -1131,6 +1070,22 @@ Strategic context: [Why this exists, what problem it solves]`);
                 </span>
               ) : null}
 
+              {reviewRequested ? (
+                <span className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 text-slate-400">
+                  <Check className="h-3.5 w-3.5" /> Review requested
+                </span>
+              ) : (
+                <button
+                  type="button"
+                  onClick={handleRequestReview}
+                  disabled={isRequestingReview}
+                  className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg border bg-white border-slate-200 text-slate-600 hover:bg-slate-50 hover:border-slate-300 transition-colors disabled:opacity-50"
+                >
+                  {isRequestingReview ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Bell className="h-3.5 w-3.5" />}
+                  {isRequestingReview ? "Sending…" : "Request Review"}
+                </button>
+              )}
+
               {currentEvaluation.verdict.path === "PATH_C" && (
                 <>
                   {jiraTicketKey ? (
@@ -1210,6 +1165,11 @@ Strategic context: [Why this exists, what problem it solves]`);
                       {inputValue.length.toLocaleString()} chars{inputValue.length > 8000 ? " — very long" : ""}
                     </span>
                   </div>
+                )}
+
+                {/* Brief quality hint */}
+                {briefQualityHint && (
+                  <p className="px-5 pb-1 text-[11px] text-blue-500 italic">{briefQualityHint}</p>
                 )}
 
                 {/* Bottom toolbar */}

@@ -70,3 +70,74 @@ export async function notifySlackPathC(payload: SlackVerdictPayload): Promise<bo
     return false;
   }
 }
+
+export interface SlackEscalationPayload {
+  verdictPath: string;
+  verdictTitle: string;
+  briefSnippet: string;
+  score: number | null;
+}
+
+export async function notifySlackEscalation(payload: SlackEscalationPayload): Promise<boolean> {
+  const webhookUrl = process.env.SLACK_WEBHOOK_URL;
+  if (!webhookUrl) return false;
+
+  const verdictEmoji: Record<string, string> = {
+    PATH_C: "✅", PATH_A0: "⛔", PATH_A1: "🚫", PATH_A2: "⚠️", PATH_B: "❓",
+  };
+  const emoji = verdictEmoji[payload.verdictPath] ?? "⚠️";
+
+  const body = {
+    blocks: [
+      {
+        type: "header",
+        text: { type: "plain_text", text: "👥 Naming Decision Review Requested", emoji: true },
+      },
+      {
+        type: "section",
+        text: {
+          type: "mrkdwn",
+          text: `${emoji} *${payload.verdictTitle || payload.verdictPath}*${payload.score !== null ? `\nScore: ${payload.score}/70` : ""}`,
+        },
+      },
+      {
+        type: "section",
+        text: {
+          type: "mrkdwn",
+          text: `*Brief*\n${payload.briefSnippet}${payload.briefSnippet.length >= 300 ? "…" : ""}`,
+        },
+      },
+      {
+        type: "actions",
+        elements: [
+          {
+            type: "button",
+            text: { type: "plain_text", text: "Open Naming Studio" },
+            url: "https://naming-studio.vip.ebay.com",
+            action_id: "open_studio",
+          },
+        ],
+      },
+      {
+        type: "context",
+        elements: [
+          {
+            type: "mrkdwn",
+            text: `Escalated via <https://naming-studio.vip.ebay.com|eBay Naming Studio> · ${new Date().toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}`,
+          },
+        ],
+      },
+    ],
+  };
+
+  try {
+    const res = await fetch(webhookUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    return res.ok;
+  } catch {
+    return false;
+  }
+}
