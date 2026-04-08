@@ -31,9 +31,8 @@ export async function POST(req: NextRequest) {
       return Response.json({ type: "brief", fallback: false });
     }
 
-    // Use fast lightweight model for classification — Gemini Flash (300 req/min) vs GPT-5.2 (180 req/min)
+    // Uses the default CHOMSKY_MODEL from env — same as all other routes
     const raw = await chomsky.generateText({
-      model: "gcp-chat-completions-chat-gemini-3.1-flash-preview-sandbox",
       messages: [
         { role: "system", content: CLASSIFIER_SYSTEM_PROMPT },
         { role: "user", content: message.slice(0, 800) },

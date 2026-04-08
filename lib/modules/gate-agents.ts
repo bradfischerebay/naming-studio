@@ -86,7 +86,43 @@ function sanitizeForPrompt(text: string, maxLength = 2000): string {
 
 // ─── Gate system prompts ──────────────────────────────────────────────────────
 
+function buildG6SystemPrompt(): string {
+  return `You are a multilingual naming specialist for eBay's product naming governance framework.
+
+Your ONLY job is to evaluate Gate G6: Linguistic & Cultural Fit.
+
+Gate description: Do the target markets include non-English-speaking regions? If so, does the product concept (and any proposed naming direction implied by the brief) work linguistically and culturally across those markets?
+
+PASS conditions (any one is sufficient):
+- The brief only targets English-speaking markets (US, UK, AU, CA, IE) — no cross-language risk
+- Non-English markets are mentioned AND the product concept presents no significant linguistic barriers (no false cognates, no pronunciation blockers, no cultural taboos, no script incompatibility)
+
+FAIL conditions (any one triggers a fail):
+- A specific name is mentioned or strongly implied AND it has a known harmful meaning, sounds offensive, or is unpronounceable in a primary non-English target market
+- The product category has known regulatory naming restrictions in a primary non-English market (e.g., EU financial product naming rules, German compound word requirements)
+- The concept relies on an English-language pun or wordplay that cannot survive translation
+
+PENDING/Unknown: Use this when non-English markets are listed but there is insufficient detail about the naming direction or product concept to assess linguistic fit. Also use it when target markets are not specified at all.
+
+Think through:
+1. What markets does this brief target? (extract from text)
+2. Which of those are non-English primary markets?
+3. For each non-English market: are there linguistic, phonetic, cultural, or script concerns?
+4. Cite specific evidence from the brief.
+
+Then at the very end of your response, output a JSON block (and ONLY this JSON — no markdown fences) on its own line:
+{"status":"Pass","reasoning":"...","evidence":"..."}
+
+The "status" field must be exactly "Pass", "Fail", or "Pending".
+The "reasoning" field should be 1-3 sentences. If Pending, explain what information is missing.
+The "evidence" field should quote the specific market/language references from the brief.`;
+}
+
 function buildGateSystemPrompt(gateKey: string, custom?: CustomGateDef): string {
+  if (gateKey === "G6" && !custom) {
+    return buildG6SystemPrompt();
+  }
+
   const defaults = GATE_DEFINITIONS[gateKey as keyof typeof GATE_DEFINITIONS] ?? {
     label: custom?.label ?? gateKey,
     description: custom?.description ?? "",

@@ -11,6 +11,7 @@ import type { AnalyticsEvent } from "@/lib/analytics";
 import { validateModel } from "@/lib/config/models";
 import { storeBriefMemory } from "@/lib/brief-memory";
 import { notifySlackPathC } from "@/lib/slack";
+import { recordBriefCorpus } from "@/lib/brief-corpus";
 
 export const runtime = "nodejs";
 export const maxDuration = 240; // 4 minutes — pipeline makes 4-6 sequential LLM calls
@@ -120,6 +121,15 @@ export async function POST(request: NextRequest) {
         gateSummary: buildGateSummary(result.gateEvaluation?.gate_results),
       });
 
+      // Record in brief corpus for deduplication + future fine-tuning (fire-and-forget)
+      void recordBriefCorpus({
+        brief,
+        verdictPath: result.verdict.path,
+        score: result.scoringResult?.scores.total ?? null,
+        offeringDescription: result.compiledBrief?.offering_description ?? null,
+        targetGeographies: result.compiledBrief?.target_geographies ?? null,
+      });
+
       // Notify Slack on PATH_C verdicts (fire-and-forget)
       let slackNotified = false;
       if (result.verdict.path === "PATH_C") {
@@ -186,6 +196,15 @@ export async function POST(request: NextRequest) {
       score: result.scoringResult?.scores.total ?? null,
       offeringDescription: result.compiledBrief?.offering_description ?? null,
       gateSummary: buildGateSummary(result.gateEvaluation?.gate_results),
+    });
+
+    // Record in brief corpus for deduplication + future fine-tuning (fire-and-forget)
+    void recordBriefCorpus({
+      brief,
+      verdictPath: result.verdict.path,
+      score: result.scoringResult?.scores.total ?? null,
+      offeringDescription: result.compiledBrief?.offering_description ?? null,
+      targetGeographies: result.compiledBrief?.target_geographies ?? null,
     });
 
     // Notify Slack on PATH_C verdicts (fire-and-forget)

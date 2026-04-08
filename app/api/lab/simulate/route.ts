@@ -84,14 +84,15 @@ async function runBriefSimulation(
     await runGate("G1");
   }
 
-  // G2-G5 + custom gates — parallel
-  const batch = ["G2", "G3", "G4", "G5", ...additionalGateKeys].filter(
+  // G2-G5 + G6 + custom gates — parallel
+  // G6 (Linguistic & Cultural Fit) runs alongside G2-G5 at no extra sequential cost
+  const batch = ["G2", "G3", "G4", "G5", "G6", ...additionalGateKeys].filter(
     (g) => !disabledGates.includes(g)
   );
   await Promise.allSettled(batch.map(runGate));
 
   const allGates = [
-    ...["G0", "G1", "G2", "G3", "G4", "G5"].filter((g) => !disabledGates.includes(g)),
+    ...["G0", "G1", "G2", "G3", "G4", "G5", "G6"].filter((g) => !disabledGates.includes(g)),
     ...additionalGateKeys,
   ];
 
@@ -190,11 +191,13 @@ export async function POST(req: NextRequest) {
   const disabledGates = body.disabledGates ?? [];
 
   try {
-    const results = await Promise.all(
-      briefs.map((brief) =>
-        runBriefSimulation(brief, customGates, customScoring, disabledGates)
-      )
-    );
+    // Run briefs sequentially to avoid rate-limit bursts.
+    // 5 briefs × 6 parallel gates = 25 simultaneous LLM calls otherwise,
+    // which reliably triggers 429s → errors → Pending status → incorrect PATH_B verdicts.
+    const results: BriefSimResult[] = [];
+    for (const brief of briefs) {
+      results.push(await runBriefSimulation(brief, customGates, customScoring, disabledGates));
+    }
     return Response.json({ results });
   } catch (err) {
     const rawMessage = err instanceof Error ? err.message : String(err);

@@ -162,8 +162,9 @@ export async function POST(req: NextRequest) {
         await runGateAgent("G1", brief, contextHistory, gateStates["G1"], emitGate, undefined, customGates["G1"]);
       }
 
-      // ── Step 3: G2, G3, G4, G5 + parallel custom gates (max 3 concurrent) ──
-      const batch2 = ["G2", "G3", "G4", "G5", ...additionalGateKeys].filter(needsRun);
+      // ── Step 3: G2, G3, G4, G5, G6 + parallel custom gates (max 3 concurrent) ──
+      // G6 (Linguistic & Cultural Fit) runs in parallel with G2-G5 — no extra LLM cost
+      const batch2 = ["G2", "G3", "G4", "G5", "G6", ...additionalGateKeys].filter(needsRun);
 
       // Simple concurrency limiter — run in groups of 3
       for (let i = 0; i < batch2.length; i += 3) {
@@ -177,7 +178,7 @@ export async function POST(req: NextRequest) {
 
       // ── Check if all gates passed ─────────────────────────────────────────
       const allGates = [
-        ...["G0", "G1", "G2", "G3", "G4", "G5"].filter((g) => !disabledGates.includes(g)),
+        ...["G0", "G1", "G2", "G3", "G4", "G5", "G6"].filter((g) => !disabledGates.includes(g)),
         ...additionalGateKeys,
         ...blockerGateKeys.filter((k) => !disabledGates.includes(k)),
       ];

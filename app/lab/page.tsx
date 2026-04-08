@@ -88,6 +88,7 @@ const GATE_META: Record<string, { label: string; description: string }> = {
   G3: { label: "Strategic Lifespan", description: "Is this permanent (>12 months)?" },
   G4: { label: "Portfolio Alignment", description: "No naming collisions with existing eBay products?" },
   G5: { label: "Legal & Localization", description: "No trademark or regulatory blockers?" },
+  G6: { label: "Linguistic & Cultural Fit", description: "Does this work across all target language markets?" },
 };
 
 // Questions shown to users when a gate returns Pending
@@ -98,6 +99,7 @@ const GATE_QUESTIONS: Record<string, string> = {
   G3: "What is the expected lifespan? Will this be live for 12+ months as a permanent addition, or is it promotional, seasonal, or time-limited?",
   G4: "Does the proposed name conflict with any existing eBay products, internal tools, or trademarks already in use?",
   G5: "Have trademark clearance and regulatory checks been done? Are there any known legal concerns, conflicts, or restrictions in target markets?",
+  G6: "Which markets does this target? If non-English markets are included, are there any known linguistic risks — false cognates, pronunciation issues, cultural connotations, or script compatibility concerns?",
 };
 
 const PATH_LABELS: Record<string, { label: string }> = {
@@ -289,15 +291,15 @@ function saveLocalConfig(config: CustomConfig): void {
 // Default briefs for Quick Test — one per expected verdict path
 const DEFAULT_QUICK_TEST_BRIEFS = [
   // PATH_C — standalone, permanent, global, legal mandate
-  "eBay is launching a fully standalone seller authentication vault that stores verified credentials. Sellers must sign up through a separate enrollment portal before accessing the service. The vault will be permanently available as a core platform capability for 2+ years. It is targeting US, UK, and German markets, with a legal team mandate due to compliance requirements. The system runs on independent microservice infrastructure with its own dedicated API layer.",
-  // PATH_A0 — background process, invisible to users
-  "eBay is building an AI-powered risk scoring engine to detect fraudulent listings automatically. The engine runs silently in the background each time a listing is created or updated. Sellers never see the engine or interact with it directly — it just flags listings for internal review. The service will be permanent and operates globally across all eBay markets. It uses shared backend infrastructure tied to eBay's existing fraud prevention platform.",
-  // PATH_A1 — embedded feature, fails G1
-  "eBay is adding a gift card redemption feature to the standard eBay checkout flow. Buyers apply gift card codes on the existing checkout page via a new input field. The feature is integrated into the existing checkout platform with no separate enrollment or onboarding. It is a permanent addition to the checkout experience across US, UK, and Canadian markets. The infrastructure shares eBay's existing payment processing backend.",
+  "eBay is launching a fully standalone seller authentication vault that stores verified credentials. Sellers must sign up through a separate enrollment portal before accessing the service — it is a distinct, user-facing product with its own login and dashboard. The vault will be permanently available as a core platform capability for 2+ years, targeting US, UK, and German markets. There is a legal team mandate due to regulatory compliance requirements. The system runs on independent microservice infrastructure with its own dedicated API layer.",
+  // PATH_A0 — invisible background process, no user interaction whatsoever
+  "eBay is deploying an automated listing quality scoring system. The system runs continuously in the background, analyzing every listing the moment it is created or updated. Sellers are never shown the score, never asked to interact with it, and have no ability to opt in or configure it — the system operates entirely invisibly within eBay's platform infrastructure. There is no seller-facing UI, dashboard, or notification of any kind. It operates globally across all eBay markets on shared backend infrastructure.",
+  // PATH_A1 — user-visible embedded feature, fails G1 (no separate enrollment, shared platform)
+  "eBay is adding a gift card redemption option to the checkout flow. The feature is fully visible to buyers: it appears as a labeled section in the checkout UI where buyers actively choose to enter and apply their gift card code, requiring deliberate user action. However, there is no separate enrollment or standalone onboarding — the feature is built directly into eBay's existing checkout platform and shares the same payment processing infrastructure. It will be a permanent addition to checkout, available across US, UK, and Canadian markets.",
   // PATH_A2 — all gates pass, low score (US-only, no legal, no clarity lift)
   "eBay is launching a standalone product photography tool for small business sellers in the US. Sellers download it as a separate desktop app and onboard independently through a self-service flow. The tool will be live for 24+ months as a permanent addition to eBay's seller toolkit. It is only available in the US market with no international expansion planned. There is no legal mandate or trademark requirement associated with this feature.",
-  // PATH_B — insufficient info, key questions unanswered
-  "eBay is introducing a new seller service for managing returns. It will help sellers process return requests more efficiently and reduce disputes. The service may or may not require separate enrollment — this is still being discussed. We are still finalizing the scope, target markets, and timeline for this initiative. The technical architecture details have not yet been decided.",
+  // PATH_B — user-facing but insufficient info to decide most gates
+  "eBay is introducing a returns management service for sellers. Sellers would access a dedicated returns dashboard to review and process return requests — it is user-facing and requires seller action, not an automatic background process. However, key details remain undecided: whether sellers must enroll separately or it is automatically available to all sellers, whether it runs on independent infrastructure or is embedded in the existing platform, which markets it targets, whether the rollout is permanent or a pilot, and what the timeline looks like. The technical architecture has not been finalized.",
 ];
 
 const EXAMPLE_BRIEFS = [
