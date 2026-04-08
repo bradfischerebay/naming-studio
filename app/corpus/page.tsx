@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowLeft, Download, Loader2, Search } from "lucide-react";
+import { Download, Loader2, Search } from "lucide-react";
+import Sidebar from "@/components/Sidebar";
 
 interface CorpusEntry {
   hash: string;
@@ -105,10 +106,13 @@ export default function CorpusPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-        <div className="flex items-center gap-2 text-slate-600">
-          <Loader2 className="h-5 w-5 animate-spin" />
-          <span>Loading corpus...</span>
+      <div className="h-screen flex overflow-hidden">
+        <Sidebar />
+        <div className="flex-1 flex items-center justify-center bg-slate-50">
+          <div className="flex items-center gap-2 text-slate-600">
+            <Loader2 className="h-5 w-5 animate-spin" />
+            <span>Loading corpus...</span>
+          </div>
         </div>
       </div>
     );
@@ -116,10 +120,13 @@ export default function CorpusPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="text-red-600 font-medium mb-2">Error loading corpus</div>
-          <div className="text-sm text-slate-600">{error}</div>
+      <div className="h-screen flex overflow-hidden">
+        <Sidebar />
+        <div className="flex-1 flex items-center justify-center bg-slate-50">
+          <div className="text-center">
+            <div className="text-red-600 font-medium mb-2">Error loading corpus</div>
+            <div className="text-sm text-slate-600">{error}</div>
+          </div>
         </div>
       </div>
     );
@@ -127,25 +134,16 @@ export default function CorpusPage() {
 
   if (total === 0) {
     return (
-      <div className="min-h-screen bg-slate-50">
+      <div className="h-screen bg-slate-50 flex overflow-hidden">
+        <Sidebar />
+        <div className="flex-1 overflow-y-auto">
         {/* Header */}
         <div className="bg-white border-b border-slate-200">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div className="flex items-center gap-3">
-              <Link
-                href="/"
-                className="flex items-center gap-1.5 text-sm text-slate-600 hover:text-slate-900 transition-colors"
-              >
-                <ArrowLeft className="h-4 w-4" />
-                Back
-              </Link>
-            </div>
-            <div className="mt-3">
-              <h1 className="text-2xl font-bold text-slate-900">Brief Corpus</h1>
-              <p className="text-sm text-slate-600 mt-1">
-                Review and approve briefs for fine-tuning datasets
-              </p>
-            </div>
+            <h1 className="text-2xl font-bold text-slate-900">Brief Corpus</h1>
+            <p className="text-sm text-slate-600 mt-1">
+              Review and approve briefs for fine-tuning datasets
+            </p>
           </div>
         </div>
 
@@ -158,30 +156,22 @@ export default function CorpusPage() {
             </div>
           </div>
         </div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="h-screen bg-slate-50 flex overflow-hidden">
+      <Sidebar />
+      <div className="flex-1 overflow-y-auto">
       {/* Header */}
       <div className="bg-white border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center gap-3">
-            <Link
-              href="/"
-              className="flex items-center gap-1.5 text-sm text-slate-600 hover:text-slate-900 transition-colors"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Back
-            </Link>
-          </div>
-          <div className="mt-3">
-            <h1 className="text-2xl font-bold text-slate-900">Brief Corpus</h1>
-            <p className="text-sm text-slate-600 mt-1">
-              Review and approve briefs for fine-tuning datasets
-            </p>
-          </div>
+          <h1 className="text-2xl font-bold text-slate-900">Brief Corpus</h1>
+          <p className="text-sm text-slate-600 mt-1">
+            Review and approve briefs for fine-tuning datasets
+          </p>
         </div>
       </div>
 
@@ -352,6 +342,7 @@ export default function CorpusPage() {
         <div className="mt-4 text-xs text-slate-500 text-center">
           Showing {filteredEntries.length} of {total} entries
         </div>
+      </div>
       </div>
     </div>
   );

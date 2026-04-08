@@ -20,6 +20,7 @@ import {
 import Link from "next/link";
 import { motion } from "framer-motion";
 import type { UsageEvent } from "@/lib/usage-log";
+import Sidebar from "@/components/Sidebar";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -358,18 +359,21 @@ function Skeleton({ className = "" }: { className?: string }) {
 
 function LoadingState() {
   return (
-    <div className="min-h-screen bg-[#f4f4f4]">
-      <header className="bg-white border-b border-slate-200 px-6 py-4 h-[61px]" />
-      <div className="max-w-7xl mx-auto px-6 py-8 space-y-6">
-        <div className="grid grid-cols-4 gap-4">
-          {[...Array(4)].map((_, i) => <Skeleton key={i} className="h-28" />)}
+    <div className="h-screen bg-[#f4f4f4] flex overflow-hidden">
+      <Sidebar />
+      <div className="flex-1 overflow-y-auto">
+        <header className="bg-white border-b border-slate-200 px-6 py-4 h-[61px]" />
+        <div className="max-w-7xl mx-auto px-6 py-8 space-y-6">
+          <div className="grid grid-cols-4 gap-4">
+            {[...Array(4)].map((_, i) => <Skeleton key={i} className="h-28" />)}
+          </div>
+          <Skeleton className="h-48" />
+          <div className="grid grid-cols-2 gap-6">
+            <Skeleton className="h-64" />
+            <Skeleton className="h-64" />
+          </div>
+          <Skeleton className="h-72" />
         </div>
-        <Skeleton className="h-48" />
-        <div className="grid grid-cols-2 gap-6">
-          <Skeleton className="h-64" />
-          <Skeleton className="h-64" />
-        </div>
-        <Skeleton className="h-72" />
       </div>
     </div>
   );
@@ -446,18 +450,21 @@ export default function AnalyticsPage() {
 
   if (fetchError && !data) {
     return (
-      <div className="min-h-screen bg-[#f4f4f4] flex flex-col">
-        <PageHeader loading={loading} countdown={countdown} onRefresh={fetchData} />
-        <div className="flex-1 flex items-center justify-center p-8">
-          <div className="bg-white border border-rose-200 rounded-2xl p-8 text-center max-w-sm w-full">
-            <AlertCircle className="h-8 w-8 text-rose-400 mx-auto mb-3" />
-            <p className="text-sm text-slate-700 mb-4">{fetchError}</p>
-            <button
-              onClick={fetchData}
-              className="px-4 py-2 bg-slate-900 text-white rounded-lg text-sm hover:bg-slate-700 transition-colors"
-            >
-              Try again
-            </button>
+      <div className="h-screen bg-[#f4f4f4] flex overflow-hidden">
+        <Sidebar />
+        <div className="flex-1 flex flex-col overflow-y-auto">
+          <PageHeader loading={loading} countdown={countdown} onRefresh={fetchData} />
+          <div className="flex-1 flex items-center justify-center p-8">
+            <div className="bg-white border border-rose-200 rounded-2xl p-8 text-center max-w-sm w-full">
+              <AlertCircle className="h-8 w-8 text-rose-400 mx-auto mb-3" />
+              <p className="text-sm text-slate-700 mb-4">{fetchError}</p>
+              <button
+                onClick={fetchData}
+                className="px-4 py-2 bg-slate-900 text-white rounded-lg text-sm hover:bg-slate-700 transition-colors"
+              >
+                Try again
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -468,21 +475,24 @@ export default function AnalyticsPage() {
 
   if (data && data.totalEvaluations === 0) {
     return (
-      <div className="min-h-screen bg-[#f4f4f4] flex flex-col">
-        <PageHeader loading={loading} countdown={countdown} onRefresh={fetchData} />
-        <div className="flex-1 flex items-center justify-center p-8">
-          <div className="text-center max-w-sm">
-            <BarChart2 className="h-12 w-12 text-slate-300 mx-auto mb-4" />
-            <h2 className="text-lg font-semibold text-slate-900 mb-2">No evaluations yet</h2>
-            <p className="text-sm text-slate-400 mb-6 leading-relaxed">
-              Submit a naming brief from the main app to start seeing usage data here.
-            </p>
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 text-white rounded-lg text-sm hover:bg-slate-700 transition-colors"
-            >
-              Go to assistant
-            </Link>
+      <div className="h-screen bg-[#f4f4f4] flex overflow-hidden">
+        <Sidebar />
+        <div className="flex-1 flex flex-col overflow-y-auto">
+          <PageHeader loading={loading} countdown={countdown} onRefresh={fetchData} />
+          <div className="flex-1 flex items-center justify-center p-8">
+            <div className="text-center max-w-sm">
+              <BarChart2 className="h-12 w-12 text-slate-300 mx-auto mb-4" />
+              <h2 className="text-lg font-semibold text-slate-900 mb-2">No evaluations yet</h2>
+              <p className="text-sm text-slate-400 mb-6 leading-relaxed">
+                Submit a naming brief from the main app to start seeing usage data here.
+              </p>
+              <Link
+                href="/"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 text-white rounded-lg text-sm hover:bg-slate-700 transition-colors"
+              >
+                Go to assistant
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -506,7 +516,9 @@ export default function AnalyticsPage() {
   // ─── Render ──────────────────────────────────────────────────────────────
 
   return (
-    <div className="min-h-screen bg-[#f4f4f4]">
+    <div className="h-screen bg-[#f4f4f4] flex overflow-hidden">
+      <Sidebar />
+      <div className="flex-1 overflow-y-auto">
       <PageHeader loading={loading} countdown={countdown} onRefresh={fetchData} />
 
       {/* Tab bar */}
@@ -972,6 +984,7 @@ export default function AnalyticsPage() {
         </div>
       )}
 
+      </div>
     </div>
   );
 }
@@ -989,16 +1002,6 @@ function PageHeader({
 }) {
   return (
     <header className="bg-white border-b border-slate-200 px-6 py-4 flex items-center gap-4 sticky top-0 z-10">
-      <Link
-        href="/"
-        className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-900 transition-colors"
-      >
-        <ArrowLeft className="h-4 w-4" />
-        Back
-      </Link>
-
-      <div className="w-px h-4 bg-slate-200" />
-
       <div className="flex items-center gap-2 flex-1">
         <BarChart2 className="h-4 w-4 text-slate-400" />
         <h1 className="text-sm font-semibold text-slate-900">Usage Analytics</h1>

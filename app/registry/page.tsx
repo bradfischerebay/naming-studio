@@ -1,8 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Download, Loader2, ArrowLeft, Archive } from "lucide-react";
+import { Download, Loader2, Archive } from "lucide-react";
 import Link from "next/link";
+import Sidebar from "@/components/Sidebar";
 
 interface RegistryEntry {
   id: string;
@@ -68,19 +69,12 @@ export default function RegistryPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f4f4f4]">
+    <div className="h-screen bg-[#f4f4f4] flex overflow-hidden">
+      <Sidebar />
+      <div className="flex-1 overflow-y-auto">
       {/* Header */}
       <header className="bg-white border-b border-slate-200 px-6 py-4 sticky top-0 z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-center gap-4 mb-3">
-            <Link
-              href="/"
-              className="flex items-center gap-2 text-sm text-slate-500 hover:text-slate-900 transition-colors"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Naming Assistant
-            </Link>
-          </div>
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold text-slate-900">Naming Registry</h1>
@@ -221,6 +215,7 @@ export default function RegistryPage() {
           </div>
         )}
       </main>
+      </div>
     </div>
   );
 }

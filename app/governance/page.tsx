@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Copy, ArrowLeft } from "lucide-react";
+import { Check, Copy } from "lucide-react";
 import Link from "next/link";
+import Sidebar from "@/components/Sidebar";
 
 const INTAKE_TEXT = `eBay Naming Studio — AI Intake Summary
 
@@ -37,17 +38,12 @@ export default function GovernancePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f4f4f4]">
+    <div className="h-screen bg-[#f4f4f4] flex overflow-hidden">
+      <Sidebar />
+      <div className="flex-1 overflow-y-auto">
       {/* Header */}
       <div className="bg-white border-b border-slate-200 sticky top-0 z-10">
         <div className="max-w-4xl mx-auto px-4 py-4">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-sm text-slate-600 hover:text-slate-900 mb-3 transition-colors"
-          >
-            <ArrowLeft className="h-4 w-4" />
-            Naming Assistant
-          </Link>
           <h1 className="text-2xl font-bold text-slate-900">AI Governance</h1>
           <p className="text-sm text-slate-500 mt-1">
             Responsible AI documentation for eBay Naming Studio · AI Intake reference
@@ -262,6 +258,7 @@ export default function GovernancePage() {
             </>
           )}
         </button>
+      </div>
       </div>
     </div>
   );

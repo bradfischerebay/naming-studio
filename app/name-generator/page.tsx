@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Wand2, Loader2, Copy, Check, Paperclip } from "lucide-react";
+import Sidebar from "@/components/Sidebar";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -197,23 +198,16 @@ export default function NameGeneratorPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#f4f4f4]">
+    <div className="h-screen bg-[#f4f4f4] flex overflow-hidden">
+      <Sidebar />
+      <div className="flex-1 overflow-y-auto">
       {/* Header */}
       <header className="bg-white border-b border-slate-200 px-6 py-4">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-center gap-3 mb-1">
-            <Link
-              href="/"
-              className="text-slate-500 hover:text-slate-700 text-sm flex items-center gap-1 transition-colors"
-            >
-              ← Back
-            </Link>
-            <span className="text-slate-300">|</span>
-            <h1 className="text-xl font-semibold text-slate-900 flex items-center gap-2">
-              <Wand2 className="h-5 w-5" />
-              Name Generator
-            </h1>
-          </div>
+          <h1 className="text-xl font-semibold text-slate-900 flex items-center gap-2 mb-1">
+            <Wand2 className="h-5 w-5" />
+            Name Generator
+          </h1>
           <p className="text-sm text-slate-500">
             Generate product name candidates using the eBay naming strategy framework
           </p>
@@ -510,6 +504,7 @@ export default function NameGeneratorPage() {
             )}
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

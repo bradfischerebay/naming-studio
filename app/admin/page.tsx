@@ -8,6 +8,7 @@ import {
   GitBranch, Layers, FileText, Brain, Languages, Star, Cpu,
   Archive, BookOpen, Share2, Workflow, ArrowLeft
 } from "lucide-react";
+import Sidebar from "@/components/Sidebar";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -190,14 +191,8 @@ export default function AdminPage() {
   // Password gate
   if (!status) {
     return (
-      <div className="min-h-screen bg-[#f4f4f4] flex flex-col">
-        {/* Navigation */}
-        <div className="px-6 py-4 flex items-center">
-          <Link href="/" className="flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-900 transition-colors">
-            <ArrowLeft className="h-4 w-4" />
-            Back to Naming Studio
-          </Link>
-        </div>
+      <div className="h-screen bg-[#f4f4f4] flex overflow-hidden">
+        <Sidebar />
         {/* Centered auth card */}
         <div className="flex-1 flex items-center justify-center">
           <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8 w-full max-w-sm">
@@ -245,7 +240,9 @@ export default function AdminPage() {
   const totalCount = Object.values(status.integrations).length;
 
   return (
-    <div className="min-h-screen bg-[#f4f4f4]">
+    <div className="h-screen bg-[#f4f4f4] flex overflow-hidden">
+      <Sidebar />
+      <div className="flex-1 overflow-y-auto">
       {/* Header */}
       <header className="bg-[#171717] text-white px-6 py-5">
         <div className="max-w-6xl mx-auto">
@@ -258,12 +255,6 @@ export default function AdminPage() {
               <span className="text-xs text-white/40">
                 {configuredCount}/{totalCount} integrations active
               </span>
-              <Link
-                href="/"
-                className="text-xs text-white/60 hover:text-white transition-colors flex items-center gap-1"
-              >
-                ← Naming Assistant
-              </Link>
             </div>
           </div>
         </div>
@@ -397,6 +388,7 @@ export default function AdminPage() {
             ← Back to Naming Assistant
           </Link>
         </footer>
+      </div>
       </div>
     </div>
   );
