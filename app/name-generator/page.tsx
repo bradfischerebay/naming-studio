@@ -107,10 +107,14 @@ export default function NameGeneratorPage() {
     }
   };
 
-  const handleCopyName = (name: string) => {
-    navigator.clipboard.writeText(name);
-    setCopiedName(name);
-    setTimeout(() => setCopiedName(null), 2000);
+  const handleCopyName = async (name: string) => {
+    try {
+      await navigator.clipboard.writeText(name);
+      setCopiedName(name);
+      setTimeout(() => setCopiedName(null), 2000);
+    } catch {
+      // Clipboard unavailable (non-HTTPS or permission denied) — silent fail
+    }
   };
 
   const toggleMarket = (market: string) => {

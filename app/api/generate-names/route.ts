@@ -11,7 +11,7 @@ import {
 } from "@/lib/data/naming-framework";
 
 export const runtime = "nodejs";
-export const maxDuration = 60;
+export const maxDuration = 90;
 
 const MAX_BRIEF_LENGTH = 5000;
 const DEFAULT_COUNT = 3;
@@ -216,10 +216,16 @@ export async function POST(req: NextRequest) {
       useDeepSights?: boolean;
     };
 
-    const { brief, markets = DEFAULT_MARKETS, strategies, count = DEFAULT_COUNT, useDeepSights = false } = body;
+    const { brief, markets: rawMarkets, strategies, count = DEFAULT_COUNT, useDeepSights = false } = body;
 
-    // Validate brief
-    if (!brief || typeof brief !== "string") {
+    // Sanitize markets — reject nulls, empty strings, and non-string values
+    const markets = Array.isArray(rawMarkets)
+      ? rawMarkets.filter((m): m is string => typeof m === "string" && m.trim().length > 0 && m.length <= 10).slice(0, 6)
+      : DEFAULT_MARKETS;
+    const validatedMarkets = markets.length > 0 ? markets : DEFAULT_MARKETS;
+
+    // Validate brief — must be a non-empty string after trimming
+    if (!brief || typeof brief !== "string" || !brief.trim()) {
       return NextResponse.json({ error: "Brief is required" }, { status: 400 });
     }
 
@@ -230,8 +236,8 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Validate count
-    const validCount = Math.min(Math.max(1, count), MAX_COUNT);
+    // Validate count — round to int so the LLM prompt isn't given "2.7 candidates"
+    const validCount = Math.round(Math.min(Math.max(1, count), MAX_COUNT));
 
     // Validate and select strategy buckets
     const selectedBuckets = strategies?.length
@@ -256,21 +262,21 @@ export async function POST(req: NextRequest) {
     }
 
     // Build competitor context
-    const competitorContext = buildCompetitorContext(markets);
+    const competitorContext = buildCompetitorContext(validatedMarkets);
 
     // Build system prompt
-    const systemPrompt = buildSystemPrompt(selectedBuckets, markets, competitorContext, deepsightsContext);
+    const systemPrompt = buildSystemPrompt(selectedBuckets, validatedMarkets, competitorContext, deepsightsContext);
 
     // Generate names for all buckets in parallel
     const generationPromises = selectedBuckets.map((bucket) =>
-      generateBucketNames(bucket, brief, markets, validCount, systemPrompt)
+      generateBucketNames(bucket, brief, validatedMarkets, validCount, systemPrompt)
     );
 
     const results = await Promise.all(generationPromises);
 
     return NextResponse.json({
       success: true,
-      markets,
+      markets: validatedMarkets,
       deepsightsContext,
       competitorContext,
       results,

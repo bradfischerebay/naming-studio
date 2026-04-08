@@ -239,7 +239,7 @@ export default function NameValidatorPage() {
             <button
               type="button"
               onClick={handleCheck}
-              disabled={!names.length || !brief.trim() || isChecking}
+              disabled={(!names.length && !nameInput.trim()) || !brief.trim() || isChecking}
               className="w-full bg-slate-900 text-white font-semibold py-3 rounded-xl hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
             >
               {isChecking ? (
