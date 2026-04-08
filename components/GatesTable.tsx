@@ -103,7 +103,7 @@ export function GatesTable({ gateResults }: GatesTableProps) {
             return (
               <tr
                 key={gateId}
-                className={`${config.rowClass} ${!isLast ? "border-b border-slate-200" : ""}`}
+                className={`group ${config.rowClass} ${!isLast ? "border-b border-slate-200" : ""}`}
               >
                 {/* Gate ID */}
                 <td className="px-3 py-3 align-top">
@@ -120,11 +120,22 @@ export function GatesTable({ gateResults }: GatesTableProps) {
 
                 {/* Criterion */}
                 <td className="px-3 py-3 align-top">
-                  <div className="font-semibold text-slate-700 text-[11px] leading-snug">
-                    {gate.label || GATE_LABELS[gateId]}
-                  </div>
-                  <div className="text-slate-500 text-[10px] mt-0.5 leading-snug">
-                    {GATE_CRITERIA[gateId]}
+                  <div>
+                    <div className="font-semibold text-slate-700 text-[11px] leading-snug">
+                      {gate.label || GATE_LABELS[gateId]}
+                    </div>
+                    <div className="text-slate-500 text-[10px] mt-0.5 leading-snug">
+                      {GATE_CRITERIA[gateId]}
+                    </div>
+                    {gate.reasoning && (
+                      <p className={`text-xs italic mt-1 leading-snug ${
+                        gate.status === "Pass"
+                          ? "text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity"
+                          : "text-red-600"
+                      }`}>
+                        {gate.reasoning}
+                      </p>
+                    )}
                   </div>
                 </td>
 
@@ -135,7 +146,7 @@ export function GatesTable({ gateResults }: GatesTableProps) {
                   </p>
                 </td>
 
-                {/* Rationale */}
+                {/* Rationale - kept for backward compatibility but can be removed if duplicate */}
                 <td className="px-3 py-3 align-top">
                   <p className="text-slate-700 leading-relaxed text-[11px]">
                     {gate.reasoning}

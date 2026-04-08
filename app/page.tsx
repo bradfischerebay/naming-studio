@@ -1,12 +1,12 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
-import { Loader2, ArrowUp, Plus, ChevronLeft, ChevronRight, PlusCircle, Check, BarChart2, Paperclip, X, TestTube2, Globe, Database, Shield, ExternalLink, Ticket, Wand2, BadgeCheck, BookOpen } from "lucide-react";
+import { Loader2, ArrowUp, Plus, ChevronLeft, ChevronRight, PlusCircle, Check, BarChart2, Paperclip, X, TestTube2, Globe, Database, Shield, ExternalLink, Ticket, Wand2, BadgeCheck, BookOpen, Save, ArrowRight, Settings } from "lucide-react";
 import { toast, Toaster } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChatMessage, type Message } from "@/components/ChatMessage";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -39,38 +39,26 @@ interface Conversation {
   messages: Message[];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   evaluation: any | null;
-  model: string;
+  model?: string;
   createdAt: string;
 }
 
-// ─── Models ──────────────────────────────────────────────────────────────────
+// ─── Fixed Model ─────────────────────────────────────────────────────────────
 
-const MODELS = [
-  { value: "azure-chat-completions-gpt-5-2-2025-12-11-sandbox", label: "GPT-5.2", group: "GPT", badge: "⭐ Best quality" },
-  { value: "azure-chat-completions-gpt-4.1-sandbox", label: "GPT-4.1", group: "GPT", badge: "Recommended" },
-  { value: "azure-chat-completions-gpt-4-1-mini-2025-04-14-sandbox", label: "GPT-4.1 Mini", group: "GPT", badge: "Fast" },
-  { value: "azure-chat-completions-gpt-5-latest-sandbox", label: "GPT-5 Latest", group: "GPT" },
-  { value: "azure-chat-completions-gpt-5-mini-2025-01-31-sandbox", label: "GPT-5 Mini", group: "GPT" },
-  { value: "gcp-chat-completions-anthropic-claude-sonnet-4.6-sandbox", label: "Claude Sonnet 4.6", group: "Claude", badge: "⚠️ 6/min" },
-  { value: "gcp-chat-completions-anthropic-claude-opus-4.6-sandbox", label: "Claude Opus 4.6", group: "Claude", badge: "⚠️ 6/min" },
-  { value: "gcp-chat-completions-chat-gemini-3.1-pro-preview-sandbox", label: "Gemini 3.1 Pro", group: "Gemini", badge: "300/min" },
-  { value: "gcp-chat-completions-chat-gemini-3.1-flash-preview-sandbox", label: "Gemini 3.1 Flash", group: "Gemini", badge: "Fast · 300/min" },
-];
-
-const DEFAULT_MODEL = "azure-chat-completions-gpt-5-2-2025-12-11-sandbox";
+const FIXED_MODEL = "azure-chat-completions-gpt-5-2-2025-12-11-sandbox";
 
 // Max textarea height ≈ 15 lines (14px × 1.625 line-height × 15 + top/bottom padding)
 const MAX_TEXTAREA_HEIGHT = 340;
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
-function newConversation(model: string): Conversation {
+function newConversation(): Conversation {
   return {
     id: Date.now().toString(),
     title: "New conversation",
     messages: [],
     evaluation: null,
-    model,
+    model: undefined,
     createdAt: new Date().toISOString(),
   };
 }
@@ -243,15 +231,14 @@ function NameValidatorPanel({
 
 export default function Home() {
   const pathname = usePathname();
+  const router = useRouter();
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [activeId, setActiveId] = useState<string>("");
   const [inputValue, setInputValue] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
-  const [selectedModel, setSelectedModel] = useState(DEFAULT_MODEL);
   const [includeResearch, setIncludeResearch] = useState(false);
 
   const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [modelPickerOpen, setModelPickerOpen] = useState(false);
   const [similarBriefs, setSimilarBriefs] = useState<SimilarBrief[]>([]);
   const [isFetchingSimilar, setIsFetchingSimilar] = useState(false);
   const [jiraTicketKey, setJiraTicketKey] = useState<string | null>(null);
@@ -260,6 +247,9 @@ export default function Home() {
   const [validatorNames, setValidatorNames] = useState<[string, string, string]>(["", "", ""]);
   const [validatorResults, setValidatorResults] = useState<ValidatorResult | null>(null);
   const [isValidatingNames, setIsValidatingNames] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+  const [slackNotified, setSlackNotified] = useState(false);
 
   // Upload state — stored separately so file shows as pill, not as textarea text
   const [uploadedFileName, setUploadedFileName] = useState<string | null>(null);
@@ -269,7 +259,6 @@ export default function Home() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const chatEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const modelPickerRef = useRef<HTMLDivElement>(null);
 
   // Derived state
   const activeConversation = conversations.find((c) => c.id === activeId) ?? null;
@@ -294,18 +283,6 @@ export default function Home() {
     }
   }, [inputValue]);
 
-  // Close model picker when clicking outside it
-  useEffect(() => {
-    if (!modelPickerOpen) return;
-    const handler = (e: MouseEvent) => {
-      if (modelPickerRef.current && !modelPickerRef.current.contains(e.target as Node)) {
-        setModelPickerOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, [modelPickerOpen]);
-
   // Keyboard shortcuts
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -326,7 +303,7 @@ export default function Home() {
 
   const getOrCreateConversation = (): Conversation => {
     if (activeConversation) return activeConversation;
-    const conv = newConversation(selectedModel);
+    const conv = newConversation();
     setConversations((prev) => [conv, ...prev]);
     setActiveId(conv.id);
     return conv;
@@ -367,7 +344,7 @@ export default function Home() {
   }, []);
 
   const startNewChat = () => {
-    const conv = newConversation(selectedModel);
+    const conv = newConversation();
     setConversations((prev) => [conv, ...prev]);
     setActiveId(conv.id);
     setInputValue("");
@@ -378,6 +355,9 @@ export default function Home() {
     setJiraTicketUrl(null);
     setValidatorNames(["", "", ""]);
     setValidatorResults(null);
+    setIsSaved(false);
+    setIsSaving(false);
+    setSlackNotified(false);
   };
 
   // ── Upload — shows file as attachment pill; text extracted but NOT put in textarea ──
@@ -495,12 +475,12 @@ export default function Home() {
     }, 4500);
 
     setIsProcessing(true);
+    setIsSaved(false);
 
     try {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const payload: any = {
-        skipWebResearch: !includeResearch,
-        model: selectedModel
+        skipWebResearch: !includeResearch
       };
 
       if (isClarification && currentEvaluation) {
@@ -530,6 +510,7 @@ export default function Home() {
       if (!data.success) throw new Error(data.error || "Evaluation failed");
 
       const result = data.result;
+      if (data.slackNotified) setSlackNotified(true);
 
       removeLoadingMessage(conv.id);
       updateConversation(conv.id, { evaluation: result });
@@ -704,9 +685,41 @@ export default function Home() {
     }
   };
 
+  const handleSaveDecision = async () => {
+    if (!currentEvaluation || isSaved || isSaving) return;
+    setIsSaving(true);
+    try {
+      const briefText = messages.find((m) => m.metadata?.type === "brief")?.content ?? "";
+      const res = await fetch("/api/corpus", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          briefText,
+          verdictPath: currentEvaluation.verdict?.path,
+          verdictTitle: currentEvaluation.verdict?.title,
+          score: currentEvaluation.scoringResult?.scores?.total ?? null,
+          gateResults: currentEvaluation.gateEvaluation?.gate_results ?? null,
+          offeringDescription: currentEvaluation.compiledBrief?.offering_description ?? null,
+        }),
+      });
+      if (!res.ok) throw new Error("Save failed");
+      setIsSaved(true);
+      toast.success("Decision saved to history");
+    } catch {
+      toast.error("Couldn't save decision — try again");
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  const handleContinueToNaming = () => {
+    const briefText = messages.find((m) => m.metadata?.type === "brief")?.content ?? "";
+    if (briefText) localStorage.setItem("prefill-brief", briefText);
+    router.push("/name-generator");
+  };
+
   const handleSend = async () => {
     if (!hasContent || isProcessing || isUploading) return;
-    setModelPickerOpen(false);
 
     const isClarification = !!(currentEvaluation?.requiresClarification);
 
@@ -752,12 +765,6 @@ export default function Home() {
     }
   };
 
-  // ── Derived labels ──
-
-  const selectedModelMeta = MODELS.find((m) => m.value === selectedModel);
-  const modelLabel = selectedModelMeta?.label ?? "GPT-5.2";
-  const groups = ["GPT", "Claude", "Gemini"] as const;
-
   // ─── Render ──────────────────────────────────────────────────────────────
 
   return (
@@ -798,102 +805,129 @@ export default function Home() {
           </button>
         </div>
 
-        {/* Analytics */}
-        <div className="px-2 py-1 border-b border-white/10">
+        {/* ── WORKFLOW group ── */}
+        {sidebarOpen && (
+          <p className="text-[10px] text-white/30 uppercase tracking-widest px-4 pt-3 pb-1">Workflow</p>
+        )}
+        <div className="px-2 pb-1">
+          <Link
+            href="/"
+            title="Step 1: Evaluate Brief"
+            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg transition-colors text-sm ${
+              pathname === "/" ? "bg-white/10 text-white" : "text-white/60 hover:bg-white/10 hover:text-white"
+            } ${!sidebarOpen ? "justify-center" : ""}`}
+          >
+            <ArrowUp className="h-4 w-4 flex-shrink-0" />
+            {sidebarOpen && (
+              <span className="flex items-center gap-1.5">
+                <span className="text-[10px] font-bold bg-white/15 text-white/70 px-1 rounded">1</span>
+                Evaluate Brief
+              </span>
+            )}
+          </Link>
+          <Link
+            href="/name-generator"
+            title="Step 2: Generate Names"
+            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg transition-colors text-sm ${
+              pathname === "/name-generator" ? "bg-white/10 text-white" : "text-white/60 hover:bg-white/10 hover:text-white"
+            } ${!sidebarOpen ? "justify-center" : ""}`}
+          >
+            <Wand2 className="h-4 w-4 flex-shrink-0" />
+            {sidebarOpen && (
+              <span className="flex items-center gap-1.5">
+                <span className="text-[10px] font-bold bg-white/15 text-white/70 px-1 rounded">2</span>
+                Generate Names
+              </span>
+            )}
+          </Link>
+          <Link
+            href="/name-validator"
+            title="Step 3: Validate Names"
+            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg transition-colors text-sm ${
+              pathname === "/name-validator" ? "bg-white/10 text-white" : "text-white/60 hover:bg-white/10 hover:text-white"
+            } ${!sidebarOpen ? "justify-center" : ""}`}
+          >
+            <BadgeCheck className="h-4 w-4 flex-shrink-0" />
+            {sidebarOpen && (
+              <span className="flex items-center gap-1.5">
+                <span className="text-[10px] font-bold bg-white/15 text-white/70 px-1 rounded">3</span>
+                Validate Names
+              </span>
+            )}
+          </Link>
+        </div>
+
+        {/* ── REPOSITORY group ── */}
+        {sidebarOpen && (
+          <p className="text-[10px] text-white/30 uppercase tracking-widest px-4 pt-3 pb-1">Repository</p>
+        )}
+        <div className="px-2 pb-1">
+          <Link
+            href="/registry"
+            title="Naming Registry"
+            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg transition-colors text-sm ${
+              pathname === "/registry" ? "bg-white/10 text-white" : "text-white/60 hover:bg-white/10 hover:text-white"
+            } ${!sidebarOpen ? "justify-center" : ""}`}
+          >
+            <Database className="h-4 w-4 flex-shrink-0" />
+            {sidebarOpen && <span>Naming Registry</span>}
+          </Link>
+          <Link
+            href="/corpus"
+            title="Decision History"
+            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg transition-colors text-sm ${
+              pathname === "/corpus" ? "bg-white/10 text-white" : "text-white/60 hover:bg-white/10 hover:text-white"
+            } ${!sidebarOpen ? "justify-center" : ""}`}
+          >
+            <BookOpen className="h-4 w-4 flex-shrink-0" />
+            {sidebarOpen && <span>Decision History</span>}
+          </Link>
+        </div>
+
+        {/* ── PLATFORM group ── */}
+        {sidebarOpen && (
+          <p className="text-[10px] text-white/30 uppercase tracking-widest px-4 pt-3 pb-1">Platform</p>
+        )}
+        <div className="px-2 pb-2 border-b border-white/10">
           <Link
             href="/analytics"
             title="Analytics"
             className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg transition-colors text-sm ${
-              pathname === "/analytics"
-                ? "bg-white/10 text-white"
-                : "text-white/60 hover:bg-white/10 hover:text-white"
+              pathname === "/analytics" ? "bg-white/10 text-white" : "text-white/60 hover:bg-white/10 hover:text-white"
             } ${!sidebarOpen ? "justify-center" : ""}`}
           >
             <BarChart2 className="h-4 w-4 flex-shrink-0" />
             {sidebarOpen && <span>Analytics</span>}
           </Link>
-
           <Link
             href="/lab"
             title="Lab"
             className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg transition-colors text-sm ${
-              pathname === "/lab"
-                ? "bg-white/10 text-white"
-                : "text-white/60 hover:bg-white/10 hover:text-white"
+              pathname === "/lab" ? "bg-white/10 text-white" : "text-white/60 hover:bg-white/10 hover:text-white"
             } ${!sidebarOpen ? "justify-center" : ""}`}
           >
             <TestTube2 className="h-4 w-4 flex-shrink-0" />
-            {sidebarOpen && (
-              <span className="flex items-center gap-1.5">
-                Lab
-                <span className="text-[9px] font-bold text-blue-300 bg-blue-900/40 px-1 py-0.5 rounded uppercase tracking-wide">Beta</span>
-              </span>
-            )}
+            {sidebarOpen && <span>Lab</span>}
           </Link>
-
-          <Link
-            href="/registry"
-            title="Naming Registry"
-            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg transition-colors text-sm ${
-              pathname === "/registry"
-                ? "bg-white/10 text-white"
-                : "text-white/60 hover:bg-white/10 hover:text-white"
-            } ${!sidebarOpen ? "justify-center" : ""}`}
-          >
-            <Database className="h-4 w-4 flex-shrink-0" />
-            {sidebarOpen && <span>Registry</span>}
-          </Link>
-
           <Link
             href="/governance"
             title="AI Governance"
             className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg transition-colors text-sm ${
-              pathname === "/governance"
-                ? "bg-white/10 text-white"
-                : "text-white/60 hover:bg-white/10 hover:text-white"
+              pathname === "/governance" ? "bg-white/10 text-white" : "text-white/60 hover:bg-white/10 hover:text-white"
             } ${!sidebarOpen ? "justify-center" : ""}`}
           >
             <Shield className="h-4 w-4 flex-shrink-0" />
             {sidebarOpen && <span>Governance</span>}
           </Link>
-
           <Link
-            href="/name-generator"
-            title="Name Generator"
+            href="/admin"
+            title="Admin"
             className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg transition-colors text-sm ${
-              pathname === "/name-generator"
-                ? "bg-white/10 text-white"
-                : "text-white/60 hover:bg-white/10 hover:text-white"
+              pathname === "/admin" ? "bg-white/10 text-white" : "text-white/60 hover:bg-white/10 hover:text-white"
             } ${!sidebarOpen ? "justify-center" : ""}`}
           >
-            <Wand2 className="h-4 w-4 flex-shrink-0" />
-            {sidebarOpen && <span>Name Generator</span>}
-          </Link>
-
-          <Link
-            href="/name-validator"
-            title="Name Validator"
-            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg transition-colors text-sm ${
-              pathname === "/name-validator"
-                ? "bg-white/10 text-white"
-                : "text-white/60 hover:bg-white/10 hover:text-white"
-            } ${!sidebarOpen ? "justify-center" : ""}`}
-          >
-            <BadgeCheck className="h-4 w-4 flex-shrink-0" />
-            {sidebarOpen && <span>Name Validator</span>}
-          </Link>
-
-          <Link
-            href="/corpus"
-            title="Brief Corpus"
-            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg transition-colors text-sm ${
-              pathname === "/corpus"
-                ? "bg-white/10 text-white"
-                : "text-white/60 hover:bg-white/10 hover:text-white"
-            } ${!sidebarOpen ? "justify-center" : ""}`}
-          >
-            <BookOpen className="h-4 w-4 flex-shrink-0" />
-            {sidebarOpen && <span>Brief Corpus</span>}
+            <Settings className="h-4 w-4 flex-shrink-0" />
+            {sidebarOpen && <span>Admin</span>}
           </Link>
         </div>
 
@@ -909,7 +943,6 @@ export default function Home() {
                   type="button"
                   onClick={() => {
                     setActiveId(conv.id);
-                    setSelectedModel(conv.model);
                     setSimilarBriefs([]);
                     setJiraTicketKey(null);
                     setJiraTicketUrl(null);
@@ -1020,99 +1053,88 @@ export default function Home() {
                 {(isFetchingSimilar || similarBriefs.length > 0) && (
                   <SimilarBriefsCard briefs={similarBriefs} isLoading={isFetchingSimilar} />
                 )}
-                {currentEvaluation?.verdict?.path === "PATH_C" && (
-                  <div className="mt-3 mb-2 flex items-center gap-3 px-1">
-                    {jiraTicketKey ? (
-                      <a
-                        href={jiraTicketUrl ?? "#"}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-lg hover:bg-emerald-100 transition-colors font-medium"
-                      >
-                        <Ticket className="h-3.5 w-3.5" />
-                        {jiraTicketKey}
-                        <ExternalLink className="h-3 w-3 opacity-60" />
-                      </a>
-                    ) : (
-                      <button
-                        type="button"
-                        onClick={handleCreateJiraTicket}
-                        disabled={isCreatingJiraTicket}
-                        className="inline-flex items-center gap-1.5 text-xs text-slate-600 bg-white border border-slate-200 px-3 py-1.5 rounded-lg hover:bg-slate-50 hover:border-slate-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed font-medium"
-                      >
-                        {isCreatingJiraTicket ? (
-                          <Loader2 className="h-3.5 w-3.5 animate-spin" />
-                        ) : (
-                          <Ticket className="h-3.5 w-3.5" />
-                        )}
-                        {isCreatingJiraTicket ? "Creating ticket…" : "Create Jira Ticket"}
-                      </button>
-                    )}
-                  </div>
-                )}
-                {currentEvaluation?.verdict?.path === "PATH_C" && (
-                  <NameValidatorPanel
-                    brief={messages.find((m) => m.metadata?.type === "brief")?.content ?? ""}
-                    names={validatorNames}
-                    onNamesChange={setValidatorNames}
-                    results={validatorResults}
-                    isLoading={isValidatingNames}
-                    onAnalyze={handleValidateNames}
-                  />
-                )}
                 <div ref={chatEndRef} />
               </div>
             )}
           </div>
         </div>
 
+        {/* ── Post-verdict action bar ── */}
+        {currentEvaluation?.verdict?.path && (
+          <div className="flex-shrink-0 bg-[#f4f4f4] px-4 pt-2 pb-1">
+            <div className="max-w-5xl mx-auto flex items-center gap-2 flex-wrap">
+              <button
+                type="button"
+                onClick={handleSaveDecision}
+                disabled={isSaved || isSaving}
+                className={`inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg border transition-colors disabled:cursor-default ${
+                  isSaved
+                    ? "bg-green-50 border-green-200 text-green-700"
+                    : "bg-white border-slate-200 text-slate-600 hover:bg-slate-50 hover:border-slate-300"
+                }`}
+              >
+                {isSaved ? (
+                  <><Check className="h-3.5 w-3.5" /> Saved</>
+                ) : isSaving ? (
+                  <><Loader2 className="h-3.5 w-3.5 animate-spin" /> Saving…</>
+                ) : (
+                  <><Save className="h-3.5 w-3.5" /> Save Decision</>
+                )}
+              </button>
+
+              {currentEvaluation.verdict.path === "PATH_C" && (
+                <button
+                  type="button"
+                  onClick={handleContinueToNaming}
+                  className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg border bg-slate-900 border-slate-900 text-white hover:bg-slate-700 transition-colors"
+                >
+                  <ArrowRight className="h-3.5 w-3.5" />
+                  Continue to Naming
+                </button>
+              )}
+
+              {slackNotified ? (
+                <span className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 text-slate-400">
+                  <Check className="h-3.5 w-3.5" /> Team notified
+                </span>
+              ) : null}
+
+              {currentEvaluation.verdict.path === "PATH_C" && (
+                <>
+                  {jiraTicketKey ? (
+                    <a
+                      href={jiraTicketUrl ?? "#"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg border bg-emerald-50 border-emerald-200 text-emerald-700 hover:bg-emerald-100 transition-colors"
+                    >
+                      <Ticket className="h-3.5 w-3.5" />
+                      {jiraTicketKey}
+                      <ExternalLink className="h-3 w-3 opacity-60" />
+                    </a>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={handleCreateJiraTicket}
+                      disabled={isCreatingJiraTicket}
+                      className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg border bg-white border-slate-200 text-slate-600 hover:bg-slate-50 hover:border-slate-300 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {isCreatingJiraTicket ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Ticket className="h-3.5 w-3.5" />}
+                      {isCreatingJiraTicket ? "Creating…" : "Create Jira Ticket"}
+                    </button>
+                  )}
+                </>
+              )}
+            </div>
+          </div>
+        )}
+
         {/* ── Input area ── */}
         <div className="flex-shrink-0 bg-[#f4f4f4] px-4 pb-5 pt-2">
           <div className="max-w-5xl mx-auto">
 
-            <div className="relative" ref={modelPickerRef}>
-              <AnimatePresence>
-                {modelPickerOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 8, scale: 0.97 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 8, scale: 0.97 }}
-                    transition={{ duration: 0.15 }}
-                    className="absolute bottom-full left-0 mb-2 bg-white border border-slate-200 rounded-2xl shadow-xl p-3 w-72 z-50"
-                  >
-                    <p className="text-xs font-semibold text-slate-500 px-2 mb-2">Select model</p>
-                    {groups.map((group) => (
-                      <div key={group} className="mb-3 last:mb-0">
-                        <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wide px-2 mb-1">{group}</p>
-                        {MODELS.filter((m) => m.group === group).map((m) => (
-                          <button
-                            type="button"
-                            key={m.value}
-                            onClick={() => {
-                              setSelectedModel(m.value);
-                              setModelPickerOpen(false);
-                            }}
-                            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-sm transition-colors ${
-                              selectedModel === m.value
-                                ? "bg-slate-100 text-slate-900 font-medium"
-                                : "text-slate-700 hover:bg-slate-50"
-                            }`}
-                          >
-                            <span>{m.label}</span>
-                            <span className="flex items-center gap-1.5">
-                              {m.badge && <span className="text-[10px] text-slate-400">{m.badge}</span>}
-                              {selectedModel === m.value && <Check className="h-3.5 w-3.5 text-blue-600" />}
-                            </span>
-                          </button>
-                        ))}
-                      </div>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
-              {/* Input box */}
-              <div className="bg-white rounded-3xl shadow-sm border border-slate-200">
+            {/* Input box */}
+            <div className="bg-white rounded-3xl shadow-sm border border-slate-200">
 
                 {/* Attachment pill */}
                 {uploadedFileName && (
@@ -1184,17 +1206,6 @@ export default function Home() {
                     className="sr-only"
                   />
 
-                  {/* Model selector */}
-                  <button
-                    type="button"
-                    onClick={() => setModelPickerOpen((v) => !v)}
-                    disabled={isProcessing}
-                    className="flex-shrink-0 flex items-center gap-1.5 bg-slate-100 hover:bg-slate-200 rounded-full px-3 py-1.5 text-xs font-medium text-slate-700 transition-colors disabled:opacity-40"
-                  >
-                    {modelLabel}
-                    <span className="text-slate-400 text-[10px]">▾</span>
-                  </button>
-
                   {/* Web research toggle */}
                   <button
                     type="button"
@@ -1229,14 +1240,12 @@ export default function Home() {
                   </button>
                 </div>
               </div>
-            </div>
 
             <p className="text-center text-[11px] text-slate-400 mt-2">
               <kbd className="px-1 py-0.5 bg-slate-200 rounded text-[9px] font-mono">⏎</kbd> send ·{" "}
               <kbd className="px-1 py-0.5 bg-slate-200 rounded text-[9px] font-mono">⇧⏎</kbd> newline ·{" "}
               <kbd className="px-1 py-0.5 bg-slate-200 rounded text-[9px] font-mono">⌘K</kbd> focus ·{" "}
-              <kbd className="px-1 py-0.5 bg-slate-200 rounded text-[9px] font-mono">⌘B</kbd> sidebar ·{" "}
-              <span className="font-medium">{modelLabel}</span>
+              <kbd className="px-1 py-0.5 bg-slate-200 rounded text-[9px] font-mono">⌘B</kbd> sidebar
             </p>
           </div>
         </div>

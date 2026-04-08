@@ -2388,6 +2388,7 @@ export default function LabPage() {
           <div className="flex items-center gap-2">
             <Beaker className="h-5 w-5 text-slate-700" />
             <span className="text-sm font-semibold text-slate-800">Naming Lab</span>
+            <span className="text-xs text-slate-400 ml-2 font-normal">{modelLabel}</span>
             <span className="text-[10px] font-bold text-blue-700 bg-blue-50 border border-blue-200 px-1.5 py-0.5 rounded-full uppercase tracking-wide">Beta</span>
           </div>
 
@@ -2978,10 +2979,10 @@ export default function LabPage() {
                   type="button"
                   onClick={() => setModelPickerOpen((v) => !v)}
                   disabled={isBusy}
-                  className="flex-shrink-0 flex items-center gap-1.5 bg-slate-100 hover:bg-slate-200 rounded-full px-3 py-1.5 text-xs font-medium text-slate-700 transition-colors disabled:opacity-40"
+                  title={`Model: ${modelLabel}`}
+                  className="flex-shrink-0 w-8 h-8 rounded-full border border-slate-200 bg-white hover:bg-slate-50 flex items-center justify-center text-slate-400 hover:text-slate-600 transition-colors disabled:opacity-40"
                 >
-                  {modelLabel}
-                  <span className="text-slate-400 text-[10px]">▾</span>
+                  <Settings2 className="h-4 w-4" />
                 </button>
 
                 <div className="flex-1" />

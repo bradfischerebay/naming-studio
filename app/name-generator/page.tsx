@@ -140,6 +140,14 @@ export default function NameGeneratorPage() {
     return () => { document.title = "eBay Naming Studio"; };
   }, []);
 
+  useEffect(() => {
+    const prefill = localStorage.getItem("prefill-brief");
+    if (prefill) {
+      setBrief(prefill);
+      localStorage.removeItem("prefill-brief");
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#f4f4f4]">
       {/* Header */}
