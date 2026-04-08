@@ -26,11 +26,6 @@ interface CheckResult {
   concerns: string[];
 }
 
-interface ValidationResult {
-  success: boolean;
-  results: CheckResult[];
-}
-
 // ─── Constants ───────────────────────────────────────────────────────────────
 
 const MARKET_OPTIONS = ["US", "UK", "DE", "AU", "CA", "JP"];
@@ -99,7 +94,15 @@ export default function NameValidatorPage() {
   };
 
   const handleCheck = async () => {
-    if (!names.length || !brief.trim() || isChecking) return;
+    // Flush any unsubmitted name in the text input
+    const pendingName = nameInput.trim().replace(/,/g, "");
+    let finalNames = names;
+    if (pendingName && !names.includes(pendingName) && names.length < 10) {
+      finalNames = [...names, pendingName];
+      setNames(finalNames);
+      setNameInput("");
+    }
+    if (!finalNames.length || !brief.trim() || isChecking) return;
     setIsChecking(true);
     setError(null);
     setResults(null);
@@ -108,7 +111,7 @@ export default function NameValidatorPage() {
       const res = await fetch("/api/check-name-guidelines", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ names, brief, markets }),
+        body: JSON.stringify({ names: finalNames, brief, markets }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? "Check failed");

@@ -144,7 +144,7 @@ export class ChomskyClient {
           content: prompt,
         },
       ],
-      temperature: params.temperature || this.config.temperature,
+      temperature: params.temperature ?? this.config.temperature,
       [maxTokensKey]: this.config.maxTokens,
     };
 
@@ -229,7 +229,7 @@ export class ChomskyClient {
     const requestBody: Record<string, unknown> = {
       model: modelName,
       messages: params.messages,
-      temperature: params.temperature || this.config.temperature,
+      temperature: params.temperature ?? this.config.temperature,
       [maxTokensKey]: params.maxTokens ?? this.config.maxTokens,
     };
 

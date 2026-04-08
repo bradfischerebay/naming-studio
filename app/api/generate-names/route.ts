@@ -135,11 +135,19 @@ async function generateBucketNames(
     }>;
   }>;
 }> {
+  // List exact subtypeKey values so the LLM returns the right keys
+  const subtypeList = bucket.subtypes
+    .map((s) => `  - subtypeKey: "${s.key}" → ${s.label}`)
+    .join("\n");
+
   const userPrompt = `Product Brief: ${brief}
 Target Markets: ${markets.join(", ")}
 
 Generate names for the "${bucket.label}" strategy bucket.
-For each subtype, provide ${count} name candidates with rationale and optional tagline.`;
+You MUST include ALL of the following subtypes using the EXACT subtypeKey values listed:
+${subtypeList}
+
+For each subtype, provide exactly ${count} name candidate(s) with rationale and optional tagline.`;
 
   try {
     const { object } = await chomsky.generateObject({
