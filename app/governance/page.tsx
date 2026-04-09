@@ -62,7 +62,7 @@ export default function GovernancePage() {
             </span>
           </div>
           <p className="text-sm text-slate-700 leading-relaxed">
-            eBay Naming Studio is an internal governance tool that evaluates product naming briefs against eBay's naming framework.
+            eBay Naming Studio is an internal governance tool that evaluates product naming briefs against eBay&apos;s naming framework.
             It assists naming decision-makers by running structured gate evaluations and returning an advisory verdict.
             All decisions require human review before implementation.
           </p>

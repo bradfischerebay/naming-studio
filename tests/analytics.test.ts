@@ -36,6 +36,17 @@ describe("Analytics Module", () => {
       durationMs: 12000,
       briefLength: 500,
       error: null,
+      briefText: "Test brief text",
+      briefSummary: null,
+      targetGeographies: null,
+      targetCustomers: null,
+      timing: null,
+      gateResultsFull: null,
+      verdictTitle: "Proceed With Naming",
+      verdictSummary: null,
+      scoringBreakdown: null,
+      questionCount: 0,
+      retryCount: 0,
     };
 
     // Track should not throw even if Redis is not configured
@@ -79,6 +90,17 @@ describe("Analytics Module", () => {
       durationMs: 5000,
       briefLength: 100,
       error: null,
+      briefText: "",
+      briefSummary: null,
+      targetGeographies: null,
+      targetCustomers: null,
+      timing: null,
+      gateResultsFull: null,
+      verdictTitle: "No Proper Name",
+      verdictSummary: null,
+      scoringBreakdown: null,
+      questionCount: 0,
+      retryCount: 0,
     };
 
     await expect(analytics.track(event)).resolves.not.toThrow();
@@ -97,6 +119,17 @@ describe("Analytics Module", () => {
       durationMs: 1000,
       briefLength: 50,
       error: "VPN connection failed",
+      briefText: "",
+      briefSummary: null,
+      targetGeographies: null,
+      targetCustomers: null,
+      timing: null,
+      gateResultsFull: null,
+      verdictTitle: "Need More Information",
+      verdictSummary: null,
+      scoringBreakdown: null,
+      questionCount: 0,
+      retryCount: 0,
     };
 
     await expect(analytics.track(errorEvent)).resolves.not.toThrow();
@@ -115,6 +148,17 @@ describe("Analytics Module", () => {
       durationMs: 8000,
       briefLength: 600,
       error: null,
+      briefText: "Test brief for retry",
+      briefSummary: null,
+      targetGeographies: null,
+      targetCustomers: null,
+      timing: null,
+      gateResultsFull: null,
+      verdictTitle: "Proceed With Naming",
+      verdictSummary: null,
+      scoringBreakdown: null,
+      questionCount: 0,
+      retryCount: 1,
     };
 
     await expect(analytics.track(retryEvent)).resolves.not.toThrow();
@@ -133,6 +177,17 @@ describe("Analytics Module", () => {
       durationMs: 10000,
       briefLength: 450,
       error: null,
+      briefText: "Validation test brief",
+      briefSummary: null,
+      targetGeographies: null,
+      targetCustomers: null,
+      timing: null,
+      gateResultsFull: null,
+      verdictTitle: "No Proper Name - Low Score",
+      verdictSummary: null,
+      scoringBreakdown: null,
+      questionCount: 0,
+      retryCount: 0,
     };
 
     // Verify all required fields are present

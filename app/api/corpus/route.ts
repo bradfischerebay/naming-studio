@@ -14,9 +14,7 @@ export const runtime = "nodejs";
 function requireAdmin(request: NextRequest): NextResponse | null {
   const adminPassword = process.env.ADMIN_PASSWORD;
   if (!adminPassword) return null; // No password configured — open (dev mode)
-  const providedKey =
-    request.nextUrl.searchParams.get("key") ??
-    request.headers.get("x-admin-key");
+  const providedKey = request.headers.get("x-admin-key");
   if (providedKey !== adminPassword) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
@@ -24,6 +22,9 @@ function requireAdmin(request: NextRequest): NextResponse | null {
 }
 
 export async function GET(request: NextRequest) {
+  const authError = requireAdmin(request);
+  if (authError) return authError;
+
   const { searchParams } = request.nextUrl;
   const isExport = searchParams.get("export") === "jsonl";
   const verdictFilter = searchParams.get("verdict") ?? undefined;

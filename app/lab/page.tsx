@@ -832,7 +832,7 @@ function GateConfigPanel({
             {gate.disabled && gateKey === "G0" && (
               <div className="px-4 py-2 bg-amber-50 border-t border-amber-100">
                 <p className="text-[10px] text-amber-700 leading-snug">
-                  ⚠ G0 is the primary interaction gate. Disabling it removes the "no user interaction = do not name" rule and allows all briefs to proceed regardless of user visibility.
+                  ⚠ G0 is the primary interaction gate. Disabling it removes the &quot;no user interaction = do not name&quot; rule and allows all briefs to proceed regardless of user visibility.
                 </p>
               </div>
             )}

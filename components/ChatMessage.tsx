@@ -387,8 +387,10 @@ function VerdictGuidance({ path }: { path: string }) {
     },
   };
 
-  const g = guidance[path];
-  if (!g) return null;
+  const g = guidance[path] ?? {
+    heading: "Contact your naming governance team",
+    body: "This verdict type is not yet documented. Please reach out to your naming governance team for guidance on next steps.",
+  };
 
   const borderColor = path === "PATH_B" ? "border-blue-200 bg-blue-50" : "border-amber-200 bg-amber-50";
   const textColor = path === "PATH_B" ? "text-blue-800" : "text-amber-900";
@@ -426,10 +428,38 @@ function ExportMenu({ message }: { message: Message }) {
   }, [open]);
 
   const copyText = (text: string, key: string) => {
-    navigator.clipboard.writeText(text).then(() => {
+    const finish = () => {
       setCopiedItem(key);
       setTimeout(() => { setCopiedItem(null); setOpen(false); }, 1500);
-    });
+    };
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(finish).catch(() => {
+        // Fallback for non-secure contexts (HTTP)
+        try {
+          const el = document.createElement("textarea");
+          el.value = text;
+          el.style.position = "fixed";
+          el.style.opacity = "0";
+          document.body.appendChild(el);
+          el.select();
+          document.execCommand("copy");
+          document.body.removeChild(el);
+          finish();
+        } catch { /* clipboard unavailable */ }
+      });
+    } else {
+      try {
+        const el = document.createElement("textarea");
+        el.value = text;
+        el.style.position = "fixed";
+        el.style.opacity = "0";
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand("copy");
+        document.body.removeChild(el);
+        finish();
+      } catch { /* clipboard unavailable */ }
+    }
   };
 
   const downloadJson = () => {
@@ -596,7 +626,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
                       ? "bg-green-100 text-green-800"
                       : "bg-red-100 text-red-800"
                   }`}>
-                    {message.metadata.totalScore}/70 — {(message.metadata.totalScore ?? 0) >= 60 ? "Passes" : "Below threshold"}
+                    {Number.isFinite(message.metadata.totalScore) ? message.metadata.totalScore : "—"}/70 — {(message.metadata.totalScore ?? 0) >= 60 ? "Passes" : "Below threshold"}
                   </span>
                 </div>
                 <div className="rounded-xl border border-slate-200 overflow-hidden">
@@ -607,37 +637,32 @@ export function ChatMessage({ message }: ChatMessageProps) {
                       why: "Separate enrollment, distinct checkout, or vertical service",
                       value: message.metadata.scoringResults.standalone,
                       max: 25,
-                      positive: true,
-                    },
+                                          },
                     {
                       label: "Longevity",
                       why: "Planned duration of 12+ months",
                       value: message.metadata.scoringResults.longevity,
                       max: 15,
-                      positive: true,
-                    },
+                                          },
                     {
                       label: "Legal / Regulatory mandate",
                       why: "Formal legal requirement, trademark filing, or compliance mandate",
                       value: message.metadata.scoringResults.legal,
                       max: 10,
-                      positive: true,
-                    },
+                                          },
                     {
                       label: "Global viability",
                       why: "US + UK/DE markets, or explicitly global scope",
                       value: message.metadata.scoringResults.global,
                       max: 10,
-                      positive: true,
-                    },
+                                          },
                     {
                       label: "Clarity lift",
                       why: "Complex concept where a name meaningfully aids comprehension",
                       value: message.metadata.scoringResults.clarity,
                       max: 10,
-                      positive: true,
-                    },
-                  ].map(({ label, why, value, max, positive }) => (
+                                          },
+                  ].map(({ label, why, value, max }) => (
                     <div key={label} className="px-3 py-2.5 border-b border-slate-100 last:border-0">
                       <div className="flex items-center gap-3 mb-1">
                         <div className="flex-1 min-w-0">
@@ -697,7 +722,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
                       <span className={`text-base font-bold ${
                         (message.metadata.totalScore ?? 0) >= 60 ? "text-green-700" : "text-red-600"
                       }`}>
-                        {message.metadata.totalScore}<span className="text-xs font-normal text-slate-400">/70</span>
+                        {Number.isFinite(message.metadata.totalScore) ? message.metadata.totalScore : "—"}<span className="text-xs font-normal text-slate-400">/70</span>
                       </span>
                     </div>
                     <div className="bg-white/60 rounded-full h-2 mt-2">

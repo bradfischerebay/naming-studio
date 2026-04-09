@@ -4,6 +4,7 @@
  */
 
 import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
 import { orchestrator } from "@/lib/orchestrator";
 import { toMachinePayload } from "@/lib/modules/formatter";
 import { analytics } from "@/lib/analytics";
@@ -12,6 +13,26 @@ import { validateModel } from "@/lib/config/models";
 import { storeBriefMemory } from "@/lib/brief-memory";
 import { notifySlackPathC } from "@/lib/slack";
 import { recordBriefCorpus } from "@/lib/brief-corpus";
+import { rateLimit } from "@/lib/rate-limit";
+import { GateEvaluationSchema } from "@/lib/models/gates";
+import { VerdictOutputSchema } from "@/lib/models/verdict";
+import { ScoringResultSchema } from "@/lib/models/scoring";
+
+// Validates the security-critical fields of the client-supplied previousResult.
+// The verdict/gate/score fields are the injection targets — we fully validate them.
+// Non-critical passthrough fields (landscapeData, factsData, compiledBrief, markdown)
+// are accepted as-is since they're either ignored or re-computed by the orchestrator.
+const PreviousResultSchema = z.object({
+  verdict: VerdictOutputSchema,
+  gateEvaluation: GateEvaluationSchema,
+  scoringResult: ScoringResultSchema.optional(),
+  markdown: z.string().optional().default(""),
+  requiresClarification: z.boolean().optional().default(false),
+  questions: z.array(z.string()).optional(),
+  landscapeData: z.unknown().optional(),
+  factsData: z.unknown().optional(),
+  compiledBrief: z.unknown().optional(),
+});
 
 export const runtime = "nodejs";
 export const maxDuration = 240; // 4 minutes — pipeline makes 4-6 sequential LLM calls
@@ -21,6 +42,15 @@ export const maxDuration = 240; // 4 minutes — pipeline makes 4-6 sequential L
 const MAX_BRIEF_LENGTH = 50000;
 
 export async function POST(request: NextRequest) {
+  // Rate limit: 5 evaluations per minute per IP (each eval = 4-6 LLM calls)
+  const rl = await rateLimit(request, { interval: 60_000, maxRequests: 5 });
+  if (!rl.success) {
+    return NextResponse.json(
+      { error: "Rate limit exceeded. Please wait before submitting another brief." },
+      { status: 429, headers: rl.headers }
+    );
+  }
+
   const startTime = Date.now();
   let sessionId = "unknown";
   let modelUsed = "unknown";
@@ -44,7 +74,16 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    briefLength = brief.length;
+    const normalizedBrief = brief.normalize("NFC");
+    briefLength = normalizedBrief.length;
+
+    // Minimum brief length — prevents zero-cost LLM calls on empty/trivial input
+    if (brief.trim().length < 20) {
+      return NextResponse.json(
+        { error: "Brief is too short. Please provide at least a sentence describing the product or feature." },
+        { status: 400 }
+      );
+    }
 
     // Validate brief length
     if (briefLength > MAX_BRIEF_LENGTH) {
@@ -78,10 +117,24 @@ export async function POST(request: NextRequest) {
 
     // Handle clarification flow (retry)
     if (clarification && previousResult) {
+      // Validate and strip client-supplied previousResult before passing to orchestrator.
+      // Prevents a malicious client from injecting a synthetic PATH_C verdict.
+      const parsed = PreviousResultSchema.safeParse(previousResult);
+      if (!parsed.success) {
+        return NextResponse.json(
+          { error: "Invalid previousResult structure. Please retry from the beginning." },
+          { status: 400 }
+        );
+      }
+
+      // Cast is safe — security-critical fields are Zod-validated above.
+      // Non-critical fields (landscapeData, factsData, compiledBrief) flow through
+      // as-is and are re-computed by the orchestrator during clarification.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const result = await orchestrator.evaluateWithClarification({
         brief,
         userClarification: clarification,
-        previousResult,
+        previousResult: parsed.data as any,
         config,
       });
 

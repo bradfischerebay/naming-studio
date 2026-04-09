@@ -3,12 +3,19 @@
  * GET-only endpoint for retrieving analytics summary
  */
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { analytics } from "@/lib/analytics";
 
 export const runtime = "nodejs";
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const adminPassword = process.env.ADMIN_PASSWORD;
+  if (adminPassword) {
+    const providedKey = request.headers.get("x-admin-key");
+    if (providedKey !== adminPassword) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+  }
   try {
     const summary = await analytics.getSummary();
 

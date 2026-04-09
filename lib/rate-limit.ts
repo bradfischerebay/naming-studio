@@ -124,16 +124,54 @@ export class UpstashStorage implements RateLimitStorage {
   }
 }
 
-const defaultStorage = new InMemoryStorage();
+/**
+ * Auto-detecting storage backend.
+ * Uses UpstashStorage when Redis env vars are present, InMemoryStorage otherwise.
+ * Lazy-initializes on first use so module load never throws.
+ */
+class AutoDetectStorage implements RateLimitStorage {
+  private backend: RateLimitStorage | null = null;
+  private readonly inMemory = new InMemoryStorage();
+
+  private async getBackend(): Promise<RateLimitStorage> {
+    if (this.backend) return this.backend;
+    if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
+      try {
+        const { Redis } = await import("@upstash/redis");
+        const redis = new Redis({
+          url: process.env.UPSTASH_REDIS_REST_URL,
+          token: process.env.UPSTASH_REDIS_REST_TOKEN,
+        });
+        this.backend = new UpstashStorage(redis);
+        return this.backend;
+      } catch {
+        // Redis init failed — fall through to in-memory
+      }
+    }
+    this.backend = this.inMemory;
+    return this.backend;
+  }
+
+  async get(key: string) { return (await this.getBackend()).get(key); }
+  async set(key: string, value: { count: number; resetTime: number }) { return (await this.getBackend()).set(key, value); }
+  async increment(key: string) { return (await this.getBackend()).increment(key); }
+
+  // Test utility: reset only works when backed by InMemoryStorage
+  reset(): void {
+    if (this.backend instanceof InMemoryStorage || this.backend === null) {
+      this.inMemory.reset();
+    }
+  }
+}
+
+const defaultStorage = new AutoDetectStorage();
 
 /**
  * Test utility: Reset rate limit storage
  * Only works with InMemoryStorage (default in development/tests)
  */
 export function resetRateLimitStorage(): void {
-  if (defaultStorage instanceof InMemoryStorage) {
-    defaultStorage.reset();
-  }
+  defaultStorage.reset();
 }
 
 interface RateLimitConfig {

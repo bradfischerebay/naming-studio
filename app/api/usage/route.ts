@@ -4,6 +4,14 @@ import { usageLog } from "@/lib/usage-log";
 export const runtime = "nodejs";
 
 export async function GET(req: NextRequest) {
+  const adminPassword = process.env.ADMIN_PASSWORD;
+  if (adminPassword) {
+    const providedKey = req.headers.get("x-admin-key");
+    if (providedKey !== adminPassword) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+  }
+
   const { searchParams } = req.nextUrl;
   const limit = Math.min(parseInt(searchParams.get("limit") ?? "100", 10), 500);
   const offset = parseInt(searchParams.get("offset") ?? "0", 10);

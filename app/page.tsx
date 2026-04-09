@@ -140,6 +140,10 @@ export default function Home() {
   const chatEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const hasLoaded = useRef(false);
+  // Ref-based guards for operations that must not run concurrently.
+  // useRef is synchronous; useState is not — so double-clicks can't slip through.
+  const evalAbortRef = useRef<AbortController | null>(null);
+  const jiraInFlightRef = useRef(false);
 
   // Derived state
   const activeConversation = conversations.find((c) => c.id === activeId) ?? null;
@@ -189,7 +193,16 @@ export default function Home() {
       // Keep max 30 conversations, newest first
       const trimmed = conversations.slice(0, 30);
       localStorage.setItem("naming-studio-conversations-v1", JSON.stringify({ conversations: trimmed, activeId }));
-    } catch { /* storage quota */ }
+    } catch (e) {
+      if (e instanceof DOMException && e.name === "QuotaExceededError") {
+        // Prune oldest half and retry
+        try {
+          const pruned = conversations.slice(0, 10);
+          localStorage.setItem("naming-studio-conversations-v1", JSON.stringify({ conversations: pruned, activeId }));
+          toast.warning("Conversation history was trimmed to free up space.");
+        } catch { /* give up silently */ }
+      }
+    }
   }, [conversations, activeId]);
 
   useEffect(() => {
@@ -399,6 +412,11 @@ export default function Home() {
     setIsProcessing(true);
     setIsSaved(false);
 
+    // Cancel any in-flight evaluation before starting a new one
+    evalAbortRef.current?.abort();
+    const abortController = new AbortController();
+    evalAbortRef.current = abortController;
+
     try {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const payload: any = {
@@ -421,6 +439,7 @@ export default function Home() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
+        signal: abortController.signal,
       });
 
       if (!res.ok) {
@@ -492,6 +511,8 @@ export default function Home() {
         ]);
       }
     } catch (err) {
+      // Ignore abort errors — user intentionally cancelled by submitting a new brief
+      if (err instanceof Error && err.name === "AbortError") return;
       removeLoadingMessage(conv.id);
       const msg = err instanceof Error ? err.message : "Evaluation failed";
       const helpfulMsg = msg.includes("VPN")
@@ -549,7 +570,8 @@ export default function Home() {
   };
 
   const handleCreateJiraTicket = async () => {
-    if (!currentEvaluation || isCreatingJiraTicket) return;
+    if (!currentEvaluation || jiraInFlightRef.current) return;
+    jiraInFlightRef.current = true; // synchronous guard — prevents double-click race
 
     setIsCreatingJiraTicket(true);
     try {
@@ -582,6 +604,7 @@ export default function Home() {
       const msg = err instanceof Error ? err.message : "Failed to create Jira ticket";
       toast.error(msg);
     } finally {
+      jiraInFlightRef.current = false;
       setIsCreatingJiraTicket(false);
     }
   };
