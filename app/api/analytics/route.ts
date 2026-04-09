@@ -5,17 +5,13 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { analytics } from "@/lib/analytics";
+import { requireAdmin } from "@/lib/auth";
 
 export const runtime = "nodejs";
 
 export async function GET(request: NextRequest) {
-  const adminPassword = process.env.ADMIN_PASSWORD;
-  if (adminPassword) {
-    const providedKey = request.headers.get("x-admin-key");
-    if (providedKey !== adminPassword) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
-  }
+  const authError = requireAdmin(request);
+  if (authError) return authError;
   try {
     const summary = await analytics.getSummary();
 

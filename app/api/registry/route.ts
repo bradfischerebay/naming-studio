@@ -1,13 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
+import { requireAdmin } from "@/lib/auth";
 
 export async function GET(req: NextRequest) {
-  const adminPassword = process.env.ADMIN_PASSWORD;
-  if (adminPassword) {
-    const providedKey = req.headers.get("x-admin-key");
-    if (providedKey !== adminPassword) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
-  }
+  const authError = requireAdmin(req);
+  if (authError) return authError;
 
   try {
     if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {

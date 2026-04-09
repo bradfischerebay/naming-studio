@@ -172,7 +172,7 @@ export async function POST(request: NextRequest) {
         score: result.scoringResult?.scores.total ?? null,
         offeringDescription: result.compiledBrief?.offering_description ?? null,
         gateSummary: buildGateSummary(result.gateEvaluation?.gate_results),
-      });
+      }).catch(() => {});
 
       // Record in brief corpus for deduplication + future fine-tuning (fire-and-forget)
       void recordBriefCorpus({
@@ -181,7 +181,7 @@ export async function POST(request: NextRequest) {
         score: result.scoringResult?.scores.total ?? null,
         offeringDescription: result.compiledBrief?.offering_description ?? null,
         targetGeographies: result.compiledBrief?.target_geographies ?? null,
-      });
+      }).catch(() => {});
 
       // Notify Slack on PATH_C verdicts (fire-and-forget)
       let slackNotified = false;
@@ -249,7 +249,7 @@ export async function POST(request: NextRequest) {
       score: result.scoringResult?.scores.total ?? null,
       offeringDescription: result.compiledBrief?.offering_description ?? null,
       gateSummary: buildGateSummary(result.gateEvaluation?.gate_results),
-    });
+    }).catch(() => {});
 
     // Record in brief corpus for deduplication + future fine-tuning (fire-and-forget)
     void recordBriefCorpus({
@@ -258,7 +258,7 @@ export async function POST(request: NextRequest) {
       score: result.scoringResult?.scores.total ?? null,
       offeringDescription: result.compiledBrief?.offering_description ?? null,
       targetGeographies: result.compiledBrief?.target_geographies ?? null,
-    });
+    }).catch(() => {});
 
     // Notify Slack on PATH_C verdicts (fire-and-forget)
     let slackNotified = false;

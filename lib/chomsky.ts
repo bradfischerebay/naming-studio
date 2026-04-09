@@ -25,6 +25,8 @@ interface TokenCache {
 export class ChomskyClient {
   private config: ChomskyConfig;
   private tokenCache: TokenCache | null = null;
+  // Prevents concurrent token fetches when cache expires under burst traffic
+  private tokenFetchPromise: Promise<string> | null = null;
 
   constructor(config?: Partial<ChomskyConfig>) {
     this.config = {
@@ -50,15 +52,29 @@ export class ChomskyClient {
   }
 
   /**
-   * Get an access token for Chomsky API
-   * Tokens are cached for 6 hours (matching pychomsky behavior)
+   * Get an access token for Chomsky API.
+   * Tokens are cached for 6 hours (matching pychomsky behavior).
+   * A promise lock prevents concurrent fetches when the cache expires under burst traffic.
    */
   private async getAccessToken(): Promise<string> {
-    // Check if we have a valid cached token
+    // Return cached token if still valid
     if (this.tokenCache && Date.now() < this.tokenCache.expiry) {
       return this.tokenCache.token;
     }
 
+    // If a fetch is already in flight, reuse it instead of firing another
+    if (this.tokenFetchPromise) {
+      return this.tokenFetchPromise;
+    }
+
+    this.tokenFetchPromise = this.fetchNewToken().finally(() => {
+      this.tokenFetchPromise = null;
+    });
+
+    return this.tokenFetchPromise;
+  }
+
+  private async fetchNewToken(): Promise<string> {
     const { controller: tokenController, cleanup: tokenCleanup } = this.createTimeoutController(10000);
     try {
       const response = await fetch(this.config.tokenEndpoint!, {

@@ -39,9 +39,11 @@ export default function CorpusPage() {
 
   useEffect(() => {
     const fetchCorpus = async () => {
+      const adminKey = sessionStorage.getItem("admin_key") ?? "";
       try {
         setLoading(true);
-        const res = await fetch("/api/corpus?limit=200");
+        const res = await fetch("/api/corpus?limit=200", { headers: { "x-admin-key": adminKey } });
+        if (res.status === 401) throw new Error("Admin authentication required — visit the Admin page to sign in.");
         if (!res.ok) throw new Error("Failed to load corpus");
         const data = await res.json();
         setEntries(data.entries ?? []);
@@ -55,13 +57,14 @@ export default function CorpusPage() {
   }, []);
 
   const handleToggleApproval = async (hash: string, approved: boolean) => {
+    const adminKey = sessionStorage.getItem("admin_key") ?? "";
     // Optimistic update
     setEntries(prev => prev.map(e => e.hash === hash ? { ...e, approvedForTraining: approved } : e));
 
     try {
       const res = await fetch("/api/corpus", {
         method: "PATCH",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "x-admin-key": adminKey },
         body: JSON.stringify({ hash, approved }),
       });
       if (!res.ok) throw new Error("Update failed");
@@ -72,9 +75,10 @@ export default function CorpusPage() {
   };
 
   const handleDelete = async (hash: string) => {
+    const adminKey = sessionStorage.getItem("admin_key") ?? "";
     if (!window.confirm("Remove this entry from the corpus?")) return;
     setEntries(prev => prev.filter(e => e.hash !== hash));
-    await fetch(`/api/corpus?hash=${hash}`, { method: "DELETE" }).catch(() => {});
+    await fetch(`/api/corpus?hash=${hash}`, { method: "DELETE", headers: { "x-admin-key": adminKey } }).catch(() => {});
   };
 
   const handleExport = (verdict?: string) => {

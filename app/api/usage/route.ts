@@ -1,16 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { usageLog } from "@/lib/usage-log";
+import { requireAdmin } from "@/lib/auth";
 
 export const runtime = "nodejs";
 
 export async function GET(req: NextRequest) {
-  const adminPassword = process.env.ADMIN_PASSWORD;
-  if (adminPassword) {
-    const providedKey = req.headers.get("x-admin-key");
-    if (providedKey !== adminPassword) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
-  }
+  const authError = requireAdmin(req);
+  if (authError) return authError;
 
   const { searchParams } = req.nextUrl;
   const limit = Math.min(parseInt(searchParams.get("limit") ?? "100", 10), 500);

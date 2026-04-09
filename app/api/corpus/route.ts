@@ -7,19 +7,10 @@
  */
 
 import { NextRequest, NextResponse } from "next/server";
-import { getCorpusEntries, exportCorpusJSONL } from "@/lib/brief-corpus";
+import { getCorpusEntries, exportCorpusJSONL, recordBriefCorpus } from "@/lib/brief-corpus";
+import { requireAdmin } from "@/lib/auth";
 
 export const runtime = "nodejs";
-
-function requireAdmin(request: NextRequest): NextResponse | null {
-  const adminPassword = process.env.ADMIN_PASSWORD;
-  if (!adminPassword) return null; // No password configured — open (dev mode)
-  const providedKey = request.headers.get("x-admin-key");
-  if (providedKey !== adminPassword) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-  return null;
-}
 
 export async function GET(request: NextRequest) {
   const authError = requireAdmin(request);
@@ -44,6 +35,32 @@ export async function GET(request: NextRequest) {
 
   const { entries, total } = await getCorpusEntries({ limit, offset, verdictFilter });
   return NextResponse.json({ success: true, entries, total, limit, offset });
+}
+
+export async function POST(request: NextRequest) {
+  const body = await request.json() as {
+    briefText?: string;
+    verdictPath?: string;
+    score?: number | null;
+    offeringDescription?: string | null;
+    targetGeographies?: string | null;
+  };
+
+  const { briefText, verdictPath, score, offeringDescription, targetGeographies } = body;
+
+  if (!briefText || typeof briefText !== "string" || !verdictPath || typeof verdictPath !== "string") {
+    return NextResponse.json({ error: "briefText and verdictPath required" }, { status: 400 });
+  }
+
+  await recordBriefCorpus({
+    brief: briefText,
+    verdictPath,
+    score: score ?? null,
+    offeringDescription: offeringDescription ?? null,
+    targetGeographies: targetGeographies ?? null,
+  });
+
+  return NextResponse.json({ success: true });
 }
 
 export async function PATCH(request: NextRequest) {

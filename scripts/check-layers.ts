@@ -51,6 +51,10 @@ function getImportPaths(filePath: string): string[] {
     return [];
   }
 
+  // Strip type-only import lines — `import type { X } from "..."` is erased at
+  // compile time and cannot cause server-only modules to run in client bundles.
+  content = content.replace(/^\s*import\s+type\s+[^;]+;\s*$/gm, "");
+
   const results: string[] = [];
 
   for (const re of [IMPORT_RE, DYNAMIC_RE]) {

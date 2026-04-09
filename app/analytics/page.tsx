@@ -393,10 +393,11 @@ export default function AnalyticsPage() {
   const [usageTypeFilter, setUsageTypeFilter] = useState<string>("all");
 
   const fetchData = async () => {
+    const adminKey = sessionStorage.getItem("admin_key") ?? "";
     setLoading(true);
     setFetchError(null);
     try {
-      const res = await fetch("/api/analytics");
+      const res = await fetch("/api/analytics", { headers: { "x-admin-key": adminKey } });
       const body = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(body.error || `Server returned status ${res.status}`);
       if (!body.success) throw new Error(body.error || "Unable to load analytics data");
@@ -404,7 +405,9 @@ export default function AnalyticsPage() {
       setCountdown(30);
     } catch (err) {
       const msg = err instanceof Error ? err.message : "Failed to load analytics";
-      const helpfulMsg = msg.includes("configured") || msg.includes("Redis")
+      const helpfulMsg = msg === "Unauthorized"
+        ? "Admin authentication required — visit the Admin page to sign in."
+        : msg.includes("configured") || msg.includes("Redis")
         ? "Analytics storage isn't configured yet. Contact your administrator."
         : msg.includes("VPN")
         ? msg
@@ -430,8 +433,9 @@ export default function AnalyticsPage() {
 
   useEffect(() => {
     if (activeTab !== "usage" || usageEvents.length > 0) return;
+    const adminKey = sessionStorage.getItem("admin_key") ?? "";
     setUsageLoading(true);
-    fetch("/api/usage?limit=200")
+    fetch("/api/usage?limit=200", { headers: { "x-admin-key": adminKey } })
       .then((r) => r.json())
       .then((d: { events?: UsageEvent[]; total?: number }) => {
         if (d.events) setUsageEvents(d.events);

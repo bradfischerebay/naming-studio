@@ -4,7 +4,8 @@
  * Only works when Upstash Redis is configured.
  */
 
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
+import { requireAdmin } from "@/lib/auth";
 import { analytics } from "@/lib/analytics";
 import type { AnalyticsEvent } from "@/lib/analytics";
 import { VerdictPath } from "@/lib/models/verdict";
@@ -378,15 +379,9 @@ const DUMMY_EVENTS: AnalyticsEvent[] = [
   },
 ];
 
-export async function POST(request: Request) {
-  // Require admin password to prevent unauthorized data seeding
-  const adminPassword = process.env.ADMIN_PASSWORD;
-  if (adminPassword) {
-    const providedKey = request.headers.get("x-admin-key");
-    if (providedKey !== adminPassword) {
-      return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
-    }
-  }
+export async function POST(request: NextRequest) {
+  const authError = requireAdmin(request);
+  if (authError) return authError;
 
   if (!analytics.isEnabled()) {
     return NextResponse.json({

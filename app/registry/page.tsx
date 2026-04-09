@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Download, Loader2, Archive } from "lucide-react";
+import { Download, Loader2, Archive, Lock } from "lucide-react";
 import Link from "next/link";
 import Sidebar from "@/components/Sidebar";
 
@@ -17,11 +17,16 @@ interface RegistryEntry {
 export default function RegistryPage() {
   const [entries, setEntries] = useState<RegistryEntry[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [authError, setAuthError] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    fetch("/api/registry")
-      .then((res) => res.json())
+    const adminKey = sessionStorage.getItem("admin_key") ?? "";
+    fetch("/api/registry", { headers: { "x-admin-key": adminKey } })
+      .then((res) => {
+        if (res.status === 401) { setAuthError(true); return { entries: [] }; }
+        return res.json();
+      })
       .then((data) => {
         if (Array.isArray(data.entries)) {
           setEntries(data.entries);
@@ -127,8 +132,27 @@ export default function RegistryPage() {
           </div>
         )}
 
+        {/* Auth error state */}
+        {!isLoading && authError && (
+          <div className="text-center py-16">
+            <div className="w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center mx-auto mb-4">
+              <Lock className="h-6 w-6 text-amber-400" />
+            </div>
+            <h3 className="text-base font-semibold text-slate-900 mb-2">Admin authentication required</h3>
+            <p className="text-sm text-slate-400 max-w-sm mx-auto leading-relaxed mb-4">
+              Sign in via the Admin page to view the naming registry.
+            </p>
+            <Link
+              href="/admin"
+              className="inline-flex items-center gap-1.5 text-sm text-slate-600 hover:text-slate-900 border border-slate-200 bg-white rounded-xl px-4 py-2 transition-colors hover:bg-slate-50"
+            >
+              Go to Admin →
+            </Link>
+          </div>
+        )}
+
         {/* Empty state */}
-        {!isLoading && entries.length === 0 && (
+        {!isLoading && !authError && entries.length === 0 && (
           <div className="text-center py-16">
             <div className="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto mb-4">
               <Archive className="h-6 w-6 text-slate-300" />
