@@ -8,6 +8,11 @@ export default function NamingGraphPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isClient, setIsClient] = useState(false);
   const timelineIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filterType, setFilterType] = useState('all');
+  const [showStats, setShowStats] = useState(false);
+  const [collisionCheck, setCollisionCheck] = useState('');
+  const [collisionResults, setCollisionResults] = useState<string[]>([]);
 
   useEffect(() => {
     setIsClient(true);
@@ -33,6 +38,11 @@ export default function NamingGraphPage() {
       delete (window as any).centerOnProposed;
       delete (window as any).togglePhysics;
       delete (window as any).replayAnimation;
+      delete (window as any).searchNodes;
+      delete (window as any).filterByType;
+      delete (window as any).checkCollision;
+      delete (window as any).exportData;
+      delete (window as any).exportImage;
       // Remove script if it still exists
       if (script.parentNode) {
         document.head.removeChild(script);
@@ -396,6 +406,153 @@ export default function NamingGraphPage() {
         currentYear++;
       }, yearInterval);
     };
+
+    // Search nodes
+    (window as any).searchNodes = (query: string) => {
+      if (!query) {
+        // Reset all to visible
+        node.selectAll("circle").style("opacity", 1);
+        node.selectAll("text").style("opacity", 1);
+        link.style("opacity", 0.4);
+        return;
+      }
+
+      const lowerQuery = query.toLowerCase();
+
+      // Dim all first
+      node.selectAll("circle").style("opacity", 0.2);
+      node.selectAll("text").style("opacity", 0.2);
+      link.style("opacity", 0.1);
+
+      // Highlight matches
+      node.selectAll("circle")
+        .filter((d: any) => {
+          return d.label.toLowerCase().includes(lowerQuery) ||
+                 d.items.some((item: string) => item.toLowerCase().includes(lowerQuery));
+        })
+        .style("opacity", 1);
+
+      node.selectAll("text")
+        .filter((d: any) => {
+          return d.label.toLowerCase().includes(lowerQuery) ||
+                 d.items.some((item: string) => item.toLowerCase().includes(lowerQuery));
+        })
+        .style("opacity", 1);
+    };
+
+    // Filter by type
+    (window as any).filterByType = (type: string) => {
+      if (type === 'all') {
+        node.selectAll("circle").style("opacity", 1);
+        node.selectAll("text").style("opacity", 1);
+        link.style("opacity", 0.4);
+        return;
+      }
+
+      // Dim all first
+      node.selectAll("circle").style("opacity", 0.2);
+      node.selectAll("text").style("opacity", 0.2);
+      link.style("opacity", 0.1);
+
+      // Show matching type
+      node.selectAll("circle")
+        .filter((d: any) => d.type === type)
+        .style("opacity", 1);
+
+      node.selectAll("text")
+        .filter((d: any) => d.type === type)
+        .style("opacity", 1);
+    };
+
+    // Collision checker
+    (window as any).checkCollision = (proposedName: string, setResults: (results: string[]) => void) => {
+      if (!proposedName) {
+        setResults([]);
+        return;
+      }
+
+      const lowerProposed = proposedName.toLowerCase();
+      const conflicts: string[] = [];
+
+      nodesData.forEach(node => {
+        // Check exact or partial matches
+        if (node.label.toLowerCase().includes(lowerProposed) ||
+            lowerProposed.includes(node.label.toLowerCase().replace(/\n/g, ' '))) {
+          conflicts.push(`${node.label.replace(/\n/g, ' ')} (${node.type})`);
+        }
+
+        // Check in items
+        node.items.forEach(item => {
+          if (item.toLowerCase().includes(lowerProposed)) {
+            conflicts.push(`${item} (in ${node.label.replace(/\n/g, ' ')})`);
+          }
+        });
+      });
+
+      setResults(conflicts);
+    };
+
+    // Export data as CSV
+    (window as any).exportData = () => {
+      const csvRows = [
+        ['Name', 'Type', 'Year', 'Items'].join(','),
+        ...nodesData.map(node => [
+          `"${node.label.replace(/\n/g, ' ')}"`,
+          node.type,
+          node.year,
+          `"${node.items.join('; ')}"`
+        ].join(','))
+      ];
+
+      const csvContent = csvRows.join('\n');
+      const blob = new Blob([csvContent], { type: 'text/csv' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'ebay-naming-graph-data.csv';
+      a.click();
+      window.URL.revokeObjectURL(url);
+    };
+
+    // Export image as PNG
+    (window as any).exportImage = () => {
+      const svgElement = svg.node();
+      if (!svgElement) return;
+
+      const serializer = new XMLSerializer();
+      const svgString = serializer.serializeToString(svgElement);
+
+      const canvas = document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext('2d');
+
+      const img = new Image();
+      const svgBlob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
+      const url = window.URL.createObjectURL(svgBlob);
+
+      img.onload = () => {
+        if (ctx) {
+          ctx.fillStyle = '#1a1a1a';
+          ctx.fillRect(0, 0, width, height);
+          ctx.drawImage(img, 0, 0);
+
+          canvas.toBlob((blob) => {
+            if (blob) {
+              const pngUrl = window.URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.href = pngUrl;
+              a.download = 'ebay-naming-graph.png';
+              a.click();
+              window.URL.revokeObjectURL(pngUrl);
+            }
+          });
+        }
+        window.URL.revokeObjectURL(url);
+      };
+
+      img.src = url;
+    };
   };
 
   return (
@@ -417,25 +574,209 @@ export default function NamingGraphPage() {
         </div>
       </header>
 
-      {/* Info Panel */}
+      {/* PMM Control Panel */}
       <div style={{
         position: 'fixed',
         top: '100px',
         left: '20px',
-        background: 'rgba(0,0,0,0.9)',
+        background: 'rgba(0,0,0,0.95)',
         padding: '20px',
         borderRadius: '10px',
         border: '2px solid #333',
-        maxWidth: '300px',
+        maxWidth: '320px',
+        maxHeight: '85vh',
+        overflowY: 'auto',
         zIndex: 10
       }}>
-        <h2 style={{ margin: '0 0 10px 0', color: '#e53238', fontSize: '18px' }}>Timeline</h2>
-        <div style={{ fontSize: '48px', fontWeight: 'bold', color: '#86b817', margin: '10px 0' }} id="timeline-year">
-          1995
+        <h2 style={{ margin: '0 0 15px 0', color: '#e53238', fontSize: '18px' }}>PMM Tools</h2>
+
+        {/* Search */}
+        <div style={{ marginBottom: '15px' }}>
+          <label style={{ display: 'block', fontSize: '12px', color: '#86b817', marginBottom: '5px', fontWeight: '600' }}>
+            🔍 Search Programs
+          </label>
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              (window as any).searchNodes?.(e.target.value);
+            }}
+            placeholder="e.g., Motors, Shipping..."
+            style={{
+              width: '100%',
+              padding: '8px',
+              background: '#1a1a1a',
+              border: '1px solid #333',
+              borderRadius: '4px',
+              color: 'white',
+              fontSize: '13px'
+            }}
+          />
         </div>
-        <p style={{ margin: '5px 0', fontSize: '13px', lineHeight: '1.5' }}>🖱️ <strong>Drag nodes</strong> to move</p>
-        <p style={{ margin: '5px 0', fontSize: '13px', lineHeight: '1.5' }}>🖱️ <strong>Click nodes</strong> for details</p>
-        <p style={{ margin: '5px 0', fontSize: '13px', lineHeight: '1.5' }}>🖱️ <strong>Drag background</strong> to pan</p>
+
+        {/* Filter by Type */}
+        <div style={{ marginBottom: '15px' }}>
+          <label style={{ display: 'block', fontSize: '12px', color: '#86b817', marginBottom: '5px', fontWeight: '600' }}>
+            🎯 Filter by Type
+          </label>
+          <select
+            value={filterType}
+            onChange={(e) => {
+              setFilterType(e.target.value);
+              (window as any).filterByType?.(e.target.value);
+            }}
+            style={{
+              width: '100%',
+              padding: '8px',
+              background: '#1a1a1a',
+              border: '1px solid #333',
+              borderRadius: '4px',
+              color: 'white',
+              fontSize: '13px'
+            }}
+          >
+            <option value="all">All Types</option>
+            <option value="category">Categories</option>
+            <option value="program">Programs</option>
+            <option value="proposed">Proposed</option>
+            <option value="legacy">Legacy/Historic</option>
+          </select>
+        </div>
+
+        {/* Collision Checker */}
+        <div style={{ marginBottom: '15px', padding: '12px', background: '#0a0a0a', borderRadius: '6px', border: '1px solid #333' }}>
+          <label style={{ display: 'block', fontSize: '12px', color: '#f5af02', marginBottom: '5px', fontWeight: '600' }}>
+            ⚠️ Collision Checker
+          </label>
+          <input
+            type="text"
+            value={collisionCheck}
+            onChange={(e) => {
+              setCollisionCheck(e.target.value);
+              (window as any).checkCollision?.(e.target.value, setCollisionResults);
+            }}
+            placeholder="Enter proposed name..."
+            style={{
+              width: '100%',
+              padding: '8px',
+              background: '#1a1a1a',
+              border: '1px solid #444',
+              borderRadius: '4px',
+              color: 'white',
+              fontSize: '13px',
+              marginBottom: '8px'
+            }}
+          />
+          {collisionResults.length > 0 && (
+            <div style={{ fontSize: '11px', color: '#ff6b6b', marginTop: '5px' }}>
+              <strong>Conflicts found:</strong>
+              <ul style={{ margin: '5px 0 0 0', paddingLeft: '18px' }}>
+                {collisionResults.map((result, i) => (
+                  <li key={i} style={{ marginBottom: '3px' }}>{result}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {collisionCheck && collisionResults.length === 0 && (
+            <div style={{ fontSize: '11px', color: '#86b817', marginTop: '5px' }}>
+              ✓ No conflicts detected
+            </div>
+          )}
+        </div>
+
+        {/* Stats Toggle */}
+        <button
+          onClick={() => setShowStats(!showStats)}
+          style={{
+            width: '100%',
+            padding: '10px',
+            background: showStats ? '#86b817' : '#0064d2',
+            color: 'white',
+            border: 'none',
+            borderRadius: '6px',
+            cursor: 'pointer',
+            fontSize: '13px',
+            fontWeight: '600',
+            marginBottom: '15px'
+          }}
+        >
+          {showStats ? '📊 Hide Stats' : '📊 Show Stats'}
+        </button>
+
+        {showStats && (
+          <div style={{ padding: '12px', background: '#0a0a0a', borderRadius: '6px', marginBottom: '15px', fontSize: '12px', border: '1px solid #333' }}>
+            <div style={{ marginBottom: '8px' }}>
+              <strong style={{ color: '#e53238' }}>Total Programs:</strong> 438+
+            </div>
+            <div style={{ marginBottom: '8px' }}>
+              <strong style={{ color: '#0064d2' }}>Categories:</strong> 18
+            </div>
+            <div style={{ marginBottom: '8px' }}>
+              <strong style={{ color: '#7c3aed' }}>Programs:</strong> 200+
+            </div>
+            <div style={{ marginBottom: '8px' }}>
+              <strong style={{ color: '#6b7280' }}>Legacy:</strong> 66
+            </div>
+            <div style={{ marginBottom: '8px' }}>
+              <strong style={{ color: '#86b817' }}>Proposed:</strong> 2
+            </div>
+            <div style={{ marginBottom: '8px' }}>
+              <strong style={{ color: '#f5af02' }}>Markets:</strong> 7 (US, UK, DE, FR, IT, AU, CA)
+            </div>
+            <div>
+              <strong style={{ color: '#86b817' }}>Coverage:</strong> 1995-2027 (31 years)
+            </div>
+          </div>
+        )}
+
+        {/* Export Options */}
+        <div style={{ marginBottom: '15px' }}>
+          <label style={{ display: 'block', fontSize: '12px', color: '#86b817', marginBottom: '5px', fontWeight: '600' }}>
+            💾 Export
+          </label>
+          <div style={{ display: 'flex', gap: '5px' }}>
+            <button
+              onClick={() => (window as any).exportData?.()}
+              style={{
+                flex: 1,
+                padding: '8px',
+                background: '#0064d2',
+                color: 'white',
+                border: 'none',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                fontSize: '11px'
+              }}
+            >
+              CSV
+            </button>
+            <button
+              onClick={() => (window as any).exportImage?.()}
+              style={{
+                flex: 1,
+                padding: '8px',
+                background: '#0064d2',
+                color: 'white',
+                border: 'none',
+                borderRadius: '4px',
+                cursor: 'pointer',
+                fontSize: '11px'
+              }}
+            >
+              PNG
+            </button>
+          </div>
+        </div>
+
+        {/* Timeline Info */}
+        <div style={{ borderTop: '1px solid #333', paddingTop: '15px' }}>
+          <h3 style={{ margin: '0 0 10px 0', color: '#e53238', fontSize: '14px' }}>Timeline</h3>
+          <div style={{ fontSize: '48px', fontWeight: 'bold', color: '#86b817', margin: '10px 0', textAlign: 'center' }} id="timeline-year">
+            1995
+          </div>
+          <p style={{ margin: '5px 0', fontSize: '11px', lineHeight: '1.4', color: '#888' }}>🖱️ Drag nodes • Click for details • Drag background to pan</p>
+        </div>
       </div>
 
       {/* Details Panel */}
