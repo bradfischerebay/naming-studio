@@ -7,6 +7,7 @@ import { ChevronLeft } from 'lucide-react';
 export default function NamingGraphPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isClient, setIsClient] = useState(false);
+  const timelineIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     setIsClient(true);
@@ -23,7 +24,19 @@ export default function NamingGraphPage() {
     document.head.appendChild(script);
 
     return () => {
-      document.head.removeChild(script);
+      // Cleanup timeline interval
+      if (timelineIntervalRef.current) {
+        clearInterval(timelineIntervalRef.current);
+      }
+      // Cleanup window functions
+      delete (window as any).resetView;
+      delete (window as any).centerOnProposed;
+      delete (window as any).togglePhysics;
+      delete (window as any).replayAnimation;
+      // Remove script if it still exists
+      if (script.parentNode) {
+        document.head.removeChild(script);
+      }
     };
   }, [isClient]);
 
@@ -253,9 +266,12 @@ export default function NamingGraphPage() {
     const maxYear = 2027;
     const yearInterval = 1500; // 1.5 seconds per year
 
-    const timelineInterval = setInterval(() => {
+    timelineIntervalRef.current = setInterval(() => {
       if (currentYear > maxYear) {
-        clearInterval(timelineInterval);
+        if (timelineIntervalRef.current) {
+          clearInterval(timelineIntervalRef.current);
+          timelineIntervalRef.current = null;
+        }
         return;
       }
 
@@ -333,6 +349,52 @@ export default function NamingGraphPage() {
         if (btn) btn.textContent = '⏸️ Pause';
       }
       physicsRunning = !physicsRunning;
+    };
+
+    // Replay animation
+    (window as any).replayAnimation = () => {
+      // Clear existing interval
+      if (timelineIntervalRef.current) {
+        clearInterval(timelineIntervalRef.current);
+      }
+
+      // Reset all nodes to invisible
+      node.selectAll("circle").attr("opacity", 0);
+      node.selectAll("text").attr("opacity", 0);
+
+      // Restart timeline
+      let currentYear = 1995;
+      const maxYear = 2027;
+      const yearInterval = 1500;
+
+      timelineIntervalRef.current = setInterval(() => {
+        if (currentYear > maxYear) {
+          if (timelineIntervalRef.current) {
+            clearInterval(timelineIntervalRef.current);
+            timelineIntervalRef.current = null;
+          }
+          return;
+        }
+
+        const yearDisplay = document.getElementById('timeline-year');
+        if (yearDisplay) {
+          yearDisplay.textContent = currentYear.toString();
+        }
+
+        node.selectAll("circle")
+          .filter((d: any) => d.year === currentYear)
+          .transition()
+          .duration(800)
+          .attr("opacity", 1);
+
+        node.selectAll("text")
+          .filter((d: any) => d.year === currentYear)
+          .transition()
+          .duration(800)
+          .attr("opacity", 1);
+
+        currentYear++;
+      }, yearInterval);
     };
   };
 
@@ -430,6 +492,21 @@ export default function NamingGraphPage() {
           }}
         >
           💡 Proposed
+        </button>
+        <button
+          onClick={() => (window as any).replayAnimation?.()}
+          style={{
+            padding: '12px 20px',
+            background: '#86b817',
+            color: 'white',
+            border: 'none',
+            borderRadius: '6px',
+            cursor: 'pointer',
+            fontSize: '14px',
+            fontWeight: '500'
+          }}
+        >
+          🔄 Replay
         </button>
         <button
           id="physics-btn"
