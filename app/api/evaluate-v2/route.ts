@@ -293,7 +293,7 @@ export async function POST(request: NextRequest) {
     let clientMessage: string;
     let statusCode = 500;
 
-    if (rawMessage.includes("403") || rawMessage.includes("ECONNREFUSED") || rawMessage.includes("ETIMEDOUT")) {
+    if (rawMessage.includes("403") || rawMessage.includes("ECONNREFUSED") || rawMessage.includes("ETIMEDOUT") || rawMessage.includes("ENOTFOUND")) {
       clientMessage = "Cannot reach the Chomsky gateway. Make sure you're on the eBay VPN.";
       statusCode = 503;
     } else if (rawMessage.includes("rate limit") || rawMessage.includes("429")) {

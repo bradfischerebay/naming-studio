@@ -81,7 +81,23 @@ Score 0-100 where:
 Overall:
 - "proceed": score >= 80 and no "fail" checks
 - "caution": score 60-79 or any "caution" checks
-- "avoid": score < 60 or any "fail" checks`;
+- "avoid": score < 60 or any "fail" checks
+
+REQUIRED OUTPUT FORMAT (raw JSON only, no markdown, no code blocks):
+{
+  "checks": {
+    "naming_protocol": { "status": "pass|caution|fail", "notes": "..." },
+    "portfolio_conflict": { "status": "pass|caution|fail", "notes": "..." },
+    "brief_alignment": { "status": "pass|caution|fail", "notes": "..." },
+    "distinctiveness": { "status": "pass|caution|fail", "notes": "..." },
+    "cross_market_fit": { "status": "pass|caution|fail", "notes": "..." }
+  },
+  "overall": "proceed|caution|avoid",
+  "score": 0-100,
+  "recommendation": "one sentence, max 300 chars",
+  "strengths": ["up to 3 strengths"],
+  "concerns": ["up to 3 concerns"]
+}`;
 }
 
 /**
@@ -131,7 +147,8 @@ Evaluate this name against all criteria and provide structured feedback.`;
 
     return object;
   } catch (error) {
-    console.error(`Failed to evaluate name "${name}":`, error);
+    const message = error instanceof Error ? error.message : String(error);
+    console.error(`Failed to evaluate name "${name}": ${message}`);
     return createFallbackResult(name);
   }
 }
@@ -248,6 +265,7 @@ export async function POST(req: NextRequest) {
       error instanceof Error &&
       (error.message.includes("ECONNREFUSED") ||
         error.message.includes("ETIMEDOUT") ||
+        error.message.includes("ENOTFOUND") ||
         error.message.includes("403"))
     ) {
       return NextResponse.json(

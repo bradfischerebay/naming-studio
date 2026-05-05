@@ -6,15 +6,9 @@ export const maxDuration = 30;
 
 export async function POST(request: NextRequest) {
   try {
-    if (!process.env.JIRAP_API_TOKEN) {
+    if (!process.env.JIRAP_API_TOKEN || !process.env.JIRAP_PROJECT_KEY) {
       return NextResponse.json(
-        { error: "Jira integration not configured — set JIRAP_API_TOKEN" },
-        { status: 503 }
-      );
-    }
-    if (!process.env.JIRAP_PROJECT_KEY) {
-      return NextResponse.json(
-        { error: "Jira project not configured — set JIRAP_PROJECT_KEY" },
+        { error: "Jira integration not configured — contact the PMM Capabilities team to enable this feature." },
         { status: 503 }
       );
     }

@@ -1,8 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-import { glean } from "@/lib/glean";
+import { glean, GleanClient } from "@/lib/glean";
 import { rateLimit } from "@/lib/rate-limit";
+import { analytics } from "@/lib/analytics";
 
-const MAX_QUESTION_LENGTH = 1000;
+export const maxDuration = 120; // Glean can take 60-90s for complex queries
+
+const MAX_QUESTION_LENGTH = 50000;    // briefs can be long
+const MAX_FILE_TEXT_LENGTH = 15000;   // ~10 pages — keeps Glean under its processing limit
 
 /**
  * GET /api/glean
@@ -47,28 +51,75 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const body = await req.json() as { question?: string };
-    const { question } = body;
+    const body = await req.json() as {
+      question?: string;
+      agentId?: string;
+      chatId?: string;
+      turnNumber?: number;
+      hasAttachment?: boolean;
+      agentVersion?: string;
+      fileName?: string;
+      fileText?: string;
+    };
+    const {
+      question = "",
+      agentId,
+      chatId,
+      turnNumber = 1,
+      hasAttachment = false,
+      agentVersion = "unknown",
+      fileName,
+      fileText,
+    } = body;
 
-    // Validate question
-    if (!question || typeof question !== "string") {
-      return NextResponse.json(
-        { error: "Question is required" },
-        { status: 400 }
-      );
+    // Must have either a question or a file
+    if (!question.trim() && !fileText) {
+      return NextResponse.json({ error: "Message or file is required" }, { status: 400 });
     }
 
     if (question.length > MAX_QUESTION_LENGTH) {
       return NextResponse.json(
-        {
-          error: `Question is too long. Maximum ${MAX_QUESTION_LENGTH} characters allowed. Your question is ${question.length} characters.`,
-        },
+        { error: `Message is too long (${question.length.toLocaleString()} chars). Maximum is ${MAX_QUESTION_LENGTH.toLocaleString()}.` },
         { status: 400 }
       );
     }
 
-    // Query Glean
-    const result = await glean.query(question);
+    // Assemble the full prompt — inject file text on the backend before handing to Glean
+    let fullQuestion = question.trim();
+    if (fileText && fileName) {
+      const truncated = fileText.length > MAX_FILE_TEXT_LENGTH;
+      const truncatedFile = fileText.slice(0, MAX_FILE_TEXT_LENGTH);
+      const truncationNote = truncated
+        ? `\n\n[Note: document was trimmed to ${MAX_FILE_TEXT_LENGTH.toLocaleString()} characters to fit within processing limits]`
+        : "";
+      fullQuestion = question.trim()
+        ? `Document: "${fileName}"${truncationNote}\n\n${truncatedFile}\n\n---\n\n${question.trim()}`
+        : `Document: "${fileName}"${truncationNote}\n\nPlease review this document in the context of eBay naming guidelines:\n\n${truncatedFile}`;
+    }
+
+    // Use per-request agentId if provided, otherwise fall back to singleton (env-configured)
+    const client = agentId ? new GleanClient({ agentId }) : glean;
+
+    const start = Date.now();
+
+    // Query Glean — pass chatId to continue an existing conversation thread
+    const result = await client.query(fullQuestion, chatId);
+
+    const durationMs = Date.now() - start;
+
+    // Fire-and-forget analytics — never blocks response
+    void analytics.trackGleanMessage({
+      timestamp: new Date().toISOString(),
+      agentId: agentId ?? "default",
+      agentVersion,
+      chatId: result.chatId ?? chatId ?? null,
+      userMessage: question || `[Document: ${fileName}]`,
+      responsePreview: result.answer.slice(0, 500),
+      durationMs,
+      sourceCount: result.sources.length,
+      turnNumber,
+      hasAttachment,
+    });
 
     return NextResponse.json(result);
   } catch (error) {

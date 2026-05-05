@@ -11,7 +11,7 @@ export interface Message {
   role: "user" | "assistant";
   content: string;
   metadata?: {
-    type?: "brief" | "clarification" | "evaluation" | "final_verdict" | "loading" | "upload" | "chat";
+    type?: "brief" | "clarification" | "evaluation" | "final_verdict" | "loading" | "upload" | "chat" | "error";
     gateResults?: GatekeeperResult;
     scoringResults?: ScorerResult;
     totalScore?: number;
@@ -538,6 +538,7 @@ function ExportMenu({ message }: { message: Message }) {
 export function ChatMessage({ message }: ChatMessageProps) {
   const isUser = message.role === "user";
   const isLoading = message.metadata?.type === "loading";
+  const isError = message.metadata?.type === "error";
 
   return (
     <motion.div
@@ -570,6 +571,8 @@ export function ChatMessage({ message }: ChatMessageProps) {
           <div className={`rounded-2xl px-4 py-3 ${
             isUser
               ? "bg-white border border-slate-200 text-slate-800 max-w-[85%]"
+              : isError
+              ? "bg-red-50 border border-red-200 w-full"
               : "bg-[#f9f9f9] border border-slate-200 w-full"
           }`}>
             {/* Uploaded file pill */}

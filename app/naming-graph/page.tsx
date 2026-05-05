@@ -13,6 +13,7 @@ export default function NamingGraphPage() {
   const [showStats, setShowStats] = useState(false);
   const [collisionCheck, setCollisionCheck] = useState('');
   const [collisionResults, setCollisionResults] = useState<string[]>([]);
+  const [selectedMarket, setSelectedMarket] = useState('US');
 
   useEffect(() => {
     setIsClient(true);
@@ -81,27 +82,27 @@ export default function NamingGraphPage() {
 
       // Main categories
       { id: "motors", label: "eBay\nMotors", color: "#0064d2", size: 35, type: "category", year: 2000,
-        items: ["Vehicles & Parts", "Authenticity Guarantee for Watches", "eBay Guaranteed Fit", "My Garage", "Parts Compatibility"] },
+        items: ["Vehicles & Parts", "eBay Guaranteed Fit", "My Garage", "Parts Compatibility", "Fitment Plus"] },
       { id: "collectibles", label: "Collectibles\n& Trading", color: "#0064d2", size: 35, type: "category", year: 2020,
-        items: ["Trading Cards", "PSA Vault (was eBay Vault)", "Goldin Auctions (2024)", "TCGplayer (2022)", "Price Guide"] },
-      { id: "fashion", label: "Fashion /\nLuxury", color: "#0064d2", size: 35, type: "category", year: 2018,
-        items: ["Authenticity Guarantee verticals", "Circular Fashion Fund $350K", "Brand Outlet", "Vogue Vintage Market"] },
-      { id: "refurb", label: "Refurbished\n& Open Box", color: "#0064d2", size: 35, type: "category", year: 2016,
-        items: ["eBay Refurbished", "eBay Certified Open Box (2025)", "Allstate Protection", "Re-Store (Germany)"] },
+        items: ["Trading Cards", "PSA Vault (2024)", "eBay Vault (2022-2024 sold)", "Goldin Auctions (2024)", "TCGplayer (2022)", "Price Guide"] },
+      { id: "fashion", label: "Fashion /\nLuxury", color: "#0064d2", size: 35, type: "category", year: 2017,
+        items: ["Authenticity Guarantee (launched 2017)", "Endless Runway (2024)", "Circular Fashion Fund", "Vogue Vintage Market"] },
+      { id: "refurb", label: "Refurbished\n& Open Box", color: "#0064d2", size: 35, type: "category", year: 2020,
+        items: ["eBay Refurbished (2020)", "Certified Refurbished (2020)", "Open Box+", "Re-Store (Germany)"] },
       { id: "trust", label: "Trust &\nSafety", color: "#f5af02", size: 32, type: "trust", year: 1996,
         items: ["eBay Money Back Guarantee", "VeRO Program", "Feedback Forum (1996)", "Resolution Center"] },
       { id: "advertising", label: "eBay\nAdvertising", color: "#86b817", size: 32, type: "advertising", year: 2015,
         items: ["Promoted Listings (PLG/PLP)", "Promoted Offsite", "Promoted Stores", "Automated Campaigns (2025)"] },
       { id: "shipping", label: "Shipping &\nLogistics", color: "#0064d2", size: 32, type: "category", year: 2010,
-        items: ["eBay Labels", "eBay International Shipping", "Fulfillment by eBay", "eBay Standard Envelope"] },
+        items: ["eBay Labels", "eBay International Shipping", "Fulfillment by eBay (2020)", "eBay Standard Envelope", "Global Shipping Program (2012)"] },
       { id: "stores", label: "eBay\nStores", color: "#0064d2", size: 32, type: "category", year: 2001,
         items: ["5 Tiers: Starter to Enterprise", "Regional: Shops (UK), Boutiques (FR)", "eBay Pro (AU April 2026)"] },
       { id: "seller", label: "Seller Tools\n& Hub", color: "#0064d2", size: 32, type: "category", year: 2015,
         items: ["Seller Hub (2015)", "Magical Listing Tool", "Product Research", "Historic: Turbo Lister, Selling Manager"] },
       { id: "payments", label: "Payments &\nCheckout", color: "#0064d2", size: 32, type: "category", year: 1999,
-        items: ["eBay Payments", "eBay Wallet", "Riverty (Germany 2024)", "Historic: Billpoint (1999-2003)"] },
-      { id: "live", label: "Live\nCommerce", color: "#7c3aed", size: 28, type: "program", year: 2021,
-        items: ["eBay Live", "eBay Live on Tour", "Creator Studio"] },
+        items: ["Managed Payments (2018)", "Apple Pay (2018)", "Google Pay (2018)", "Klarna (2024)", "PayPal (2002-2018)", "Billpoint (1999-2003)"] },
+      { id: "live", label: "Live\nCommerce", color: "#7c3aed", size: 28, type: "program", year: 2022,
+        items: ["eBay Live (June 2022)", "eBay Live on Tour", "Creator Studio"] },
       { id: "discovery", label: "Discovery", color: "#7c3aed", size: 28, type: "program", year: 2008,
         items: ["My eBay", "Watchlist", "Best Match (2008)", "Image Search"] },
       { id: "community", label: "Community &\nEducation", color: "#7c3aed", size: 28, type: "program", year: 2010,
@@ -123,9 +124,17 @@ export default function NamingGraphPage() {
       { id: "proposed-verified", label: "💡 eBay\nVerified", color: "#86b817", size: 32, type: "proposed", year: 2027,
         items: ["PROPOSED UMBRELLA", "Authenticity Guarantee", "Verified Condition", "Identity Verification"] },
 
-      // Legacy
-      { id: "legacy", label: "Historic\nPrograms", color: "#6b7280", size: 26, type: "legacy", year: 1995,
-        items: ["AuctionWeb → eBay (1995-1997)", "Billpoint → PayPal (1999-2003)", "Turbo Lister (2002-2020)", "X.commerce (2011-2013)"] }
+      // Acquisitions & Portfolio (Currently Owned)
+      { id: "acquisitions", label: "Acquisitions\n& Portfolio", color: "#9333ea", size: 28, type: "acquisition", year: 2021,
+        items: ["TCGplayer (2022 - trading cards)", "Goldin Auctions (2024 - collectibles)", "Sneaker Con Digital (2021 - authentication)", "Certilogo (2023 - AI fashion auth)", "myFitment (2022 - auto parts)", "Caramel (2025 - vehicle transactions)", "3PM Shield (2023 - fraud detection)", "Pending: Tise (Q4 2025), Depop (Q2 2026)"] },
+
+      // Legacy & Divested
+      { id: "legacy", label: "Historic\n& Divested", color: "#6b7280", size: 26, type: "legacy", year: 1995,
+        items: ["AuctionWeb → eBay (1995-1997)", "PayPal (spun off Jul 2015)", "StubHub (sold Feb 2020 to Viagogo)", "Half.com (shut down Aug 2017)", "eBay Vault → PSA Vault (sold May 2024)", "eBay Classifieds Group (sold Jun 2021)", "Skype (sold 2009-2011)", "eBay Enterprise/GSI (sold Nov 2015)", "Rent.com (sold May 2012)", "GittiGidiyor Turkey (shut down Jul 2022)", "KnownOrigin NFT (shut down Jul 2024)", "Billpoint (1999-2003)", "Turbo Lister (2002-2020)", "X.commerce (2011-2013)", "eBay Now delivery (ended 2015)", "eBay Valet (ended 2018)"] },
+
+      // Strategic Partners
+      { id: "partners", label: "Strategic\nPartners", color: "#7c3aed", size: 26, type: "partner", year: 2020,
+        items: ["PSA/Collectors (trading cards auth - 2022)", "GIA (jewelry auth - 2022)", "Former: CGC (2022-2024)", "Former: Stoll & Co watches (ended 2025)"] }
     ];
 
     const linksData = [
@@ -147,7 +156,9 @@ export default function NamingGraphPage() {
       { source: "masterbrand", target: "developer" },
       { source: "masterbrand", target: "v2stats" },
       { source: "masterbrand", target: "regional" },
+      { source: "masterbrand", target: "acquisitions" },
       { source: "masterbrand", target: "legacy" },
+      { source: "masterbrand", target: "partners" },
       { source: "shipping", target: "proposed-shipping", dashed: true },
       { source: "trust", target: "proposed-verified", dashed: true }
     ];
@@ -589,6 +600,37 @@ export default function NamingGraphPage() {
         zIndex: 10
       }}>
         <h2 style={{ margin: '0 0 15px 0', color: '#e53238', fontSize: '18px' }}>PMM Tools</h2>
+
+        {/* Market Selector */}
+        <div style={{ marginBottom: '15px' }}>
+          <label style={{ display: 'block', fontSize: '12px', color: '#86b817', marginBottom: '5px', fontWeight: '600' }}>
+            🌍 Market
+          </label>
+          <select
+            value={selectedMarket}
+            onChange={(e) => {
+              setSelectedMarket(e.target.value);
+              (window as any).switchMarket?.(e.target.value);
+            }}
+            style={{
+              width: '100%',
+              padding: '8px',
+              background: '#1a1a1a',
+              border: '1px solid #333',
+              borderRadius: '4px',
+              color: 'white',
+              fontSize: '13px'
+            }}
+          >
+            <option value="US">🇺🇸 United States</option>
+            <option value="UK">🇬🇧 United Kingdom</option>
+            <option value="DE">🇩🇪 Germany</option>
+            <option value="FR">🇫🇷 France</option>
+            <option value="IT">🇮🇹 Italy</option>
+            <option value="CA">🇨🇦 Canada</option>
+            <option value="AU">🇦🇺 Australia</option>
+          </select>
+        </div>
 
         {/* Search */}
         <div style={{ marginBottom: '15px' }}>

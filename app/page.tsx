@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect, useCallback } from "react";
-import { Loader2, ArrowUp, Plus, ChevronLeft, ChevronRight, PlusCircle, Check, BarChart2, Paperclip, X, TestTube2, Globe, Database, Shield, ExternalLink, Ticket, Wand2, BadgeCheck, BookOpen, Save, ArrowRight, Settings, Bell } from "lucide-react";
+import { Loader2, ArrowUp, Plus, ChevronLeft, ChevronRight, PlusCircle, Check, BarChart2, Paperclip, X, TestTube2, Globe, Database, Shield, ExternalLink, Ticket, Wand2, BadgeCheck, BookOpen, Save, ArrowRight, Settings, Bell, Search, Zap, Lightbulb } from "lucide-react";
 import { toast, Toaster } from "sonner";
 import { motion } from "framer-motion";
 import { ChatMessage, type Message } from "@/components/ChatMessage";
@@ -515,12 +515,10 @@ export default function Home() {
       if (err instanceof Error && err.name === "AbortError") return;
       removeLoadingMessage(conv.id);
       const msg = err instanceof Error ? err.message : "Evaluation failed";
-      const helpfulMsg = msg.includes("VPN")
-        ? msg
-        : msg.includes("Request failed")
+      const helpfulMsg = msg.includes("Request failed (")
         ? "Server connection issue — please try again in a moment."
-        : "Evaluation failed — please check your brief and try again.";
-      addMessages(conv.id, [{ role: "assistant", content: helpfulMsg }]);
+        : msg;
+      addMessages(conv.id, [{ role: "assistant", content: helpfulMsg, metadata: { type: "error" } }]);
       toast.error(helpfulMsg);
     } finally {
       clearInterval(phaseTimer);
@@ -642,7 +640,7 @@ export default function Home() {
     setIsRequestingReview(true);
     try {
       const briefText = messages.find((m) => m.metadata?.type === "brief")?.content ?? "";
-      await fetch("/api/slack-escalate", {
+      const res = await fetch("/api/slack-escalate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -652,8 +650,13 @@ export default function Home() {
           score: currentEvaluation.scoringResult?.scores?.total ?? null,
         }),
       });
-      setReviewRequested(true);
-      toast.success("Review request sent to naming team");
+      const data = await res.json();
+      if (data.sent === false) {
+        toast.info("Slack not configured — contact the PMM Capabilities team to enable review requests.");
+      } else {
+        setReviewRequested(true);
+        toast.success("Review request sent to naming team");
+      }
     } catch {
       toast.error("Couldn't send review request");
     } finally {
@@ -669,6 +672,9 @@ export default function Home() {
 
   const handleSend = async () => {
     if (!hasContent || isProcessing || isUploading) return;
+
+    // Set processing immediately so the button spins on first click
+    setIsProcessing(true);
 
     const isClarification = !!(currentEvaluation?.requiresClarification);
 
@@ -849,6 +855,53 @@ export default function Home() {
         {/* ── PLATFORM group ── */}
         {sidebarOpen && (
           <p className="text-[10px] text-white/30 uppercase tracking-widest px-4 pt-3 pb-1">Platform</p>
+        )}
+        <div className="px-2 pb-1">
+          <Link
+            href="/glean-agent"
+            title="Glean Agents"
+            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg transition-colors text-sm ${
+              pathname === "/glean-agent" ? "bg-white/10 text-white" : "text-white/60 hover:bg-white/10 hover:text-white"
+            } ${!sidebarOpen ? "justify-center" : ""}`}
+          >
+            <Search className="h-4 w-4 flex-shrink-0" />
+            {sidebarOpen && <span>Glean Agents</span>}
+          </Link>
+          <Link
+            href="/assistants"
+            title="PMM GPT Assistants"
+            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg transition-colors text-sm ${
+              pathname === "/assistants" ? "bg-white/10 text-white" : "text-white/60 hover:bg-white/10 hover:text-white"
+            } ${!sidebarOpen ? "justify-center" : ""}`}
+          >
+            <Zap className="h-4 w-4 flex-shrink-0" />
+            {sidebarOpen && <span>PMM Assistants</span>}
+          </Link>
+          <Link
+            href="/build-my-gpt"
+            title="Build My GPT"
+            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg transition-colors text-sm ${
+              pathname === "/build-my-gpt" ? "bg-white/10 text-white" : "text-white/60 hover:bg-white/10 hover:text-white"
+            } ${!sidebarOpen ? "justify-center" : ""}`}
+          >
+            <Wand2 className="h-4 w-4 flex-shrink-0" />
+            {sidebarOpen && <span>Build My GPT</span>}
+          </Link>
+          <Link
+            href="/insights"
+            title="DeepSights Research"
+            className={`w-full flex items-center gap-2 px-2 py-2 rounded-lg transition-colors text-sm ${
+              pathname === "/insights" ? "bg-white/10 text-white" : "text-white/60 hover:bg-white/10 hover:text-white"
+            } ${!sidebarOpen ? "justify-center" : ""}`}
+          >
+            <Lightbulb className="h-4 w-4 flex-shrink-0" />
+            {sidebarOpen && <span>DeepSights Research</span>}
+          </Link>
+        </div>
+
+        {/* ── ADVANCED group ── */}
+        {sidebarOpen && (
+          <p className="text-[10px] text-white/30 uppercase tracking-widest px-4 pt-3 pb-1">Advanced</p>
         )}
         <div className="px-2 pb-2 border-b border-white/10">
           <Link

@@ -320,7 +320,18 @@ export default function NameValidatorPage() {
             {error && (
               <div className="bg-red-50 rounded-2xl border border-red-200 p-8 text-center">
                 <div className="text-red-600 font-semibold mb-2">Validation Failed</div>
-                <div className="text-sm text-red-700">{error}</div>
+                <div className="text-sm text-red-700 mb-4">{error}</div>
+                {error.toLowerCase().includes("vpn") ? (
+                  <p className="text-xs text-red-500">Connect to eBay VPN and try again.</p>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={handleCheck}
+                    className="text-xs font-medium text-red-600 hover:text-red-800 underline underline-offset-2"
+                  >
+                    Try again
+                  </button>
+                )}
               </div>
             )}
 
@@ -328,9 +339,9 @@ export default function NameValidatorPage() {
               <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center">
                 <Loader2 className="h-12 w-12 text-blue-600 mx-auto mb-4 animate-spin" />
                 <div className="text-lg font-semibold text-slate-900 mb-2">
-                  Checking Names...
+                  Checking {names.length} name{names.length !== 1 ? "s" : ""}…
                 </div>
-                <div className="text-sm text-slate-500">Evaluating against guidelines</div>
+                <div className="text-sm text-slate-500">Evaluating against eBay naming guidelines</div>
               </div>
             )}
 

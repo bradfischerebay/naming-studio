@@ -12,6 +12,7 @@ export interface GleanSource {
 export interface GleanResult {
   answer: string;
   sources: GleanSource[];
+  chatId?: string;
 }
 
 interface GleanConfig {
@@ -23,7 +24,8 @@ interface GleanConfig {
 }
 
 interface GleanApiRequest {
-  agentId: string;
+  agentId?: string;
+  chatId?: string;
   messages: Array<{
     fragments: Array<{
       text: string;
@@ -59,6 +61,7 @@ interface GleanMessage {
 
 interface GleanApiResponse {
   messages: GleanMessage[];
+  chatId?: string;
   citations?: unknown[]; // DEPRECATED field — ignored entirely
 }
 
@@ -70,10 +73,10 @@ export class GleanClient {
 
     this.config = {
       endpoint: config?.endpoint || "https://ebay-be.glean.com/rest/api/v1/chat",
-      agentId: config?.agentId || "dbbb1bcc585748cbab1f2b9801162736",
+      agentId: config?.agentId || process.env.GLEAN_AGENT_ID || "",
       token: token || "", // Allow empty token, will error on query if not set
       actAs: config?.actAs || process.env.GLEAN_ACT_AS,
-      timeout: config?.timeout || 35000, // 35s timeout (5s buffer over Glean's 30s)
+      timeout: config?.timeout || 90000, // 90s timeout — Glean can take 30-60s for complex queries
     };
   }
 
@@ -91,7 +94,7 @@ export class GleanClient {
    * @param question - The question to ask Glean
    * @returns Promise<GleanResult> with answer text and sources
    */
-  async query(question: string): Promise<GleanResult> {
+  async query(question: string, chatId?: string): Promise<GleanResult> {
     // Check token at query time, not construction time (allows build without token)
     if (!this.config.token) {
       throw new Error("Glean API token not configured — set GLEAN_API_TOKEN in .env.local");
@@ -110,13 +113,14 @@ export class GleanClient {
     }
 
     const requestBody: GleanApiRequest = {
-      agentId: this.config.agentId,
+      ...(this.config.agentId ? { agentId: this.config.agentId } : {}),
+      ...(chatId ? { chatId } : {}),
       messages: [
         {
           fragments: [{ text: question }],
         },
       ],
-      timeoutMillis: 30000,
+      timeoutMillis: 30000, // Glean's documented max — higher values are silently capped
     };
 
     try {
@@ -143,7 +147,7 @@ export class GleanClient {
       // Get the last assistant message
       const lastMessage = data.messages?.[data.messages.length - 1];
 
-      if (!lastMessage || lastMessage.author !== "ASSISTANT") {
+      if (!lastMessage || (lastMessage.author !== "ASSISTANT" && lastMessage.author !== "GLEAN_AI")) {
         throw new Error("No assistant response from Glean API");
       }
 
@@ -163,6 +167,7 @@ export class GleanClient {
       return {
         answer: answerText,
         sources,
+        chatId: data.chatId,
       };
     } catch (error) {
       if (error instanceof Error && error.name === "AbortError") {

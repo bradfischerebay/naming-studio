@@ -16,6 +16,9 @@ import {
   Settings,
   ChevronLeft,
   ChevronRight,
+  Search,
+  Zap,
+  Lightbulb,
 } from "lucide-react";
 
 const STORAGE_KEY = "naming-studio-sidebar-open";
@@ -147,6 +150,37 @@ export default function Sidebar() {
       {/* ── PLATFORM group ── */}
       {open && (
         <p className="text-[10px] text-white/30 uppercase tracking-widest px-4 pt-3 pb-1">Platform</p>
+      )}
+      <div className="px-2 pb-1">
+        {link(
+          "/glean-agent",
+          <Search className="h-4 w-4 flex-shrink-0" />,
+          <span>Glean Agents</span>,
+          "Glean Agents"
+        )}
+        {link(
+          "/assistants",
+          <Zap className="h-4 w-4 flex-shrink-0" />,
+          <span>PMM Assistants</span>,
+          "PMM GPT Assistants"
+        )}
+        {link(
+          "/build-my-gpt",
+          <Wand2 className="h-4 w-4 flex-shrink-0" />,
+          <span>Build My GPT</span>,
+          "Build My GPT"
+        )}
+        {link(
+          "/insights",
+          <Lightbulb className="h-4 w-4 flex-shrink-0" />,
+          <span>DeepSights Research</span>,
+          "DeepSights Research"
+        )}
+      </div>
+
+      {/* ── ADVANCED group ── */}
+      {open && (
+        <p className="text-[10px] text-white/30 uppercase tracking-widest px-4 pt-3 pb-1">Advanced</p>
       )}
       <div className="px-2 pb-2">
         {link(

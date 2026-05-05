@@ -247,7 +247,7 @@ export async function POST(req: NextRequest) {
       try {
         // Sanitize error before sending to client
         const errorMsg = err instanceof Error ? err.message : String(err);
-        const isVpnError = errorMsg.includes("403") || errorMsg.includes("ECONNREFUSED") || errorMsg.includes("ETIMEDOUT");
+        const isVpnError = errorMsg.includes("403") || errorMsg.includes("ECONNREFUSED") || errorMsg.includes("ETIMEDOUT") || errorMsg.includes("ENOTFOUND");
         const clientError = isVpnError
           ? "Cannot reach Chomsky gateway. Check your VPN connection."
           : "Evaluation failed. Please try again.";

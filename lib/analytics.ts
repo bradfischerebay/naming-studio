@@ -6,6 +6,19 @@
 
 import { VerdictPath } from "./models/verdict";
 
+export interface GleanMessageEvent {
+  timestamp: string;
+  agentId: string;
+  agentVersion: string;
+  chatId: string | null;
+  userMessage: string;
+  responsePreview: string; // first 500 chars — enough to understand intent without bloat
+  durationMs: number;
+  sourceCount: number;
+  turnNumber: number; // which turn in the conversation
+  hasAttachment: boolean;
+}
+
 /**
  * Analytics event structure
  */
@@ -65,6 +78,7 @@ class AnalyticsClient {
   private enabled = false;
   private readonly MAX_EVENTS = 10000;
   private readonly EVENTS_KEY = "analytics:events";
+  private readonly GLEAN_MESSAGES_KEY = "analytics:glean-messages";
   private readonly initPromise: Promise<void>;
 
   constructor() {
@@ -130,6 +144,48 @@ class AnalyticsClient {
         "[Analytics] Failed to serialize event:",
         error instanceof Error ? error.message : String(error)
       );
+    }
+  }
+
+  /**
+   * Track a Glean agent message — fire-and-forget, never throws
+   */
+  async trackGleanMessage(event: GleanMessageEvent): Promise<void> {
+    await this.initPromise;
+    if (!this.enabled || !this.redis) return;
+    try {
+      void this.redis
+        .multi()
+        .lpush(this.GLEAN_MESSAGES_KEY, JSON.stringify(event))
+        .ltrim(this.GLEAN_MESSAGES_KEY, 0, this.MAX_EVENTS - 1)
+        .exec()
+        .catch((err: Error) => {
+          console.warn("[Analytics] Failed to track Glean message:", err.message);
+        });
+    } catch {
+      // Never throw
+    }
+  }
+
+  /**
+   * Get all Glean agent messages (most recent first)
+   */
+  async getGleanMessages(limit = 500): Promise<GleanMessageEvent[]> {
+    await this.initPromise;
+    if (!this.enabled || !this.redis) return [];
+    try {
+      const items = await this.redis.lrange(this.GLEAN_MESSAGES_KEY, 0, limit - 1);
+      return items
+        .map((item: unknown) => {
+          try {
+            return (typeof item === "string" ? JSON.parse(item) : item) as GleanMessageEvent;
+          } catch {
+            return null;
+          }
+        })
+        .filter((e: GleanMessageEvent | null): e is GleanMessageEvent => e !== null);
+    } catch {
+      return [];
     }
   }
 
