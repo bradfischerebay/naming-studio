@@ -1,0 +1,389 @@
+[
+  {
+    "canonical_name": "Seller Hub Reports",
+    "node_id": "seller-hub-reports",
+    "url": "https://www.ebay.com/help/selling/selling-tools/seller-hub-reports?id=4096",
+    "title": "Seller Hub Reports | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Allows sellers to download and upload data in CSV/XLS format, manage listings, download orders, and provide fulfillment information"
+  },
+  {
+    "canonical_name": "Seller Hub Tasks",
+    "node_id": "seller-hub-tasks",
+    "url": "https://www.ebay.com/help/selling/selling-tools/seller-hub?id=4095",
+    "title": "Seller Hub | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Task management feature in Seller Hub showing suggested actions for listings and orders, including shipment deadlines and buyer messages"
+  },
+  {
+    "canonical_name": "Seller Initiated Offers",
+    "node_id": "seller-initiated-offers",
+    "url": "https://export.ebay.com/en/marketing/promote-listings/offer-buyers/",
+    "title": "Offer to buyers",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Feature allowing sellers to send discount offers to buyers watching items or with items in cart, valid for 96 hours"
+  },
+  {
+    "canonical_name": "Seller News",
+    "node_id": "seller-news",
+    "url": "https://www.ebay.com/sellercenter/news",
+    "title": "News | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Monthly publication covering latest seller updates, new tools, tips and policy changes"
+  },
+  {
+    "canonical_name": "Seller Newsletter",
+    "node_id": "seller-newsletter",
+    "url": "https://www.ebay.com/help/selling/selling-tools/ebay-shop-newsletters?id=4654",
+    "title": "eBay Store newsletters | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Email campaigns feature for eBay Store sellers to send newsletters to subscribers, followers, and past customers"
+  },
+  {
+    "canonical_name": "Seller Pays Return Shipping",
+    "node_id": "seller-pays-return-shipping",
+    "url": "https://export.ebay.com/en/seller-performance/transactions/return-shipping/",
+    "title": "Return shipping for sellers",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Policy requiring sellers to cover return shipping costs when items are damaged, faulty, or not as described"
+  },
+  {
+    "canonical_name": "Seller Performance Standards",
+    "node_id": "seller-performance-standards",
+    "url": "https://www.ebay.com/help/selling/seller-levels-performance-standards/seller-levels-performance-standards?id=4080",
+    "title": "Seller performance overview | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Performance evaluation system assigning sellers to Below Standard, Above Standard, or Top Rated levels based on metrics like transaction defect rate and cases closed without seller resolution"
+  },
+  {
+    "canonical_name": "Seller Protections",
+    "node_id": "seller-protections",
+    "url": "https://www.ebay.com/help/policies/selling-policies/seller-protections?id=4345",
+    "title": "Seller protections | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Protection policies against abusive buying behavior and events outside seller control, including negative feedback removal and payment dispute protections"
+  },
+  {
+    "canonical_name": "Seller Refurbished",
+    "node_id": "seller-refurbished",
+    "url": "https://www.ebay.com/sellercenter/ebay-for-business/ebay-refurbished-program",
+    "title": "eBay Refurbished Program | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Item condition indicating items restored to working order by seller or third party; being phased out in favor of official eBay Refurbished program in selected categories"
+  },
+  {
+    "canonical_name": "Seller Response",
+    "node_id": "seller-response",
+    "url": "https://www.ebay.com/help/selling/leaving-feedback-buyers/viewing-responding-feedback-buyers?id=4102",
+    "title": "Viewing and responding to feedback from buyers | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Feature allowing sellers to leave replies to buyer feedback and respond to buyer messages"
+  },
+  {
+    "canonical_name": "Seller Transaction Report",
+    "node_id": "seller-transaction-report",
+    "url": "https://www.ebay.com/help/selling/fees-credits-invoices/reconciling-ebay-sales-transactions?id=4847",
+    "title": "Reconciling your eBay sales transactions | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Detailed CSV report showing all account activity including transaction dates, order numbers, fees, and payout details available through Payments tab in Seller Hub"
+  },
+  {
+    "canonical_name": "Seller Updates",
+    "node_id": "seller-updates",
+    "url": "https://www.ebay.com/sellercenter/resources/seller-updates",
+    "title": "Seller Updates | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Regular announcements of new features, policy changes, and platform improvements for sellers"
+  },
+  {
+    "canonical_name": "Seller Verification",
+    "node_id": "seller-verification",
+    "url": "https://www.ebay.com/help/selling/listings/seller-verification?id=4851",
+    "title": "Seller verification",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Identity verification process requiring SSN, EIN, or ITIN to confirm seller details and comply with applicable laws"
+  },
+  {
+    "canonical_name": "Selling Activity Notifications",
+    "node_id": "selling-activity-notifications",
+    "url": "https://www.ebay.com/help/account/account-account-settings/notifications-subscriptions?id=4203",
+    "title": "Push Notifications | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Notification settings for selling activities including item sold, auctions, offers, and order updates via app, email, or SMS"
+  },
+  {
+    "canonical_name": "Selling Manager",
+    "node_id": "selling-manager",
+    "url": "https://www.ebay.com/help/selling/selling-tools/selling-tools-overview?id=4073",
+    "title": "Selling tools overview | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Tool for creating, managing and monitoring bulk listings; features now available in Seller Hub. Deprecated as of June 2021"
+  },
+  {
+    "canonical_name": "Selling Manager Pro",
+    "node_id": "selling-manager-pro",
+    "url": "https://www.ebay.com/help/selling/selling-tools/seller-hub?id=4095",
+    "title": "Seller Hub | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Advanced bulk listing tool with inventory tracking, template storage, and automated relisting; features integrated into Seller Hub, subscription discontinued November 2021"
+  },
+  {
+    "canonical_name": "Selling Notifications",
+    "node_id": "selling-notifications",
+    "url": "https://www.ebay.com/help/account/changing-account-settings/notifications?id=4203",
+    "title": "Push Notifications | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Configurable alerts for selling activities available via eBay app, email, and SMS including item sold, auctions, and order updates"
+  },
+  {
+    "canonical_name": "Selling Preferences",
+    "node_id": "selling-preferences",
+    "url": "https://www.ebay.com/help/selling/listings/creating-managing-listings/setting-buyer-requirements?id=4152",
+    "title": "Setting buyer requirements | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Settings for managing seller account preferences including buyer requirements, multi-quantity listings, and business policies"
+  },
+  {
+    "canonical_name": "Selling Restrictions",
+    "node_id": "selling-restrictions",
+    "url": "https://www.ebay.com/help/selling/listings/selling-limits?id=4107",
+    "title": "Selling limits | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Limits on number and value of items sellers can list, category-specific restrictions, and prohibited items policies"
+  },
+  {
+    "canonical_name": "Selling with AI",
+    "node_id": "selling-with-ai",
+    "url": "https://pages.ebay.com/sellingwithAI/",
+    "title": "Selling is now even easier with AI | eBay.com",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "AI-powered features including automated item descriptions, background enhancement, AI assistant for buyer messages, and bulk listing tool"
+  },
+  {
+    "canonical_name": "Send Coupon",
+    "node_id": "send-coupon",
+    "url": "https://www.ebay.com/sellercenter/growth/seller-hub-discounts/coded-coupons",
+    "title": "Coded coupons | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Feature for Store subscribers to create and send discount coupons to specific buyer groups or individual buyers"
+  },
+  {
+    "canonical_name": "Send Invoice",
+    "node_id": "send-invoice",
+    "url": "https://www.ebay.com/help/selling/getting-paid/sending-invoices-buyers?id=4139",
+    "title": "Sending an invoice and combining payments | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Feature allowing sellers to send or revise invoices for combining purchases, changing shipping charges, or sending payment reminders"
+  },
+  {
+    "canonical_name": "Send Message",
+    "node_id": "send-message",
+    "url": "https://www.ebay.com/help/account/messages/messages?id=4194",
+    "title": "Messages | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Messaging system for communication between buyers and sellers before and after purchases"
+  },
+  {
+    "canonical_name": "Send Offer",
+    "node_id": "send-offer",
+    "url": "https://www.ebay.com/help/selling/listings/selling-buy-now/adding-best-offer-listing?id=4144",
+    "title": "Adding Best Offer to your listing and sending offers to buyers | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Feature allowing sellers to send discount offers to the 30 most recent interested buyers, valid for 96 hours"
+  },
+  {
+    "canonical_name": "Send Refund",
+    "node_id": "send-refund",
+    "url": "https://www.ebay.com/help/selling/managing-returns-refunds/refunding-buyers?id=5182",
+    "title": "Refunding buyers | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Feature to issue full or partial refunds to buyers within 90 days of original transaction through Seller Hub or My eBay"
+  },
+  {
+    "canonical_name": "Services de paiement proposés par eBay",
+    "node_id": "services-paiement-ebay",
+    "url": "https://pages.ebay.fr/payments/explained/",
+    "title": "Services de paiement proposés par eBay | eBay.fr",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "eBay payment services for France market, processing payments end-to-end with funds deposited directly to seller bank accounts"
+  },
+  {
+    "canonical_name": "Share Listing",
+    "node_id": "share-listing",
+    "url": "https://www.ebay.com/sellercenter/listings/share-to-social",
+    "title": "Share to social | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Feature allowing sellers to share listings on social media platforms with unique tracking links that provide final value fee credits for resulting sales"
+  },
+  {
+    "canonical_name": "Share This Item",
+    "node_id": "share-this-item",
+    "url": "https://pages.ebay.com/social/sharing/terms.html",
+    "title": "Terms and Conditions | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Sharing functionality for buyers and sellers to share listings via social media, email, or other channels"
+  },
+  {
+    "canonical_name": "Shill Bidding Policy",
+    "node_id": "shill-bidding-policy",
+    "url": "https://www.ebay.com/help/policies/selling-policies/selling-practices-policy/shill-bidding-policy?id=4353",
+    "title": "Shill bidding policy | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Policy prohibiting bidding on own items or having associates bid to artificially increase price or desirability"
+  },
+  {
+    "canonical_name": "Ship From Address",
+    "node_id": "ship-from-address",
+    "url": "https://www.ebay.com/help/account/changing-account-settings/changing-delivery-address?id=4201",
+    "title": "Changing the address on your eBay account | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Setting for managing the address from which items are shipped, distinct from return address; only ZIP code displays on shipping labels"
+  },
+  {
+    "canonical_name": "Shipment Confirmation",
+    "node_id": "shipment-confirmation",
+    "url": "https://www.ebay.com/help/buying/shipping-delivery/tracking-item?id=4027",
+    "title": "Tracking your item | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Tracking and confirmation system for shipments including tracking numbers, delivery dates, and signature confirmation requirements"
+  },
+  {
+    "canonical_name": "Shipping Calculator",
+    "node_id": "shipping-calculator",
+    "url": "https://www.ebay.com/shp/calc/rates",
+    "title": "Shipping Calculator | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Tool for calculating shipping costs based on package details, buyer location, and delivery service; supports USPS, UPS, and FedEx"
+  },
+  {
+    "canonical_name": "Shipping Cost",
+    "node_id": "shipping-cost",
+    "url": "https://www.ebay.com/help/buying/shipping-delivery/shipping-rates-buyers?id=4026",
+    "title": "Shipping rates for buyers | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Display of shipping charges shown separately from item cost in listings, calculated based on buyer location for calculated shipping"
+  },
+  {
+    "canonical_name": "Shipping Discount",
+    "node_id": "shipping-discount",
+    "url": "https://www.ebay.com/help/selling/shipping-items/shipping-rates/shipping-discounts?id=4168",
+    "title": "Shipping discounts | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Discounts available through eBay Labels averaging 33% off retail rates, plus promotional and combined shipping discounts"
+  },
+  {
+    "canonical_name": "Shipping Discounts",
+    "node_id": "shipping-discounts",
+    "url": "https://www.ebay.com/sellercenter/growth/seller-hub-discounts/shipping-discounts",
+    "title": "Shipping discounts | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Tool for Store subscribers to offer time-bound or conditional free shipping and combined shipping discounts to buyers"
+  },
+  {
+    "canonical_name": "Shipping Labels",
+    "node_id": "shipping-labels",
+    "url": "https://www.ebay.com/help/selling/shipping-items/labels-packaging-tips/buying-printing-shipping-labels?id=4157",
+    "title": "Printing and canceling shipping labels | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Service for creating and printing discounted shipping labels for FedEx, UPS, or USPS with QR code option for label-free drop-off"
+  },
+  {
+    "canonical_name": "Shipping Restrictions",
+    "node_id": "shipping-restrictions",
+    "url": "https://www.ebay.com/help/policies/default/shipping-policy?id=5035",
+    "title": "Shipping policy | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Policies governing international shipping restrictions, weight limits, high-value item requirements, and prohibited items for shipping"
+  },
+  {
+    "canonical_name": "Ships To",
+    "node_id": "ships-to",
+    "url": "https://www.ebay.com/help/selling/shipping-items/setting-shipping-options/ebay-international-shipping-program?id=5348",
+    "title": "eBay International Shipping program",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Indicator showing which countries seller ships to; eBay International Shipping makes items available to buyers in almost 200 countries"
+  },
+  {
+    "canonical_name": "Shop by Category",
+    "node_id": "shop-by-category",
+    "url": "https://www.ebay.com/n/all-categories",
+    "title": "Shop by Category | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Main category browsing page organizing items into major categories including Motors, Electronics, Collectibles, Fashion, Home & Garden, and more"
+  },
+  {
+    "canonical_name": "Shipping Discounts (Multi-Market)",
+    "node_id": "shipping-discounts-multi-market",
+    "url": "https://export.ebay.com/en/services-tools/shipping/shipping-discounts/",
+    "title": "Shipping Discounts",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "International version of shipping discounts documentation covering eBay Labels discounted rates and promotional shipping options"
+  },
+  {
+    "canonical_name": "Seller Hub Reports (Multi-Market)",
+    "node_id": "seller-hub-reports-multi-market",
+    "url": "https://export.ebay.com/en/services-tools/seller-hub/seller-hub-reports/",
+    "title": "How to use Seller Hub Reports",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "International documentation for Seller Hub Reports feature allowing download and upload of data in CSV/XLS format"
+  },
+  {
+    "canonical_name": "Seller Performance Standards (Multi-Market)",
+    "node_id": "seller-performance-standards-multi-market",
+    "url": "https://export.ebay.com/en/growth/seller-performance/seller-levels/",
+    "title": "Seller levels and performance standards",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "International documentation for seller performance evaluation system and seller level requirements"
+  },
+  {
+    "canonical_name": "Shop by Category (Multi-Market)",
+    "node_id": "shop-by-category-multi-market",
+    "url": "https://www.ebay.com/b/All-Categories/bn_7116309591",
+    "title": "All Categories products for sale | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "All Categories browsing page showing full category hierarchy for shopping"
+  }
+]

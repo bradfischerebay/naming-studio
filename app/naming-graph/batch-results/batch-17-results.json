@@ -1,0 +1,346 @@
+[
+  {
+    "canonical_name": "Top Rated Plus",
+    "node_id": "top-rated-plus",
+    "url": "https://pages.ebay.com/topratedplus/index.html",
+    "title": "eBay Top Rated Plus | eBay.com",
+    "source_type": "ebay_official",
+    "notes": "Badge awarded to Top Rated Sellers offering same or 1-business-day handling time and 30-day or longer free returns"
+  },
+  {
+    "canonical_name": "Top Rated Plus",
+    "node_id": "top-rated-plus-badge",
+    "url": "https://www.ebay.com/sellercenter/protections/top-rated-program",
+    "title": "Top Rated Seller Program | Seller Center",
+    "source_type": "ebay_official",
+    "notes": "Top Rated Plus seal displays prominently in search results and item descriptions for qualifying listings"
+  },
+  {
+    "canonical_name": "Top Rated Seller (Multi-Market)",
+    "node_id": "top-rated-seller-multi-market",
+    "url": "https://pages.ebay.com/jp/en-us/topratedsellers/index.html",
+    "title": "eBay Top Rated Sellers",
+    "source_type": "ebay_official",
+    "notes": "Global seller performance policy evaluating performance when selling internationally across multiple markets"
+  },
+  {
+    "canonical_name": "Track Package",
+    "node_id": "track-package",
+    "url": "https://pages.ebay.com/cl/en-us/services/buyandsell/shippingcenter8.html",
+    "title": "Track Your Package",
+    "source_type": "ebay_official",
+    "notes": "Track delivery status for USPS packages and UPS packages from initial scan to final delivery through My eBay"
+  },
+  {
+    "canonical_name": "Tracking Number",
+    "node_id": "tracking-number",
+    "url": "https://pages.ebay.com/buy/globalshippingprogram/faq-buyer.html",
+    "title": "eBay: Global Shipping Program",
+    "source_type": "ebay_official",
+    "notes": "Universal tracking numbers enable monitoring package progress throughout journey, found in My eBay and Order Details page"
+  },
+  {
+    "canonical_name": "Trademark",
+    "node_id": "trademark",
+    "url": "https://pages.ebay.com/help/policies/everyone-ebayipuse.html",
+    "title": "Using our intellectual property policy | eBay",
+    "source_type": "ebay_official",
+    "notes": "eBay name and logo are registered trademarks in US and internationally, use only allowed with written license agreement"
+  },
+  {
+    "canonical_name": "Trading Card Authentication",
+    "node_id": "trading-card-authentication",
+    "url": "https://pages.ebay.com/authenticity-guarantee-tradingcards-seller/",
+    "title": "Authenticity Guarantee for Trading Cards | eBay.com",
+    "source_type": "ebay_official",
+    "notes": "PSA authenticates trading cards $250+ with meticulous inspection process, eBay covers authentication and secure shipping costs"
+  },
+  {
+    "canonical_name": "Trading Card Hub",
+    "node_id": "trading-card-hub",
+    "url": "https://pages.ebay.com/tradinghub/",
+    "title": "Trading Card Hub | eBay.com",
+    "source_type": "ebay_official",
+    "notes": "Tools to securely buy, sell, and store trading cards for free with no sales tax on vault transactions in Delaware"
+  },
+  {
+    "canonical_name": "Traffic Report",
+    "node_id": "traffic-report",
+    "url": "https://pages.ebay.com/kg/en-us/storefronts/tracking.html",
+    "title": "eBay Stores: Track Your Sales",
+    "source_type": "ebay_official",
+    "notes": "Shows which keywords buyers use to discover listings and which Store pages they view, Premium and Anchor subscribers get advanced reporting"
+  },
+  {
+    "canonical_name": "Traffic Report (Multi-Market)",
+    "node_id": "traffic-report-multi-market",
+    "url": "https://pages.ebay.com/seller-store-info/index.html",
+    "title": "Manage My Store | eBay.com",
+    "source_type": "ebay_official",
+    "notes": "Select Traffic on left side of page in Manage My Store section to access traffic reports across markets"
+  },
+  {
+    "canonical_name": "Traffic Reports",
+    "node_id": "traffic-reports",
+    "url": "https://pages.ebay.com/selling/all-selling-in-seller-hub.html",
+    "title": "The 'All Selling' view in Seller Hub",
+    "source_type": "ebay_official",
+    "notes": "Integrated into Seller Hub with reports and dashboards for Sales, Seller Costs, Traffic and Seller Standards"
+  },
+  {
+    "canonical_name": "Transaction Defect Rate",
+    "node_id": "transaction-defect-rate",
+    "url": "https://pages.ebay.com/seller-center/service-and-payments/defect-removal.html",
+    "title": "Defect removal | Seller Center",
+    "source_type": "ebay_official",
+    "notes": "Percentage of total transactions with defects, Top Rated Sellers must maintain maximum 0.5% defect rate"
+  },
+  {
+    "canonical_name": "Transaction Interference Policy",
+    "node_id": "transaction-interference-policy",
+    "url": "https://pages.ebay.com/help/policies/transaction-interference.html",
+    "title": "Security Measure",
+    "source_type": "ebay_official",
+    "notes": "Policy prohibiting actions that interfere with transactions between buyers and sellers including taking sales off eBay"
+  },
+  {
+    "canonical_name": "Transaction Report",
+    "node_id": "transaction-report",
+    "url": "https://pages.ebay.com/help/sell/sm-pro-reporting.html",
+    "title": "Seller Hub | eBay",
+    "source_type": "ebay_official",
+    "notes": "Detailed breakdown of all account activity for specific period including transaction date, order number, fees, available in Payments tab"
+  },
+  {
+    "canonical_name": "Transaction Report (Multi-Market)",
+    "node_id": "transaction-report-multi-market",
+    "url": "https://pages.ebay.com/sellerinformation/sellingresources/salesreports.html",
+    "title": "Home | Seller Center",
+    "source_type": "ebay_official",
+    "notes": "Sales reports providing comprehensive transaction data across multiple markets and regions"
+  },
+  {
+    "canonical_name": "Try Again",
+    "node_id": "try-again",
+    "url": "https://pages.ebay.com/messages/site.html",
+    "title": "Scheduled Maintenance",
+    "source_type": "ebay_official",
+    "notes": "Error message appearing during scheduled maintenance or when daily limits exceeded, prompting users to try again later"
+  },
+  {
+    "canonical_name": "Turbo Lister",
+    "node_id": "turbo-lister",
+    "url": "https://pages.ebay.com/turbo_lister/",
+    "title": "Electronics, Cars, Fashion, Collectibles & More | eBay",
+    "source_type": "ebay_official",
+    "notes": "Desktop application for bulk listing management, discontinued with functionality moved to Seller Hub"
+  },
+  {
+    "canonical_name": "Two-Factor Authentication",
+    "node_id": "two-factor-authentication",
+    "url": "https://pages.ebay.com/acctaccess/faqs.html",
+    "title": "Team access | eBay",
+    "source_type": "ebay_official",
+    "notes": "Required for team access accounts, authentication via SMS or push notifications through eBay mobile app"
+  },
+  {
+    "canonical_name": "Unpaid Item Assistant",
+    "node_id": "unpaid-item-assistant",
+    "url": "https://pages.ebay.com/help/sell/unpaid-item-assistant.html",
+    "title": "Resolving unpaid items with buyers | eBay",
+    "source_type": "ebay_official",
+    "notes": "Automated management of unpaid items on Selling preferences page, now called Preferences for items awaiting payment"
+  },
+  {
+    "canonical_name": "Unpaid Item Case",
+    "node_id": "unpaid-item-case",
+    "url": "https://pages.ebay.com/help/policies/unpaid-item.html",
+    "title": "Unpaid item policy | eBay",
+    "source_type": "ebay_official",
+    "notes": "Buyers must pay within 4 calendar days, sellers can cancel order and unpaid cancellation recorded on buyer's account"
+  },
+  {
+    "canonical_name": "Unsold Listings",
+    "node_id": "unsold-listings",
+    "url": "https://pages.ebay.com/help/sell/relist.html",
+    "title": "Relisting items | eBay",
+    "source_type": "ebay_official",
+    "notes": "Found in My eBay Unsold section, eBay can automatically relist items to get them back in front of buyers"
+  },
+  {
+    "canonical_name": "Upload Tracking",
+    "node_id": "upload-tracking",
+    "url": "https://pages.ebay.com/help/pay/upload-tracking.html",
+    "title": "Security Measure",
+    "source_type": "ebay_official",
+    "notes": "Upload tracking number and carrier name via Seller Hub template, automatic upload when purchasing eBay Labels"
+  },
+  {
+    "canonical_name": "User Agreement",
+    "node_id": "user-agreement",
+    "url": "https://pages.ebay.com/help/policies/user-agreement.html",
+    "title": "User Agreement | eBay",
+    "source_type": "ebay_official",
+    "notes": "Contract between eBay and users, includes marketplace rules, compliance obligations, and arbitration clause"
+  },
+  {
+    "canonical_name": "Valid Tracking Rate",
+    "node_id": "valid-tracking-rate",
+    "url": "https://pages.ebay.com/sellerinformation/news/springupdate2014/sellerchecklist.html",
+    "title": "eBay Seller Information Center: 2014 Spring Seller Update: Seller checklist",
+    "source_type": "ebay_official",
+    "notes": "Top Rated sellers required to upload valid tracking within stated handling on 90% of transactions, automatic with eBay Labels"
+  },
+  {
+    "canonical_name": "Variation Photos",
+    "node_id": "variation-photos",
+    "url": "https://pages.ebay.com/sellerinformation/sellingresources/multiplevariationslist.html",
+    "title": "eBay Seller Information Center: Selling Resources – Best Practices - Multi-variation listing feature categories",
+    "source_type": "ebay_official",
+    "notes": "Pictures showing different product versions like available colors, special pricing on pictures in variation listings"
+  },
+  {
+    "canonical_name": "Variation Specifics",
+    "node_id": "variation-specifics",
+    "url": "https://pages.ebay.com/seller-center/listing-and-marketing/item-specifics.html",
+    "title": "Item specifics | Seller Center",
+    "source_type": "ebay_official",
+    "notes": "Item specifics used to group closely related items under single listing, like multiple sizes for shoes"
+  },
+  {
+    "canonical_name": "VAT Collection",
+    "node_id": "vat-collection",
+    "url": "https://pages.ebay.com/vat-eu/",
+    "title": "VAT on eBay purchases for EU buyers | eBay.com",
+    "source_type": "ebay_official",
+    "notes": "Starting July 1 2021, eBay collects VAT from buyer based on delivery country and remits to tax authorities for orders below EUR 150"
+  },
+  {
+    "canonical_name": "Vehicle History Report",
+    "node_id": "vehicle-history-report",
+    "url": "https://pages.ebay.com/sellerinformation/news/vehiclehistoryreports.html",
+    "title": "eBay Seller Information Center: News - Motors Vehicle History Reports",
+    "source_type": "ebay_official",
+    "notes": "AutoCheck by Experian provides vehicle history reports in History Reports tab, available for cars manufactured after 1980 with valid VIN"
+  },
+  {
+    "canonical_name": "Vehicle Purchase Protection",
+    "node_id": "vehicle-purchase-protection",
+    "url": "https://pages.ebay.com/motors/buy/purchase-protection/",
+    "title": "Vehicle Purchase Protection | eBay.com",
+    "source_type": "ebay_official",
+    "notes": "Protects against fraud, vehicle title issues, and undisclosed defects up to $100,000, included at no extra charge through Secure Purchase"
+  },
+  {
+    "canonical_name": "Venmo",
+    "node_id": "venmo",
+    "url": "https://pages.ebay.com/payment/2.0/index.html",
+    "title": "So many ways to pay. So many ways to splurge. | eBay.com",
+    "source_type": "ebay_official",
+    "notes": "Payment method available to US buyers alongside credit, debit, gift cards, Apple Pay, Google Pay, PayPal, and PayPal Credit"
+  },
+  {
+    "canonical_name": "Verified Purchase",
+    "node_id": "verified-purchase",
+    "url": "https://pages.ebay.com/secure-purchase/",
+    "title": "Secure Purchase | eBay.com",
+    "source_type": "ebay_official",
+    "notes": "Verification programs including Authenticity Guarantee for various categories and Secure Purchase for vehicles with verified VINs"
+  },
+  {
+    "canonical_name": "Verified Purchase (Multi-Market)",
+    "node_id": "verified-purchase-multi-market",
+    "url": "https://pages.ebay.com/authenticity-guarantee-seller/",
+    "title": "eBay Authenticity Guarantee | eBay.com",
+    "source_type": "ebay_official",
+    "notes": "Expert authenticators physically verify items across multiple product categories and markets before delivery to buyer"
+  },
+  {
+    "canonical_name": "Verify Account",
+    "node_id": "verify-account",
+    "url": "https://pages.ebay.com/securitycenter/stay_safe.html",
+    "title": "Stay Safe from Scammers - Security Center | eBay.com",
+    "source_type": "ebay_official",
+    "notes": "eBay warns against pop-ups requesting account verification, legitimate sign-in only at https://signin.ebay.com/"
+  },
+  {
+    "canonical_name": "Verkäufer-Cockpit Pro",
+    "node_id": "verkaufer-cockpit-pro",
+    "url": "https://pages.ebay.com/de/",
+    "title": "Übersicht | eBay",
+    "source_type": "ebay_official",
+    "notes": "Seller Cockpit Pro tool available on eBay Germany, listed among seller tools and resources"
+  },
+  {
+    "canonical_name": "Very Good - Refurbished",
+    "node_id": "very-good-refurbished",
+    "url": "https://pages.ebay.com/refurbished/",
+    "title": "eBay Refurbished | Save up to 50% on quality products | eBay.com",
+    "source_type": "ebay_official",
+    "notes": "Like-new condition with no visible wear from quality-vetted sellers, includes one-year warranty serviced by Allstate Protection Plans"
+  },
+  {
+    "canonical_name": "Video Games",
+    "node_id": "video-games",
+    "url": "https://pages.ebay.com/sellerinformation/growing/categorychanges/videogames.html",
+    "title": "eBay Category Changes: Video Games",
+    "source_type": "ebay_official",
+    "notes": "Video Games & Consoles category with subcategories including Accessories, Merchandise, Vintage Games, Systems, and Guides"
+  },
+  {
+    "canonical_name": "View Count",
+    "node_id": "view-count",
+    "url": "https://pages.ebay.com/bo/en-us/listing_analytics/",
+    "title": "eBay: Seller Tools: Listing Analytics",
+    "source_type": "ebay_official",
+    "notes": "Listing analytics tool that transitioned to MySales on Terapeak.com for tracking view counts and listing performance"
+  },
+  {
+    "canonical_name": "View Item",
+    "node_id": "view-item",
+    "url": "https://pages.ebay.com/sellerinformation/news/sprupd16/view-item.html",
+    "title": "View Item | eBay Seller Center",
+    "source_type": "ebay_official",
+    "notes": "Main product display page showing item details, price, condition, shipping options, and seller information"
+  },
+  {
+    "canonical_name": "View Item Page",
+    "node_id": "view-item-page",
+    "url": "https://pages.ebay.com/sellerinformation/news/sprupd16/view-item.html",
+    "title": "View Item | eBay Seller Center",
+    "source_type": "ebay_official",
+    "notes": "Features mobile description summaries generated from existing content for shopper-friendly listings"
+  },
+  {
+    "canonical_name": "View Order",
+    "node_id": "view-order",
+    "url": "https://pages.ebay.com/help/find/recently-viewed.html",
+    "title": "Your recently viewed items | eBay",
+    "source_type": "ebay_official",
+    "notes": "Access order details through Purchase History by clicking more actions then View order details from dropdown menu"
+  },
+  {
+    "canonical_name": "VIN Lookup",
+    "node_id": "vin-lookup",
+    "url": "https://pages.ebay.com/sellerinformation/news/vehiclehistoryreports.html",
+    "title": "eBay Seller Information Center: News - Motors Vehicle History Reports",
+    "source_type": "ebay_official",
+    "notes": "Enter Vehicle Identification Number when listing to automatically display year, make, model, trim, engine, and drive type from eBay Vehicles Catalog"
+  },
+  {
+    "canonical_name": "Virtual Assistant",
+    "node_id": "virtual-assistant",
+    "url": "https://pages.ebay.com/sellingwithAI/",
+    "title": "Selling is now even easier with AI | eBay.com",
+    "source_type": "ebay_official",
+    "notes": "AI Assistant helps sellers save time, answer buyer questions faster, write product descriptions quickly, and create attention-grabbing listings"
+  },
+  {
+    "canonical_name": "Volume Pricing",
+    "node_id": "volume-pricing",
+    "url": "https://pages.ebay.com/specialoffers/volumepricing/index.html",
+    "title": "Volume Pricing | eBay",
+    "source_type": "ebay_official",
+    "notes": "Tiered discounts to buyers purchasing multiple quantities, applies to multi-quantity purchases or multiple variations in single transaction"
+  }
+]

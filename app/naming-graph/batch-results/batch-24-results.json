@@ -1,0 +1,407 @@
+[
+  {
+    "canonical_name": "Return Approved",
+    "node_id": "return-approved",
+    "url": "https://www.ebay.com/help/buying/returns-items-not-received-refunds-buyers/returning-item/return-shipping?id=4066",
+    "title": "Return Approved Notification",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Return status notification indicating seller has approved buyer's return request; seller has 2 business days to issue refund after delivery confirmation"
+  },
+  {
+    "canonical_name": "Return Received",
+    "node_id": "return-received",
+    "url": "https://www.ebay.com/help/buying/returns-items-not-received-refunds-buyers/returning-item/return-shipping?id=4066",
+    "title": "Return Received Status",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Status notification when tracking confirms item was delivered back to seller's registered address; triggers 2 business day refund deadline"
+  },
+  {
+    "canonical_name": "Return Requested",
+    "node_id": "return-requested",
+    "url": "https://www.ebay.com/help/buying/returns-items-not-received-refunds-buyers/returning-item/return-shipping?id=4066",
+    "title": "Return Requested Notification",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Email notification to Messages with subject line 'Send the item back' containing return request details and shipping deadline"
+  },
+  {
+    "canonical_name": "Return Shipped",
+    "node_id": "return-shipped",
+    "url": "https://community.ebay.com/t5/Shipping/Return-tracking-on-Ebay-not-updating/td-p/30629508",
+    "title": "Return Shipped Status",
+    "source_type": "ebay_community",
+    "year": 2026,
+    "notes": "Tracking notification for returned items; automatically updated when eBay-generated return label is printed; has experienced technical issues with tracking updates"
+  },
+  {
+    "canonical_name": "Return to Sender",
+    "node_id": "return-to-sender",
+    "url": "https://community.ebay.com/t5/Shipping/Item-returned-to-sender-by-post-office/td-p/31314566",
+    "title": "Return to Sender Shipping",
+    "source_type": "ebay_community",
+    "year": 2026,
+    "notes": "Shipping status when package is returned to seller due to delivery failure; seller options include partial refund minus shipping or re-shipping to corrected address; USPS charges return postage equal to original shipping cost"
+  },
+  {
+    "canonical_name": "Returns Accepted Filter",
+    "node_id": "returns-accepted-filter",
+    "url": "https://community.ebay.com/t5/Selling/How-can-I-sort-my-listings-by-quot-returns-accepted-quot/td-p/34848815",
+    "title": "Returns Accepted Search Filter",
+    "source_type": "ebay_community",
+    "year": 2026,
+    "notes": "Search refinement filter in left sidebar allowing buyers to narrow results to sellers who accept returns; essential for Top Rated Plus badge qualification which requires 30-day free returns"
+  },
+  {
+    "canonical_name": "Revise Listing",
+    "node_id": "revise-listing",
+    "url": "https://developer.ebay.com/devzone/xml/docs/reference/ebay/ReviseItem.html",
+    "title": "Revise Listing Tool",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Tool for editing active listings; analogous to Revise Your Item (RYI) page; restrictions apply based on listing type, bids received, and eBay policies; generally no charge except when adding enhancements like subtitles or second categories; cannot revise while active offer is pending"
+  },
+  {
+    "canonical_name": "Rich Text Editor",
+    "node_id": "rich-text-editor",
+    "url": "https://help.litcommerce.com/en/article/ebay-custom-description-template-16ft4cl/",
+    "title": "Rich Text Editor for Listings",
+    "source_type": "third_party",
+    "year": 2026,
+    "notes": "Basic editing mode for listing descriptions supporting limited HTML tags; allows toggling between Rich Text and HTML Editor modes; HTML Editor provides more flexibility for advanced formatting"
+  },
+  {
+    "canonical_name": "Royal Mail Tracked 24",
+    "node_id": "royal-mail-tracked-24",
+    "url": "https://www.royalmail.com/business/shipping/uk/tracked-24-48",
+    "title": "Royal Mail Tracked 24 Delivery",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "UK-wide next working day delivery service with SMS/email notification and signature on delivery; coverage up to £75; requires minimum 1,000 items per year for business account; integrated with eBay Click & Drop for automatic order import"
+  },
+  {
+    "canonical_name": "Sales Events",
+    "node_id": "sales-events",
+    "url": "https://www.ebay.com/sellercenter/growth/promotion-strategies",
+    "title": "Sales Events & Promotions",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Promotional tool allowing sellers to set and advertise discounts on product categories; created via Promotions Manager using 'Sale event + markdown' option; supports percentage or dollar amount discounts; part of broader promotions including volume pricing, shipping discounts, and accessory discounts"
+  },
+  {
+    "canonical_name": "Save for Later",
+    "node_id": "save-for-later",
+    "url": "https://www.ebay.com.au/help/buying/paying-items/shopping-cart?id=4360",
+    "title": "Save for Later Cart Feature",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Shopping cart feature allowing buyers to move items from active cart to separate list; located at bottom of shopping cart page; maximum 100 items; items can be added back to cart via 'Add back to cart' button; distinct from wishlist functionality"
+  },
+  {
+    "canonical_name": "Saved",
+    "node_id": "saved",
+    "url": "https://www.ebay.com/help/buying/search-tips/watchlist?id=4046",
+    "title": "Saved Items & Collections",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "General category for saved/favorited items including Watch List and Wish List; accessed via My eBay; includes saved searches, sellers, and feed; Watch List option preferred over Wish List which has experienced availability issues"
+  },
+  {
+    "canonical_name": "Saved Drafts",
+    "node_id": "saved-drafts",
+    "url": "https://community.ebay.com/t5/Selling/Unnecessary-saved-drafts-when-I-launch-listings-BIG-PROBLEM/td-p/29432611",
+    "title": "Saved Drafts Listing Tool",
+    "source_type": "ebay_community",
+    "year": 2026,
+    "notes": "Incomplete listing storage feature; accessed via 'Complete Draft' in My eBay; drafts expire after 15-30 days though some persist 60+ days; known issue where active listings sometimes create drafts unintentionally; located under Sell page"
+  },
+  {
+    "canonical_name": "Saved Payment Methods",
+    "node_id": "saved-payment-methods",
+    "url": "https://www.cliffsnotes.com/cliffs-questions/6340676",
+    "title": "Saved Payment Methods Wallet",
+    "source_type": "third_party",
+    "year": 2026,
+    "notes": "Payment wallet feature storing credit cards and payment options; managed via Account Settings > Payments > Manage payment methods; allows quick checkout without re-entering details; recent changes to PayPal integration now show generic 'PayPal' option instead of email address"
+  },
+  {
+    "canonical_name": "Saved Seller",
+    "node_id": "saved-seller",
+    "url": "https://ebaysc.liveplatform.com/build-your-business-online/grow-your-sales/followingonebay",
+    "title": "Saved Seller Following",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Following feature allowing buyers to save/favorite sellers; replaced older 'favorite sellers' terminology; accessed via heart icon or 'Save seller' link in listings; followers see seller profile link in home page navigation and may receive feed updates about new collections; managed in My eBay > Saved Sellers"
+  },
+  {
+    "canonical_name": "Schedule Start Time",
+    "node_id": "schedule-start-time",
+    "url": "https://www.valueaddedresource.net/schedule-start-time-ebay-listing/",
+    "title": "Schedule Start Time for Listings",
+    "source_type": "third_party",
+    "year": 2026,
+    "notes": "Feature allowing sellers to set future start date/time for listings; changed from 'Start immediately' to 'Schedule a start time' in Price section of Unified Listing Tool; uses Pacific Coast Time; requires fee; listing won't publish until scheduled time"
+  },
+  {
+    "canonical_name": "Scheduled Listing",
+    "node_id": "scheduled-listing",
+    "url": "https://www.ebay.com/help/selling/listings/selecting-listing-duration?id=4652",
+    "title": "Scheduled Listing Management",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Listing scheduling system allowing start up to 3 weeks in advance; all times shown in Pacific time; managed in My eBay with Reschedule and Delete options; daylight saving time handled automatically with full 24-hour listing periods"
+  },
+  {
+    "canonical_name": "Search Filters",
+    "node_id": "search-filters",
+    "url": "https://community.ebay.com/t5/Buying/Permanently-setting-you-search-filters/td-p/33057323",
+    "title": "Search Filters & Refinements",
+    "source_type": "ebay_community",
+    "year": 2026,
+    "notes": "Search refinement system including MPN, UPC, EPID, EAN/ISBN codes, price ranges, listing formats, conditions, locations, and marketplaces; mobile app offers 'lockable filters'; dynamic category-specific filters; saved searches preserve filter settings via URL parameters; no permanent filter customization on desktop"
+  },
+  {
+    "canonical_name": "Search Standing Dashboard",
+    "node_id": "search-standing-dashboard",
+    "url": "https://www.ebay.com/sellercenter/",
+    "title": "Search Standing Dashboard",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Seller analytics dashboard for search visibility metrics; specific feature name not widely documented; likely part of Seller Hub analytics suite showing search ranking and visibility performance"
+  },
+  {
+    "canonical_name": "Self-Hosted Images",
+    "node_id": "self-hosted-images",
+    "url": "https://community.ebay.com/t5/Seller-Tools/quot-Only-1-photo-allowed-with-Self-Hosting-option-For-more/td-p/31934265",
+    "title": "Self-Hosted Images for Listings",
+    "source_type": "ebay_community",
+    "year": 2026,
+    "notes": "External image hosting option via File Exchange using web-hosted image URLs; cannot mix with EPS (eBay Picture Services) images; limited to 1 photo when mixing types; eBay began allowing up to 12 self-hosted images around 2012; error 20004 occurs when mixing image types"
+  },
+  {
+    "canonical_name": "Seller Responded",
+    "node_id": "seller-responded",
+    "url": "https://www.ebay.com/help/account/messages/messages?id=4194",
+    "title": "Seller Responded Notification",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Message notification status indicating seller has replied to buyer inquiry; part of eBay Messages system with threaded conversation grouping; messages sent to eBay Messages inbox and personal email"
+  },
+  {
+    "canonical_name": "Selling Coach",
+    "node_id": "selling-coach",
+    "url": "http://ebaysellingcoach.blogspot.com/",
+    "title": "Selling Coach Tips & Training",
+    "source_type": "third_party",
+    "year": 2026,
+    "notes": "Third-party eBay seller training and coaching resources; provides actionable roadmap and personalized learning; blog offers tips including starting small, buying items for feedback first, using shipping scale, and focusing on higher-value categories like jackets, leather, and cashmere"
+  },
+  {
+    "canonical_name": "Session Duration",
+    "node_id": "session-duration",
+    "url": "https://www.semrush.com/website/ebay.com/overview/",
+    "title": "Session Duration Analytics",
+    "source_type": "analytics_third_party",
+    "year": 2026,
+    "notes": "Website analytics metric; eBay averaged 11:43 (11 minutes 43 seconds) session duration in March 2026 with 5.83 pages per visit; significantly above typical e-commerce benchmark of 2-3 minutes; indicates detailed product research and comparison shopping behavior"
+  },
+  {
+    "canonical_name": "Session Expired",
+    "node_id": "session-expired",
+    "url": "https://community.ebay.com/t5/Mobile-Apps/Can-t-use-eBay-anymore-Went-to-log-into-eBay-and-prompt/td-p/32240695",
+    "title": "Session Expired Security Timeout",
+    "source_type": "ebay_community",
+    "year": 2026,
+    "notes": "Security timeout notification after 10-30 minutes of inactivity; mobile app requires Android 10+ or iOS 17+; caused by unstable internet connections, disabled cookies, or browsing anonymously; may indicate attempted cybercrime triggering automatic logout"
+  },
+  {
+    "canonical_name": "Shake to Search",
+    "node_id": "shake-to-search",
+    "url": "https://www.ebay.com/mobile",
+    "title": "Shake to Search Mobile Feature",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Mobile app camera/visual search feature; limited public documentation; likely related to visual search functionality activated by shaking device; part of eBay's mobile shopping innovation"
+  },
+  {
+    "canonical_name": "Ship to Store",
+    "node_id": "ship-to-store",
+    "url": "https://www.ebay.com/help/buying/postage-delivery/",
+    "title": "Ship to Store Pickup Option",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Delivery option allowing customers to ship purchases to nearby retail store for pickup; participating locations include CVS, Walgreens, Dollar General; often free service; notification sent when item arrives at store with several days pickup window"
+  },
+  {
+    "canonical_name": "Shop by Diagram",
+    "node_id": "shop-by-diagram",
+    "url": "https://innovation.ebayinc.com/stories/new-ebay-motors-feature-makes-car-schematic-diagrams-shoppable/",
+    "title": "Shop by Diagram (eBay Motors)",
+    "source_type": "ebay_official",
+    "year": 2018,
+    "notes": "Interactive automotive parts shopping via visual schematics; proprietary technology searches millions of parts matching diagram for vehicle; fitment technology guarantees compatibility with year/make/model; launched August 2018 for North America desktop and mobile web; addresses problem where 50% of consumers mistakenly purchase incompatible parts"
+  },
+  {
+    "canonical_name": "Shopping Updates",
+    "node_id": "shopping-updates",
+    "url": "https://www.ebay.com/help/account/changing-account-settings/notifications?id=4203",
+    "title": "Shopping Updates Notifications",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Personalized notification feed about items of interest, ending listings, offers made, cart changes; includes 'Related to recent purchase', 'Recently viewed', and 'Just for you' recommendations; managed via My eBay > Settings > Notifications > Shopping Updates; delivered via app, email, or SMS"
+  },
+  {
+    "canonical_name": "Show Only",
+    "node_id": "show-only",
+    "url": "https://litcommerce.com/blog/how-to-see-sold-items-on-ebay/",
+    "title": "Show Only Search Filter",
+    "source_type": "third_party",
+    "year": 2026,
+    "notes": "Search filter section in left menu of search results; includes options for Sold items (past 90 days), Items listed as lots, and other refinements; helps buyers customize search to find specific criteria"
+  },
+  {
+    "canonical_name": "Similar Items",
+    "node_id": "similar-items",
+    "url": "https://innovation.ebayinc.com/stories/improving-shopping-recommendations-for-customers-through-ebays-relevance-cascade-model/",
+    "title": "Similar Items Recommendations",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Machine learning recommendation system showing 'Similar Sponsored Items' based on seed item; relevance cascade model filters candidates by title, appearance, brand, price; 'Find Similar' button uses image recognition on seller photos; 2.14% increase in purchase-to-recommendation ratio; controversial among sellers as directs buyers to competing listings"
+  },
+  {
+    "canonical_name": "Simple Delivery",
+    "node_id": "simple-delivery-uk",
+    "url": "https://www.ebay.co.uk/help/selling/posting-items/setting-postage-options/simple-delivery?id=5575",
+    "title": "Simple Delivery (UK)",
+    "source_type": "ebay_official",
+    "year": 2025,
+    "notes": "Mandatory managed shipping for UK private sellers starting April 15, 2025; streamlines postage with automatic label generation based on buyer location, parcel size, service level; prepaid labels and QR codes; Royal Mail and Evri carriers by default; eligible items £750 or less for UK and Channel Islands domestic delivery only; exemptions for items £20 or under in certain categories and oversized items"
+  },
+  {
+    "canonical_name": "Spotlight Deals",
+    "node_id": "spotlight-deals",
+    "url": "https://www.rakuten.com/shop/ebay",
+    "title": "Spotlight Deals Featured Promotions",
+    "source_type": "third_party",
+    "year": 2026,
+    "notes": "Featured daily deal showcasing one item at exceptional price; part of broader promotional offerings including Daily Deals and Trending Deals; all items include free shipping; complemented by Featured Deals section with up to 90% markdowns across all categories"
+  },
+  {
+    "canonical_name": "Spring Clearance",
+    "node_id": "spring-clearance",
+    "url": "https://applianceanalysts.com/clearance-calendar/",
+    "title": "Spring Clearance Seasonal Event",
+    "source_type": "general_retail",
+    "year": 2026,
+    "notes": "Seasonal clearance sales typically occurring 2 months into spring (May); retailers clear winter stock to make room for spring merchandise; no specific eBay-branded 'Spring Clearance' event documented; eBay offers various seasonal promotions throughout year"
+  },
+  {
+    "canonical_name": "Unique Visitors",
+    "node_id": "unique-visitors",
+    "url": "https://synder.com/blog/best-ebay-sales-analytics-tools/",
+    "title": "Unique Visitors Analytics",
+    "source_type": "third_party",
+    "year": 2026,
+    "notes": "Traffic report metric tracking individual visitors to listings; part of free eBay seller analytics including page views, popular listings, search keywords; helps sellers understand store performance and optimize listings; available in Seller Hub traffic reports"
+  },
+  {
+    "canonical_name": "Unread Messages",
+    "node_id": "unread-messages",
+    "url": "https://www.ebay.com/help/account/messages/messages?id=4194",
+    "title": "Unread Messages Notification",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Message inbox indicator showing number in brackets on Messages tab; messages sent to eBay Messages inbox and personal email; known issues with persistent '1' unread count in Seller Hub; new messaging experience groups messages in threaded conversations; filterable by member messages or eBay messages"
+  },
+  {
+    "canonical_name": "VAT Services (UK/EU)",
+    "node_id": "vat-services-uk-eu",
+    "url": "https://www.ebay.co.uk/help/selling/",
+    "title": "VAT Services for UK/EU Sellers",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Tax collection and remittance service for UK and EU cross-border transactions; eBay acts as deemed supplier for certain transactions; integrates with Import One-Stop Shop (IOSS) system for EU VAT compliance; handles VAT on behalf of sellers"
+  },
+  {
+    "canonical_name": "Views",
+    "node_id": "views",
+    "url": "https://www.ebay.com/help/selling/listings/listing-tips/page-views?id=4165",
+    "title": "Views Listing Analytics",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Page view metric counting when someone views listing on eBay website or mobile app; for fixed price listings active 30+ days, count is rolling 30-day (not cumulative lifetime); eBay filters bot traffic with secondary daily analysis; distinct from impressions (times seen in search results); viewable in Active/Unsold pages in app, My eBay, Seller Hub Performance tab; recent technical issues with missing organic stats starting October 2025"
+  },
+  {
+    "canonical_name": "Visitor Count",
+    "node_id": "visitor-count",
+    "url": "https://community.ebay.com/t5/Selling/Why-Can-t-I-Add-a-Counter-To-My-Listings/td-p/26291908",
+    "title": "Visitor Counter for Listings",
+    "source_type": "ebay_community",
+    "year": 2026,
+    "notes": "Optional listing counter feature showing view count; styles include basic, retro-computer, hidden; added via 'Visitor counter section' in listing form; not available in quick listing tool; File Exchange header field 'HitCounter' with values NoHitCounter, HonestyStyle, GreenLED, Hidden, BasicStyle, RetroStyle, HiddenStyle; counter removed when item ends; eBay shows view counts at top of listings"
+  },
+  {
+    "canonical_name": "Visits",
+    "node_id": "visits",
+    "url": "https://community.ebay.com/t5/Seller-Tools/eBay-Store-Traffic-Reports-Now-Available-In-Seller-Hub/td-p/33967711",
+    "title": "Visits Traffic Metric",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Total number of visits to eBay Store pages; key metric in Seller Hub traffic analytics; Store traffic reports track total visits or narrow to paid visits from Promoted Display ads; part of traffic report including unique visitors, page views, popular listings, search keywords; Analytics API returns buyer traffic details; recent changes to Traffic reports raised transparency concerns with sellers noting lack of critical information and granularity"
+  },
+  {
+    "canonical_name": "Visual Editor",
+    "node_id": "visual-editor",
+    "url": "https://support.solidcommerce.com/hc/en-us/articles/215722523",
+    "title": "Visual Editor for Listing Templates",
+    "source_type": "third_party",
+    "year": 2026,
+    "notes": "WYSIWYG editor for listing descriptions converting to HTML; toggle between visual and HTML mode; complex templates may display incorrectly in Visual mode with external styles not shown; visual editor can remove template parts; third-party platforms (Salestio, 3Dsellers, Linnworks) offer enhanced visual editing; editing existing HTML via WYSIWYG can corrupt original code"
+  },
+  {
+    "canonical_name": "WATA Grading",
+    "node_id": "wata-grading",
+    "url": "https://www.ebay.com/shop/wata-graded",
+    "title": "WATA Grading Video Game Authentication",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Video game authentication and grading service evaluating physical condition and authenticity; numerical grade 1-10 in 0.5 increments (1-9) and 0.2 increments (9-10) for game condition; letter grade C to A++ for factory seal condition; detailed reports on box, manual, cartridge; eBay hosts dedicated WATA-graded shop; WATA became PSA (Professional Sports Authenticator) in September 2025; provides encapsulation protecting from damage and environmental exposure"
+  },
+  {
+    "canonical_name": "Watch Count",
+    "node_id": "watch-count",
+    "url": "https://www.watchcount.com/",
+    "title": "Watch Count Analytics",
+    "source_type": "third_party",
+    "year": 2026,
+    "notes": "Measure of listing popularity showing number of watchers; sellers see count in Watcher column on active listings page; watcher identities kept anonymous; third-party tools (WatchCount.com, Wuanto.com) provide detailed analytics including number of watchers, pricing, quantity, sales velocity, seller info; useful for competitive analysis and pricing strategy; lowering price by 5%+ triggers automatic notification to watchers; watch count visible when exceeds 5 watchers"
+  },
+  {
+    "canonical_name": "Watch This Item",
+    "node_id": "watch-this-item",
+    "url": "https://www.ebay.ca/help/buying/finding-items-managing-purchases/watch-list?id=4046",
+    "title": "Watch This Item Button",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Button/link to add items to watchlist; located underneath purchase options on item details page; can be enabled in search results via View dropdown > Customize > 'Watch This Item' Link checkbox; triggers notifications for listing changes (price, stock, details) and ending soon alerts; notifications controllable via Communication preferences in My eBay"
+  },
+  {
+    "canonical_name": "Watchers Count",
+    "node_id": "watchers-count",
+    "url": "https://support.dsmtool.com/en/articles/2960919-ebay-performance-metrics-views-watchers-sold-count",
+    "title": "Watchers Count Listing Metric",
+    "source_type": "third_party",
+    "year": 2026,
+    "notes": "Number of eBay shoppers who added listing to watch-list; watchers notified for every change until listing ends; viewable in Seller Hub, mobile app, Active Listing page (5th column); aggregate metrics only, individual watcher IDs kept private; distinct from views (impressions); count displayed when exceeds 5; eBay testing different display approaches to optimize sales"
+  },
+  {
+    "canonical_name": "Winning Notice",
+    "node_id": "winning-notice",
+    "url": "https://www.ebay.com/help/buying/",
+    "title": "Winning Notice Auction Notification",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Notification sent to auction winners confirming successful bid; part of eBay's buyer notification system; alerts buyer to complete purchase and pay for won item; critical for auction-style listing completion"
+  }
+]

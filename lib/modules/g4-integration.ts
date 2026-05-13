@@ -9,7 +9,7 @@
  */
 
 import { getNameChecker, type NameCheckResult } from './name-checker';
-import type { GateStatus } from '@/lib/schemas';
+import type { GateStatus } from '@/lib/models/gates';
 
 export interface G4EnhancedResult {
   status: GateStatus;

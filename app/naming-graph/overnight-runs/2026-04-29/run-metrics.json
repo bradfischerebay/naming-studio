@@ -1,0 +1,114 @@
+{
+  "scan_date": "2026-04-29",
+  "run_version": "overnight-run-2026-04-29-v2",
+  "registry_file": "enriched-consolidated-DEDUPLICATED.ts",
+  "wave5_file": "enriched-wave5-research-items.ts",
+  "status": "COMPLETE",
+
+  "record_counts": {
+    "registry_nodes_classified": 876,
+    "prior_new_candidates_reviewed": 32,
+    "final_batch_developer_apis_buyer_programs": 97,
+    "total_records_reviewed": 1005,
+    "target": 1000,
+    "target_met": true
+  },
+
+  "classification_breakdown": {
+    "existing_validated": 772,
+    "existing_legacy_validated": 61,
+    "name_correction": 16,
+    "duplicate": 14,
+    "status_changed_renamed": 5,
+    "status_changed_deprecated": 4,
+    "false_positive": 4,
+    "total_classified_from_registry": 876
+  },
+
+  "final_batch_findings": {
+    "records_reviewed": 97,
+    "developer_rest_apis_reviewed": 37,
+    "legacy_apis_reviewed": 9,
+    "buyer_programs_reviewed": 12,
+    "regional_programs_reviewed": 9,
+    "new_deprecated_found": 6,
+    "new_false_positives_found": 1,
+    "new_candidates_not_in_registry": 70,
+    "key_discoveries": [
+      "Finding API + Shopping API: decommissioned Feb 5, 2025 (harder than legacy — update registry status)",
+      "eBay Bucks: deprecated April 2, 2024 (NOT 2021 — existing registry date is wrong)",
+      "eBay Mastercard + eBay Extras Mastercard: discontinued March 24-25, 2026 (very recent)",
+      "Top-Service (DE): new Oct 2024 seller badge replacing eBay Plus/eBay Garantie seller labels",
+      "Shop with Points: false positive — it's a PayPal program, not eBay",
+      "37 REST API products (Buy/Sell/Commerce/Developer families) not in registry",
+      "3 new Q4 2025 APIs: Feedback API, Message API, Leads API",
+      "VeRO (Verified Rights Owner Program): long-established but missing from registry",
+      "Additional Protection (DE, Allianz): new 2025 refurbished electronics insurance program"
+    ]
+  },
+
+  "change_summary": {
+    "confirmed_renamed": 5,
+    "confirmed_deprecated_registry_pass": 4,
+    "confirmed_deprecated_final_batch": 6,
+    "confirmed_deprecated_total": 10,
+    "name_corrections_required": 16,
+    "false_positives_to_remove_registry_pass": 4,
+    "false_positives_to_remove_final_batch": 1,
+    "false_positives_total": 5,
+    "duplicates_to_consolidate": 14,
+    "net_new_candidates_tier1": 13,
+    "net_new_candidates_tier2": 10,
+    "net_new_candidates_tier3": 9,
+    "net_new_candidates_developer_apis": 37,
+    "net_new_candidates_regional": 6,
+    "net_new_candidates_additional_from_agents": 3,
+    "campaigns_to_register": 5
+  },
+
+  "coverage": {
+    "registry_coverage_pct": 100.0,
+    "total_batches_completed": 5,
+    "sources_checked": 33,
+    "source_categories": [
+      "Main marketplace (ebay.com) — 14 paths",
+      "Seller Center — 8 paths",
+      "Regional sites (UK, DE, FR, IT, AU) — 5 markets",
+      "Developer portal (developer.ebay.com) — 7 sections",
+      "Third-party reporting (ValueAddedResource, eCommercebytes, ChannelX)",
+      "Newsroom / press (Sep 2025 – Apr 2026)"
+    ]
+  },
+
+  "yield_analysis": {
+    "by_batch": [
+      {"batch": "trust-safety-product-program", "reviewed": 199, "changes": 18, "yield_pct": 9.0},
+      {"batch": "advertising-seller-hub", "reviewed": 120, "changes": 12, "yield_pct": 10.0},
+      {"batch": "motors-refurbished-international", "reviewed": 85, "changes": 8, "yield_pct": 9.4},
+      {"batch": "feature-nodes-bulk", "reviewed": 536, "changes": 3, "yield_pct": 0.6},
+      {"batch": "new-candidates-cross-reference", "reviewed": 32, "changes": 32, "yield_pct": 100.0},
+      {"batch": "developer-apis-buyer-programs", "reviewed": 97, "changes": 7, "yield_pct": 7.2}
+    ],
+    "overall_actionable_rate": {
+      "actionable_nodes": 43,
+      "total_classified": 876,
+      "actionable_pct": 4.9
+    },
+    "marginal_yield_analysis": "Feature-tier bulk pass was lowest yield (0.6%) as expected. Developer API pass was high yield for *new candidates* (37 unregistered named products) but low for status changes (0 renames, 6 deprecations). Highest change yield: advertising/seller hub and trust/safety tiers."
+  },
+
+  "stop_condition": {
+    "condition_met": "total_records_reviewed >= 1000",
+    "total_reviewed": 1005,
+    "target": 1000,
+    "stopped_because": "Target reached: 1005 records reviewed across 5 batches covering 100% of registry nodes + 129 new candidate reviews."
+  },
+
+  "output_files": {
+    "naming_registry_import_csv": {"path": "naming-registry-import.csv", "rows": 876, "status": "complete"},
+    "naming_review_queue_csv": {"path": "naming-review-queue.csv", "rows": 43, "status": "complete"},
+    "naming_delta_report_json": {"path": "naming-delta-report.json", "status": "complete — updated with final batch"},
+    "naming_run_summary_md": {"path": "naming-run-summary.md", "status": "complete — updating with final counts"},
+    "run_metrics_json": {"path": "run-metrics.json", "status": "COMPLETE"}
+  }
+}

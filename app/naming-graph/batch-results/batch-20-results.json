@@ -1,0 +1,398 @@
+[
+  {
+    "canonical_name": "Antiques",
+    "node_id": "antiques",
+    "url": "https://www.ebay.com/b/Antiques/20081/bn_1851017",
+    "title": "Antiques for sale | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official eBay Antiques category marketplace - one of the hottest, most profitable categories on eBay in 2026 with numerous subcategories including Architectural & Garden, Asian Antiques, Furniture, Silver, Rugs & Carpets, Maritime, and Decorative Arts"
+  },
+  {
+    "canonical_name": "App Store Promotion",
+    "node_id": "app-store-promotion",
+    "url": "https://pages.ebay.com/gp/en-us/ebay-app-mobile/",
+    "title": "eBay App | eBay.com",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "eBay mobile app promotion offering $10 off in-app QR code promotions and exclusive app-only deals, downloaded 410 million times with 260K downloads per day"
+  },
+  {
+    "canonical_name": "Ask Question",
+    "node_id": "ask-question",
+    "url": "https://www.ebay.com/sellercenter/resources/seller-updates/timeline/qa-feature",
+    "title": "Item Q&A | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Questions & Answers feature that enables shoppers to ask sellers and recent buyers questions about products, with answers featured on listings visible to all future buyers"
+  },
+  {
+    "canonical_name": "Auction Ended",
+    "node_id": "auction-ended",
+    "url": "https://developer.ebay.com/api-docs/static/pn_watched-item-ending-soon.html",
+    "title": "WatchedItemEndingSoon | eBay Developers Program",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Notification system that alerts buyers when watched auction items are ending soon (typically 14 minutes before end time), with support for email and push notifications via mobile app"
+  },
+  {
+    "canonical_name": "Auction-Style Listings",
+    "node_id": "auction-style-listings",
+    "url": "https://www.ebay.com/help/selling/listings/selling-auctions?id=4110",
+    "title": "Selling through auctions | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Auction format where buyers bid on items with durations of 1, 3, 5, 7, or 10 days, with optional Buy It Now and reserve price features"
+  },
+  {
+    "canonical_name": "Auction-Style Listings (Multi-Market)",
+    "node_id": "auction-style-listings-multi-market",
+    "url": "https://export.ebay.com/en/first-steps/how-create-listing/selling-through-auctions/",
+    "title": "Selling through auctions",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "International version of auction-style listings available across eBay's global marketplaces"
+  },
+  {
+    "canonical_name": "Augmented Reality Preview",
+    "node_id": "augmented-reality-preview",
+    "url": "https://innovation.ebayinc.com/stories/augmented-reality-now-its-a-reality-with-ebays-new-shipping-tool/",
+    "title": "Augmented Reality? Now It's a Reality with eBay's New Shipping Tool",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "AR tool built on Google's ARCore platform that helps sellers find the right shipping box by placing virtual boxes over real items using motion tracking and environmental understanding"
+  },
+  {
+    "canonical_name": "Authenticator App",
+    "node_id": "authenticator-app",
+    "url": "https://www.howtogeek.com/718530/how-to-set-up-two-factor-authentication-on-ebay/",
+    "title": "How to Set up Two-Factor Authentication on eBay",
+    "source_type": "external",
+    "year": 2026,
+    "notes": "Two-factor authentication using third-party authenticator apps (Google Authenticator, Microsoft Authenticator, or Authy) for enhanced account security with time-based one-time passcodes"
+  },
+  {
+    "canonical_name": "Authenticity Guarantee Filter",
+    "node_id": "authenticity-guarantee-filter",
+    "url": "https://www.ebay.com/help/buying/buying-authenticity-guarantee/buying-authenticity-guarantee?id=5470",
+    "title": "Buying with Authenticity Guarantee | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Search filter for finding items eligible for professional authentication, displaying blue checkmark badge on listings for watches ($2,000+), handbags ($500+), sneakers ($75+), jewelry, streetwear, and trading cards"
+  },
+  {
+    "canonical_name": "Authenticity Guarantee (Multi-Market)",
+    "node_id": "authenticity-guarantee-multi-market",
+    "url": "https://www.ebay.com/authenticity-guarantee",
+    "title": "eBay Authenticity Guarantee",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Global authentication program with expert physical inspection for luxury items across multiple categories and markets before shipping to buyers"
+  },
+  {
+    "canonical_name": "Authenticity Guarantee - Streetwear",
+    "node_id": "authenticity-guarantee-streetwear",
+    "url": "https://www.ebay.com/authenticity-guarantee/streetwear",
+    "title": "eBay Authenticity Guarantee for Streetwear",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Authentication service launched June 2023 for streetwear items $200+ from brands like Aimé Leon Dore, Fear of God, KITH, Supreme, Off-White, Palace, Stone Island, Nike, adidas, Gucci, Prada, and Louis Vuitton"
+  },
+  {
+    "canonical_name": "Authorized Seller Filter",
+    "node_id": "authorized-seller-filter",
+    "url": "https://www.ecommercebytes.com/2023/04/30/ebay-launches-another-program-that-puts-branded-sellers-front-and-center/",
+    "title": "eBay Launches Another Program that Puts Branded Sellers Front and Center",
+    "source_type": "external",
+    "year": 2026,
+    "notes": "Search filter for finding Authorized Retailer and Certified by Brand sellers, displaying blue badge and manufacturer logo in search results for verified brand-authorized sellers"
+  },
+  {
+    "canonical_name": "Auto Pricing",
+    "node_id": "auto-pricing",
+    "url": "https://www.repricer.com/blog/ebay-repricing-guide/",
+    "title": "eBay Repricer Guide: How to Compete and Win in 2026",
+    "source_type": "external",
+    "year": 2026,
+    "notes": "Dynamic repricing tools that automatically adjust listing prices based on competition, market trends, and seller performance parameters, with AI-powered algorithms increasing sales by 15-30%"
+  },
+  {
+    "canonical_name": "Auto-Relist",
+    "node_id": "auto-relist",
+    "url": "https://www.ebay.com/help/selling/listings/creating-managing-listings/relisting-items?id=4147",
+    "title": "Relisting items | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Automatic relisting feature where auction items (1 or 3 days) are relisted up to 8 times as 7-day listings, and fixed-price listings are set to Good 'Til Cancelled with automatic monthly relisting"
+  },
+  {
+    "canonical_name": "Automatic Relisting",
+    "node_id": "automatic-relisting",
+    "url": "https://export.ebay.com/en/first-steps/how-create-listing/how-to-relist-items/",
+    "title": "How to relist items",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Feature that automatically relists unsold items, with fixed-price listings renewing every 30 days and auction items relisting up to 8 times"
+  },
+  {
+    "canonical_name": "Awaiting Shipment",
+    "node_id": "awaiting-shipment",
+    "url": "https://community.ebay.com/t5/Shipping/Shipped-order-and-it-s-still-showing-as-awaiting-shipment/td-p/32897389",
+    "title": "Shipped order and it's still showing as awaiting shipment",
+    "source_type": "ebay_community",
+    "year": 2026,
+    "notes": "Order status shown when seller has been paid and needs to ship item, sometimes causing technical display issues where shipped items appear in awaiting shipment section"
+  },
+  {
+    "canonical_name": "Back in Stock",
+    "node_id": "back-in-stock",
+    "url": "https://community.ebay.com/t5/Selling/Back-in-stock-notifications-for-buyers/td-p/31979577",
+    "title": "Back in-stock notifications for buyers",
+    "source_type": "ebay_community",
+    "year": 2026,
+    "notes": "Limited notification feature where some listings display 'Get Notified When Available' button for buyers to receive email alerts when out-of-stock items become available again"
+  },
+  {
+    "canonical_name": "Back to School",
+    "node_id": "back-to-school",
+    "url": "https://www.ebay.com/b/Back-to-School/bn_7114588886",
+    "title": "Back to School Sale - eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Annual August promotional event with discounts up to 70% on tech gadgets, 50% on school supplies, and 65% on clothing and footwear, with laptops and tablets averaging 25-35% off"
+  },
+  {
+    "canonical_name": "Below Standard",
+    "node_id": "below-standard-status",
+    "url": "https://www.ebay.com/help/selling/seller-levels-performance-standards/seller-levels-performance-standards?id=4080",
+    "title": "Seller performance overview | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Seller performance level indicating performance below eBay minimum standards, resulting in 6% surcharge on standard fees, blocked Promoted Listings, and potential funds holds until improvement"
+  },
+  {
+    "canonical_name": "Best Match (Cassini)",
+    "node_id": "best-match-multi-market",
+    "url": "https://webinterpret.com/en/blog/understanding-ebay-cassini-algorithm",
+    "title": "Securing the top spot in search rankings: Understanding eBay's Cassini algorithm",
+    "source_type": "external",
+    "year": 2026,
+    "notes": "eBay's core search engine algorithm that ranks listings based on relevance, seller performance, buyer engagement, and listing quality to predict which items are most likely to result in successful sales"
+  },
+  {
+    "canonical_name": "Best Match Sort",
+    "node_id": "best-match-sort",
+    "url": "https://www.zikanalytics.com/blog/ebay-cassini/",
+    "title": "eBay Cassini SEO Tips for Higher Rankings",
+    "source_type": "external",
+    "year": 2026,
+    "notes": "Default ranking system that orders search results using Cassini algorithm data to show listings most likely to generate sales based on multiple performance signals"
+  },
+  {
+    "canonical_name": "Bid Now",
+    "node_id": "bid-now",
+    "url": "https://www.ebay.com/help/buying/bidding/bidding?id=4003",
+    "title": "All about bidding | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Button feature on auction listings allowing buyers to place bids with automatic bidding system that incrementally bids on their behalf up to maximum amount entered"
+  },
+  {
+    "canonical_name": "Bid Shielding Policy",
+    "node_id": "bid-shielding-policy",
+    "url": "https://www.gixen.com/blog/bid-shielding-ebay/",
+    "title": "Bid Shielding On Ebay",
+    "source_type": "external",
+    "year": 2026,
+    "notes": "Prohibited practice where buyers use multiple accounts to place artificially high bids near auction end and retract them at last moment to win at lower price, resulting in account suspension"
+  },
+  {
+    "canonical_name": "Bidding",
+    "node_id": "bidding",
+    "url": "https://www.ebay.com/help/buying/bidding/automatic-bidding?id=4014",
+    "title": "Automatic bidding | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Proxy bidding system where buyers enter maximum amount and eBay automatically places incremental bids on their behalf up to that limit, with bids being binding contracts"
+  },
+  {
+    "canonical_name": "Bids & Offers",
+    "node_id": "bids-and-offers",
+    "url": "https://www.ebay.com/mye/myebay/bidsoffers",
+    "title": "My eBay - Bids & offers",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "My eBay section tracking current bids on auction items, lost bids, and Best Offer submissions, with distinction that bids are binding while Best Offers are negotiable"
+  },
+  {
+    "canonical_name": "Biometric Verification",
+    "node_id": "biometric-verification",
+    "url": "https://www.ebayinc.com/company/privacy-center/privacy-notice/ebay-biometric-information-privacy-policy/",
+    "title": "eBay Biometric Information Privacy Policy",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Passkeys authentication using fingerprint, Face ID, Touch ID, pattern, or PIN for account login, with biometric data never shared with eBay and stored only on user's device"
+  },
+  {
+    "canonical_name": "Block Buyers",
+    "node_id": "block-buyers",
+    "url": "https://www.ebay.com/help/selling/resolving-buyer-issues/blocking-buyer-ebay?id=4082",
+    "title": "Blocking a buyer on eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Seller tool allowing blocking up to 5,000 specific buyer usernames from bidding or purchasing, with buyer management features for setting requirements based on location, payment history, and feedback"
+  },
+  {
+    "canonical_name": "Bold",
+    "node_id": "bold",
+    "url": "https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/listing-upgrades.html",
+    "title": "Listing upgrades | eBay Developers Program",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Optional paid listing upgrade that displays title in bold font in search results and category listings to make listings stand out, charged per insertion and nonrefundable"
+  },
+  {
+    "canonical_name": "Bold Title",
+    "node_id": "bold-title",
+    "url": "https://blog.reeva.ai/resources/ebay-listing-upgrades-which-ones-are-worth-it/",
+    "title": "eBay Listing Upgrades: Which Ones Are Worth It?",
+    "source_type": "external",
+    "year": 2026,
+    "notes": "Listing upgrade feature that bolds listing title in search results, most valuable in heavily saturated categories where visual differentiation can earn clicks"
+  },
+  {
+    "canonical_name": "Bons Plans",
+    "node_id": "bons-plans-fr",
+    "url": "https://www.ebay.fr/deals",
+    "title": "Bons Plans: high-tech, maison, jardin, pièces auto, et bien plus | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "eBay France deals section featuring daily deals, trending items, and category-specific promotions with discounts ranging 19-40% across high-tech, home, garden, and automotive categories"
+  },
+  {
+    "canonical_name": "Bounce Rate",
+    "node_id": "bounce-rate",
+    "url": "https://developer.ebay.com/api-docs/sell/static/performance/analyzing-performance.html",
+    "title": "Analyzing seller performance | eBay Developers Program",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Analytics metric tracked through seller performance dashboard, though eBay primarily focuses on transaction-based metrics (defect rates, late shipments) rather than traditional web bounce rates"
+  },
+  {
+    "canonical_name": "Brand Identity",
+    "node_id": "brand-identity",
+    "url": "https://www.autods.com/blog/dropshipping-tips-strategies/ebay-store-branding-strategy/",
+    "title": "eBay Store Branding: Proven Strategies To Grow Sales For 2026",
+    "source_type": "external",
+    "year": 2026,
+    "notes": "Seller branding features including customizable store names, logos, billboards, and store descriptions to create professional, consistent identity distinguishing sellers from competitors"
+  },
+  {
+    "canonical_name": "Brand Name",
+    "node_id": "brand-name",
+    "url": "https://export.ebay.com/en/growth/ebay-store/customize-your-ebay-store/",
+    "title": "How to customize your eBay Store",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Store naming and customization feature where sellers can align store name with brand identity, keep it under 15 characters, and use consistent branding across store elements"
+  },
+  {
+    "canonical_name": "Bulk Listing Tool (Multi-Market)",
+    "node_id": "bulk-listing-tool-multi-market",
+    "url": "https://export.ebay.com/en/services-tools/ebay-bulk-listing-tools/",
+    "title": "eBay bulk listing tools",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "International version of bulk listing tools supporting CSV/XLS uploads across eBay's global marketplaces via Seller Hub Reports"
+  },
+  {
+    "canonical_name": "Bulk Listing Tools",
+    "node_id": "bulk-listing-tools",
+    "url": "https://www.ebay.com/sellercenter/listings/ebay-bulk-listing-tools",
+    "title": "eBay bulk listing tools | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Tools for managing up to 2,000 listings including Seller Hub Reports (CSV/XLS uploads up to 30,000 listings), Merchant Integration Platform, and APIs for bulk product management"
+  },
+  {
+    "canonical_name": "Bulk Listing Upload",
+    "node_id": "bulk-listing-upload",
+    "url": "https://www.ebay.com/help/selling/listings/listing-tips/bulk-listings?id=4160",
+    "title": "Bulk listing tools | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "CSV and XLS file upload system via Seller Hub Reports that processes over 50,000 SKUs in 30 minutes, supporting bulk creation, revision, and relisting of inventory"
+  },
+  {
+    "canonical_name": "Buy It Now Filter",
+    "node_id": "buy-it-now-filter",
+    "url": "https://www.ebay.com/help/selling/listings/selling-buy-now?id=4109",
+    "title": "Selling with Buy It Now | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Search filter for finding fixed-price instant purchase listings where buyers can complete purchase immediately without bidding, with optional immediate payment requirement"
+  },
+  {
+    "canonical_name": "Certified Recycled",
+    "node_id": "certified-recycled",
+    "url": "https://www.ebayinc.com/stories/press-room/uk/ebay-launches-certified-recycled-portal/",
+    "title": "eBay launches 'Certified Recycled Portal'",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Automotive parts program with 81 VRA-certified recycled sellers offering used car parts up to 70% cheaper than OEM, with 12-month warranty on body parts and 3-month on mechanical, saving 16,000 tonnes CO2e in 2022"
+  },
+  {
+    "canonical_name": "Certified Recycler Program",
+    "node_id": "certified-recycler-program",
+    "url": "https://www.ebaymainstreet.com/eupublicpolicy/issues/circular-economy",
+    "title": "Circular Economy | eBay Main Street",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Sustainability program for end-of-life vehicle parts from Vehicle Recyclers Association certified businesses subject to annual audits, with all parts traceable, tested and graded"
+  },
+  {
+    "canonical_name": "Classified Ads",
+    "node_id": "classified-ads",
+    "url": "https://www.auctionnudge.com/guides/the-lowdown-on-classified-ads-on-ebay/",
+    "title": "The Lowdown on Classified Ads on eBay",
+    "source_type": "external",
+    "year": 2026,
+    "notes": "Listing format in select categories with $9.95 insertion fee for 30-day listings, default local pickup, off-platform transactions, no final value fees, ideal for large items like vehicles and furniture"
+  },
+  {
+    "canonical_name": "Clear Filters",
+    "node_id": "clear-filters",
+    "url": "https://community.ebay.com/t5/Ask-a-Mentor/How-do-I-clear-quot-Recent-Searches-quot-in-the-eBay-search-bar/td-p/33980630",
+    "title": "How do I clear 'Recent Searches' in the eBay search bar",
+    "source_type": "ebay_community",
+    "year": 2026,
+    "notes": "Feature allowing users to reset search filters and clear recent searches via 'CLEAR ALL SEARCHES' link in mobile app or 'x' buttons on desktop browser"
+  },
+  {
+    "canonical_name": "Click & Collect",
+    "node_id": "click-and-collect",
+    "url": "https://pages.ebay.co.uk/clickandcollect/",
+    "title": "eBay.co.uk – fulfilment on eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "UK service with 3,500+ collection points including CollectPlus, Argos, Sainsbury's, InPost, and EVRi for buyers to pick up parcels, with items under 15kg and 90cm max dimension, 7-day hold period"
+  },
+  {
+    "canonical_name": "Click & Collect (Multi-Market)",
+    "node_id": "click-and-collect-multi-market",
+    "url": "https://www.ebay.co.uk/help/buying/postage-delivery/changing-delivery-address-method/click-collect?id=4055",
+    "title": "Buying with Click & Collect | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "International version of Click & Collect pickup service available across eBay's global marketplaces with local collection point networks"
+  },
+  {
+    "canonical_name": "Click & Collect",
+    "node_id": "click-collect",
+    "url": "https://www.ebay.co.uk/sellercentre/postage/click-and-collect",
+    "title": "Click & Collect Delivery | UK Seller Centre",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Seller-facing Click & Collect service allowing offer of pickup options at over 3,500 UK locations with same cost as home delivery and free for most items"
+  }
+]

@@ -1,0 +1,398 @@
+[
+  {
+    "canonical_name": "Shopping Cart",
+    "node_id": "shopping-cart",
+    "url": "https://pages.ebay.com/shoppingcart/",
+    "title": "eBay's Shopping Cart",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Shopping cart feature that allows buyers to add multiple items and pay for all at once"
+  },
+  {
+    "canonical_name": "Significantly Not as Described",
+    "node_id": "significantly-not-as-described",
+    "url": "https://pages.ebay.com/ebay-money-back-guarantee/",
+    "title": "eBay Money Back Guarantee",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Buyer protection for items not as described, covered under eBay Money Back Guarantee"
+  },
+  {
+    "canonical_name": "Similar Sponsored Items",
+    "node_id": "similar-sponsored-items",
+    "url": "https://pages.ebay.com/seller-center/listing-and-marketing/promoted-listings.html",
+    "title": "Promoted Listings Standard | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Promoted Listings that show similar sponsored items to buyers, labeled as 'promoted' or 'sponsored'"
+  },
+  {
+    "canonical_name": "Simple Delivery",
+    "node_id": "simple-delivery",
+    "url": "https://pages.ebay.com/shipping/globalshipping/buyer-tnc.html",
+    "title": "Global Shipping Program - Buyer Terms & Conditions",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Shipping option for eligible items within the Global Shipping Program"
+  },
+  {
+    "canonical_name": "Site Preferences",
+    "node_id": "site-preferences",
+    "url": "https://pages.ebay.com/help/sell/buyer-requirements.html",
+    "title": "Setting buyer requirements | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Account settings section in My eBay where sellers configure preferences for selling, shipping, and returns"
+  },
+  {
+    "canonical_name": "SMS Alerts",
+    "node_id": "sms-alerts",
+    "url": "https://pages.ebay.com/push-notifications/",
+    "title": "How to Enable eBay App Notifications",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Text message alerts for auction ends, outbids, and other eBay activities, charged at $0.25 for up to 10 messages per item"
+  },
+  {
+    "canonical_name": "SMS Notifications",
+    "node_id": "sms-notifications",
+    "url": "http://pages.ebay.com/help/account/contextual/alert-charges.html",
+    "title": "Text Message (SMS) Alert Charges",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "SMS notification system for eBay alerts, including text enrollment (VAULT to 20633, HELLO to 70799)"
+  },
+  {
+    "canonical_name": "Sneaker Authentication",
+    "node_id": "sneaker-authentication",
+    "url": "https://pages.ebay.com/authenticity-guarantee-sneakers/",
+    "title": "eBay Authenticity Guarantee for Sneakers",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Authentication service for select sneaker brands $75+, includes multi-point inspection and authenticity tag"
+  },
+  {
+    "canonical_name": "Sold Items Filter",
+    "node_id": "sold-items-filter",
+    "url": "https://pages.ebay.com/dj/en-us/completedlistings/",
+    "title": "Search Completed Listings",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Advanced Search feature allowing buyers to filter for completed/sold listings to research market prices"
+  },
+  {
+    "canonical_name": "Sold Listings",
+    "node_id": "sold-listings",
+    "url": "https://pages.ebay.com/selling/all-selling-in-seller-hub.html",
+    "title": "The 'All Selling' view in Seller Hub",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "View in Seller Hub showing sold listings under Orders tab for sellers to manage fulfilled sales"
+  },
+  {
+    "canonical_name": "Sold Quantity Display",
+    "node_id": "sold-quantity-display",
+    "url": "https://pages.ebay.com/help/sell/multiple.html",
+    "title": "Multi-quantity listings and listings with variations | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Seller preference toggle allowing buyers to see exactly how many items are left in a listing"
+  },
+  {
+    "canonical_name": "Sort By",
+    "node_id": "sort-by",
+    "url": "http://pages.ebay.com/help/search/questions/sort.html",
+    "title": "Verified Rights Owner (VeRO) profiles | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Search filter allowing buyers to sort results by price, price + shipping, condition, and other attributes"
+  },
+  {
+    "canonical_name": "Sports Memorabilia",
+    "node_id": "sports-memorabilia",
+    "url": "https://pages.ebay.com/authenticity-guarantee-tradingcards-seller/",
+    "title": "Authenticity Guarantee for Trading Cards",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Category with authentication services through PSA for trading cards and sports memorabilia $250+"
+  },
+  {
+    "canonical_name": "Stamps",
+    "node_id": "stamps",
+    "url": "https://pages.ebay.com/sellerinformation/growing/categorychanges/stamps.html",
+    "title": "eBay Category Changes: Stamps",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Collectibles category for stamps, eligible for eBay standard envelope shipping"
+  },
+  {
+    "canonical_name": "Starting Bid",
+    "node_id": "starting-bid",
+    "url": "https://pages.ebay.com/ebaymotors/help/buy/contextual/bidding.html",
+    "title": "How Bidding Works",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Initial minimum bid amount set by sellers for auction-style listings"
+  },
+  {
+    "canonical_name": "Stock Quantity",
+    "node_id": "stock-quantity",
+    "url": "https://pages.ebay.com/sh/reports/help/create-listings-bulk/",
+    "title": "INVENTORY ONBOARDING GUIDE",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Inventory management field specifying number of items available in listings, managed through Seller Hub"
+  },
+  {
+    "canonical_name": "Store Categories",
+    "node_id": "store-categories",
+    "url": "https://pages.ebay.com/store-category/index.html",
+    "title": "Store categories FAQ",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Custom categories (up to 300) for organizing eBay Store listings and helping buyers navigate inventory"
+  },
+  {
+    "canonical_name": "Store Email Campaigns",
+    "node_id": "store-email-campaigns",
+    "url": "https://pages.ebay.com/help/sell/email-newsletter.html",
+    "title": "eBay Store newsletters | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Email marketing tool for eBay Store subscribers to send promotional newsletters to buyers and followers"
+  },
+  {
+    "canonical_name": "Store Header",
+    "node_id": "store-header",
+    "url": "https://pages.ebay.com/tg/en-us/storefronts/headerdesign.html",
+    "title": "Custom Store Header",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Customizable header/billboard at top of eBay Store pages (1200x270 pixels)"
+  },
+  {
+    "canonical_name": "Store Newsletters",
+    "node_id": "store-newsletters",
+    "url": "https://pages.ebay.com/help/sell/email-newsletter.html",
+    "title": "eBay Store newsletters | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Newsletter feature for eBay Stores allowing campaigns to subscribers every 14 days"
+  },
+  {
+    "canonical_name": "Store Newsletters (Multi-Market)",
+    "node_id": "store-newsletters-multi-market",
+    "url": "https://pages.ebay.com/help/sell/email-newsletter.html",
+    "title": "eBay Store newsletters | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Multi-market version of Store newsletters feature"
+  },
+  {
+    "canonical_name": "Store Promotions Box",
+    "node_id": "store-promotions-box",
+    "url": "http://pages.ebay.com/help/stores/contextual/promotion-boxes.html",
+    "title": "Promotion Boxes",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Customizable display boxes in eBay Stores to highlight featured items or announce specials"
+  },
+  {
+    "canonical_name": "Store Tier - Anchor",
+    "node_id": "store-tier-anchor",
+    "url": "https://pages.ebay.com/seller-center/run-your-store/subscriptions-and-fees.html",
+    "title": "Subscriptions and fees | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Fourth tier eBay Store subscription for high volume sellers with dedicated customer support"
+  },
+  {
+    "canonical_name": "Store Tier - Basic",
+    "node_id": "store-tier-basic",
+    "url": "https://pages.ebay.com/seller-center/run-your-store/subscriptions-and-fees.html",
+    "title": "Subscriptions and fees | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Second tier eBay Store subscription with more zero insertion fee listings and FVF discounts"
+  },
+  {
+    "canonical_name": "Store Tier - Enterprise",
+    "node_id": "store-tier-enterprise",
+    "url": "https://pages.ebay.com/seller-center/run-your-store/subscriptions-and-fees.html",
+    "title": "Subscriptions and fees | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Fifth tier eBay Store subscription for enterprise-level sellers with maximum benefits"
+  },
+  {
+    "canonical_name": "Store Tier - Enterprise (US)",
+    "node_id": "store-tier-enterprise-us",
+    "url": "https://pages.ebay.com/seller-center/run-your-store/subscriptions-and-fees.html",
+    "title": "Subscriptions and fees | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "US-specific Enterprise tier eBay Store subscription"
+  },
+  {
+    "canonical_name": "Store Tier - Featured",
+    "node_id": "store-tier-featured",
+    "url": "https://pages.ebay.com/sellerinformation/news/sprupd16/features-fees.html",
+    "title": "Features and Fees | eBay Seller Center",
+    "source_type": "ebay_official",
+    "year": 2016,
+    "notes": "Legacy eBay Store tier (replaced by current tier structure)"
+  },
+  {
+    "canonical_name": "Store Tier - Platin",
+    "node_id": "store-tier-platin",
+    "url": "https://pages.ebay.com/seller-center/run-your-store/subscriptions-and-fees.html",
+    "title": "Subscriptions and fees | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Premium/Platinum tier for international eBay markets (German: Platin)"
+  },
+  {
+    "canonical_name": "Store Tier - Platin (DE)",
+    "node_id": "store-tier-platin-de",
+    "url": "https://pages.ebay.com/seller-center/run-your-store/subscriptions-and-fees.html",
+    "title": "Subscriptions and fees | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "German market Platinum Store tier (Platin)"
+  },
+  {
+    "canonical_name": "Store Tier - Premium",
+    "node_id": "store-tier-premium",
+    "url": "https://pages.ebay.com/seller-center/run-your-store/subscriptions-and-fees.html",
+    "title": "Subscriptions and fees | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Third tier eBay Store subscription with extensive zero insertion fee listings for large product assortments"
+  },
+  {
+    "canonical_name": "Store Tier - Premium Plus",
+    "node_id": "store-tier-premium-plus",
+    "url": "https://pages.ebay.com/seller-center/run-your-store/subscriptions-and-fees.html",
+    "title": "Subscriptions and fees | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Enhanced Premium tier for select international markets"
+  },
+  {
+    "canonical_name": "Store Tier - Premium Plus (IT)",
+    "node_id": "store-tier-premium-plus-it",
+    "url": "https://pages.ebay.com/seller-center/run-your-store/subscriptions-and-fees.html",
+    "title": "Subscriptions and fees | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Italian market Premium Plus Store tier"
+  },
+  {
+    "canonical_name": "Store Tier - Starter",
+    "node_id": "store-tier-starter",
+    "url": "https://pages.ebay.com/seller-center/run-your-store/subscriptions-and-fees.html",
+    "title": "Subscriptions and fees | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Entry-level eBay Store subscription for sellers with small product catalogs"
+  },
+  {
+    "canonical_name": "Subtitle",
+    "node_id": "subtitle",
+    "url": "http://pages.ebay.com/help/sell/itemsubtitle.html",
+    "title": "Security Measure",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Optional listing feature allowing sellers to add secondary description line for additional fee"
+  },
+  {
+    "canonical_name": "Supersize Pictures",
+    "node_id": "supersize-pictures",
+    "url": "https://pages.ebay.com/tg/en-us/sell/pictureservices/",
+    "title": "Adding pictures to your listings | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Legacy listing upgrade feature to display larger images (part of Vehicle Picture Pack, Gallery Plus)"
+  },
+  {
+    "canonical_name": "Tax Documents",
+    "node_id": "tax-documents",
+    "url": "https://pages.ebay.com/seller-center/service-and-payments/2022-changes-to-ebay-and-your-1099-k.html",
+    "title": "1099-K and Tax Withholding FAQs | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2022,
+    "notes": "Form 1099-K and tax reporting for sellers, available in Seller Hub by end of January each year"
+  },
+  {
+    "canonical_name": "Template Builder",
+    "node_id": "template-builder",
+    "url": "https://pages.ebay.com/sh/reports/help/uploadable-file-feeds/",
+    "title": "Uploadable Templates",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Listing template system in Seller Hub Reports for bulk listing creation and management"
+  },
+  {
+    "canonical_name": "Terapeak",
+    "node_id": "terapeak",
+    "url": "https://pages.ebay.com/seller-center/listing-and-marketing/terapeak.html",
+    "title": "eBay research tools | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Product research and sourcing insights tool, free to all sellers through Seller Hub"
+  },
+  {
+    "canonical_name": "Terms of Service",
+    "node_id": "terms-of-service",
+    "url": "http://pages.ebay.com/help/policies/user-agreement.html",
+    "title": "User Agreement | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "eBay User Agreement governing platform terms and policies for all users"
+  },
+  {
+    "canonical_name": "Thermal Printer",
+    "node_id": "thermal-printer",
+    "url": "https://pages.ebay.com/seller-center/shipping/ebay-labels.html",
+    "title": "eBay Labels | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Support for thermal printers (Brother QL-1050/1060N, DYMO LabelWriter) for printing shipping labels"
+  },
+  {
+    "canonical_name": "Third Party Providers",
+    "node_id": "third-party-providers",
+    "url": "https://pages.ebay.com/seller-center/listing-and-marketing/third-party-providers.html",
+    "title": "Third party providers | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Integration partners for listing, inventory, order management, shipping and fulfillment tools"
+  },
+  {
+    "canonical_name": "Time Away",
+    "node_id": "time-away",
+    "url": "https://pages.ebay.com/help/sell/placing-store-vacation.html",
+    "title": "Managing your eBay Store | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Vacation mode feature allowing sellers to pause sales or extend delivery dates during time off"
+  },
+  {
+    "canonical_name": "Time Left",
+    "node_id": "time-left",
+    "url": "http://pages.ebay.com/help/sell/duration.html",
+    "title": "Listing durations and timings | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Display showing remaining time until auction or listing ends (1, 3, 5, 7, or 10 days for auctions)"
+  },
+  {
+    "canonical_name": "Top Rated Filter",
+    "node_id": "top-rated-filter",
+    "url": "https://pages.ebay.com/find-trusted-seller/",
+    "title": "How to Find a Trusted Seller",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Advanced Search filter allowing buyers to show only items from Top Rated Sellers"
+  }
+]

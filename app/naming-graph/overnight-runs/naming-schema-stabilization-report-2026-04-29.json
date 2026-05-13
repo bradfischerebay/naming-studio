@@ -1,0 +1,770 @@
+{
+  "generatedAt": "2026-04-29",
+  "passName": "schema-stabilization-2026-04-29",
+  "filesModified": [
+    "scripts/nameclass-mapping.ts (created)",
+    "scripts/naming-classification-report.ts (created)",
+    "tests/registry-integrity.test.ts (2 tests added)"
+  ],
+  "nodesChangedInThisPass": [],
+  "schemaState": {
+    "namingTreatmentField": "present in GraphNode interface — canonical",
+    "countsAsManagedNameField": "present in GraphNode interface",
+    "nameClassField": "present in Enrichment V2 layer only — informational"
+  },
+  "mapping": {
+    "description": "nameClass → namingTreatment canonical mapping (scripts/nameclass-mapping.ts)",
+    "rules": {
+      "Product Name": "owned_marketing_name",
+      "Functional Label": "functional_label",
+      "Internal Term": "internal_label",
+      "Legacy Residue": "unknown",
+      "Feature Name": null
+    },
+    "featureNameResolution": "null — no automatic mapping; resolve per node context"
+  },
+  "coreRegistry": {
+    "totalNodes": 1017,
+    "withNamingTreatment": 1017,
+    "unclassified": 0,
+    "countsAsManagedNameTrue": 171,
+    "byNamingTreatment": {
+      "owned_marketing_name": 192,
+      "internal_label": 79,
+      "functional_label": 669,
+      "descriptive_label": 8,
+      "partner_brand": 23,
+      "unknown": 46
+    },
+    "dataIntegrityFlags": {
+      "legacyOrRenamedWithManagedNameTrue": []
+    }
+  },
+  "v2Enrichment": {
+    "totalRecords": 950,
+    "byNameClass": {
+      "Functional Label": 533,
+      "Product Name": 183,
+      "Feature Name": 106,
+      "Internal Term": 79,
+      "Legacy Residue": 49
+    }
+  },
+  "crossLayerAlignment": {
+    "nodesWithBothFields": 948,
+    "aligned": 832,
+    "conflict": 10,
+    "needsReview": 106,
+    "withV2NameClassOnly": 0,
+    "withNamingTreatmentOnly": 69,
+    "withNeitherField": 0,
+    "conflicts": [
+      {
+        "id": "best-offer",
+        "nameClass": "Product Name",
+        "namingTreatment": "functional_label",
+        "note": "namingTreatment is authoritative — update nameClass in V2 if needed"
+      },
+      {
+        "id": "buy-it-now",
+        "nameClass": "Product Name",
+        "namingTreatment": "functional_label",
+        "note": "namingTreatment is authoritative — update nameClass in V2 if needed"
+      },
+      {
+        "id": "certified-open-box",
+        "nameClass": "Functional Label",
+        "namingTreatment": "owned_marketing_name",
+        "note": "namingTreatment is authoritative — update nameClass in V2 if needed"
+      },
+      {
+        "id": "issue-resolution-center",
+        "nameClass": "Functional Label",
+        "namingTreatment": "owned_marketing_name",
+        "note": "namingTreatment is authoritative — update nameClass in V2 if needed"
+      },
+      {
+        "id": "my-ebay",
+        "nameClass": "Product Name",
+        "namingTreatment": "functional_label",
+        "note": "namingTreatment is authoritative — update nameClass in V2 if needed"
+      },
+      {
+        "id": "watchlist",
+        "nameClass": "Product Name",
+        "namingTreatment": "functional_label",
+        "note": "namingTreatment is authoritative — update nameClass in V2 if needed"
+      },
+      {
+        "id": "billpoint",
+        "nameClass": "Legacy Residue",
+        "namingTreatment": "owned_marketing_name",
+        "note": "namingTreatment is authoritative — update nameClass in V2 if needed"
+      },
+      {
+        "id": "mission-fish-seller-account",
+        "nameClass": "Legacy Residue",
+        "namingTreatment": "owned_marketing_name",
+        "note": "namingTreatment is authoritative — update nameClass in V2 if needed"
+      },
+      {
+        "id": "expert-verification",
+        "nameClass": "Legacy Residue",
+        "namingTreatment": "owned_marketing_name",
+        "note": "namingTreatment is authoritative — update nameClass in V2 if needed"
+      },
+      {
+        "id": "offers-dashboard",
+        "nameClass": "Functional Label",
+        "namingTreatment": "owned_marketing_name",
+        "note": "namingTreatment is authoritative — update nameClass in V2 if needed"
+      }
+    ],
+    "needsReviewNodes": [
+      {
+        "id": "2-step-verification",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "account-management-plus",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "account-management-premium",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "account-security",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "advanced-listing-tool",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "ai-banner",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "ai-snap",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "apple-pay",
+        "nameClass": "Feature Name",
+        "namingTreatment": "partner_brand",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "assured-fit",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "augmented-reality-preview",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "authorized-seller-filter",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "background-enhancement",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "barcode-scanner",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "best-match",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "bons-plans-fr",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "brand-funded-promoted-listings-priority",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "brand-funded-promoted-stores",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "brand-outlet",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "business-policies",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "certified-recycled",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "certified-refurbished",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "click-and-collect",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "collectibles-price-guide",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "collections",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "detailed-seller-ratings",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "ebay-ai-message-assistance",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "ebay-balance",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "ebay-imperdibili-it",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "ebay-plus-membership",
+        "nameClass": "Feature Name",
+        "namingTreatment": "owned_marketing_name",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "ebay-wow-de",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "excellent-refurbished",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "express-payouts",
+        "nameClass": "Feature Name",
+        "namingTreatment": "owned_marketing_name",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "fast-and-free",
+        "nameClass": "Feature Name",
+        "namingTreatment": "owned_marketing_name",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "feed",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "feedback-revision-request",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "fitment-plus",
+        "nameClass": "Feature Name",
+        "namingTreatment": "owned_marketing_name",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "fitment-plus-auto",
+        "nameClass": "Feature Name",
+        "namingTreatment": "owned_marketing_name",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "free-2-day-shipping",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "free-2-day-shipping-us",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "free-returns",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "good-refurbished",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "good-til-cancelled",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "google-pay",
+        "nameClass": "Feature Name",
+        "namingTreatment": "partner_brand",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "guaranteed-delivery",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "guaranteed-fit",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "image-search",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "instant-payout",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "klarna",
+        "nameClass": "Feature Name",
+        "namingTreatment": "partner_brand",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "login-alerts",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "magical-listing",
+        "nameClass": "Feature Name",
+        "namingTreatment": "owned_marketing_name",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "managed-returns",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "multi-variation-listing",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "mutual-feedback-withdrawal",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "my-collection",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "my-garage",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "new-seller-journey",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "passkeys",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "payouts-on-demand",
+        "nameClass": "Feature Name",
+        "namingTreatment": "owned_marketing_name",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "photo-background-removal",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "positive-feedback-percentage",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "private-listing",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "product-reviews",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "product-video",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "promoted-listings-general",
+        "nameClass": "Feature Name",
+        "namingTreatment": "owned_marketing_name",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "promoted-stores-custom",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "promoted-to-international",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "quick-listing-tool",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "saved-searches",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "seller-initiated-offers",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "seller-verification",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "selling-with-ai",
+        "nameClass": "Feature Name",
+        "namingTreatment": "owned_marketing_name",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "services-paiement-ebay",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "shop-by-diagram",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "store-tier-anchor",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "store-tier-basic",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "store-tier-enterprise",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "store-tier-enterprise-us",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "store-tier-featured",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "store-tier-platin",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "store-tier-platin-de",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "store-tier-premium",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "store-tier-premium-plus",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "store-tier-premium-plus-it",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "store-tier-starter",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "top-rated-plus",
+        "nameClass": "Feature Name",
+        "namingTreatment": "owned_marketing_name",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "two-factor-authentication",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "unpaid-item-assistant",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "venmo",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "verified-purchase",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "very-good-refurbished",
+        "nameClass": "Feature Name",
+        "namingTreatment": "owned_marketing_name",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "zahlungsabwicklung-ebay",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "about-me",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "automated-promoted-listings-campaigns",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "ebay-mobile-app-android",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "flash-bids",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "agentic-search",
+        "nameClass": "Feature Name",
+        "namingTreatment": "owned_marketing_name",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "finances-copilot",
+        "nameClass": "Feature Name",
+        "namingTreatment": "owned_marketing_name",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "offers-in-messaging",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "fitment-finder",
+        "nameClass": "Feature Name",
+        "namingTreatment": "owned_marketing_name",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "tcgplayer-market-price",
+        "nameClass": "Feature Name",
+        "namingTreatment": "partner_brand",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "depop-payments",
+        "nameClass": "Feature Name",
+        "namingTreatment": "partner_brand",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "depop-shipping",
+        "nameClass": "Feature Name",
+        "namingTreatment": "partner_brand",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "depop-outfits",
+        "nameClass": "Feature Name",
+        "namingTreatment": "partner_brand",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "promoted-listings-automated-campaigns",
+        "nameClass": "Feature Name",
+        "namingTreatment": "owned_marketing_name",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "promoted-listings-priority-video-ads",
+        "nameClass": "Feature Name",
+        "namingTreatment": "functional_label",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      },
+      {
+        "id": "tise-cash",
+        "nameClass": "Feature Name",
+        "namingTreatment": "partner_brand",
+        "note": "Feature Name has no automatic mapping — resolve per node context"
+      }
+    ]
+  },
+  "openGovernanceQuestions": [
+    "best-offer, buy-it-now, my-ebay, watchlist: V2 says Product Name, core says functional_label — which is authoritative? (Brand/PMM)",
+    "certified-open-box, issue-resolution-center, offers-dashboard: V2 says Functional Label, core says owned_marketing_name — confirm classification (PMM)",
+    "27 Feature Name nodes with namingTreatment set need per-node resolution — batch review recommended",
+    "partner_brand treatment for Depop, Goldin, TCGplayer sub-products is provisional — confirm with Brand strategy",
+    "legal-tier nodes (GDPR, CCPA, T&C) remain unclassified — confirm approach with Legal",
+    "organization-tier AG partners (Beckett, SGC, Sneaker Con, CCG) unclassified — confirm partner_brand treatment with GCI"
+  ]
+}

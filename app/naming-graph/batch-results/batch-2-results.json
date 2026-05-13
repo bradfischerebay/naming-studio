@@ -1,0 +1,380 @@
+[
+  {
+    "canonical_name": "Payments",
+    "node_id": "payments",
+    "url": "https://www.ebay.com/sellercenter/payments-and-fees/payments-and-earnings",
+    "title": "Payments and earnings | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2020,
+    "notes": "eBay manages payments for sellers with one place to sell and get paid, including express payouts and spendable funds"
+  },
+  {
+    "canonical_name": "Pricing Tools",
+    "node_id": "pricing-tools",
+    "url": "https://pages.ebay.com/specialoffers/sellerterms.html",
+    "title": "Pricing and Discounts Terms and Conditions",
+    "source_type": "ebay_official",
+    "year": 2015,
+    "notes": "Comparative pricing tools including List Price, Was Price, Trending Price, and cross-selling functionality"
+  },
+  {
+    "canonical_name": "Refurbished",
+    "node_id": "refurbished",
+    "url": "https://pages.ebay.com/refurbished/",
+    "title": "eBay Refurbished | Save up to 50% on quality products",
+    "source_type": "ebay_official",
+    "year": 2020,
+    "notes": "Program offering expertly restored products graded under Certified, Excellent, Very Good, or Good condition tiers with warranties"
+  },
+  {
+    "canonical_name": "Regional",
+    "node_id": "regional",
+    "url": "https://www.ebay.com/sellercenter/growth/going-global",
+    "title": "Going global | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2014,
+    "notes": "International selling features including automatic listing visibility in 200+ countries and regional shipping options"
+  },
+  {
+    "canonical_name": "Returns",
+    "node_id": "returns",
+    "url": "https://pages.ebay.com/returns/",
+    "title": "eBay Returns",
+    "source_type": "ebay_official",
+    "year": 2016,
+    "notes": "Managed returns process with automatic acceptance, return labels, and automatic refunds after confirmed delivery"
+  },
+  {
+    "canonical_name": "Search",
+    "node_id": "search",
+    "url": "https://www.ebay.com/sellercenter/growth/ebay-research-tools",
+    "title": "eBay research tools | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Product research and search tools to identify opportunities, view 3-year sales history, and optimize inventory"
+  },
+  {
+    "canonical_name": "Seller Programs",
+    "node_id": "seller-programs",
+    "url": "https://www.ebay.com/sellercenter/protections/top-rated-program",
+    "title": "Top Rated Seller Program | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2011,
+    "notes": "Collection of programs including Top Rated Seller, Pre-loved Partner Program, and eBay Partner Network"
+  },
+  {
+    "canonical_name": "Shipping",
+    "node_id": "shipping",
+    "url": "https://www.ebay.com/sellercenter/shipping",
+    "title": "Shipping | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2016,
+    "notes": "eBay Labels with 33% off retail rates, calculated shipping, eBay International Shipping, and combined shipping options"
+  },
+  {
+    "canonical_name": "Trust",
+    "node_id": "trust",
+    "url": "https://pages.ebay.com/community/aboutebay/overview/trust.html",
+    "title": "Trust - About eBay",
+    "source_type": "ebay_official",
+    "year": 2013,
+    "notes": "Trust and safety ecosystem including Security Center, eBay Money Back Guarantee, and seller protections"
+  },
+  {
+    "canonical_name": "Ventures",
+    "node_id": "ventures",
+    "url": "https://www.ebayinc.com/ebay-ventures/",
+    "title": "eBay Ventures - eBay Inc.",
+    "source_type": "ebay_official",
+    "year": 2022,
+    "notes": "Venture capital investment arm established in 2022, investing in disruptive commerce companies globally"
+  },
+  {
+    "canonical_name": "Apple Pay",
+    "node_id": "apple-pay",
+    "url": "https://pages.ebay.com/payment/2.0/index.html",
+    "title": "So many ways to pay. So many ways to splurge.",
+    "source_type": "ebay_official",
+    "year": 2019,
+    "notes": "Payment method option for eBay buyers on mobile and web, integrated into managed payments"
+  },
+  {
+    "canonical_name": "Ask Seller Question",
+    "node_id": "ask-seller-question",
+    "url": "https://pages.ebay.com/sellerinformation/howtosell/buyerconfidence.html",
+    "title": "eBay Seller Information Center: Earning Buyer Confidence",
+    "source_type": "ebay_official",
+    "year": 2014,
+    "notes": "Feature allowing buyers to contact sellers with questions from listing pages, with customizable FAQs"
+  },
+  {
+    "canonical_name": "Assured Fit",
+    "node_id": "assured-fit",
+    "url": "https://pages.ebay.com/motors/ebay-guaranteed-fit/",
+    "title": "eBay Guaranteed Fit",
+    "source_type": "ebay_official",
+    "year": 2022,
+    "notes": "Automotive parts fitment guarantee (called Assured Fit in UK, Guaranteed Fit in US) with free returns for fitment issues"
+  },
+  {
+    "canonical_name": "Aste di Beneficenza",
+    "node_id": "aste-di-beneficenza",
+    "url": "https://pages.ebay.it/prima-di-iniziare/",
+    "title": "Aste di beneficenza: prima di iniziare",
+    "source_type": "ebay_official",
+    "year": 2001,
+    "notes": "Italian charity auction program with over 8.5 million euros raised by 500+ associations since 2001"
+  },
+  {
+    "canonical_name": "At a Glance",
+    "node_id": "at-a-glance",
+    "url": "https://pages.ebay.com/selling/all-selling-in-seller-hub.html",
+    "title": "The 'All Selling' view in Seller Hub",
+    "source_type": "ebay_official",
+    "year": 2014,
+    "notes": "Dashboard feature in Seller Hub providing quick overview of seller performance, tasks, and listings status"
+  },
+  {
+    "canonical_name": "Auction-style",
+    "node_id": "auction-style",
+    "url": "https://pages.ebay.com/sell/choosingformats/",
+    "title": "Selling - Choosing Formats",
+    "source_type": "ebay_official",
+    "year": 2015,
+    "notes": "Premium listing format for antiques, collectibles, and one-of-a-kind items with bidding and reserve prices"
+  },
+  {
+    "canonical_name": "Auto Part Compatibility",
+    "node_id": "auto-part-compatibility",
+    "url": "https://pages.ebay.com/motors/compatibility/SellerTools/eBaySellerTools.html",
+    "title": "Parts Compatibility Listings | eBay Motors",
+    "source_type": "ebay_official",
+    "year": 2014,
+    "notes": "Fitment Plus tool providing automated compatibility data for automotive parts with vehicle identification"
+  },
+  {
+    "canonical_name": "Automatic Returns",
+    "node_id": "automatic-returns",
+    "url": "https://pages.ebay.com/dz/en-us/sell/returns/optin.html",
+    "title": "eBay: Managed Returns process",
+    "source_type": "ebay_official",
+    "year": 2020,
+    "notes": "Automated returns acceptance and refund processing with seller-configurable rules based on return reasons"
+  },
+  {
+    "canonical_name": "Background Removal",
+    "node_id": "background-removal",
+    "url": "https://www.ebay.com/sellercenter/listings/photo-tips",
+    "title": "Take great photos | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Automatic background removal tool in eBay mobile app with AI-generated background options"
+  },
+  {
+    "canonical_name": "Barcode Scanning",
+    "node_id": "barcode-scanning",
+    "url": "https://www.ebay.com/help/selling/listings/creating-managing-listings/scan-list-tool?id=5279",
+    "title": "Using the Scan to list tool",
+    "source_type": "ebay_official",
+    "year": 2019,
+    "notes": "Mobile app feature for scanning barcodes and TCG cards (Magic, Pokemon, Yu-Gi-Oh) to pre-fill listing details"
+  },
+  {
+    "canonical_name": "Basket",
+    "node_id": "basket",
+    "url": "https://pages.ebay.com/uk/help/pay/cart.html",
+    "title": "Using the eBay shopping basket",
+    "source_type": "ebay_official",
+    "year": 2011,
+    "notes": "Shopping cart feature allowing buyers to add multiple items, compare costs, and pay multiple sellers at once"
+  },
+  {
+    "canonical_name": "Best Match Algorithm",
+    "node_id": "best-match-algorithm",
+    "url": "http://pages.ebay.com/help/sell/searchstanding.html",
+    "title": "Optimizing your listings for Best Match",
+    "source_type": "ebay_official",
+    "year": 2008,
+    "notes": "Default search ranking algorithm considering price, shipping, seller service, and listing quality"
+  },
+  {
+    "canonical_name": "Best Price Guarantee",
+    "node_id": "best-price-guarantee",
+    "url": "https://pages.ebay.com/best-price-guarantee/index.html",
+    "title": "Best Price Guarantee",
+    "source_type": "ebay_official",
+    "year": 2018,
+    "notes": "Program offering buyers 110% refund of price difference if identical item found cheaper on approved competitor sites"
+  },
+  {
+    "canonical_name": "Bidding Assistant",
+    "node_id": "bidding-assistant",
+    "url": "https://pages.ebay.com/ebaymotors/help/new/contextual/bid.html",
+    "title": "How to bid - eBay Motors",
+    "source_type": "ebay_official",
+    "year": 2010,
+    "notes": "Automatic proxy bidding system that bids up to maximum amount on behalf of buyers"
+  },
+  {
+    "canonical_name": "Block Buyer",
+    "node_id": "block-buyer",
+    "url": "https://pages.ebay.com/services/buyandsell/bidderblockFAQ.html",
+    "title": "eBay Services: Bidder Block FAQ",
+    "source_type": "ebay_official",
+    "year": 2010,
+    "notes": "Buyer management tool allowing sellers to block specific buyers or set buyer requirements to prevent bidding"
+  },
+  {
+    "canonical_name": "Boutiques eBay",
+    "node_id": "boutiques-ebay",
+    "url": "https://www.ebay.fr/espacevendeurs/se-lancer/boutiques-ebay",
+    "title": "Boutiques eBay | Espace vendeurs",
+    "source_type": "ebay_official",
+    "year": 2014,
+    "notes": "French name for eBay Stores with three subscription levels: Basique, À la Une, and Premium"
+  },
+  {
+    "canonical_name": "Brand Outlet",
+    "node_id": "brand-outlet",
+    "url": "https://pages.ebay.com/outlet/learn-more/",
+    "title": "Welcome to The Fashion Outlet on eBay",
+    "source_type": "ebay_official",
+    "year": 2023,
+    "notes": "Dedicated section featuring brand campaigns with discounts, free shipping for top brands including fashion and sportswear"
+  },
+  {
+    "canonical_name": "Branded Shipping",
+    "node_id": "branded-shipping",
+    "url": "https://www.ebay.com/sellercenter/ebay-for-business/subscriber-discounts",
+    "title": "Subscriber discounts | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2016,
+    "notes": "eBay-branded envelopes, boxes, tape, and packaging with Store subscriber discounts up to $150 quarterly"
+  },
+  {
+    "canonical_name": "Bulk Listing",
+    "node_id": "bulk-listing",
+    "url": "https://www.ebay.com/sellercenter/listings/ebay-bulk-listing-tools",
+    "title": "eBay bulk listing tools | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2014,
+    "notes": "Tools including Seller Hub bulk editor, File Exchange, Merchant Integration Platform, and APIs for managing 500+ listings"
+  },
+  {
+    "canonical_name": "Business Account",
+    "node_id": "business-account",
+    "url": "https://www.ebay.com/sellercenter/ebay-for-business",
+    "title": "eBay for Business | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2015,
+    "notes": "Account type for registered businesses with exclusive protections, multi-user access, and business seller benefits"
+  },
+  {
+    "canonical_name": "Business Policies",
+    "node_id": "business-policies",
+    "url": "https://www.ebay.com/sellercenter/resources/seller-updates/2025-january/business-policy",
+    "title": "Business policy page redesign | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2014,
+    "notes": "Free tool for applying payment, return, and shipping policies across listing groups from centralized dashboard"
+  },
+  {
+    "canonical_name": "Buy Again",
+    "node_id": "buy-again",
+    "url": "https://www.ebay.com/mye/buyagain",
+    "title": "Buy Again",
+    "source_type": "ebay_official",
+    "year": 2018,
+    "notes": "Feature showing previous purchases with option to quickly repurchase items if still available"
+  },
+  {
+    "canonical_name": "Buyer Groups",
+    "node_id": "buyer-groups",
+    "url": "https://www.ebay.com/sellercenter/growth/seller-hub-discounts/buyer-groups",
+    "title": "Buyer groups | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2022,
+    "notes": "Tool for sending coded coupons in bulk to custom groups of buyers based on specific criteria"
+  },
+  {
+    "canonical_name": "Buyer Requirements",
+    "node_id": "buyer-requirements",
+    "url": "https://pages.ebay.com/sellerinformation/howtosell/buyerconfidence.html",
+    "title": "eBay Seller Information Center: Earning Buyer Confidence",
+    "source_type": "ebay_official",
+    "year": 2010,
+    "notes": "Settings allowing sellers to block buyers based on feedback score, unpaid items, or location with exemption lists"
+  },
+  {
+    "canonical_name": "Campaign Manager",
+    "node_id": "campaign-manager",
+    "url": "https://www.ebay.com/sellercenter/growth/promoted-listings/promoted-listings-standard",
+    "title": "Promoted Listings Standard | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2019,
+    "notes": "Dashboard for managing Promoted Listings campaigns with performance metrics, ad rate trends, and automated rules"
+  },
+  {
+    "canonical_name": "Cart",
+    "node_id": "cart",
+    "url": "https://pages.ebay.com/shoppingcart/",
+    "title": "eBay's Shopping Cart",
+    "source_type": "ebay_official",
+    "year": 2011,
+    "notes": "Shopping cart allowing buyers to add multiple items, compare costs, and checkout multiple sellers with one payment"
+  },
+  {
+    "canonical_name": "Case",
+    "node_id": "case",
+    "url": "https://pages.ebay.com/al/en-us/coverage/BuyerProtectionForBuyers.html",
+    "title": "Returns, items not received, and refunds for buyers",
+    "source_type": "ebay_official",
+    "year": 2013,
+    "notes": "Resolution Center for buyer-seller disputes with eBay Money Back Guarantee and defect removal appeals"
+  },
+  {
+    "canonical_name": "Cashback",
+    "node_id": "cashback",
+    "url": "https://www.ebay.com/help/buying/paying-items/earning-using-ebay-bucks?id=4638",
+    "title": "Earning and using eBay Bucks",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "eBay Bucks rewards program discontinued April 2024; third-party cashback available via credit cards and browser extensions"
+  },
+  {
+    "canonical_name": "Category Standards",
+    "node_id": "category-standards",
+    "url": "https://www.ebay.com/sellercenter/listings/item-specifics-requirements",
+    "title": "Item specifics requirements | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2014,
+    "notes": "Standards for category structure, item specifics, product identifiers based on market research and industry classifications"
+  },
+  {
+    "canonical_name": "CCG Vault",
+    "node_id": "ccg-vault",
+    "url": "https://www.ebay.com/vault",
+    "title": "eBay - The easy way to collect",
+    "source_type": "ebay_official",
+    "year": 2023,
+    "notes": "PSA Vault partnership for secure storage of eligible trading cards with streamlined selling and authentication"
+  },
+  {
+    "canonical_name": "Certified",
+    "node_id": "certified",
+    "url": "https://www.ebay.com/sellercenter/ebay-for-business/ebay-refurbished-program",
+    "title": "eBay Refurbished Program | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2020,
+    "notes": "Top condition tier in eBay Refurbished program for pristine manufacturer-refurbished items with 2-year warranty"
+  },
+  {
+    "canonical_name": "Certified Pre-Owned",
+    "node_id": "certified-pre-owned",
+    "url": "https://www.ebay.com/help/selling/listings/creating-managing-listings/item-conditions-category?id=4765",
+    "title": "Item condition by category",
+    "source_type": "ebay_official",
+    "year": 2015,
+    "notes": "Condition designation for vehicles and products meeting manufacturer certification with warranties and inspection requirements"
+  }
+]

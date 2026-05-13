@@ -1,0 +1,25 @@
+{
+  "batch": "1",
+  "results_loaded": 49,
+  "matched": 46,
+  "merged": 1,
+  "created": 45,
+  "skipped": [
+    {
+      "node_id": "messages",
+      "reason": "Not found in graph"
+    },
+    {
+      "node_id": "motors",
+      "reason": "Not found in graph"
+    },
+    {
+      "node_id": "orders",
+      "reason": "Not found in graph"
+    }
+  ],
+  "consolidated_at": "2026-04-21T01:28:06.923Z",
+  "evidence_before": 85,
+  "evidence_after": 130,
+  "coverage_percent": 14.4
+}

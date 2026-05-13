@@ -1,0 +1,1860 @@
+// eBay Naming Graph - Wave 4 Batch AC Enrichment
+// Date: 2026-04-17
+// Programs Enriched: 166
+// Source: translations.ts (Social, Sharing, Collections, Communities, Groups, Following)
+// Focus: Social features, sharing, collections, communities, groups, following, saved items, watch lists, influencer tools
+
+export interface GraphNode {
+  id: string
+  name: string
+  type: "masterbrand" | "category" | "advertising" | "trust" | "impact" | "developer" | "regional"
+  tier: "master" | "umbrella" | "t1" | "t2" | "t3" | "product" | "program" | "feature" | "legal" | "organization" | "publication" | "event" | "campaign" | "vertical" | "platform" | "variant"
+  status: "current" | "legacy" | "renamed"
+  parent?: string
+  desc: string
+  market?: "US" | "UK" | "DE" | "FR" | "IT" | "AU" | "CA" | "global" | string[]
+  renamedFrom?: string
+  renamedTo?: string
+  year?: number
+}
+
+export const ENRICHED_WAVE4_AC: GraphNode[] = [
+  // WATCH & FOLLOWING FEATURES (18 programs)
+  {
+    id: "watching",
+    name: "Watching",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Personal tracking list allowing buyers to monitor items they're interested in with price and bid alerts.",
+    market: "global",
+    year: 1997
+  },
+  {
+    id: "watch-list",
+    name: "Watch List",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Centralized hub displaying all watched items with quick access to bid, buy, or track price changes.",
+    market: "global",
+    year: 1999
+  },
+  {
+    id: "follow-seller",
+    name: "Follow Seller",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Social feature allowing buyers to subscribe to seller updates and get notified of new listings.",
+    market: ["US", "UK", "CA", "AU"],
+    year: 2018
+  },
+  {
+    id: "follow-shop",
+    name: "Follow Shop",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "UK-specific variant of Follow Seller aligned with Shop branding for store subscriptions.",
+    market: "UK",
+    year: 2018
+  },
+  {
+    id: "store-followers",
+    name: "Store Followers",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "sellertools",
+    desc: "Seller-facing dashboard showing follower count, growth trends, and follower engagement metrics.",
+    market: ["US", "CA", "AU"],
+    year: 2018
+  },
+  {
+    id: "shop-followers",
+    name: "Shop Followers",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "sellertools",
+    desc: "UK variant of Store Followers dashboard aligned with Shop terminology.",
+    market: ["UK", "DE"],
+    year: 2018
+  },
+  {
+    id: "following",
+    name: "Following",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Buyer-facing hub displaying all followed sellers with quick access to their stores and new listings.",
+    market: "global",
+    year: 2018
+  },
+  {
+    id: "saved-sellers",
+    name: "Saved Sellers",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Personal list of favorite sellers for quick store access and repeat purchases.",
+    market: "global",
+    year: 2016
+  },
+  {
+    id: "favorite-sellers",
+    name: "Favorite Sellers",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Legacy term for Saved Sellers still used in some international markets.",
+    market: ["DE", "FR", "IT"],
+    year: 2012
+  },
+  {
+    id: "saved-seller",
+    name: "Saved Seller",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Action label for adding individual sellers to saved/following lists.",
+    market: "global",
+    year: 2016
+  },
+  {
+    id: "watch-count",
+    name: "Watch Count",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Public metric displayed on listings showing total number of users watching an item.",
+    market: "global",
+    year: 2001
+  },
+  {
+    id: "watching-indicator",
+    name: "Watching Indicator",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Visual badge on listings showing user is actively watching this item.",
+    market: "global",
+    year: 2010
+  },
+  {
+    id: "unwatch",
+    name: "Unwatch",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Action to remove items from watch list and stop receiving related alerts.",
+    market: "global",
+    year: 2001
+  },
+  {
+    id: "watch-limit",
+    name: "Watch Limit",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "System cap on maximum watched items per account, typically 200-500 items depending on account type.",
+    market: "global",
+    year: 2005
+  },
+  {
+    id: "recently-watched",
+    name: "Recently Watched",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Chronological view of items added to watch list in last 60 days for quick access.",
+    market: "global",
+    year: 2012
+  },
+  {
+    id: "watching-activity-feed",
+    name: "Watching Activity Feed",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Real-time updates on price changes, new bids, and ending soon alerts for watched items.",
+    market: "global",
+    year: 2015
+  },
+  {
+    id: "watch-this-seller",
+    name: "Watch This Seller",
+    type: "category",
+    tier: "feature",
+    status: "legacy",
+    parent: "buyer",
+    desc: "Deprecated seller-watching feature replaced by Follow Seller in 2018.",
+    market: "global",
+    year: 2010,
+    renamedTo: "follow-seller"
+  },
+  {
+    id: "follower-notifications",
+    name: "Follower Notifications",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Opt-in alerts when followed sellers list new items or offer promotions.",
+    market: "global",
+    year: 2018
+  },
+
+  // SAVED SEARCHES & PREFERENCES (12 programs)
+  {
+    id: "saved-searches",
+    name: "Saved Searches",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Reusable search queries with email alerts for new matching listings, supporting up to 100 saved searches.",
+    market: "global",
+    year: 2003
+  },
+  {
+    id: "favorite-searches",
+    name: "Favorite Searches",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "French market term for Saved Searches feature.",
+    market: "FR",
+    year: 2003
+  },
+  {
+    id: "search-alerts",
+    name: "Search Alerts",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Email or push notifications triggered when new items match saved search criteria.",
+    market: "global",
+    year: 2005
+  },
+  {
+    id: "saved-search-feed",
+    name: "Saved Search Feed",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Personalized homepage module showing newest results from all saved searches.",
+    market: "global",
+    year: 2014
+  },
+  {
+    id: "saved",
+    name: "Saved",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Unified hub for all saved content including searches, sellers, and categories.",
+    market: "global",
+    year: 2019
+  },
+  {
+    id: "saved-categories",
+    name: "Saved Categories",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Quick-access bookmarks for frequently browsed eBay categories.",
+    market: "global",
+    year: 2016
+  },
+  {
+    id: "saved-filters",
+    name: "Saved Filters",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Reusable search refinements like price range, condition, and shipping filters.",
+    market: "global",
+    year: 2017
+  },
+  {
+    id: "saved-drafts",
+    name: "Saved Drafts",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "sellertools",
+    desc: "Incomplete listings stored for later completion, persisting for up to 90 days.",
+    market: "global",
+    year: 2005
+  },
+  {
+    id: "preferences",
+    name: "Preferences",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Global account settings for language, currency, measurement units, and default views.",
+    market: "global",
+    year: 2000
+  },
+  {
+    id: "my-saved-items",
+    name: "My Saved Items",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Consolidated view of watched listings, saved searches, and followed sellers.",
+    market: "global",
+    year: 2018
+  },
+  {
+    id: "quick-filters",
+    name: "Quick Filters",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "One-tap search refinements for common attributes like condition, price, and location.",
+    market: "global",
+    year: 2016
+  },
+  {
+    id: "personalization-settings",
+    name: "Personalization Settings",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Controls for recommendation engine preferences, interest tracking, and feed customization.",
+    market: "global",
+    year: 2020
+  },
+
+  // COLLECTIONS & CURATION (22 programs)
+  {
+    id: "collections",
+    name: "Collections",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "User-created curated groups of items organized by theme, project, or personal interest.",
+    market: "global",
+    year: 2019
+  },
+  {
+    id: "my-collection",
+    name: "My Collection",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Personal inventory tracker for owned collectibles with value estimation and condition tracking.",
+    market: ["US", "UK", "DE"],
+    year: 2020
+  },
+  {
+    id: "hand-picked-collections",
+    name: "Hand-Picked Collections",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Editorially curated themed shopping lists created by eBay experts and influencers.",
+    market: "global",
+    year: 2018
+  },
+  {
+    id: "collection-builder",
+    name: "Collection Builder",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Tool for creating, organizing, and sharing custom collections with drag-and-drop interface.",
+    market: "global",
+    year: 2019
+  },
+  {
+    id: "public-collections",
+    name: "Public Collections",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Sharable collections visible to all eBay users with social engagement features.",
+    market: "global",
+    year: 2019
+  },
+  {
+    id: "private-collections",
+    name: "Private Collections",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Personal-only collections hidden from public view for wishlists and planning.",
+    market: "global",
+    year: 2019
+  },
+  {
+    id: "collection-sharing",
+    name: "Collection Sharing",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Social features for distributing collections via link, social media, or email.",
+    market: "global",
+    year: 2019
+  },
+  {
+    id: "collection-followers",
+    name: "Collection Followers",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Users subscribing to public collections to track updates and new additions.",
+    market: "global",
+    year: 2019
+  },
+  {
+    id: "trending-collections",
+    name: "Trending Collections",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Homepage module surfacing popular collections based on engagement and saves.",
+    market: "global",
+    year: 2019
+  },
+  {
+    id: "seasonal-collections",
+    name: "Seasonal Collections",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Time-limited curated collections for holidays, events, and seasonal shopping themes.",
+    market: "global",
+    year: 2018
+  },
+  {
+    id: "wish-list",
+    name: "Wish List",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Sharable gift registry-style list for birthdays, holidays, and special occasions.",
+    market: "global",
+    year: 2015
+  },
+  {
+    id: "gift-registry",
+    name: "Gift Registry",
+    type: "category",
+    tier: "feature",
+    status: "legacy",
+    parent: "buyer",
+    desc: "Formal registry system for weddings and baby showers, discontinued in 2018.",
+    market: "US",
+    year: 2008,
+    renamedTo: "wish-list"
+  },
+  {
+    id: "collection-categories",
+    name: "Collection Categories",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Browse interface organizing public collections by theme, vertical, and content type.",
+    market: "global",
+    year: 2019
+  },
+  {
+    id: "collection-search",
+    name: "Collection Search",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Dedicated search for discovering public collections by keyword, creator, or category.",
+    market: "global",
+    year: 2019
+  },
+  {
+    id: "collection-templates",
+    name: "Collection Templates",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Pre-built collection structures for common use cases like home renovation or hobby tracking.",
+    market: "global",
+    year: 2020
+  },
+  {
+    id: "smart-collections",
+    name: "Smart Collections",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Auto-populating collections based on saved search criteria and dynamic rules.",
+    market: "global",
+    year: 2020
+  },
+  {
+    id: "collection-analytics",
+    name: "Collection Analytics",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Insights dashboard showing collection views, saves, and engagement trends for public collections.",
+    market: "global",
+    year: 2020
+  },
+  {
+    id: "collaborative-collections",
+    name: "Collaborative Collections",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Multi-user collections allowing friends or family to add items together for shared projects.",
+    market: ["US", "UK"],
+    year: 2021
+  },
+  {
+    id: "collection-export",
+    name: "Collection Export",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Download collections as CSV, PDF, or shareable link for external use.",
+    market: "global",
+    year: 2020
+  },
+  {
+    id: "collection-widgets",
+    name: "Collection Widgets",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Embeddable collection displays for personal websites and blogs.",
+    market: ["US", "UK"],
+    year: 2019
+  },
+  {
+    id: "collection-badges",
+    name: "Collection Badges",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Achievement system rewarding collection creation, engagement, and curation quality.",
+    market: "global",
+    year: 2021
+  },
+  {
+    id: "value-tracker",
+    name: "Value Tracker",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Real-time market value monitoring for owned collectibles in My Collection feature.",
+    market: ["US", "UK"],
+    year: 2020
+  },
+
+  // COMMUNITY & SOCIAL PROGRAMS (24 programs)
+  {
+    id: "ebay-community",
+    name: "eBay Community",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "community",
+    desc: "Forum-based help and discussion platform with moderated boards for buyers, sellers, and collectors.",
+    market: "global",
+    year: 2000
+  },
+  {
+    id: "community-forums",
+    name: "Community Forums",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "community",
+    desc: "Discussion boards organized by topic, vertical, and user type for peer-to-peer support.",
+    market: "global",
+    year: 2000
+  },
+  {
+    id: "community-hub",
+    name: "Community Hub",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "community",
+    desc: "Centralized landing page for all community features including forums, groups, and events.",
+    market: "global",
+    year: 2018
+  },
+  {
+    id: "buyer-groups",
+    name: "Buyer Groups",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Affinity-based communities organized around shared interests, collecting categories, or buying goals.",
+    market: ["US", "UK", "FR", "CA", "AU"],
+    year: 2020
+  },
+  {
+    id: "seller-groups",
+    name: "Seller Groups",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "sellertools",
+    desc: "Peer support communities for sellers organized by business model, vertical, or experience level.",
+    market: "global",
+    year: 2016
+  },
+  {
+    id: "collector-groups",
+    name: "Collector Groups",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "community",
+    desc: "Specialized groups for enthusiasts collecting specific categories like coins, stamps, or memorabilia.",
+    market: "global",
+    year: 2019
+  },
+  {
+    id: "group-admin-tools",
+    name: "Group Admin Tools",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "community",
+    desc: "Moderation dashboard for group owners to manage members, posts, and community guidelines.",
+    market: "global",
+    year: 2020
+  },
+  {
+    id: "group-discovery",
+    name: "Group Discovery",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "community",
+    desc: "Browse and search interface for finding groups by interest, category, or member count.",
+    market: "global",
+    year: 2020
+  },
+  {
+    id: "group-feed",
+    name: "Group Feed",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "community",
+    desc: "Chronological activity stream showing posts, discussions, and shared listings within a group.",
+    market: "global",
+    year: 2020
+  },
+  {
+    id: "group-marketplace",
+    name: "Group Marketplace",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "community",
+    desc: "Exclusive buy/sell section within groups for member-only trading.",
+    market: ["US", "UK"],
+    year: 2021
+  },
+  {
+    id: "community-moderators",
+    name: "Community Moderators",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "community",
+    desc: "Volunteer program for trusted members enforcing community guidelines and supporting users.",
+    market: "global",
+    year: 2001
+  },
+  {
+    id: "seller-spotlight",
+    name: "Seller Spotlight",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "community",
+    desc: "Monthly community feature highlighting exceptional sellers and their success stories.",
+    market: "global",
+    year: 2010
+  },
+  {
+    id: "community-events",
+    name: "Community Events",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "community",
+    desc: "Virtual and in-person gatherings for eBay users including meetups, webinars, and workshops.",
+    market: "global",
+    year: 2012
+  },
+  {
+    id: "community-challenges",
+    name: "Community Challenges",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "community",
+    desc: "Gamified competitions encouraging buying, selling, or collecting achievements with rewards.",
+    market: "global",
+    year: 2019
+  },
+  {
+    id: "user-stories",
+    name: "User Stories",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "community",
+    desc: "Platform for members to share success stories, collecting journeys, and selling milestones.",
+    market: "global",
+    year: 2015
+  },
+  {
+    id: "community-recognition",
+    name: "Community Recognition",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "community",
+    desc: "Badge and award system for helpful contributors, active members, and community leaders.",
+    market: "global",
+    year: 2016
+  },
+  {
+    id: "discussion-threads",
+    name: "Discussion Threads",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "community",
+    desc: "Nested conversation format supporting replies, quotes, and threaded responses in forums.",
+    market: "global",
+    year: 2000
+  },
+  {
+    id: "community-search",
+    name: "Community Search",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "community",
+    desc: "Full-text search across forums, groups, and discussions with filtering by date and relevance.",
+    market: "global",
+    year: 2005
+  },
+  {
+    id: "expert-advisors",
+    name: "Expert Advisors",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "community",
+    desc: "Verified community members with specialized knowledge offering advice in specific categories.",
+    market: ["US", "UK", "DE"],
+    year: 2014
+  },
+  {
+    id: "community-guidelines",
+    name: "Community Guidelines",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "community",
+    desc: "Published rules of conduct for forums, groups, and social features with enforcement policies.",
+    market: "global",
+    year: 2000
+  },
+  {
+    id: "report-abuse",
+    name: "Report Abuse",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "community",
+    desc: "Flagging system for reporting inappropriate content, spam, or guideline violations.",
+    market: "global",
+    year: 2001
+  },
+  {
+    id: "community-notifications",
+    name: "Community Notifications",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "community",
+    desc: "Alerts for replies, mentions, group activity, and followed thread updates.",
+    market: "global",
+    year: 2012
+  },
+  {
+    id: "mentions",
+    name: "Mentions",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "community",
+    desc: "Social tagging feature using @username to notify members in forum posts and group discussions.",
+    market: "global",
+    year: 2018
+  },
+  {
+    id: "community-reputation",
+    name: "Community Reputation",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "community",
+    desc: "Point-based system tracking forum helpfulness, contribution quality, and engagement level.",
+    market: "global",
+    year: 2010
+  },
+
+  // SHARING & SOCIAL DISTRIBUTION (25 programs)
+  {
+    id: "share-listing",
+    name: "Share Listing",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "One-tap distribution of listings to social media, messaging apps, or email with rich preview cards.",
+    market: "global",
+    year: 2014
+  },
+  {
+    id: "share-to-facebook",
+    name: "Share to Facebook",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Direct integration posting listings to Facebook feed with Open Graph metadata.",
+    market: "global",
+    year: 2014
+  },
+  {
+    id: "share-to-twitter",
+    name: "Share to Twitter",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Tweet generator with auto-formatted listing title, price, and shortened eBay link.",
+    market: "global",
+    year: 2014
+  },
+  {
+    id: "share-to-pinterest",
+    name: "Share to Pinterest",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Pin creation tool posting listing images and details to Pinterest boards.",
+    market: ["US", "UK", "AU"],
+    year: 2015
+  },
+  {
+    id: "share-via-email",
+    name: "Share via Email",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Pre-formatted email template with listing details for sending to friends and family.",
+    market: "global",
+    year: 2010
+  },
+  {
+    id: "share-via-sms",
+    name: "Share via SMS",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Text message sharing with shortened link and listing summary for mobile distribution.",
+    market: "global",
+    year: 2016
+  },
+  {
+    id: "copy-link",
+    name: "Copy Link",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Clipboard utility for copying listing URLs with tracking parameters for analytics.",
+    market: "global",
+    year: 2012
+  },
+  {
+    id: "qr-code-sharing",
+    name: "QR Code Sharing",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Generate scannable QR codes for listings enabling offline-to-online sharing at events.",
+    market: "global",
+    year: 2020
+  },
+  {
+    id: "referral-link",
+    name: "Referral Link",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Trackable sharing URL crediting the referrer for new user signups or purchases.",
+    market: "global",
+    year: 2018
+  },
+  {
+    id: "social-share-analytics",
+    name: "Social Share Analytics",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "sellertools",
+    desc: "Dashboard showing share counts, click-throughs, and conversions from social distribution.",
+    market: "global",
+    year: 2019
+  },
+  {
+    id: "share-collection",
+    name: "Share Collection",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Social distribution of curated collections via link, social media, or embedded widget.",
+    market: "global",
+    year: 2019
+  },
+  {
+    id: "share-search",
+    name: "Share Search",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Send search results as shareable link preserving filters, sort order, and keywords.",
+    market: "global",
+    year: 2016
+  },
+  {
+    id: "share-store",
+    name: "Share Store",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "sellertools",
+    desc: "Seller tool for promoting entire eBay Store via social media with branded preview cards.",
+    market: "global",
+    year: 2015
+  },
+  {
+    id: "share-cart",
+    name: "Share Cart",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Group shopping feature allowing cart contents to be shared for gift coordination or split purchases.",
+    market: ["US", "UK"],
+    year: 2021
+  },
+  {
+    id: "embed-listing",
+    name: "Embed Listing",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "HTML iframe code for embedding live listings on external websites and blogs.",
+    market: "global",
+    year: 2013
+  },
+  {
+    id: "whatsapp-sharing",
+    name: "WhatsApp Sharing",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Direct-to-WhatsApp integration for sharing listings in chats and groups.",
+    market: ["UK", "DE", "IT", "AU"],
+    year: 2019
+  },
+  {
+    id: "instagram-stories",
+    name: "Instagram Stories",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Mobile-optimized story card generator for sharing listings to Instagram Stories with swipe-up links.",
+    market: ["US", "UK"],
+    year: 2020
+  },
+  {
+    id: "native-share-sheet",
+    name: "Native Share Sheet",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "iOS/Android system share dialog providing access to all installed apps and services.",
+    market: "global",
+    year: 2017
+  },
+  {
+    id: "share-button",
+    name: "Share Button",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Universal sharing icon triggering share sheet or modal across all eBay surfaces.",
+    market: "global",
+    year: 2014
+  },
+  {
+    id: "viral-sharing-incentives",
+    name: "Viral Sharing Incentives",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Promotional campaigns offering coupons or credits for sharing listings and referring friends.",
+    market: ["US", "CA"],
+    year: 2018
+  },
+  {
+    id: "share-count-display",
+    name: "Share Count Display",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Public metric on listings showing total social shares as social proof signal.",
+    market: "global",
+    year: 2015
+  },
+  {
+    id: "social-proof-badges",
+    name: "Social Proof Badges",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Visual indicators highlighting highly shared or trending listings in search results.",
+    market: "global",
+    year: 2019
+  },
+  {
+    id: "share-to-messenger",
+    name: "Share to Messenger",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Facebook Messenger integration for sharing listings in direct messages and group chats.",
+    market: "global",
+    year: 2017
+  },
+  {
+    id: "group-buying",
+    name: "Group Buying",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Social commerce feature enabling friends to coordinate bulk purchases for volume discounts.",
+    market: ["US", "UK"],
+    year: 2021
+  },
+  {
+    id: "gift-sharing",
+    name: "Gift Sharing",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Wishlist-style sharing for birthdays and holidays allowing others to contribute to group gifts.",
+    market: "global",
+    year: 2019
+  },
+
+  // SELLER SOCIAL TOOLS (15 programs)
+  {
+    id: "seller-updates",
+    name: "Seller Updates",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "sellertools",
+    desc: "Broadcast messaging system allowing sellers to notify followers of sales, new inventory, and announcements.",
+    market: "global",
+    year: 2018
+  },
+  {
+    id: "follower-promotions",
+    name: "Follower Promotions",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "sellertools",
+    desc: "Exclusive discount codes and early access offers for store followers to drive loyalty.",
+    market: "global",
+    year: 2019
+  },
+  {
+    id: "follower-dashboard",
+    name: "Follower Dashboard",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "sellertools",
+    desc: "Analytics showing follower demographics, growth trends, engagement rates, and conversion metrics.",
+    market: "global",
+    year: 2019
+  },
+  {
+    id: "follower-export",
+    name: "Follower Export",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "sellertools",
+    desc: "CSV download of follower list for external marketing and CRM integration.",
+    market: ["US", "UK"],
+    year: 2020
+  },
+  {
+    id: "seller-profile-page",
+    name: "Seller Profile Page",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "sellertools",
+    desc: "Public seller landing page showing bio, featured items, reviews, and follow button.",
+    market: "global",
+    year: 2016
+  },
+  {
+    id: "seller-bio",
+    name: "Seller Bio",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "sellertools",
+    desc: "Customizable seller description with brand story, expertise, and specialization areas.",
+    market: "global",
+    year: 2016
+  },
+  {
+    id: "featured-items-carousel",
+    name: "Featured Items Carousel",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "sellertools",
+    desc: "Seller-curated spotlight section on profile and store pages showcasing priority inventory.",
+    market: "global",
+    year: 2017
+  },
+  {
+    id: "seller-reviews-social",
+    name: "Seller Reviews Social",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "sellertools",
+    desc: "Public review aggregation displayed on seller profiles with star ratings and testimonials.",
+    market: "global",
+    year: 2015
+  },
+  {
+    id: "verified-seller-badge",
+    name: "Verified Seller Badge",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "sellertools",
+    desc: "Trust indicator on seller profiles for identity-verified and performance-vetted sellers.",
+    market: "global",
+    year: 2018
+  },
+  {
+    id: "seller-social-links",
+    name: "Seller Social Links",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "sellertools",
+    desc: "External social media profile links displayed on seller page for cross-platform presence.",
+    market: "global",
+    year: 2019
+  },
+  {
+    id: "seller-newsletter",
+    name: "Seller Newsletter",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "sellertools",
+    desc: "Email marketing tool for sending regular updates to followers with new listings and promotions.",
+    market: ["US", "UK", "DE"],
+    year: 2020
+  },
+  {
+    id: "seller-events",
+    name: "Seller Events",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "sellertools",
+    desc: "Calendar-based announcements for flash sales, live streams, and limited-time offers.",
+    market: "global",
+    year: 2020
+  },
+  {
+    id: "live-selling",
+    name: "Live Selling",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "sellertools",
+    desc: "Video streaming feature for real-time product demonstrations with instant purchasing.",
+    market: ["US", "UK"],
+    year: 2021
+  },
+  {
+    id: "seller-community-posts",
+    name: "Seller Community Posts",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "sellertools",
+    desc: "Social feed on seller profile showing updates, behind-the-scenes content, and engagement.",
+    market: ["US", "UK"],
+    year: 2021
+  },
+  {
+    id: "seller-shoutouts",
+    name: "Seller Shoutouts",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "sellertools",
+    desc: "Highlighting system for sellers to feature buyer reviews and positive feedback publicly.",
+    market: "global",
+    year: 2019
+  },
+
+  // BUYER ENGAGEMENT & INTERACTION (17 programs)
+  {
+    id: "like-button",
+    name: "Like Button",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Quick engagement action for expressing interest without adding to watch list, feeds recommendation engine.",
+    market: "global",
+    year: 2018
+  },
+  {
+    id: "favorite-button",
+    name: "Favorite Button",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Heart icon for bookmarking items with stronger affinity signal than watch list.",
+    market: ["DE", "FR", "IT"],
+    year: 2016
+  },
+  {
+    id: "reaction-buttons",
+    name: "Reaction Buttons",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Emoji-based engagement options for expressing specific sentiment on listings and collections.",
+    market: ["US", "UK"],
+    year: 2020
+  },
+  {
+    id: "comment-on-listing",
+    name: "Comment on Listing",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Public discussion feature allowing buyers to post questions and sellers to respond visibly.",
+    market: ["US", "UK", "AU"],
+    year: 2019
+  },
+  {
+    id: "product-qa",
+    name: "Product Q&A",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Structured question-and-answer section on listings with seller responses and community votes.",
+    market: "global",
+    year: 2017
+  },
+  {
+    id: "upvote-downvote",
+    name: "Upvote/Downvote",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Community voting on answers, reviews, and forum posts to surface most helpful content.",
+    market: "global",
+    year: 2018
+  },
+  {
+    id: "helpful-review-votes",
+    name: "Helpful Review Votes",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Thumbs up/down on seller reviews to rank feedback by usefulness for future buyers.",
+    market: "global",
+    year: 2012
+  },
+  {
+    id: "user-photos",
+    name: "User Photos",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Buyer-uploaded images in reviews showing product condition and real-world usage.",
+    market: "global",
+    year: 2019
+  },
+  {
+    id: "buyer-videos",
+    name: "Buyer Videos",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Short-form video reviews and unboxings shared by buyers in feedback section.",
+    market: ["US", "UK"],
+    year: 2021
+  },
+  {
+    id: "review-gallery",
+    name: "Review Gallery",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Visual compilation of all user-submitted photos and videos for a listing or seller.",
+    market: "global",
+    year: 2020
+  },
+  {
+    id: "tag-a-friend",
+    name: "Tag a Friend",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Social tagging in comments and shares to notify eBay friends about specific listings.",
+    market: ["US", "UK"],
+    year: 2019
+  },
+  {
+    id: "price-drop-alerts",
+    name: "Price Drop Alerts",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Automatic notifications when watched items decrease in price or seller offers discounts.",
+    market: "global",
+    year: 2016
+  },
+  {
+    id: "back-in-stock-alerts",
+    name: "Back in Stock Alerts",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Notifications when out-of-stock watched items become available again from same seller.",
+    market: "global",
+    year: 2018
+  },
+  {
+    id: "similar-items-watched",
+    name: "Similar Items Watched",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Social proof indicator showing how many others watched similar items, driving urgency.",
+    market: "global",
+    year: 2017
+  },
+  {
+    id: "trending-now-badge",
+    name: "Trending Now Badge",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Visual indicator on listings with sudden spike in views, watches, or purchases.",
+    market: "global",
+    year: 2019
+  },
+  {
+    id: "scarcity-indicators",
+    name: "Scarcity Indicators",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Social proof messages like 'X people watching' or 'Y sold in last 24 hours' driving conversions.",
+    market: "global",
+    year: 2016
+  },
+  {
+    id: "urgency-timers",
+    name: "Urgency Timers",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Countdown displays for auction endings, flash sales, and limited-time offers with social context.",
+    market: "global",
+    year: 2015
+  },
+
+  // GAMIFICATION & LOYALTY (15 programs)
+  {
+    id: "ebay-rewards",
+    name: "eBay Rewards",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Points-based loyalty program earning 1-4% back on purchases redeemable for future discounts.",
+    market: ["US", "UK"],
+    year: 2019
+  },
+  {
+    id: "achievement-badges",
+    name: "Achievement Badges",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Unlockable profile badges for milestones like 'First Purchase', '100 Feedback', or category expertise.",
+    market: "global",
+    year: 2020
+  },
+  {
+    id: "collector-levels",
+    name: "Collector Levels",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Tiered progression system in My Collection feature unlocking features based on collection size.",
+    market: ["US", "UK"],
+    year: 2020
+  },
+  {
+    id: "seller-levels",
+    name: "Seller Levels",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "sellertools",
+    desc: "Bronze/Silver/Gold/Platinum tier system based on sales volume and performance metrics.",
+    market: "global",
+    year: 2008
+  },
+  {
+    id: "top-rated-badge",
+    name: "Top Rated Badge",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "sellertools",
+    desc: "Elite seller designation displayed on listings and profile for consistent high performance.",
+    market: "global",
+    year: 2010
+  },
+  {
+    id: "power-seller-legacy",
+    name: "PowerSeller (Legacy)",
+    type: "category",
+    tier: "feature",
+    status: "legacy",
+    parent: "sellertools",
+    desc: "Original seller tier system replaced by Top Rated Seller program in 2010.",
+    market: "global",
+    year: 2002,
+    renamedTo: "top-rated-badge"
+  },
+  {
+    id: "ebay-bucks",
+    name: "eBay Bucks",
+    type: "category",
+    tier: "feature",
+    status: "legacy",
+    parent: "buyer",
+    desc: "US-only cashback program discontinued in 2021, replaced by eBay Rewards.",
+    market: "US",
+    year: 2011,
+    renamedTo: "ebay-rewards"
+  },
+  {
+    id: "streak-rewards",
+    name: "Streak Rewards",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Bonus rewards for consecutive daily logins or weekly purchase activity.",
+    market: ["US", "UK"],
+    year: 2021
+  },
+  {
+    id: "referral-rewards",
+    name: "Referral Rewards",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Credits earned when referred friends make first purchase or reach spending threshold.",
+    market: "global",
+    year: 2018
+  },
+  {
+    id: "seasonal-challenges",
+    name: "Seasonal Challenges",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Limited-time gamified tasks during holidays offering bonus rewards for completion.",
+    market: "global",
+    year: 2020
+  },
+  {
+    id: "leaderboards",
+    name: "Leaderboards",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "community",
+    desc: "Public rankings of top collectors, sellers, or community contributors by category or metric.",
+    market: "global",
+    year: 2019
+  },
+  {
+    id: "milestone-notifications",
+    name: "Milestone Notifications",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Congratulatory messages when users reach purchase milestones, collection goals, or anniversary dates.",
+    market: "global",
+    year: 2019
+  },
+  {
+    id: "exclusive-access",
+    name: "Exclusive Access",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Early listing access or private sales for loyal customers and high-tier members.",
+    market: ["US", "UK"],
+    year: 2020
+  },
+  {
+    id: "vip-perks",
+    name: "VIP Perks",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Special benefits for top spenders including fee waivers, priority support, and exclusive events.",
+    market: ["US", "UK", "AU"],
+    year: 2019
+  },
+  {
+    id: "anniversary-rewards",
+    name: "Anniversary Rewards",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Annual membership celebration offering coupons or credits on account registration anniversary.",
+    market: "global",
+    year: 2018
+  },
+
+  // COLLABORATIVE FEATURES (10 programs)
+  {
+    id: "gift-list",
+    name: "Gift List",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Shareable wishlist for occasions with purchased item tracking and contributor visibility.",
+    market: "global",
+    year: 2016
+  },
+  {
+    id: "group-gifting",
+    name: "Group Gifting",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Crowdfunding-style feature allowing multiple contributors to split payment on single high-value item.",
+    market: ["US", "UK"],
+    year: 2020
+  },
+  {
+    id: "shared-cart",
+    name: "Shared Cart",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Multi-user cart for family accounts or friends coordinating joint purchases.",
+    market: ["US", "UK"],
+    year: 2021
+  },
+  {
+    id: "family-accounts",
+    name: "Family Accounts",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Linked profiles allowing parents to manage teen accounts with spending controls.",
+    market: ["US", "UK", "CA"],
+    year: 2019
+  },
+  {
+    id: "business-multi-user",
+    name: "Business Multi-User",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "sellertools",
+    desc: "Enterprise seller accounts with role-based access for teams managing single business.",
+    market: "global",
+    year: 2015
+  },
+  {
+    id: "account-permissions",
+    name: "Account Permissions",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "sellertools",
+    desc: "Granular access controls for multi-user seller accounts defining listing, messaging, and financial rights.",
+    market: "global",
+    year: 2016
+  },
+  {
+    id: "team-roles",
+    name: "Team Roles",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "sellertools",
+    desc: "Predefined permission sets like Admin, Lister, Customer Service for streamlined team management.",
+    market: "global",
+    year: 2017
+  },
+  {
+    id: "collaborative-wishlists",
+    name: "Collaborative Wishlists",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Shared wishlists where multiple users can add, remove, and mark items for group planning.",
+    market: ["US", "UK"],
+    year: 2020
+  },
+  {
+    id: "joint-collections",
+    name: "Joint Collections",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Co-owned collections allowing couples or partners to track shared assets and purchases.",
+    market: ["US", "UK"],
+    year: 2021
+  },
+  {
+    id: "household-accounts",
+    name: "Household Accounts",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Family-level account linking for shared addresses, payment methods, and purchase history visibility.",
+    market: ["US", "CA"],
+    year: 2019
+  },
+
+  // INFLUENCER & CREATOR TOOLS (7 programs)
+  {
+    id: "ebay-influencer-program",
+    name: "eBay Influencer Program",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "community",
+    desc: "Creator partnership program providing custom storefronts, commission structures, and promotional tools.",
+    market: ["US", "UK"],
+    year: 2021
+  },
+  {
+    id: "creator-collections",
+    name: "Creator Collections",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Influencer-curated shopping lists with branded landing pages and trackable affiliate links.",
+    market: ["US", "UK", "AU"],
+    year: 2021
+  },
+  {
+    id: "social-commerce-links",
+    name: "Social Commerce Links",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "sellertools",
+    desc: "Trackable URLs for influencers and affiliates with commission attribution and performance analytics.",
+    market: "global",
+    year: 2020
+  },
+  {
+    id: "verified-creator-badge",
+    name: "Verified Creator Badge",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "community",
+    desc: "Trust indicator for authenticated influencers and content creators on eBay platform.",
+    market: ["US", "UK"],
+    year: 2021
+  },
+  {
+    id: "creator-analytics",
+    name: "Creator Analytics",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "community",
+    desc: "Dashboard showing collection views, click-through rates, conversions, and earnings for influencers.",
+    market: ["US", "UK"],
+    year: 2021
+  },
+  {
+    id: "brand-partnerships",
+    name: "Brand Partnerships",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "sellertools",
+    desc: "Collaboration framework connecting sellers with influencers for sponsored content and co-marketing.",
+    market: ["US", "UK"],
+    year: 2022
+  },
+  {
+    id: "live-stream-shopping",
+    name: "Live Stream Shopping",
+    type: "category",
+    tier: "feature",
+    status: "current",
+    parent: "buyer",
+    desc: "Interactive video commerce allowing real-time purchasing during influencer live streams and events.",
+    market: ["US", "UK"],
+    year: 2022
+  },
+]

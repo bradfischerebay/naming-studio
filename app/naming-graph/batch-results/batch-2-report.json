@@ -1,0 +1,105 @@
+{
+  "batch": "2",
+  "results_loaded": 42,
+  "matched": 19,
+  "merged": 0,
+  "created": 19,
+  "skipped": [
+    {
+      "node_id": "ventures",
+      "reason": "Not found in graph"
+    },
+    {
+      "node_id": "at-a-glance",
+      "reason": "Not found in graph"
+    },
+    {
+      "node_id": "auction-style",
+      "reason": "Not found in graph"
+    },
+    {
+      "node_id": "auto-part-compatibility",
+      "reason": "Not found in graph"
+    },
+    {
+      "node_id": "automatic-returns",
+      "reason": "Not found in graph"
+    },
+    {
+      "node_id": "background-removal",
+      "reason": "Not found in graph"
+    },
+    {
+      "node_id": "barcode-scanning",
+      "reason": "Not found in graph"
+    },
+    {
+      "node_id": "basket",
+      "reason": "Not found in graph"
+    },
+    {
+      "node_id": "best-match-algorithm",
+      "reason": "Not found in graph"
+    },
+    {
+      "node_id": "best-price-guarantee",
+      "reason": "Not found in graph"
+    },
+    {
+      "node_id": "bidding-assistant",
+      "reason": "Not found in graph"
+    },
+    {
+      "node_id": "block-buyer",
+      "reason": "Not found in graph"
+    },
+    {
+      "node_id": "boutiques-ebay",
+      "reason": "Not found in graph"
+    },
+    {
+      "node_id": "branded-shipping",
+      "reason": "Not found in graph"
+    },
+    {
+      "node_id": "business-account",
+      "reason": "Not found in graph"
+    },
+    {
+      "node_id": "campaign-manager",
+      "reason": "Not found in graph"
+    },
+    {
+      "node_id": "cart",
+      "reason": "Not found in graph"
+    },
+    {
+      "node_id": "case",
+      "reason": "Not found in graph"
+    },
+    {
+      "node_id": "cashback",
+      "reason": "Not found in graph"
+    },
+    {
+      "node_id": "category-standards",
+      "reason": "Not found in graph"
+    },
+    {
+      "node_id": "ccg-vault",
+      "reason": "Not found in graph"
+    },
+    {
+      "node_id": "certified",
+      "reason": "Not found in graph"
+    },
+    {
+      "node_id": "certified-pre-owned",
+      "reason": "Not found in graph"
+    }
+  ],
+  "consolidated_at": "2026-04-21T01:35:09.859Z",
+  "evidence_before": 130,
+  "evidence_after": 149,
+  "coverage_percent": 16.6
+}

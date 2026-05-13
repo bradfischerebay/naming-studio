@@ -31,6 +31,7 @@ export const NamingFactsSchema = z.object({
     G3: z.boolean().default(false),
     G4: z.boolean().default(false),
     G5: z.boolean().default(false),
+    G6: z.boolean().default(false),
   }).optional(),
 });
 
@@ -65,6 +66,7 @@ export function markGateAnswered(facts: NamingFacts, gate: keyof NonNullable<Nam
       G3: false,
       G4: false,
       G5: false,
+      G6: false,
     };
   }
   facts.answered_gates[gate] = true;

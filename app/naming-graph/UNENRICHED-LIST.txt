@@ -1,0 +1,262 @@
+Consommation Raisonnée
+eBay Labels
+Store Logo
+Store Banner
+Auction
+Buy Now Price
+Til Cancelled
+Team Access
+Multi-User Account Access
+Account Permissions
+Free Listings
+Blocked Buyers List
+Unpaid Item
+Unpaid Item Strike
+ShipCover
+Shipping Insurance
+Parcel Insurance
+Quantity Discount
+Sale Event
+Order Discount
+eBay Branded Supplies
+Shipping Supplies Store
+Poly Mailer
+Bubble Mailer
+Packing Tape
+Coded Coupon
+Public Coupon
+Promo Code
+Pause Sales
+Out of Office
+Member Since
+Buy It Now Only
+Auction Only
+Zip Code
+Multi-Variation Listing
+Shipping Calculator
+Dimensional Weight
+Cross-Promotion
+1 Business Day
+Business Days
+Mutual Withdrawal
+End Listing Early
+Cancel Bid
+Retract Bid
+Automatic Relist
+Featured Plus
+Priority Strategy
+General Strategy
+Sold Items
+Transaction History
+Shipping Address
+Buyer Address
+Postal Code Validation
+Address Validation
+Invoice
+Packing Slip
+Receipt
+Packing List
+Announcements
+Credit Note
+N Free
+International Selling
+Global Markets
+Export
+Questions & Answers
+Q&A
+Seller Answer
+Error Message
+Sourcing Insights
+Volume Pricing Email Campaign
+Crossborder Parcel Shipping Solution
+Seller Protection
+Affiliate Program
+Inventory Mapping API
+OAuth Client Library
+Feed SDK
+Auction-Style Listing
+Unpaid Item
+t Paid
+Til Cancelled
+Store Followers
+Seller Growth Dashboard
+Auto-Accept
+Auto-Decline
+Block Buyer
+Blocked Bidders List
+Purchase Limit
+ Identities Protected
+PayPal Installments
+eBay Gift Card
+Bulk Inventory Solution
+Wholesale Lots
+BULQ Integration
+Business Buyers
+International Marketplace Visibility
+Currency Conversion
+Content Translation
+Export eBay
+Seller Evaluation Period
+Search Placement
+Not As Described
+PSA Vault
+SpeedPAK
+Sale Event
+Order Discount
+eBay Cross Border Trade
+Scheduled Start Time
+Shipping Calculator
+Rate Tables
+Late Shipment
+Zero Insertion Fee Listings
+Starter Store
+Minimum Bid
+No Reserve
+Send Offer to Buyers
+Bid Retraction
+Retract Bid
+Cancel Bid
+Block List
+Blocked Buyers
+Shipping Exclusions
+Unpaid Item Strike
+Listing Duration
+Good Till Cancelled
+Search Ranking
+Related Products
+Priority Strategy
+General Strategy
+Allstate Protection Plan
+eBay Product Protection
+Second Year Warranty
+Fulfillment by eBay
+Video Ads
+Custom Landing Pages
+eBay Impact
+Multi-Buy Discounts
+End and Relist
+Sell Feed API
+Bulk Data Exchange Service
+Market Intelligence
+Competitor Research
+Buyer Messages
+AI Message Suggestions
+Threaded Conversations
+Shipping Calculator
+Dimensional Weight
+eBay Open
+eBay Open: On the Road
+Seller Check-In
+Spring Seller Check-In
+Winter Seller Check-In
+eBay Ambassador Program
+Ambassador Storefront
+Trading Cards Price Guide
+Coupon Codes
+Subscriber Discounts
+Currency Conversion
+Multi-Currency Payments
+Auction-Style Listing
+Fixed Price Listing
+GTC
+Listing Duration
+Blocked Buyer List
+Buyer Requirements Activity Log
+Shipping Policies
+PayPal Credit
+VPP
+BEPP
+Zero Insertion Fee Listings
+Display Ads
+Banner Ads
+Seller Verification
+Identity Verification
+ID Upload
+Address Verification
+Help & Contact
+Contact Us
+Customer Support
+Live Chat
+Favorite Sellers
+Bid Increments
+Bid History
+Send Offer to Buyers
+Bids & Offers
+eBay Gift Card
+Gift Certificates
+Digital Gift Cards
+Redemption Code
+Seller Insights
+Analytics Dashboard
+Blocked Buyers
+Promoted Listings Reports
+Selling Limits
+Send Offer to Watchers
+Autopay
+Item Not as Described
+Seller Notes
+Payment Holds
+Ad Rate
+Carrier Discounts
+Listing Visibility
+Search Placement
+Auction Style
+Fixed Price
+Listing Duration
+Bid Retraction
+Bid History
+Shipping Cost Calculator
+Return Shipping Label
+Monthly Statement
+Pricing Recommendations
+Transaction ID
+Report Item
+Close Account
+Shipping Exclusions
+You May Also Like
+Delivery Date
+Seller Information
+About Seller
+Featured Plus
+Selling Limits
+Monthly Limits
+Awaiting Payment
+Awaiting Shipment
+Auto Accept
+Auto Decline
+Out of Office
+Ask eBay to Step In
+Automatic Relist
+Quantity Sold
+Total Sales
+Sale Event
+Clearance Event
+Shipping Calculator
+Block Buyer
+Buyer Exemptions
+Policy Violation
+Listing Removed
+Restricted Items
+Item as Described
+Scheduled
+Account Suspension
+Account Warning
+Account Restriction
+Temporary Suspension
+Dispatch Time
+Same-Day Shipping
+Fixed Price
+Classified Ad
+Store Inventory Format
+Save Seller
+Follow Shop
+Search Ranking
+Listing Visibility
+Search Placement
+Listing Activity
+Order History
+Sales History
+Ship From
+Item Weight
+Shipping Weight
+Mark as Paid

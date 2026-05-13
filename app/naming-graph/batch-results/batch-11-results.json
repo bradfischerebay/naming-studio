@@ -1,0 +1,218 @@
+[
+  {
+    "canonical_name": "eBay Money Back Guarantee",
+    "node_id": "money-back-guarantee-multi-market",
+    "url": "https://www.ebay.com/help/policies/ebay-money-back-guarantee-policy/ebay-money-back-guarantee-policy?id=4210",
+    "title": "eBay Money Back Guarantee policy",
+    "source_type": "ebay_official",
+    "notes": "Official buyer protection policy covering most transactions on eBay"
+  },
+  {
+    "canonical_name": "Mother's Day Gifts",
+    "node_id": "mothers-day-gifts",
+    "url": "https://www.ebay.com/b/Mother-s-Day/bn_7116489026",
+    "title": "Mother's Day Gifts - Best Gift Ideas for Mom: Jewelry, Tech & More",
+    "source_type": "ebay_official",
+    "notes": "Seasonal shopping hub for Mother's Day gift ideas"
+  },
+  {
+    "canonical_name": "Multi-Variation Listing",
+    "node_id": "multi-variation-listing",
+    "url": "https://pages.ebay.com/sellerinformation/sellingresources/multiplevariationslist.html",
+    "title": "eBay Seller Information Center: Selling Resources – Best Practices - Multi-variation listing feature categories",
+    "source_type": "ebay_official",
+    "notes": "Listings containing items that vary in manufacturing details or packaging (e.g., different sizes, colors)"
+  },
+  {
+    "canonical_name": "Multi-Variation Listings",
+    "node_id": "multi-variation-listings",
+    "url": "https://pages.ebay.com/sellerinformation/sellingresources/multiplevariationslist.html",
+    "title": "eBay Seller Information Center: Selling Resources – Best Practices - Multi-variation listing feature categories",
+    "source_type": "ebay_official",
+    "notes": "Same as multi-variation listing - plural form"
+  },
+  {
+    "canonical_name": "My Collection",
+    "node_id": "my-collection",
+    "url": "https://www.ebay.com/help/selling/trading-cards-listing-tools/manage-your-collection?id=5289",
+    "title": "Manage your collection",
+    "source_type": "ebay_official",
+    "notes": "Tool for organizing and tracking collectible card games and trading cards collections"
+  },
+  {
+    "canonical_name": "My eBay Summary",
+    "node_id": "my-ebay-summary",
+    "url": "https://www.ebay.com/myb/Summary",
+    "title": "My eBay Summary",
+    "source_type": "ebay_official",
+    "notes": "Dashboard page showing buying and selling activity overview"
+  },
+  {
+    "canonical_name": "New Seller Journey",
+    "node_id": "new-seller-journey",
+    "url": "https://export.ebay.com/en/nsj/",
+    "title": "Unlock exclusive benefits of the eBay New Seller Journey Program",
+    "source_type": "ebay_official",
+    "notes": "Program with dedicated support for new sellers to boost sales and improve performance"
+  },
+  {
+    "canonical_name": "No Returns Accepted",
+    "node_id": "no-returns-accepted",
+    "url": "https://www.ebay.com/help/selling/managing-returns-refunds/handling-return-requests/setting-rules-return-requests?id=4368",
+    "title": "Setting up your return policy",
+    "source_type": "ebay_official",
+    "notes": "Return policy option - limited effect due to eBay Money Back Guarantee overriding for not-as-described items"
+  },
+  {
+    "canonical_name": "Notification Preferences",
+    "node_id": "notification-preferences",
+    "url": "https://www.ebay.com/help/account/changing-account-settings/notifications?id=4203",
+    "title": "Notifications",
+    "source_type": "ebay_official",
+    "notes": "Settings for managing email and app notification preferences"
+  },
+  {
+    "canonical_name": "Notification Settings",
+    "node_id": "notification-settings",
+    "url": "https://www.ebay.com/help/account/changing-account-settings/notifications?id=4203",
+    "title": "Notifications",
+    "source_type": "ebay_official",
+    "notes": "Same as Notification Preferences"
+  },
+  {
+    "canonical_name": "Offers to Buyers",
+    "node_id": "offers-to-buyers",
+    "url": "https://www.ebay.com/help/selling/listings/selling-buy-now/adding-best-offer-listing?id=4144",
+    "title": "Adding Best Offer to your listing and sending offers to buyers",
+    "source_type": "ebay_official",
+    "notes": "Tool for sending private offers to eligible buyers watching listings or with items in cart"
+  },
+  {
+    "canonical_name": "Offers to Buyers",
+    "node_id": "offers-to-buyers-multi-market",
+    "url": "https://www.ebay.com/sellercenter/growth/seller-hub-discounts/offers-to-buyers-best-offer",
+    "title": "Offers to Buyers and Best Offer | Seller Center",
+    "source_type": "ebay_official",
+    "notes": "Multi-market version of offers to buyers feature"
+  },
+  {
+    "canonical_name": "Offsite Ads",
+    "node_id": "offsite-ads",
+    "url": "https://export.ebay.com/en/services-tools/advertising/promoted-offsite/",
+    "title": "Promoted Offsite",
+    "source_type": "ebay_official",
+    "notes": "Cost-per-click advertising solution promoting inventory on external channels like Google"
+  },
+  {
+    "canonical_name": "Open Box",
+    "node_id": "open-box",
+    "url": "https://www.ebay.com/help/selling/listings/creating-managing-listings/item-conditions-category?id=4765",
+    "title": "Item condition by category",
+    "source_type": "ebay_official",
+    "notes": "Condition designation for items in excellent, new condition with no wear but missing/unsealed packaging"
+  },
+  {
+    "canonical_name": "Order Details",
+    "node_id": "order-details",
+    "url": "https://www.ebay.com/help/buying/search-tips/purchase-history?id=4047",
+    "title": "Your purchase history",
+    "source_type": "ebay_official",
+    "notes": "Page showing order information including shipping address, tracking, and order number"
+  },
+  {
+    "canonical_name": "Order Discounts",
+    "node_id": "order-discounts",
+    "url": "https://www.ebay.com/help/selling/selling-tools/discounts-manager?id=4094",
+    "title": "Discounts Manager",
+    "source_type": "ebay_official",
+    "notes": "Promotions offering discounts based on order size or amount spent"
+  },
+  {
+    "canonical_name": "Order Discounts",
+    "node_id": "order-discounts-multi-market",
+    "url": "https://export.ebay.com/en/services-tools/discounts-manager/order-discounts/",
+    "title": "Order Discounts",
+    "source_type": "ebay_official",
+    "notes": "Multi-market version of order discounts feature"
+  },
+  {
+    "canonical_name": "Order Total",
+    "node_id": "order-total",
+    "url": "https://www.ebay.com/help/buying/paying-items/checkout?id=4036",
+    "title": "Checkout",
+    "source_type": "ebay_official",
+    "notes": "Total amount buyer pays including item price, shipping, and tax"
+  },
+  {
+    "canonical_name": "Out of Stock Listing",
+    "node_id": "out-of-stock-listing",
+    "url": "https://www.ebay.com/help/selling/listings/creating-managing-listings/item-conditions-category?id=4765",
+    "title": "Item condition by category",
+    "source_type": "ebay_official",
+    "notes": "Listing state when inventory reaches zero - stays active for 6 months but not searchable"
+  },
+  {
+    "canonical_name": "Outbid Notification",
+    "node_id": "outbid-notification",
+    "url": "https://developer.ebay.com/api-docs/static/pn_outbid.html",
+    "title": "OutBid | eBay Developers Program",
+    "source_type": "ebay_official",
+    "notes": "Notification sent when a buyer is outbid on an auction listing"
+  },
+  {
+    "canonical_name": "Package Tracking",
+    "node_id": "package-tracking",
+    "url": "https://www.ebay.com/help/buying/shipping-delivery/tracking-item?id=4027",
+    "title": "Tracking your item",
+    "source_type": "ebay_official",
+    "notes": "System for monitoring shipment status and delivery progress"
+  },
+  {
+    "canonical_name": "Page Views",
+    "node_id": "page-views",
+    "url": "https://www.ebay.com/help/selling/listings/listing-tips/page-views?id=4165",
+    "title": "Page views",
+    "source_type": "ebay_official",
+    "notes": "Analytics showing how many times eBay users have viewed a listing"
+  },
+  {
+    "canonical_name": "Partial Refund",
+    "node_id": "partial-refund",
+    "url": "https://www.ebay.com/help/selling/managing-returns-refunds/refunding-buyers?id=5182",
+    "title": "Refunding buyers",
+    "source_type": "ebay_official",
+    "notes": "Option for sellers to refund partial amount while buyer keeps item"
+  },
+  {
+    "canonical_name": "Passkeys",
+    "node_id": "passkeys",
+    "url": "https://www.ebay.com/help/account/protecting-account/tips-keeping-ebay-account-secure?id=4872",
+    "title": "Tips for keeping your eBay account secure",
+    "source_type": "ebay_official",
+    "notes": "Biometric authentication alternative to passwords using fingerprint, Face ID, or Touch ID"
+  },
+  {
+    "canonical_name": "Password Reset",
+    "node_id": "password-reset",
+    "url": "https://www.ebay.com/help/account/changing-account-settings/reset-password?id=4197",
+    "title": "Reset password",
+    "source_type": "ebay_official",
+    "notes": "Process for recovering account access when password is forgotten"
+  },
+  {
+    "canonical_name": "Pay Now",
+    "node_id": "pay-now",
+    "url": "https://www.ebay.com/help/buying/paying-items/paying-items?id=4009",
+    "title": "Paying for items",
+    "source_type": "ebay_official",
+    "notes": "Button allowing buyers to complete payment for purchases"
+  },
+  {
+    "canonical_name": "Payment Dispute",
+    "node_id": "payment-dispute",
+    "url": "https://www.ebay.com/help/selling/getting-paid/handling-payment-disputes?id=4799",
+    "title": "Handling payment disputes",
+    "source_type": "ebay_official",
+    "notes": "Process when buyer reports issue to bank or payment institution requesting money back"
+  }
+]

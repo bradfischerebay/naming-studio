@@ -1,0 +1,398 @@
+[
+  {
+    "canonical_name": "Notify Me",
+    "node_id": "notify-me",
+    "url": "https://community.ebay.com/t5/Selling/quot-Notify-me-when-this-item-becomes-available-quot/td-p/34678768",
+    "title": "Notify me when this item becomes available",
+    "source_type": "ebay_community",
+    "year": 2024,
+    "notes": "Feature request for notifications when out-of-stock items become available; saved search notifications sent daily"
+  },
+  {
+    "canonical_name": "Number of Bids",
+    "node_id": "number-of-bids",
+    "url": "https://www.ebay.com/help/buying/bidding/bidding-basics?id=4003",
+    "title": "Bidding basics",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Display showing count of bids on auction listings; clickable to view bid history"
+  },
+  {
+    "canonical_name": "Offer Accepted",
+    "node_id": "offer-accepted",
+    "url": "https://www.ebay.com/help/buying/buy-now/making-offer?id=4160",
+    "title": "Making an offer",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Notification status when seller accepts buyer's Best Offer; item remains active until payment"
+  },
+  {
+    "canonical_name": "Offer Declined",
+    "node_id": "offer-declined",
+    "url": "https://www.ebay.com/help/buying/buy-now/making-offer?id=4160",
+    "title": "Making an offer",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Status notification when seller declines buyer's Best Offer; cannot be deleted from bids/offers tab"
+  },
+  {
+    "canonical_name": "Offer Expires",
+    "node_id": "offer-expires",
+    "url": "https://www.ebay.com/help/buying/buy-now/making-offer?id=4160",
+    "title": "Making an offer",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Notification when a Best Offer reaches expiration time without acceptance; offers typically expire in 48 hours"
+  },
+  {
+    "canonical_name": "Offer History",
+    "node_id": "offer-history",
+    "url": "https://www.ebay.com/help/selling/listings/selling-buy-now/adding-best-offer-listing?id=4144",
+    "title": "Adding Best Offer to your listing",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Record of all offers sent and received for a listing; viewable by sellers in Seller Hub"
+  },
+  {
+    "canonical_name": "Offer Sent",
+    "node_id": "offer-sent",
+    "url": "https://www.ebay.com/help/buying/buy-now/making-offer?id=4160",
+    "title": "Making an offer",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Confirmation status displayed when buyer submits Best Offer to seller"
+  },
+  {
+    "canonical_name": "Offers Received",
+    "node_id": "offers-received",
+    "url": "https://www.ebay.com/help/selling/listings/selling-buy-now/adding-best-offer-listing?id=4144",
+    "title": "Adding Best Offer to your listing",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Seller view showing all incoming Best Offers from buyers; managed through Seller Hub"
+  },
+  {
+    "canonical_name": "Offers Sent",
+    "node_id": "offers-sent",
+    "url": "https://www.ebay.com/help/buying/buy-now/making-offer?id=4160",
+    "title": "Making an offer",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Buyer view tracking all outgoing Best Offers; accessible through My eBay bids and offers section"
+  },
+  {
+    "canonical_name": "Offers to Watchers",
+    "node_id": "offers-to-watchers",
+    "url": "https://www.ebay.com/help/selling/listings/selling-buy-now/sending-offers-buyers?id=4148",
+    "title": "Sending offers to buyers",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Seller tool allowing discount offers to buyers who watch or add items to cart; requires minimum 5% discount"
+  },
+  {
+    "canonical_name": "Offers to Watchers",
+    "node_id": "offers-to-watchers-multi-market",
+    "url": "https://www.ebay.com/help/selling/listings/selling-buy-now/sending-offers-buyers?id=4148",
+    "title": "Sending offers to buyers",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Multi-market variant of Offers to Watchers; available across eBay marketplaces globally"
+  },
+  {
+    "canonical_name": "Offsite Ads",
+    "node_id": "offsite-ads-opt-out",
+    "url": "https://www.ebay.com/sellercenter/growth/promoted-listings/offsite-ads",
+    "title": "Offsite Ads",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Opt-in advertising program promoting listings on external platforms; cost-per-click model"
+  },
+  {
+    "canonical_name": "Order Report",
+    "node_id": "order-report",
+    "url": "https://www.ebay.com/help/selling/managing-orders/order-reports?id=4811",
+    "title": "Order reports",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Downloadable CSV reports of seller transactions and order details from Seller Hub"
+  },
+  {
+    "canonical_name": "Order Updates",
+    "node_id": "order-updates",
+    "url": "https://www.ebay.com/help/buying/postage-delivery/tracking-delivery?id=4057",
+    "title": "Tracking your delivery",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Email and in-app notifications for order status changes including shipped, in transit, and delivered"
+  },
+  {
+    "canonical_name": "Out for Delivery",
+    "node_id": "out-for-delivery",
+    "url": "https://www.ebay.com/help/buying/postage-delivery/tracking-delivery?id=4057",
+    "title": "Tracking your delivery",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Shipping status notification indicating package is with carrier for final delivery"
+  },
+  {
+    "canonical_name": "Out of Stock Control",
+    "node_id": "out-of-stock-control",
+    "url": "https://developer.ebay.com/api-docs/sell/static/seller-accounts/configuring-seller-accounts.html",
+    "title": "Configuring seller accounts",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Inventory management tool for monitoring stock across multiple locations; available via API and MIP"
+  },
+  {
+    "canonical_name": "Outbid Alert",
+    "node_id": "outbid-alert",
+    "url": "https://www.ebay.com/help/buying/bidding/bidding-basics?id=4003",
+    "title": "Bidding basics",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Email notification sent to buyers when their auction bid has been surpassed by another bidder"
+  },
+  {
+    "canonical_name": "Outbid Notice",
+    "node_id": "outbid-notice",
+    "url": "https://www.ebay.com/help/buying/bidding/bidding-basics?id=4003",
+    "title": "Bidding basics",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "In-app and web notification showing buyer has been outbid on auction item"
+  },
+  {
+    "canonical_name": "Pay in 4",
+    "node_id": "pay-in-4",
+    "url": "https://www.ebay.com/help/buying/paying-items/paying-klarna?id=5338",
+    "title": "Paying with Klarna",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Installment payment option through PayPal and Klarna; splits purchase into four interest-free payments"
+  },
+  {
+    "canonical_name": "Payment Failed",
+    "node_id": "payment-failed",
+    "url": "https://www.ebay.com/help/buying/paying-items/resolving-payment-issues?id=4104",
+    "title": "Resolving payment issues",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Order status notification when payment processing encounters error or is declined"
+  },
+  {
+    "canonical_name": "Payment Pending",
+    "node_id": "payment-pending",
+    "url": "https://www.ebay.com/help/buying/paying-items/resolving-payment-issues?id=4104",
+    "title": "Resolving payment issues",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Temporary status displayed while payment authorization is being verified"
+  },
+  {
+    "canonical_name": "Payment Processing",
+    "node_id": "payment-processing",
+    "url": "https://www.ebay.com/help/buying/paying-items/paying-ebay-purchases?id=4107",
+    "title": "Paying for eBay purchases",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Active status showing payment is being processed through eBay's payment system"
+  },
+  {
+    "canonical_name": "Payment Received",
+    "node_id": "payment-received",
+    "url": "https://www.ebay.com/help/selling/getting-paid-items-youve-sold/getting-paid-items-youve-sold?id=4155",
+    "title": "Getting paid for items you've sold",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Confirmation notification to seller that buyer's payment has been successfully processed"
+  },
+  {
+    "canonical_name": "Phone Support",
+    "node_id": "phone-support",
+    "url": "https://www.ebay.com/help/contact?id=4006",
+    "title": "Contact eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Customer service channel for resolving issues via telephone; availability varies by account type"
+  },
+  {
+    "canonical_name": "Photo Background Removal",
+    "node_id": "photo-background-removal",
+    "url": "https://innovation.ebayinc.com/stories/ebay-uses-computer-vision-to-enable-sellers-to-create-cleaner-images/",
+    "title": "eBay Uses Computer Vision to Enable Sellers to Create Cleaner Images",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "AI-powered image cleanup tool removing backgrounds from product photos; available in mobile app for iOS and Android"
+  },
+  {
+    "canonical_name": "Picture Zoom",
+    "node_id": "picture-zoom",
+    "url": "https://www.ebay.com/help/selling/listings/creating-managing-listings/adding-pictures-listings?id=4148",
+    "title": "Adding pictures to your listings",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Interactive image viewer allowing buyers to magnify product photos for detailed inspection"
+  },
+  {
+    "canonical_name": "Positive Feedback Percentage",
+    "node_id": "positive-feedback-percentage",
+    "url": "https://www.ebay.com/help/buying/resolving-issues-sellers/seller-ratings?id=4023",
+    "title": "Seller ratings",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Percentage metric showing proportion of positive feedback received; displayed beneath username on listings"
+  },
+  {
+    "canonical_name": "Premium Placement",
+    "node_id": "premium-placement",
+    "url": "https://www.ebay.com/sellercenter/growth/promoted-listings/promoted-listings-advanced",
+    "title": "Promoted Listings Advanced",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Priority strategy advertising providing preferred access to top ad slots; cost-per-click pricing model"
+  },
+  {
+    "canonical_name": "Price Alert",
+    "node_id": "price-alert",
+    "url": "https://www.ebay.com/help/buying/search-tips/saving-searches-getting-search-alerts?id=4051",
+    "title": "Saving searches and getting search alerts",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Email notification sent when watched items decrease in price or matching items appear"
+  },
+  {
+    "canonical_name": "Price Drop Alert",
+    "node_id": "price-drop-alert",
+    "url": "https://www.ebay.com/help/buying/search-tips/saving-searches-getting-search-alerts?id=4051",
+    "title": "Saving searches and getting search alerts",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Notification alerting buyers when watched item prices are reduced by seller"
+  },
+  {
+    "canonical_name": "Price Drop Alerts",
+    "node_id": "price-drop-alerts",
+    "url": "https://www.ebay.com/help/buying/search-tips/saving-searches-getting-search-alerts?id=4051",
+    "title": "Saving searches and getting search alerts",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Plural variant of Price Drop Alert; system-wide notification feature for price reductions"
+  },
+  {
+    "canonical_name": "Price Range",
+    "node_id": "price-range",
+    "url": "https://www.ebay.com/help/buying/search-tips/searching-items-ebay?id=4049",
+    "title": "Searching for items on eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Search filter allowing buyers to set minimum and maximum price boundaries for results"
+  },
+  {
+    "canonical_name": "Price Suggestions",
+    "node_id": "price-suggestions",
+    "url": "https://www.ebay.com/help/selling/listings/creating-managing-listings/setting-price-items?id=4179",
+    "title": "Setting the price for your items",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "AI-powered pricing recommendations based on market data and sold comparables; shown during listing creation"
+  },
+  {
+    "canonical_name": "Print Coupons",
+    "node_id": "print-coupons",
+    "url": "https://www.ebay.com/help/selling/selling-your-items/selling-items-promotional-tools/creating-using-coupons?id=4799",
+    "title": "Creating and using coupons",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Legacy feature for physical coupon codes; largely replaced by digital coded coupons"
+  },
+  {
+    "canonical_name": "Private Offers",
+    "node_id": "private-offers",
+    "url": "https://www.ebay.com/help/selling/listings/selling-buy-now/sending-offers-buyers?id=4148",
+    "title": "Sending offers to buyers",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Seller-initiated discount offers sent directly to specific buyers; not publicly visible"
+  },
+  {
+    "canonical_name": "Pro Seller Program",
+    "node_id": "pro-seller-program",
+    "url": "https://community.ebay.com/t5/Selling/Pro-Seller-Program-Invitation/td-p/35152356",
+    "title": "Pro Seller Program Invitation",
+    "source_type": "ebay_community",
+    "year": 2024,
+    "notes": "Invitation-only premium support program offering dedicated account managers and listing optimization"
+  },
+  {
+    "canonical_name": "Pro Trader Program",
+    "node_id": "pro-trader-program",
+    "url": "https://www.ebay.co.uk/help/buying-selling/selling/fees-credits-invoices/business-sellers?id=4104",
+    "title": "Business sellers",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "UK and EU program designation for high-volume professional sellers with business seller status"
+  },
+  {
+    "canonical_name": "Prohibited & Restricted Items by Country",
+    "node_id": "prohibited-restricted-items-by-country",
+    "url": "https://www.ebay.com/help/policies/prohibited-restricted-items/prohibited-restricted-items?id=4207",
+    "title": "Prohibited and restricted items",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Policy documentation listing items banned or regulated on eBay marketplaces by geographic region"
+  },
+  {
+    "canonical_name": "Promote Similar Items",
+    "node_id": "promote-similar-items",
+    "url": "https://www.ebay.com/help/buying/finding-items/finding-similar-items?id=4048",
+    "title": "Finding similar items",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Algorithm-driven recommendation module showing comparable listings on item view pages"
+  },
+  {
+    "canonical_name": "Promoted Brand",
+    "node_id": "promoted-brand",
+    "url": "https://www.ebay.com/sellercenter/growth/ebay-advertising/promoted-listings",
+    "title": "Promoted Listings",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Brand-level advertising campaign promoting all items from specific manufacturer or trademark"
+  },
+  {
+    "canonical_name": "Promoted to International",
+    "node_id": "promoted-to-international",
+    "url": "https://www.ebay.com/help/selling/listings/creating-managing-listings/international-trading?id=4104",
+    "title": "International trading",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Advertising extension promoting domestic listings to buyers in international markets"
+  },
+  {
+    "canonical_name": "ProSeller Growth Program",
+    "node_id": "proseller-growth-program",
+    "url": "https://community.ebay.com/t5/Selling/Pro-Seller-Program-Invitation/td-p/35152356",
+    "title": "Pro Seller Program Invitation",
+    "source_type": "ebay_community",
+    "year": 2024,
+    "notes": "Growth-focused variant of Pro Seller Program emphasizing business expansion and category optimization"
+  },
+  {
+    "canonical_name": "Reserve Met",
+    "node_id": "reserve-met",
+    "url": "https://pages.ebay.com/ebaymotors/help/sell/contextual/inframe/reserve-price.html",
+    "title": "Reserve Price",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Auction status indicating highest bid has reached or exceeded seller's minimum acceptable price"
+  },
+  {
+    "canonical_name": "Reserve Not Met",
+    "node_id": "reserve-not-met",
+    "url": "https://pages.ebay.com/ebaymotors/help/sell/contextual/inframe/reserve-price.html",
+    "title": "Reserve Price",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Auction status showing current highest bid is below seller's reserve price threshold"
+  }
+]

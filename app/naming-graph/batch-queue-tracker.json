@@ -1,0 +1,153 @@
+{
+  "created_at": "2026-04-21T01:26:51.747Z",
+  "total_batches": 18,
+  "total_programs": 867,
+  "current_evidence": 670,
+  "target_coverage": 900,
+  "batches": [
+    {
+      "batch_number": 1,
+      "node_count": 50,
+      "status": "completed",
+      "agent_id": "a5cbfaa2902dc1de9",
+      "completed_at": "2026-04-21T01:28:06.923Z",
+      "evidence_found": 46
+    },
+    {
+      "batch_number": 2,
+      "node_count": 50,
+      "status": "completed",
+      "agent_id": null,
+      "completed_at": "2026-04-21T01:35:09.859Z",
+      "evidence_found": 19
+    },
+    {
+      "batch_number": 3,
+      "node_count": 50,
+      "status": "completed",
+      "agent_id": null,
+      "completed_at": "2026-04-21T01:35:10.271Z",
+      "evidence_found": 19
+    },
+    {
+      "batch_number": 4,
+      "node_count": 50,
+      "status": "completed",
+      "agent_id": null,
+      "completed_at": "2026-04-21T01:36:20.045Z",
+      "evidence_found": 38
+    },
+    {
+      "batch_number": 5,
+      "node_count": 50,
+      "status": "completed",
+      "agent_id": null,
+      "completed_at": "2026-04-21T01:37:21.194Z",
+      "evidence_found": 46
+    },
+    {
+      "batch_number": 6,
+      "node_count": 50,
+      "status": "completed",
+      "agent_id": null,
+      "completed_at": "2026-04-21T01:35:10.762Z",
+      "evidence_found": 24
+    },
+    {
+      "batch_number": 7,
+      "node_count": 50,
+      "status": "completed",
+      "agent_id": null,
+      "completed_at": "2026-04-21T01:40:47.253Z",
+      "evidence_found": 45
+    },
+    {
+      "batch_number": 8,
+      "node_count": 50,
+      "status": "completed",
+      "agent_id": null,
+      "completed_at": "2026-04-21T01:40:27.968Z",
+      "evidence_found": 35
+    },
+    {
+      "batch_number": 9,
+      "node_count": 50,
+      "status": "completed",
+      "agent_id": null,
+      "completed_at": "2026-04-21T01:41:13.662Z",
+      "evidence_found": 33
+    },
+    {
+      "batch_number": 10,
+      "node_count": 50,
+      "status": "completed",
+      "agent_id": null,
+      "completed_at": "2026-04-21T01:40:56.771Z",
+      "evidence_found": 34
+    },
+    {
+      "batch_number": 11,
+      "node_count": 50,
+      "status": "completed",
+      "agent_id": null,
+      "completed_at": "2026-04-21T01:41:17.100Z",
+      "evidence_found": 26
+    },
+    {
+      "batch_number": 12,
+      "node_count": 50,
+      "status": "completed",
+      "agent_id": null,
+      "completed_at": "2026-04-21T01:57:05.798Z",
+      "evidence_found": 32
+    },
+    {
+      "batch_number": 13,
+      "node_count": 50,
+      "status": "completed",
+      "agent_id": null,
+      "completed_at": "2026-04-21T01:47:56.642Z",
+      "evidence_found": 43
+    },
+    {
+      "batch_number": 14,
+      "node_count": 50,
+      "status": "completed",
+      "agent_id": null,
+      "completed_at": "2026-04-21T01:46:47.862Z",
+      "evidence_found": 29
+    },
+    {
+      "batch_number": 15,
+      "node_count": 50,
+      "status": "completed",
+      "agent_id": null,
+      "completed_at": "2026-04-21T02:01:02.413Z",
+      "evidence_found": 43
+    },
+    {
+      "batch_number": 16,
+      "node_count": 50,
+      "status": "completed",
+      "agent_id": null,
+      "completed_at": "2026-04-21T01:47:02.519Z",
+      "evidence_found": 44
+    },
+    {
+      "batch_number": 17,
+      "node_count": 50,
+      "status": "completed",
+      "agent_id": null,
+      "completed_at": "2026-04-21T01:47:22.602Z",
+      "evidence_found": 43
+    },
+    {
+      "batch_number": 18,
+      "node_count": 17,
+      "status": "completed",
+      "agent_id": null,
+      "completed_at": "2026-04-21T01:45:02.170Z",
+      "evidence_found": 22
+    }
+  ]
+}

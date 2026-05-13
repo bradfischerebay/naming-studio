@@ -1,0 +1,443 @@
+[
+  {
+    "canonical_name": "eBay",
+    "node_id": "ebay",
+    "url": "https://pages.ebay.com/welcome-to-ebay/",
+    "title": "Welcome to eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official eBay welcome page describing the marketplace"
+  },
+  {
+    "canonical_name": "eBay Motors",
+    "node_id": "ebay-motors",
+    "url": "https://pages.ebay.com/ebaymotors",
+    "title": "eBay Motors Site Map",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official eBay Motors marketplace for vehicles, parts, and accessories with guaranteed fit program"
+  },
+  {
+    "canonical_name": "Trading Card Hub",
+    "node_id": "collectibles-trading",
+    "url": "https://pages.ebay.com/tradinghub/",
+    "title": "Trading Card Hub",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official trading card hub with collection management, market value insights, and vault storage"
+  },
+  {
+    "canonical_name": "Luxury on eBay",
+    "node_id": "fashion-luxury",
+    "url": "https://www.ebay.com/b/Luxury-on-eBay/bn_7109710914",
+    "title": "Luxury on eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official luxury fashion and goods marketplace including watches, handbags, jewelry, and designer brands"
+  },
+  {
+    "canonical_name": "eBay Certified Open Box",
+    "node_id": "refurbished-open-box",
+    "url": "https://pages.ebay.com/openbox/",
+    "title": "eBay Certified Open Box | Save up to 60% on like-new products",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official program for open box items with one-year warranty, free shipping and returns"
+  },
+  {
+    "canonical_name": "eBay Refurbished Program",
+    "node_id": "refurbished-open-box",
+    "url": "https://www.ebay.com/sellercenter/ebay-for-business/ebay-refurbished-program",
+    "title": "eBay Refurbished Program",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official seller program for refurbished products with warranty coverage and quality requirements"
+  },
+  {
+    "canonical_name": "eBay Electronics & Technology",
+    "node_id": "electronics-technology",
+    "url": "https://pages.ebay.com/sellerinformation/growing/categorychanges/conelec.html",
+    "title": "eBay Category Changes: Consumer Electronics",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official consumer electronics category including computers, tablets, cameras, cell phones"
+  },
+  {
+    "canonical_name": "eBay Home & Garden",
+    "node_id": "home-garden",
+    "url": "https://pages.ebay.com/sellerinformation/growing/categorychanges/homegarden.html",
+    "title": "eBay Category Changes: Home & Garden",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official Home & Garden category with selling guide and resources"
+  },
+  {
+    "canonical_name": "eBay Business & Industrial",
+    "node_id": "business-industrial",
+    "url": "https://pages.ebay.com/sellerinformation/growing/categorychanges/Business.html",
+    "title": "eBay Category Changes: Business & Industrial",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official Business & Industrial category including equipment, office supplies, MRO supplies"
+  },
+  {
+    "canonical_name": "Platform-Wide Trust & Safety",
+    "node_id": "trust-safety",
+    "url": "https://www.ebay.com/sellercenter/selling/seller-protections",
+    "title": "Seller protections",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official platform-wide seller protection policies and automated detection systems"
+  },
+  {
+    "canonical_name": "eBay Advertising",
+    "node_id": "ebay-advertising",
+    "url": "https://www.ebay.com/sellercenter/growth/ebay-advertising/promoted-listings",
+    "title": "Promoted Listings",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official advertising platform including Promoted Listings Standard, Advanced, and Promoted Stores"
+  },
+  {
+    "canonical_name": "eBay Shipping & Logistics",
+    "node_id": "shipping-logistics",
+    "url": "https://www.ebay.com/sellercenter/shipping",
+    "title": "Shipping | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official shipping services including eBay Labels and eBay International Shipping"
+  },
+  {
+    "canonical_name": "Seller Hub",
+    "node_id": "seller-tools-hub",
+    "url": "https://www.ebay.com/sellercenter/selling/how-to-sell/seller-hub",
+    "title": "Seller Hub",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official all-in-one platform for listing, managing orders, marketing tools, and business performance tracking"
+  },
+  {
+    "canonical_name": "eBay Payments & Checkout",
+    "node_id": "payments-checkout",
+    "url": "https://www.ebay.com/sellercenter/payments-and-fees/payments-and-earnings",
+    "title": "Payments and earnings",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official managed payments system with flexible payout schedules and multiple payment methods"
+  },
+  {
+    "canonical_name": "eBay Live",
+    "node_id": "live-commerce",
+    "url": "https://pages.ebay.com/ebaylive-faq/",
+    "title": "eBay Live FAQ",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official livestream shopping experience for collectibles and luxury items with interactive bidding"
+  },
+  {
+    "canonical_name": "Discovery & Buyer Experience",
+    "node_id": "discovery-buyer-experience",
+    "url": "https://pages.ebay.com/welcome-to-ebay/",
+    "title": "Welcome to eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official buyer experience including browsing, search, and category discovery features"
+  },
+  {
+    "canonical_name": "eBay Academy",
+    "node_id": "community-education",
+    "url": "https://www.ebay.com/sellercenter/ebay-for-business/ebay-academy",
+    "title": "eBay Academy",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official free educational courses for sellers with achievement badges and community learning"
+  },
+  {
+    "canonical_name": "eBay Events & Campaigns",
+    "node_id": "events-campaigns",
+    "url": "https://www.ebay.com/sellercenter/growth/seller-hub-discounts/sale-events",
+    "title": "Sale events",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official marketing tools for sale events, seasonal campaigns, and eBay Open seller conference"
+  },
+  {
+    "canonical_name": "eBay Developers Program",
+    "node_id": "developer-platform",
+    "url": "https://developer.ebay.com/",
+    "title": "eBay Developers Program",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official developer platform with Buy, Sell, Commerce, Trading, and Analytics APIs"
+  },
+  {
+    "canonical_name": "Advertising",
+    "node_id": "advertising",
+    "url": "https://www.ebay.com/sellercenter/growth/promoted-listings",
+    "title": "eBay Advertising | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Promoted Listings platform with cost-per-sale and cost-per-click strategies"
+  },
+  {
+    "canonical_name": "Analytics API",
+    "node_id": "analytics",
+    "url": "https://developer.ebay.com/api-docs/developer/analytics/overview.html",
+    "title": "Analytics API Overview",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official API for retrieving call-limit data and quotas for RESTful and Trading APIs"
+  },
+  {
+    "canonical_name": "Auction Format",
+    "node_id": "auction",
+    "url": "https://pages.ebay.com/sell/choosingformats/",
+    "title": "Choose a Selling Format",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official auction-style listing format with bidding for collectibles and exclusive items"
+  },
+  {
+    "canonical_name": "Authenticity Guarantee",
+    "node_id": "authentication",
+    "url": "https://pages.ebay.com/authenticity-guarantee-seller/",
+    "title": "eBay Authenticity Guarantee",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official multi-point inspection program for sneakers, watches, jewelry, handbags, and trading cards"
+  },
+  {
+    "canonical_name": "Browse API",
+    "node_id": "browse",
+    "url": "https://developer.ebay.com/api-docs/buy/browse/overview.html",
+    "title": "Browse API Overview",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official Buy API for building browsing experiences where consumers can purchase products"
+  },
+  {
+    "canonical_name": "Bulk Listing Tools",
+    "node_id": "bulk-tools",
+    "url": "https://www.ebay.com/sellercenter/listings/ebay-bulk-listing-tools",
+    "title": "eBay bulk listing tools",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official Seller Hub Reports for uploading and managing inventory in CSV/XLS format"
+  },
+  {
+    "canonical_name": "Buyer Programs",
+    "node_id": "buyer-programs",
+    "url": "https://www.ebay.com/help/buying",
+    "title": "Buying | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official buyer protection programs including Money Back Guarantee, Vehicle Protection Plan, and Business Equipment Purchase Protection"
+  },
+  {
+    "canonical_name": "Category",
+    "node_id": "category",
+    "url": "https://pages.ebay.com/sellerinformation/news/fallupdate16/category-and-item.html",
+    "title": "Category and Classification",
+    "source_type": "ebay_official",
+    "year": 2016,
+    "notes": "Official category structure and classification system for eBay marketplace"
+  },
+  {
+    "canonical_name": "eBay for Charity",
+    "node_id": "charity",
+    "url": "https://pages.ebay.com/givingworks/about.html",
+    "title": "eBay Giving Works | About Charity Auctions",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official charity program (formerly Giving Works) for donating proceeds to nonprofit organizations"
+  },
+  {
+    "canonical_name": "Collectibles",
+    "node_id": "collectibles",
+    "url": "https://pages.ebay.com/sellerinformation/growing/categorychanges/collectibles.html",
+    "title": "eBay Category Changes: Collectibles",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official collectibles category with collection management and market value insights"
+  },
+  {
+    "canonical_name": "Communication",
+    "node_id": "communication",
+    "url": "https://pages.ebay.com/na/en-us/buyandsell/mymessages/",
+    "title": "eBay: All About My eBay - My Messages",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official messaging system for buyer-seller communication with AI Assistant features"
+  },
+  {
+    "canonical_name": "Community",
+    "node_id": "community",
+    "url": "https://www.ebay.com/sellercenter/ebay-for-business/small-business-central",
+    "title": "Small business central",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official community resources connecting sellers through in-person and virtual eBay events"
+  },
+  {
+    "canonical_name": "Customer Service",
+    "node_id": "customer-service",
+    "url": "https://help.ebay.com/",
+    "title": "eBay Customer Service",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official customer service portal for buying, selling, and account questions with chat and phone support"
+  },
+  {
+    "canonical_name": "Developer",
+    "node_id": "developer",
+    "url": "https://developer.ebay.com/develop",
+    "title": "Develop | eBay Developers Program",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official developer resources including API documentation, tools, and application management"
+  },
+  {
+    "canonical_name": "Discovery",
+    "node_id": "discovery",
+    "url": "https://pages.ebay.com/welcome-to-ebay/",
+    "title": "Welcome to eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Product discovery features including search, browse, and category navigation"
+  },
+  {
+    "canonical_name": "Education",
+    "node_id": "education",
+    "url": "https://www.ebay.com/sellercenter/resources",
+    "title": "Resources | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official educational resources including eBay Academy courses and seller guides"
+  },
+  {
+    "canonical_name": "Feedback",
+    "node_id": "feedback",
+    "url": "https://pages.ebay.com/services/forum/changes.html",
+    "title": "Feedback profiles",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official feedback system for building buyer and seller reputation with ratings and comments"
+  },
+  {
+    "canonical_name": "eBay Impact",
+    "node_id": "impact",
+    "url": "https://www.ebayinc.com/impact/",
+    "title": "eBay Impact",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official sustainability and social impact initiatives including recommerce, renewable energy, and circular economy programs"
+  },
+  {
+    "canonical_name": "eBay International Shipping",
+    "node_id": "international",
+    "url": "https://pages.ebay.com/international-shipping/",
+    "title": "eIS - eBay International Shipping",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official international shipping program managing customs, duties, and cross-border logistics"
+  },
+  {
+    "canonical_name": "Inventory Management",
+    "node_id": "inventory",
+    "url": "https://www.ebay.com/sellercenter/listings/listing-tools",
+    "title": "Listing tools | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official inventory management tools including Inventory API and Seller Hub inventory tracking"
+  },
+  {
+    "canonical_name": "Listing",
+    "node_id": "listing",
+    "url": "https://www.ebay.com/sellercenter/listings",
+    "title": "Listings | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official listing creation and management platform with templates and bulk tools"
+  },
+  {
+    "canonical_name": "Listing Features",
+    "node_id": "listing-features",
+    "url": "https://pages.ebay.com/sellerinformation/news/springupdate2015/fees-and-features.html",
+    "title": "Fees and Features",
+    "source_type": "ebay_official",
+    "year": 2015,
+    "notes": "Optional listing upgrade features including Gallery Plus and other paid enhancements"
+  },
+  {
+    "canonical_name": "Listing Formats",
+    "node_id": "listing-formats",
+    "url": "https://pages.ebay.com/sell/choosingformats/",
+    "title": "Choose a Selling Format",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Auction-style and fixed price listing format options"
+  },
+  {
+    "canonical_name": "Listing Policies",
+    "node_id": "listing-policies",
+    "url": "https://pages.ebay.com/help/policies/listing-ov.html",
+    "title": "Listing policies",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official policies including prohibited and restricted items regulations"
+  },
+  {
+    "canonical_name": "Listing Tools",
+    "node_id": "listing-tools",
+    "url": "https://www.ebay.com/sellercenter/listings/listing-tools",
+    "title": "Listing tools | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official tools for creating and managing listings including bulk tools and templates"
+  },
+  {
+    "canonical_name": "Live",
+    "node_id": "live",
+    "url": "https://www.ebay.com/sellercenter/selling/ebay-live",
+    "title": "eBay Live | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Interactive livestream shopping for collectibles and luxury categories (currently in beta)"
+  },
+  {
+    "canonical_name": "Marketing",
+    "node_id": "marketing",
+    "url": "https://www.ebay.com/sellercenter/growth/promotion-strategies",
+    "title": "Promotion strategies",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Official marketing tools including discounts, coupons, sale events, and promotional campaigns"
+  },
+  {
+    "canonical_name": "Messages",
+    "node_id": "messages",
+    "url": "https://pages.ebay.com/na/en-us/buyandsell/mymessages/",
+    "title": "eBay: All About My eBay - My Messages",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Messaging platform for buyer-seller communication with conversation threading and AI Assistant"
+  },
+  {
+    "canonical_name": "Motors",
+    "node_id": "motors",
+    "url": "https://pages.ebay.com/motors/services/difference/getting_help.html",
+    "title": "The eBay Motors Difference",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Specialized marketplace for vehicles, parts, and accessories with dealer services and guaranteed fit"
+  },
+  {
+    "canonical_name": "Orders",
+    "node_id": "orders",
+    "url": "https://www.ebay.com/sellercenter/selling/how-to-sell/seller-hub",
+    "title": "Seller Hub",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Order management system in Seller Hub for processing sales, printing labels, and managing returns"
+  }
+]

@@ -67,15 +67,7 @@ export async function analyzeLandscape(
     }
   }
 
-  // TODO: Implement actual web search
-  // For now, synthesize from brief + DeepSights context
-  const webSearchResults = deepSightsContext || `No web search results available (not yet implemented).
-
-  To enable full landscape research:
-  1. Integrate web search API (Brave, Google, etc.)
-  2. Fetch internal eBay portfolio documents
-  3. Execute 3 searches per the original workflow
-  `;
+  const webSearchResults = deepSightsContext || "No external market data available. Synthesize landscape from the brief content alone.";
 
   const briefJson = JSON.stringify(brief, null, 2);
   const prompt = buildSynthesizeLandscapePrompt(briefJson, webSearchResults);
@@ -113,18 +105,6 @@ export async function analyzeLandscape(
       },
     };
   }
-}
-
-/**
- * Extract category term from brief for web searches
- */
-function extractCategoryTerm(brief: CompiledBrief): string {
-  const description = brief.offering_description || "";
-
-  // Simple extraction - in production, use LLM
-  // This would be done by the web search step in the original workflow
-  const keywords = description.toLowerCase().match(/\b(shipping|pricing|payment|listing|selling|buying)\b/);
-  return keywords ? keywords[0] : "feature";
 }
 
 /**

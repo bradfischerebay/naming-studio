@@ -1,0 +1,877 @@
+registry_id,classification,evidence_quality,action_required,notes_summary,scan_date,review_complete
+1-day-handling,existing_validated,A,,Seller handling commitment badge — live,2026-04-29,yes
+1099-k-tax-form,existing_validated,A,,Legal/policy document — 1099-K Tax Form maintained by eBay legal/compliance team,2026-04-29,yes
+2-step-verification,existing_validated,B,,Active platform feature — 2-Step Verification (parent: two-factor-authentication). Consistent with current eBay function,2026-04-29,yes
+30-day-returns,existing_validated,A,,Return policy label — live,2026-04-29,yes
+360-spin,existing_validated,B,,Active platform feature — 360 Spin (parent: listing-designer). Consistent with current eBay functionality.,2026-04-29,yes
+60-day-returns,existing_validated,A,,Return policy label — live,2026-04-29,yes
+about-me,existing_validated,A,,"About Me seller profile page — live, free HTML page on all eBay markets",2026-04-29,yes
+above-standard,existing_validated,B,,Active platform feature — Above Standard (parent: seller-performance-standards). Consistent with current eBay functional,2026-04-29,yes
+accept-offer,existing_validated,B,,Active platform feature — Accept Offer (parent: best-offer). Consistent with current eBay functionality.,2026-04-29,yes
+accept-return,existing_validated,B,,Active platform feature — Accept Return (parent: sellertools). Consistent with current eBay functionality.,2026-04-29,yes
+account-management-plus,existing_validated,A,,Enterprise seller service — live,2026-04-29,yes
+account-management-premium,existing_validated,A,,Enterprise seller service — live,2026-04-29,yes
+account-security,existing_validated,A,,Account security program — live,2026-04-29,yes
+account-settings,existing_validated,B,,Active platform feature — Account Settings (parent: my-ebay). Consistent with current eBay functionality.,2026-04-29,yes
+account-suspended,existing_validated,B,,Active platform feature — Account Suspended (parent: sellertools). Consistent with current eBay functionality.,2026-04-29,yes
+account-suspension,existing_validated,B,,Active platform feature — Account Suspension (parent: trust). Consistent with current eBay functionality.,2026-04-29,yes
+active-content-policy,existing_validated,A,,Legal/policy document — Active Content Policy maintained by eBay legal/compliance team,2026-04-29,yes
+active-listings,existing_validated,B,,Active platform feature — Active Listings (parent: seller-hub). Consistent with current eBay functionality.,2026-04-29,yes
+ad-attribution,existing_validated,B,,Active platform feature — Ad Attribution (parent: promoted-listings). Consistent with current eBay functionality.,2026-04-29,yes
+ad-fee,existing_validated,B,,Active platform feature — Ad Fee (parent: promoted-listings). Consistent with current eBay functionality.,2026-04-29,yes
+ad-rate-recommendation,existing_validated,B,,Active platform feature — Ad Rate Recommendation (parent: promoted-listings). Consistent with current eBay functionality,2026-04-29,yes
+add-payment-method,existing_validated,B,,Active platform feature — Add Payment Method (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+add-to-cart,existing_validated,B,,Active platform feature — Add to Cart (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+add-to-watch-list,existing_validated,B,,Active platform feature — Add to Watch List (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+add-to-watchlist,existing_validated,B,,Active platform feature — Add to Watchlist (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+advanced-listing-tool,existing_validated,B,,Active platform feature — Advanced Listing Tool (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+advanced-search,existing_validated,B,,Active platform feature — Advanced Search (parent: search). Consistent with current eBay functionality.,2026-04-29,yes
+advertising,existing_validated,A,,Structural hierarchy node — Advertising is valid taxonomy entry,2026-04-29,yes
+ai-banner,existing_validated,B,,Active platform feature — AI Banner (parent: ebay-stores). Consistent with current eBay functionality.,2026-04-29,yes
+ai-snap,existing_validated,B,,Active platform feature — AI Snap (parent: magical-listing). Consistent with current eBay functionality.,2026-04-29,yes
+analytics,existing_validated,A,,Structural hierarchy node — Analytics is valid taxonomy entry,2026-04-29,yes
+anniversary-sale,existing_validated,A,,Recurring eBay sale event — live,2026-04-29,yes
+antiques,existing_validated,A,,Antiques vertical — live,2026-04-29,yes
+app-store-promotion,existing_validated,C,,App Store Promotion is a generic campaign type for promoting eBay app downloads via Apple App Store / Google Play Store.,2026-04-29,yes
+apple-pay,existing_validated,B,,Active platform feature — Apple Pay (parent: payments). Consistent with current eBay functionality.,2026-04-29,yes
+ask-question,existing_validated,B,,Active platform feature — Ask Question (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+ask-seller-question,existing_validated,B,,Active platform feature — Ask Seller a Question (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+assured-fit,duplicate,A,"Merge: Mark assured-fit as regional alias of ebay-guaranteed-fit; add market variants to ebay-guaranteed-fit node (US: Guaranteed Fit, UK: Assured Fit, DE: Fahrzeugteile-Versprechen)","Assured Fit IS eBay Guaranteed Fit with UK regional branding. Regional names: US = 'eBay Guaranteed Fit', UK = 'eBay Ass",2026-04-29,yes
+aste-di-beneficenza,existing_validated,A,,Italian charity auctions — live on eBay Italy,2026-04-29,yes
+auction,existing_validated,A,,Structural hierarchy node — Auction is valid taxonomy entry,2026-04-29,yes
+auction-ended,existing_validated,B,,Active platform feature — Auction Ended (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+auction-format,existing_validated,B,,Active platform feature — Auction Format (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+auction-style-listings,existing_validated,B,,Active platform feature — Auction-Style Listings (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+audience-targeting,existing_validated,B,,Active platform feature — Audience Targeting (parent: promoted-listings). Consistent with current eBay functionality.,2026-04-29,yes
+augmented-reality-preview,existing_validated,B,,Active platform feature — Augmented Reality Preview (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+australia-post-express,existing_validated,B,,Active platform feature — Australia Post Express (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+authentication,existing_validated,A,,Structural hierarchy node — Authentication is valid taxonomy entry,2026-04-29,yes
+authenticator-app,existing_validated,B,,Active platform feature — Authenticator App (parent: two-factor-authentication). Consistent with current eBay functional,2026-04-29,yes
+authenticity-guarantee,existing_validated,A,,Core T1 brand — live across 6 authenticated categories,2026-04-29,yes
+authenticity-guarantee-filter,existing_validated,B,,Active platform feature — Authenticity Guarantee Filter (parent: authenticity-guarantee). Consistent with current eBay f,2026-04-29,yes
+authenticity-guarantee-handbags,existing_validated,A,,AG - Handbags — live,2026-04-29,yes
+authenticity-guarantee-jewelry,existing_validated,A,,AG - Jewelry — live,2026-04-29,yes
+authenticity-guarantee-sneakers,existing_validated,A,,AG - Sneakers — live,2026-04-29,yes
+authenticity-guarantee-streetwear,existing_validated,A,,AG - Streetwear — live,2026-04-29,yes
+authenticity-guarantee-trading-cards,existing_validated,A,,AG - Trading Cards — live,2026-04-29,yes
+authenticity-guarantee-watches,existing_validated,A,,AG - Watches — live,2026-04-29,yes
+authorized-seller-filter,existing_validated,B,,Active platform feature — Authorized Seller Filter (parent: trust). Consistent with current eBay functionality.,2026-04-29,yes
+auto-pay,existing_validated,B,,Active platform feature — Auto Pay (parent: payments). Consistent with current eBay functionality.,2026-04-29,yes
+auto-pricing,existing_validated,B,,Active platform feature — Auto Pricing (parent: pricing-tools). Consistent with current eBay functionality.,2026-04-29,yes
+auto-relist,existing_validated,B,,Active platform feature — Auto-Relist (parent: sellertools). Consistent with current eBay functionality.,2026-04-29,yes
+automated-promoted-listings-campaigns,existing_validated,A,,Automated Promoted Listings Campaigns LIVE. Launched March 2025. Rule-based automation for PL campaigns with auto ad rat,2026-04-29,yes
+automatic-bidding,existing_validated,B,,Active platform feature — Automatic Bidding (parent: auction). Consistent with current eBay functionality.,2026-04-29,yes
+automatic-relisting,existing_validated,B,,Active platform feature — Automatic Relisting (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+awaiting-shipment,existing_validated,B,,Active platform feature — Awaiting Shipment (parent: seller-hub). Consistent with current eBay functionality.,2026-04-29,yes
+back-in-stock,existing_validated,B,,Active platform feature — Back in Stock (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+back-to-school,existing_validated,A,,Seasonal campaign — recurring,2026-04-29,yes
+background-enhancement,existing_validated,B,,Active platform feature — Background Enhancement (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+barcode-scanner,existing_validated,B,,Active platform feature — Barcode Scanner (parent: ebay-selling-app). Consistent with current eBay functionality.,2026-04-29,yes
+below-standard,existing_validated,B,,Active platform feature — Below Standard (parent: seller-performance-standards). Consistent with current eBay functional,2026-04-29,yes
+best-match,existing_validated,B,,Active platform feature — Best Match (parent: search). Consistent with current eBay functionality.,2026-04-29,yes
+best-match-sort,existing_validated,B,,Active platform feature — Best Match Sort (parent: search). Consistent with current eBay functionality.,2026-04-29,yes
+best-offer,existing_validated,A,,Core transaction feature — live,2026-04-29,yes
+bid-increment,existing_validated,B,,Active platform feature — Bid Increment (parent: auction-format). Consistent with current eBay functionality.,2026-04-29,yes
+bid-now,existing_validated,B,,Active platform feature — Bid Now (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+bid-shielding-policy,existing_validated,A,,Legal/policy document — Bid Shielding Policy maintained by eBay legal/compliance team,2026-04-29,yes
+bidding,existing_validated,B,,Active platform feature — Bidding (parent: my-ebay). Consistent with current eBay functionality.,2026-04-29,yes
+bids-and-offers,existing_validated,B,,Active platform feature — Bids & Offers (parent: my-ebay). Consistent with current eBay functionality.,2026-04-29,yes
+billpoint,existing_legacy_validated,A,,"Billpoint — payment solution from 1999-2003, correctly marked legacy. Phased out after PayPal acquisition.",2026-04-29,yes
+biometric-verification,existing_validated,B,,Active platform feature — Biometric Verification (parent: passkeys). Consistent with current eBay functionality.,2026-04-29,yes
+black-friday-deals,existing_validated,A,,Black Friday — recurring,2026-04-29,yes
+block-buyer-list,existing_validated,B,,Active platform feature — Block Buyer List (parent: seller-hub). Consistent with current eBay functionality.,2026-04-29,yes
+block-buyers,existing_validated,B,,Active platform feature — Block Buyers (parent: seller-tools). Consistent with current eBay functionality.,2026-04-29,yes
+bold,existing_legacy_validated,B,,eBay listing upgrade Bold — retired listing enhancement,2026-04-29,yes
+bold-title,existing_legacy_validated,B,,eBay listing upgrade Bold Title — retired,2026-04-29,yes
+bons-plans,existing_validated,B,,French deals program — live on eBay France,2026-04-29,yes
+bons-plans-fr,existing_validated,A,,French deals campaign — live,2026-04-29,yes
+boost-buyer-engagement,existing_validated,B,,Active platform feature — Boost Buyer Engagement (parent: marketing). Consistent with current eBay functionality.,2026-04-29,yes
+bounce-rate,existing_validated,B,,Active platform feature — Bounce Rate (parent: analytics). Consistent with current eBay functionality.,2026-04-29,yes
+brand-funded-promoted-listings-priority,existing_validated,B,,Brand-funded PLP — live,2026-04-29,yes
+brand-funded-promoted-stores,existing_validated,B,,Brand-funded Promoted Stores — live,2026-04-29,yes
+brand-identity,existing_validated,B,,Active platform feature — Brand Identity (parent: sellertools). Consistent with current eBay functionality.,2026-04-29,yes
+brand-name,existing_validated,B,,Active platform feature — Brand Name (parent: sellertools). Consistent with current eBay functionality.,2026-04-29,yes
+brand-outlet,existing_validated,A,,Brand Outlet shopping destination — live,2026-04-29,yes
+browse,existing_validated,A,,Structural hierarchy node — Browse is valid taxonomy entry,2026-04-29,yes
+browse-categories,existing_validated,B,,Active platform feature — Browse Categories (parent: search). Consistent with current eBay functionality.,2026-04-29,yes
+bulk-edit,existing_validated,B,,Active platform feature — Bulk Edit (parent: bulk-listing-tools). Consistent with current eBay functionality.,2026-04-29,yes
+bulk-listing,existing_validated,B,,Active platform feature — Bulk Listing (parent: bulk-listing-tools). Consistent with current eBay functionality.,2026-04-29,yes
+bulk-listing-tool,existing_validated,B,,Active platform feature — Bulk Listing Tool (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+bulk-listing-tools,existing_validated,B,,Active platform feature — Bulk Listing Tools (parent: seller-hub). Consistent with current eBay functionality.,2026-04-29,yes
+bulk-listing-upload,existing_validated,B,,Active platform feature — Bulk Listing Upload (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+bulk-tools,existing_validated,A,,Structural hierarchy node — Bulk Tools is valid taxonomy entry,2026-04-29,yes
+bulk-upload,existing_validated,B,,Active platform feature — Bulk Upload (parent: bulk-tools). Consistent with current eBay functionality.,2026-04-29,yes
+business-equipment-purchase-protection,existing_validated,B,,B2B buyer protection program — live,2026-04-29,yes
+business-industrial,existing_validated,A,,Business & Industrial vertical — live,2026-04-29,yes
+business-policies,existing_validated,B,,Active platform feature — Business Policies (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+butterfield-butterfield,existing_legacy_validated,A,,"Butterfield & Butterfield — auction house acquired 1999, sold to Bonhams 2002. Correctly marked legacy.",2026-04-29,yes
+buy-again,existing_validated,B,,Active platform feature — Buy Again (parent: my-ebay). Consistent with current eBay functionality.,2026-04-29,yes
+buy-it-now,existing_validated,A,,Core transaction format — live,2026-04-29,yes
+buy-it-now-filter,existing_validated,B,,Active platform feature — Buy It Now Filter (parent: search). Consistent with current eBay functionality.,2026-04-29,yes
+buy-it-now-in-auctions,existing_validated,B,,Active platform feature — Buy It Now in Auctions (parent: auction). Consistent with current eBay functionality.,2026-04-29,yes
+buy-it-now-price,existing_validated,B,,Active platform feature — Buy It Now Price (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+buyer,existing_validated,A,,Structural hierarchy node — Buyer is valid taxonomy entry,2026-04-29,yes
+buyer-groups,existing_validated,B,,Active platform feature — Buyer Groups (parent: marketing). Consistent with current eBay functionality.,2026-04-29,yes
+buyer-messages,existing_validated,B,,Active platform feature — Buyer Messages (parent: seller-hub). Consistent with current eBay functionality.,2026-04-29,yes
+buyer-pays-return-shipping,existing_validated,B,,Active platform feature — Buyer Pays Return Shipping (parent: returns). Consistent with current eBay functionality.,2026-04-29,yes
+buyer-programs,existing_validated,A,,Structural hierarchy node — Buyer Programs is valid taxonomy entry,2026-04-29,yes
+buyer-protection,existing_validated,A,,Generic buyer protection taxonomy node — valid,2026-04-29,yes
+buyer-requirements,existing_validated,B,,Active platform feature — Buyer Requirements (parent: seller-tools). Consistent with current eBay functionality.,2026-04-29,yes
+buyer-review,existing_validated,B,,Active platform feature — Buyer Review (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+buying-format,existing_validated,B,,Active platform feature — Buying Format (parent: search). Consistent with current eBay functionality.,2026-04-29,yes
+buying-restrictions,existing_validated,B,,Active platform feature — Buying Restrictions (parent: trust). Consistent with current eBay functionality.,2026-04-29,yes
+calculated-shipping,existing_validated,B,,Active platform feature — Calculated Shipping (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+campaign-bidding,existing_validated,B,,Active platform feature — Campaign Bidding (parent: promoted-listings). Consistent with current eBay functionality.,2026-04-29,yes
+canada-post-expedited,existing_validated,B,,Active platform feature — Canada Post Expedited (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+cancel-order,existing_validated,B,,Active platform feature — Cancel Order (parent: order-management). Consistent with current eBay functionality.,2026-04-29,yes
+cancellation-request,existing_validated,B,,Active platform feature — Cancellation Request (parent: order-management). Consistent with current eBay functionality.,2026-04-29,yes
+cart-total,existing_validated,B,,Active platform feature — Cart Total (parent: checkout). Consistent with current eBay functionality.,2026-04-29,yes
+cases-closed-without-seller-resolution,existing_validated,B,,Active platform feature — Cases Closed Without Seller Resolution (parent: seller-performance-standards). Consistent with,2026-04-29,yes
+cassini,existing_validated,A,,eBay search algorithm — live,2026-04-29,yes
+category,existing_validated,A,,Structural hierarchy node — Category is valid taxonomy entry,2026-04-29,yes
+category-browse,existing_validated,B,,Active platform feature — Category Browse (parent: discovery). Consistent with current eBay functionality.,2026-04-29,yes
+cbt-seller-dashboard,name_correction,A,Add canonical URL export.ebay.com/en/growth/seller-performance/cbt-seller-dashboard/; correct parent to Export/CBT umbrella; expand description with full name 'Cross-Border Trade Seller Dashboard',CBT (Cross-Border Trade) Seller Dashboard LIVE at export.ebay.com/en/growth/seller-performance/cbt-seller-dashboard/. Tr,2026-04-29,yes
+ccpa-compliance,existing_validated,A,,Legal/policy document — CCPA Compliance maintained by eBay legal/compliance team,2026-04-29,yes
+certificate-of-authenticity,existing_validated,B,,Active platform feature — Certificate of Authenticity (parent: collectibles). Consistent with current eBay functionality,2026-04-29,yes
+certified-by-brand,existing_validated,B,,Certified by Brand LIVE. US only. Active browse page at ebay.com/b/Certified-by-Brand/bn_7121183554. Launched April 2023,2026-04-29,yes
+certified-open-box,existing_validated,A,,Open box product condition program — live,2026-04-29,yes
+certified-recycled,existing_validated,B,,Active platform feature — Certified Recycled (parent: sustainability). Consistent with current eBay functionality.,2026-04-29,yes
+certified-recycled-program,existing_validated,B,,Sustainability certification — live,2026-04-29,yes
+certified-recycler-program,duplicate,B,verify if distinct; merge if same,Possible duplicate of certified-recycled-program,2026-04-29,yes
+certified-refurbished,existing_validated,A,,Certified Refurbished condition tier — live,2026-04-29,yes
+charity,existing_validated,A,,Structural hierarchy node — Charity is valid taxonomy entry,2026-04-29,yes
+checkout,existing_validated,B,,Active platform feature — Checkout (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+checkout-as-guest,existing_validated,B,,Active platform feature — Checkout as Guest (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+circular-fashion-fund,existing_validated,A,,Fashion sustainability fund — live,2026-04-29,yes
+circular-fashion-innovator-of-the-year,existing_validated,A,,Circular Fashion Innovator of the Year — $300K prize within Circular Fashion Fund for 2025 cohort. Live program.,2026-04-29,yes
+classified-ads,existing_validated,B,,Active platform feature — Classified Ads (parent: ebay-motors). Consistent with current eBay functionality.,2026-04-29,yes
+clear-filters,existing_validated,B,,Active platform feature — Clear Filters (parent: search). Consistent with current eBay functionality.,2026-04-29,yes
+click-and-collect,existing_validated,A,,UK pickup option — live,2026-04-29,yes
+click-collect,duplicate,B,merge into click-and-collect,Duplicate of click-and-collect,2026-04-29,yes
+click-through-rate,existing_validated,B,,Active platform feature — Click-Through Rate (parent: analytics). Consistent with current eBay functionality.,2026-04-29,yes
+coded-coupons,existing_validated,B,,Active platform feature — Coded Coupons (parent: marketing). Consistent with current eBay functionality.,2026-04-29,yes
+codeless-coupons,existing_validated,B,,Active platform feature — Codeless Coupons (parent: marketing). Consistent with current eBay functionality.,2026-04-29,yes
+coins-currency,existing_validated,A,,Coins & Currency vertical — live,2026-04-29,yes
+collectibles,existing_validated,A,,Structural hierarchy node — Collectibles is valid taxonomy entry,2026-04-29,yes
+collectibles-price-guide,existing_validated,B,,Active platform feature — Collectibles Price Guide (parent: verticals). Consistent with current eBay functionality.,2026-04-29,yes
+collectibles-trading,existing_validated,A,,Structural hierarchy node — Collectibles & Trading is valid taxonomy entry,2026-04-29,yes
+collection-points-au,existing_validated,B,,Active platform feature — Collection Points (AU) (parent: click-and-collect-multi-market). Consistent with current eBay ,2026-04-29,yes
+collections,existing_validated,A,,My Collections buyer feature — live,2026-04-29,yes
+combined-checkout,existing_validated,A,,Cart checkout feature — live,2026-04-29,yes
+combined-shipping,existing_validated,B,,Active platform feature — Combined Shipping (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+combined-shipping-discount,existing_validated,B,,Active platform feature — Combined Shipping Discount (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+comc,existing_validated,A,,COMC — commercial agreement/investment announced Nov 2023 for trading card platform. Partnership (not acquisition). Live,2026-04-29,yes
+comics,existing_validated,A,,Comics vertical — live,2026-04-29,yes
+communication,existing_validated,A,,Structural hierarchy node — Communication is valid taxonomy entry,2026-04-29,yes
+communication-preferences,existing_validated,B,,Active platform feature — Communication Preferences (parent: account-settings). Consistent with current eBay functionali,2026-04-29,yes
+community,existing_validated,A,,Structural hierarchy node — Community is valid taxonomy entry,2026-04-29,yes
+community-education,existing_validated,A,,Structural hierarchy node — Community & Education is valid taxonomy entry,2026-04-29,yes
+community-forums,existing_validated,B,,Active platform feature — Community Forums (parent: support). Consistent with current eBay functionality.,2026-04-29,yes
+competitive-pricing,existing_validated,B,,Active platform feature — Competitive Pricing (parent: pricing-tools). Consistent with current eBay functionality.,2026-04-29,yes
+completed-listings,existing_validated,B,,Active platform feature — Completed Listings (parent: seller-hub). Consistent with current eBay functionality.,2026-04-29,yes
+condition-description,existing_validated,B,,Active platform feature — Condition Description (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+condition-filter,existing_validated,B,,Active platform feature — Condition Filter (parent: search). Consistent with current eBay functionality.,2026-04-29,yes
+condition-new-sort,existing_validated,B,,Active platform feature — Condition: New Sort (parent: search). Consistent with current eBay functionality.,2026-04-29,yes
+console-venditori,existing_validated,A,,Italian Seller Hub variant — live,2026-04-29,yes
+consommation-raisonnee,existing_validated,B,,French conscious consumption program — live,2026-04-29,yes
+contact-seller,existing_validated,B,,Active platform feature — Contact Seller (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+conversion-rate,existing_validated,B,,Active platform feature — Conversion Rate (parent: analytics). Consistent with current eBay functionality.,2026-04-29,yes
+copy-to-inventory,existing_validated,B,,Active platform feature — Copy to Inventory (parent: sellertools). Consistent with current eBay functionality.,2026-04-29,yes
+copyright,existing_validated,A,,Legal/policy document — Copyright maintained by eBay legal/compliance team,2026-04-29,yes
+cost-per-click,existing_validated,A,,Cost Per Click (CPC) is the pricing model for Promoted Listings Priority (renamed from Promoted Listings Advanced July 2,2026-04-29,yes
+cost-per-sale,existing_validated,B,,Active platform feature — Cost Per Sale (parent: promoted-listings). Consistent with current eBay functionality.,2026-04-29,yes
+counter-offer,existing_validated,B,,Active platform feature — Counter Offer (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+counterfeit-detection,existing_validated,B,,Active platform feature — Counterfeit Detection (parent: trust). Consistent with current eBay functionality.,2026-04-29,yes
+counteroffer,existing_validated,B,,Active platform feature — Counteroffer (parent: best-offer). Consistent with current eBay functionality.,2026-04-29,yes
+coupons,existing_validated,B,,Active platform feature — Coupons (parent: marketing). Consistent with current eBay functionality.,2026-04-29,yes
+credit-card,existing_validated,B,,Active platform feature — Credit Card (parent: payments). Consistent with current eBay functionality.,2026-04-29,yes
+critical-path-software,existing_legacy_validated,A,,Critical Path Software — talent acquisition Dec 2010 for mobile expertise. Correctly marked legacy.,2026-04-29,yes
+cross-border-trade,existing_validated,A,,CBT program umbrella — live,2026-04-29,yes
+csv-upload,existing_validated,B,,Active platform feature — CSV Upload (parent: bulk-tools). Consistent with current eBay functionality.,2026-04-29,yes
+curated-lists,existing_validated,B,,Active platform feature — Curated Lists (parent: hand-picked-collections). Consistent with current eBay functionality.,2026-04-29,yes
+currency-conversion,existing_validated,B,,Active platform feature — Currency Conversion (parent: payments). Consistent with current eBay functionality.,2026-04-29,yes
+current-bid,existing_validated,B,,Active platform feature — Current Bid (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+custom-label,existing_validated,B,,Active platform feature — Custom Label (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+custom-template,existing_validated,B,,Active platform feature — Custom Template (parent: template-builder). Consistent with current eBay functionality.,2026-04-29,yes
+customer-service,existing_validated,A,,Structural hierarchy node — Customer Service is valid taxonomy entry,2026-04-29,yes
+cyber-monday,existing_validated,A,,Cyber Monday — recurring,2026-04-29,yes
+daily-deals,existing_validated,B,,Active platform feature — Daily Deals (parent: ebay-deals). Consistent with current eBay functionality.,2026-04-29,yes
+daily-payout,existing_validated,B,,Active platform feature — Daily Payout (parent: payments). Consistent with current eBay functionality.,2026-04-29,yes
+deals-seller-portal,name_correction,A,Add market: AU; add canonical URL sellerportal.ebay.com.au; note US Deals is invite-only (no self-serve portal); update description,Deals Seller Portal LIVE in Australia at sellerportal.ebay.com.au. Invitation-only (Managed Sellers or invitation). Two ,2026-04-29,yes
+debit-card,existing_validated,B,,Active platform feature — Debit Card (parent: payments). Consistent with current eBay functionality.,2026-04-29,yes
+decline-offer,existing_validated,B,,Active platform feature — Decline Offer (parent: best-offer). Consistent with current eBay functionality.,2026-04-29,yes
+delivered,existing_validated,B,,Active platform feature — Delivered (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+delivery-exception,existing_validated,B,,Active platform feature — Delivery Exception (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+delivery-status,existing_validated,B,,Active platform feature — Delivery Status (parent: order-updates). Consistent with current eBay functionality.,2026-04-29,yes
+delivery-updates,existing_validated,B,,Active platform feature — Delivery Updates (parent: delivery-status). Consistent with current eBay functionality.,2026-04-29,yes
+description-builder,existing_validated,B,,Active platform feature — Description Builder (parent: listing-designer). Consistent with current eBay functionality.,2026-04-29,yes
+description-template,existing_validated,B,,Active platform feature — Description Template (parent: listing-template). Consistent with current eBay functionality.,2026-04-29,yes
+description-templates,existing_validated,B,,Active platform feature — Description Templates (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+detailed-seller-ratings,existing_validated,B,,Active platform feature — Detailed Seller Ratings (parent: feedback). Consistent with current eBay functionality.,2026-04-29,yes
+developer,existing_validated,A,,Structural hierarchy node — Developer is valid taxonomy entry,2026-04-29,yes
+developer-loyalty-program,existing_validated,A,,"Developer Loyalty Program LIVE at developer.ebay.com/grow/loyalty-program. Three tiers: Gold, Silver, Bronze. Invite-onl",2026-04-29,yes
+developer-platform,existing_validated,A,,Structural hierarchy node — Developer Platform is valid taxonomy entry,2026-04-29,yes
+dhl-paket,existing_validated,B,,Active platform feature — DHL Paket (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+digest-notifications,existing_validated,B,,Active platform feature — Digest Notifications (parent: mobile-notifications). Consistent with current eBay functionalit,2026-04-29,yes
+discounts-manager,existing_validated,B,,Active platform feature — Discounts Manager (parent: marketing). Consistent with current eBay functionality.,2026-04-29,yes
+discovery,existing_validated,A,,Structural hierarchy node — Discovery is valid taxonomy entry,2026-04-29,yes
+discovery-buyer-experience,existing_validated,A,,Structural hierarchy node — Discovery & Buyer Experience is valid taxonomy entry,2026-04-29,yes
+distance-nearest-first,existing_validated,B,,Active platform feature — Distance: Nearest First (parent: search). Consistent with current eBay functionality.,2026-04-29,yes
+draft-listings,existing_validated,B,,Active platform feature — Draft Listings (parent: seller-hub). Consistent with current eBay functionality.,2026-04-29,yes
+drafts,existing_validated,B,,Active platform feature — Drafts (parent: seller-hub). Consistent with current eBay functionality.,2026-04-29,yes
+duplicate-listing,existing_validated,B,,Active platform feature — Duplicate Listing (parent: sellertools). Consistent with current eBay functionality.,2026-04-29,yes
+ebay,existing_validated,A,,eBay masterbrand — root node of entire registry. Live.,2026-04-29,yes
+ebay-4-0-mobile-app,existing_legacy_validated,A,,eBay 4.0 mobile app — legacy version milestone. Correctly marked legacy.,2026-04-29,yes
+ebay-academy,name_correction,B,Update canonical URL to academy.ebay.com; note Seller Center link redirects to homepage; do NOT mark as deprecated,eBay Academy is LIVE at academy.ebay.com (not the Seller Center deep-link which redirects to homepage). Official Terms o,2026-04-29,yes
+ebay-advertising,existing_validated,A,,Structural hierarchy node — eBay Advertising is valid taxonomy entry,2026-04-29,yes
+ebay-ai-message-assistance,existing_validated,B,,Active platform feature — eBay.ai Message Assistance (parent: communication). Consistent with current eBay functionality,2026-04-29,yes
+ebay-ambassador,name_correction,A,Update entry: add ambassador.ebay.com as canonical URL; add note that program relaunched as affiliate/commerce model April 2025; distinguish from old community advocate usage; add renamedFrom: ebay-partner-network relationship note,eBay Ambassador Program relaunched April 2025 as full affiliate/commerce program at ambassador.ebay.com. All US users el,2026-04-29,yes
+ebay-assured-fit,duplicate,A,Merge into ebay-guaranteed-fit; remove ebay-assured-fit; add market aliases,eBay Assured Fit = UK regional name for eBay Guaranteed Fit. Same program as assured-fit and ebay-guaranteed-fit. Three ,2026-04-29,yes
+ebay-australia,existing_validated,A,,eBay Australia — live,2026-04-29,yes
+ebay-authenticate,existing_legacy_validated,B,,eBay Authenticate — folded into Authenticity Guarantee,2026-04-29,yes
+ebay-auto,false_positive,A,remove from registry,'eBay Auto' is NOT an official eBay brand. Official automotive brand is 'eBay Motors'. No official usage found.,2026-04-29,yes
+ebay-balance,existing_validated,B,,Active platform feature — eBay Balance (parent: payments). Consistent with current eBay functionality.,2026-04-29,yes
+ebay-bucks,existing_legacy_validated,B,,eBay Bucks rewards program — discontinued,2026-04-29,yes
+ebay-business-supply,existing_validated,A,,eBay Business Supply vertical — live,2026-04-29,yes
+ebay-buyer-guarantee,false_positive,B,Remove from registry as false positive; not a formal eBay program name,'eBay Buyer Guarantee' does not appear as a formal program name on any current eBay page. The active programs are 'eBay ,2026-04-29,yes
+ebay-canada,existing_validated,A,,eBay Canada — live,2026-04-29,yes
+ebay-collection-points,existing_validated,A,,"eBay Collection Points (UK) LIVE. Also branded 'Click & Collect'. 3,500+ locations: Collect+ (3,000+), Argos standalone,",2026-04-29,yes
+ebay-collection-points-uk,existing_validated,B,,Active platform feature — eBay Collection Points (parent: click-and-collect-multi-market). Consistent with current eBay ,2026-04-29,yes
+ebay-community,existing_validated,A,,eBay Community — live,2026-04-29,yes
+ebay-concierge,name_correction,A,Keep as live node but add critical note: membership criteria tightened to top 10% GMV; mass member removals Sept 2025; Anchor Store no longer guarantees access,eBay Concierge LIVE with a Help page at ebay.com/help/account/changing-account-settings/ebay-concierge?id=4358. However:,2026-04-29,yes
+ebay-customer-service,existing_validated,A,,eBay Customer Service — live,2026-04-29,yes
+ebay-deals,existing_validated,A,,eBay Deals destination — live,2026-04-29,yes
+ebay-developers-program,existing_validated,A,,Developer program — live at developer.ebay.com,2026-04-29,yes
+ebay-exclusive-coupons,existing_validated,B,,Active platform feature — eBay Exclusive Coupons (parent: marketing). Consistent with current eBay functionality.,2026-04-29,yes
+ebay-export,existing_validated,A,,eBay Export program — live,2026-04-29,yes
+ebay-fashion-app,existing_legacy_validated,A,,eBay Fashion App — vertical fashion app retired 2015. Correctly marked legacy.,2026-04-29,yes
+ebay-for-charity,existing_validated,A,,Charity selling program — live,2026-04-29,yes
+ebay-france,existing_validated,A,,eBay France — live,2026-04-29,yes
+ebay-fulfilment,name_correction,A,Update name to 'eBay Fulfilment by Orange Connex'; add market: UK; add canonical URL ebay.co.uk/sml/fulfilment; add note: 2025 starter offer active,eBay Fulfilment LIVE in UK at ebay.co.uk/sml/fulfilment. Full official name: 'eBay Fulfilment by Orange Connex'. Launche,2026-04-29,yes
+ebay-fulfilment-uk,duplicate,C,merge or clarify regional distinction,Likely duplicate of ebay-fulfilment,2026-04-29,yes
+ebay-germany,existing_validated,A,,eBay Germany — live,2026-04-29,yes
+ebay-gift-cards,existing_validated,A,,Gift cards — live at ebay.com/giftcards,2026-04-29,yes
+ebay-guaranteed-delivery,status_changed_deprecated,B,Merge with guaranteed-delivery node or mark as deprecated; de facto ended ~2021; no formal deprecation announcement,eBay Guaranteed Delivery is the same program as 'guaranteed-delivery' — same de facto deprecated status. Page at pages.e,2026-04-29,yes
+ebay-guaranteed-fit,name_correction,A,confirm name field shows 'eBay Guaranteed Fit' not just 'Guaranteed Fit',Full official name is 'eBay Guaranteed Fit' — live at pages.ebay.com/motors/ebay-guaranteed-fit/. Registry should use fu,2026-04-29,yes
+ebay-imperdibili,existing_validated,A,,Italian Imperdibili deals — live,2026-04-29,yes
+ebay-imperdibili-it,existing_validated,A,,Italian Imperdibili campaign — live,2026-04-29,yes
+ebay-innovate-developer-conference,existing_legacy_validated,A,,eBay Innovate Developer Conference — developer conference 2011. Correctly marked legacy.,2026-04-29,yes
+ebay-international-shipping,existing_validated,A,,Successor to GSP — live at sellercenter/shipping/ebay-international-shipping,2026-04-29,yes
+ebay-international-standard-delivery,existing_legacy_validated,B,,eBay International Standard Delivery — consolidated into eBay International Shipping,2026-04-29,yes
+ebay-italy,existing_validated,A,,eBay Italy — live,2026-04-29,yes
+ebay-live,existing_validated,A,,Core T1 brand — live at ebay.com/ebaylive. URL correction: /ebay-live (broken) → /ebaylive,2026-04-29,yes
+ebay-mastercard,existing_legacy_validated,B,,eBay Mastercard — discontinued co-brand card,2026-04-29,yes
+ebay-milo,existing_legacy_validated,A,,eBay Milo — local shopping engine acquired 2010. Correctly marked legacy.,2026-04-29,yes
+ebay-mobile-app,existing_validated,A,,eBay Mobile App — live,2026-04-29,yes
+ebay-mobile-app-android,existing_validated,A,,"eBay Mobile App (Android) — Android app launched Feb 2010, continuously updated. Live.",2026-04-29,yes
+ebay-moda-latin-america,existing_legacy_validated,A,,eBay Moda — Latin America fashion app 2013. Correctly marked legacy.,2026-04-29,yes
+ebay-money-back-guarantee,existing_validated,A,,Core buyer protection — live globally,2026-04-29,yes
+ebay-motors,existing_validated,A,,eBay Motors vertical — live. Appears as both umbrella and vertical (structural fix needed).,2026-04-29,yes
+ebay-motors-parts,existing_validated,A,,eBay Motors Parts & Accessories — live,2026-04-29,yes
+ebay-now,existing_legacy_validated,A,,eBay Now — same-day delivery service 2012-2015. Correctly marked legacy.,2026-04-29,yes
+ebay-partner-network,existing_validated,A,,eBay affiliate/partner network — live,2026-04-29,yes
+ebay-picture-services,existing_legacy_validated,B,,"eBay Picture Services — old photo hosting, replaced",2026-04-29,yes
+ebay-playbook,existing_validated,A,,"eBay Playbook — brand guide with 280+ pages, part of eBay Evo initiative launched 2024. Live internal brand resource.",2026-04-29,yes
+ebay-plus,existing_validated,A,,eBay Plus membership (AU/DE) — live,2026-04-29,yes
+ebay-plus-membership,duplicate,B,merge into ebay-plus,Duplicate of ebay-plus,2026-04-29,yes
+ebay-premium-service,existing_validated,A,,UK premium seller badge — live,2026-04-29,yes
+ebay-premium-service-uk,existing_validated,B,,Active platform feature — eBay Premium Service (parent: top-rated-plus-badge). Consistent with current eBay functionalit,2026-04-29,yes
+ebay-premium-services,duplicate,B,verify; merge if same,Possible duplicate of ebay-premium-service,2026-04-29,yes
+ebay-rachat,existing_validated,A,,"eBay Rachat LIVE in France. Launched April 25, 2024. CircularX partnership. Dedicated site: ebayrachat.fr. Help page at ",2026-04-29,yes
+ebay-radio,existing_legacy_validated,A,,eBay Radio — correctly marked legacy,2026-04-29,yes
+ebay-redlaser,existing_legacy_validated,A,,eBay RedLaser — barcode scanning app acquired 2010. Correctly marked legacy.,2026-04-29,yes
+ebay-refurbished,existing_validated,A,,eBay Refurbished — live,2026-04-29,yes
+ebay-refurbished-warranty,existing_validated,A,,Refurbished product warranty — live,2026-04-29,yes
+ebay-selling-app,existing_validated,A,,eBay Selling App — live,2026-04-29,yes
+ebay-spain,existing_validated,A,,eBay Spain — live,2026-04-29,yes
+ebay-speedpak,existing_validated,B,,eBay SpeedPAK — appears as eBay-branded shipping service (distinct from generic SpeedPAK network). Verify scope.,2026-04-29,yes
+ebay-standard-envelope,existing_validated,B,,Active platform feature — eBay Standard Envelope (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+ebay-stores,existing_validated,A,,eBay Stores subscription — live. Graph structural issue: appears as both umbrella and program.,2026-04-29,yes
+ebay-stores-basic,existing_legacy_validated,B,,eBay Stores Basic — correctly marked legacy,2026-04-29,yes
+ebay-stores-enterprise,existing_validated,A,,eBay Stores Enterprise tier — live,2026-04-29,yes
+ebay-stores-premium,existing_validated,A,,eBay Stores Premium tier — live,2026-04-29,yes
+ebay-top-service,existing_validated,A,,German eBay Top-Service seller badge — live,2026-04-29,yes
+ebay-top-service-de,existing_validated,B,,Active platform feature — eBay Top-Service (parent: top-rated-plus-badge). Consistent with current eBay functionality.,2026-04-29,yes
+ebay-uk,existing_validated,A,,eBay UK — live,2026-04-29,yes
+ebay-university,existing_legacy_validated,B,,eBay University — legacy education program,2026-04-29,yes
+ebay-valet,existing_legacy_validated,A,,eBay Valet — consignment service 2014-2018. Correctly marked legacy.,2026-04-29,yes
+ebay-valet-original,existing_legacy_validated,B,,"eBay Valet — consignment service, discontinued",2026-04-29,yes
+ebay-vault,existing_validated,A,,Brand live at ebay.com/vault; PSA operates facility since May 2024. Brand remains active.,2026-04-29,yes
+ebay-wow,existing_validated,A,,eBay WOW! (DE) — live. Official name includes exclamation mark.,2026-04-29,yes
+ebay-wow-de,name_correction,A,update name to 'eBay WOW!',eBay WOW! (DE) — official name includes '!'. Live at ebay.de/deals.,2026-04-29,yes
+edit-listing,existing_validated,B,,Active platform feature — Edit Listing (parent: sellertools). Consistent with current eBay functionality.,2026-04-29,yes
+edit-payment,existing_validated,B,,Active platform feature — Edit Payment (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+education,existing_validated,A,,Structural hierarchy node — Education is valid taxonomy entry,2026-04-29,yes
+electronic-travel-auction,existing_legacy_validated,A,,Electronic Travel Auction — first third-party licensing partner 1996. Correctly marked legacy.,2026-04-29,yes
+electronics-technology,existing_validated,A,,Structural hierarchy node — Electronics & Technology is valid taxonomy entry,2026-04-29,yes
+email-alerts,existing_validated,B,,Active platform feature — Email Alerts (parent: email-notifications). Consistent with current eBay functionality.,2026-04-29,yes
+email-notifications,existing_validated,B,,Active platform feature — Email Notifications (parent: notifications). Consistent with current eBay functionality.,2026-04-29,yes
+email-to-friend,existing_legacy_validated,B,,Email to Friend — retired listing feature,2026-04-29,yes
+end-listing,existing_validated,B,,Active platform feature — End Listing (parent: sellertools). Consistent with current eBay functionality.,2026-04-29,yes
+end-listing-early,existing_validated,B,,Active platform feature — End Listing Early (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+ended-listings,existing_validated,B,,Active platform feature — Ended Listings (parent: seller-hub). Consistent with current eBay functionality.,2026-04-29,yes
+ending-soon,existing_validated,B,,Active platform feature — Ending Soon (parent: search). Consistent with current eBay functionality.,2026-04-29,yes
+ends-soon,existing_validated,B,,Active platform feature — Ends Soon (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+estimated-delivery,existing_validated,B,,Active platform feature — Estimated Delivery (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+eu-consumer-rights-directive,existing_validated,A,,Legal/policy document — EU Consumer Rights Directive maintained by eBay legal/compliance team,2026-04-29,yes
+events-campaigns,existing_validated,A,,Structural hierarchy node — Events & Campaigns is valid taxonomy entry,2026-04-29,yes
+everything-else,existing_validated,A,,Structural hierarchy node — Everything Else / Cross-Category is valid taxonomy entry,2026-04-29,yes
+excellent-refurbished,existing_validated,A,,Excellent refurbished tier — live,2026-04-29,yes
+expedited-international-shipping,existing_validated,B,,Active platform feature — Expedited International Shipping (parent: shipping). Consistent with current eBay functionalit,2026-04-29,yes
+export-academy,existing_validated,A,,Export Academy LIVE at export.ebay.com/en/academy/. Separate from domestic eBay Academy. Content for cross-border/export,2026-04-29,yes
+express-payouts,existing_validated,B,,Active platform feature — Express Payouts (parent: payments). Consistent with current eBay functionality.,2026-04-29,yes
+fashion-luxury,existing_validated,A,,Structural hierarchy node — Fashion / Luxury is valid taxonomy entry,2026-04-29,yes
+fast-and-free,name_correction,B,Update description: 'Fast and Free' is now informal/colloquial; formal naming is delivery time badges; status should be 'legacy' or 'functional label' not a branded product,The formal 'Fast 'N Free' badge (truck icon) was retired ~2021 and replaced with specific delivery time tags: 'Free deli,2026-04-29,yes
+fast-n-free,existing_legacy_validated,B,,Fast 'N Free — deprecated shipping badge (confirmed absent from all live pages),2026-04-29,yes
+fathers-day-gifts,existing_validated,A,,Father's Day campaign — seasonal,2026-04-29,yes
+featured-deals,existing_validated,B,,Active platform feature — Featured Deals (parent: ebay-deals). Consistent with current eBay functionality.,2026-04-29,yes
+featured-first,existing_validated,B,,Active platform feature — Featured First (parent: advertising). Consistent with current eBay functionality.,2026-04-29,yes
+featured-listing,existing_legacy_validated,B,,Featured Listing upgrade — retired,2026-04-29,yes
+fee-illustrator,existing_validated,B,,Active platform feature — Fee Illustrator (parent: analytics). Consistent with current eBay functionality.,2026-04-29,yes
+feed,existing_validated,B,,Active platform feature — Feed (parent: ebay-mobile-app). Consistent with current eBay functionality.,2026-04-29,yes
+feedback,existing_validated,A,,Structural hierarchy node — Feedback is valid taxonomy entry,2026-04-29,yes
+feedback-extortion-policy,existing_validated,A,,Legal/policy document — Feedback Extortion Policy maintained by eBay legal/compliance team,2026-04-29,yes
+feedback-forum,existing_validated,B,,Active platform feature — Feedback Forum (parent: community). Consistent with current eBay functionality.,2026-04-29,yes
+feedback-left,existing_validated,B,,Active platform feature — Feedback Left (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+feedback-reply,existing_validated,B,,Active platform feature — Feedback Reply (parent: feedback). Consistent with current eBay functionality.,2026-04-29,yes
+feedback-revision-request,existing_validated,B,,Active platform feature — Feedback Revision Request (parent: feedback). Consistent with current eBay functionality.,2026-04-29,yes
+file-exchange,existing_legacy_validated,B,,File Exchange — replaced by modern APIs,2026-04-29,yes
+filter-by,existing_validated,B,,Active platform feature — Filter By (parent: search). Consistent with current eBay functionality.,2026-04-29,yes
+find-it-on-ebay,existing_validated,B,,Active platform feature — Find It On eBay (parent: search). Consistent with current eBay functionality.,2026-04-29,yes
+fine-art,existing_validated,A,,Fine Art vertical — live,2026-04-29,yes
+fitment-compatibility,existing_validated,B,,Active platform feature — Fitment Compatibility (parent: ebay-motors). Consistent with current eBay functionality.,2026-04-29,yes
+fitment-plus,existing_validated,B,,Active platform feature — Fitment Plus (parent: ebay-motors). Consistent with current eBay functionality.,2026-04-29,yes
+fitment-plus-auto,existing_validated,B,,Active platform feature — Fitment Plus Auto (parent: ebay-motors). Consistent with current eBay functionality.,2026-04-29,yes
+fixed-price-format,existing_validated,B,,Active platform feature — Fixed Price Format (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+flash-deals,existing_validated,B,,Active platform feature — Flash Deals (parent: ebay-deals). Consistent with current eBay functionality.,2026-04-29,yes
+flat-rate-shipping,existing_validated,B,,Active platform feature — Flat Rate Shipping (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+follow-seller,existing_validated,B,,Active platform feature — Follow Seller (parent: saved-sellers). Consistent with current eBay functionality.,2026-04-29,yes
+following,existing_validated,B,,Active platform feature — Following (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+form-1099-k,existing_validated,A,,Legal/policy document — Form 1099-K maintained by eBay legal/compliance team,2026-04-29,yes
+form-1099-k-us,existing_validated,B,,Active platform feature — Form 1099-K (US) (parent: tax). Consistent with current eBay functionality.,2026-04-29,yes
+free-2-day-shipping,existing_validated,B,,Active platform feature — Free 2-day Shipping (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+free-2-day-shipping-us,existing_validated,B,,Active platform feature — Free 2-Day Shipping (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+free-3-day-shipping,existing_validated,B,,Active platform feature — Free 3-day Shipping (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+free-4-day-shipping,existing_validated,B,,Active platform feature — Free 4-day Shipping (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+free-4-day-shipping-us,existing_validated,B,,Active platform feature — Free 4-Day Shipping (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+free-returns,existing_validated,A,,Return policy label — live,2026-04-29,yes
+free-shipping,existing_validated,A,,Shipping policy label — live,2026-04-29,yes
+free-shipping-badge,existing_validated,B,,Active platform feature — Free Shipping Badge (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+free-shipping-filter,existing_validated,B,,Active platform feature — Free Shipping Filter (parent: search). Consistent with current eBay functionality.,2026-04-29,yes
+free-shipping-threshold,existing_validated,B,,Active platform feature — Free Shipping Threshold (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+freight-shipping,existing_validated,B,,Active platform feature — Freight Shipping (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+full-refund,existing_validated,B,,Active platform feature — Full Refund (parent: returns). Consistent with current eBay functionality.,2026-04-29,yes
+gallery,existing_validated,B,,Active platform feature — Gallery (parent: advertising). Consistent with current eBay functionality.,2026-04-29,yes
+gallery-picture,existing_validated,B,,Active platform feature — Gallery Picture (parent: listing-designer). Consistent with current eBay functionality.,2026-04-29,yes
+gallery-plus,existing_validated,B,,Active platform feature — Gallery Plus (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+gdpr-compliance,existing_validated,A,,Legal/policy document — GDPR Compliance maintained by eBay legal/compliance team,2026-04-29,yes
+general-campaign,existing_validated,A,,Promoted Listings General Campaign — live,2026-04-29,yes
+get-alerts,existing_validated,B,,Active platform feature — Get Alerts (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+global-shipping-program,existing_legacy_validated,B,,Global Shipping Program — renamed to eBay International Shipping 2024,2026-04-29,yes
+global-shipping-toggle,name_correction,B,Update description: toggle now refers to eIS enrollment; update parent from global-shipping-program to ebay-international-shipping,"Global Shipping Toggle exists in listing flow but now refers to eBay International Shipping (eIS) enrollment, not the ol",2026-04-29,yes
+go-to-checkout,existing_validated,B,,Active platform feature — Go to Checkout (parent: checkout). Consistent with current eBay functionality.,2026-04-29,yes
+goldin-auctions,existing_validated,A,,"Goldin Auctions is an eBay-owned property since May 16, 2024 (acquired from Collectors Holdings; announced April 10, 202",2026-04-29,yes
+good-refurbished,existing_validated,A,,Good refurbished tier — live,2026-04-29,yes
+good-til-cancelled,existing_validated,B,,Active platform feature — Good Til Cancelled (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+google-pay,existing_validated,B,,Active platform feature — Google Pay (parent: payments). Consistent with current eBay functionality.,2026-04-29,yes
+green-monday,existing_validated,A,,Green Monday — recurring,2026-04-29,yes
+gsi-commerce-ebay-enterprise,existing_legacy_validated,A,,"GSI Commerce / eBay Enterprise — acquired 2011, rebranded, divested. Correctly marked legacy.",2026-04-29,yes
+gst-collection-australia,existing_validated,B,,Active platform feature — GST Collection (Australia) (parent: tax). Consistent with current eBay functionality.,2026-04-29,yes
+guaranteed-delivery,status_changed_deprecated,B,Mark as de facto deprecated; add note: 'page persists but program functionally ended ~2021'; update status to legacy or deprecated,eBay Guaranteed Delivery: static page at pages.ebay.com/shipping/guaranteed-delivery.html still accessible (2026 copyrig,2026-04-29,yes
+guaranteed-fit,duplicate,A,remove guaranteed-fit; keep ebay-guaranteed-fit with full name,"Duplicate of ebay-guaranteed-fit — same program, two IDs",2026-04-29,yes
+guest-checkout,existing_validated,B,,Active platform feature — Guest Checkout (parent: checkout). Consistent with current eBay functionality.,2026-04-29,yes
+hand-picked-collections,existing_validated,B,,Active platform feature — Hand-Picked Collections (parent: collections). Consistent with current eBay functionality.,2026-04-29,yes
+handbag-authentication,existing_validated,A,,AG Handbags variant — live,2026-04-29,yes
+handling-time,existing_validated,B,,Active platform feature — Handling Time (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+help-center,existing_validated,B,,Active platform feature — Help Center (parent: support). Consistent with current eBay functionality.,2026-04-29,yes
+helpful-review,existing_validated,B,,Active platform feature — Helpful Review (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+hermes-paketshop,existing_validated,B,,Active platform feature — Hermes PaketShop (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+holiday-gift-guide,existing_validated,A,,Holiday Gift Guide — seasonal,2026-04-29,yes
+home-garden,existing_validated,A,,Structural hierarchy node — Home & Garden is valid taxonomy entry,2026-04-29,yes
+html-editor,existing_validated,B,,Active platform feature — HTML Editor (parent: listing-designer). Consistent with current eBay functionality.,2026-04-29,yes
+hub-vendeur,existing_validated,A,,French Seller Hub variant — live,2026-04-29,yes
+image-requirements,existing_validated,A,,Legal/policy document — Image Requirements maintained by eBay legal/compliance team,2026-04-29,yes
+image-search,existing_validated,B,,Active platform feature — Image Search (parent: search). Consistent with current eBay functionality.,2026-04-29,yes
+immediate-payment-required,existing_validated,B,,Active platform feature — Immediate Payment Required (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+impact,existing_validated,A,,Structural hierarchy node — Impact is valid taxonomy entry,2026-04-29,yes
+import-charges,existing_validated,B,,Active platform feature — Import Charges (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+impressions,existing_validated,B,,Active platform feature — Impressions (parent: analytics). Consistent with current eBay functionality.,2026-04-29,yes
+in-app-messaging,existing_validated,B,,Active platform feature — In-App Messaging (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+in-app-qr-code,existing_validated,B,,Active platform feature — In-App QR Code (parent: ebay-mobile-app). Consistent with current eBay functionality.,2026-04-29,yes
+in-store-pickup,existing_validated,B,,Active platform feature — In-Store Pickup (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+in-store-pickup-us,existing_validated,B,,Active platform feature — In-Store Pickup (parent: local-pickup-multi-market). Consistent with current eBay functionalit,2026-04-29,yes
+in-transit,existing_validated,B,,Active platform feature — In Transit (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+inactive-listings,existing_validated,B,,Active platform feature — Inactive Listings (parent: seller-hub). Consistent with current eBay functionality.,2026-04-29,yes
+indefinite-suspension,existing_validated,B,,Active platform feature — Indefinite Suspension (parent: trust). Consistent with current eBay functionality.,2026-04-29,yes
+instant-payout,existing_validated,B,,Active platform feature — Instant Payout (parent: payments). Consistent with current eBay functionality.,2026-04-29,yes
+intellectual-property,existing_validated,A,,Legal/policy document — Intellectual Property maintained by eBay legal/compliance team,2026-04-29,yes
+international,existing_validated,A,,Structural hierarchy node — International is valid taxonomy entry,2026-04-29,yes
+international-site-visibility,existing_validated,B,,Active platform feature — International Site Visibility (parent: international). Consistent with current eBay functional,2026-04-29,yes
+international-standard-delivery,existing_legacy_validated,B,,International Standard Delivery — consolidated into eIS,2026-04-29,yes
+inventory,existing_validated,A,,Structural hierarchy node — Inventory is valid taxonomy entry,2026-04-29,yes
+inventory-management,existing_validated,B,,Active platform feature — Inventory Management (parent: seller-hub). Consistent with current eBay functionality.,2026-04-29,yes
+issue-resolution-center,existing_validated,A,,Issue Resolution Center — live,2026-04-29,yes
+item-comparison,existing_validated,B,,Active platform feature — Item Comparison (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+item-condition,existing_validated,B,,Active platform feature — Item Condition (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+item-description-editor,existing_validated,B,,Active platform feature — Item Description Editor (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+item-location,existing_validated,B,,Active platform feature — Item Location (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+item-no-longer-available,existing_validated,B,,Active platform feature — Item No Longer Available (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+item-not-received,existing_validated,B,,Active platform feature — Item Not Received (parent: ebay-money-back-guarantee). Consistent with current eBay functional,2026-04-29,yes
+item-reviews,existing_validated,B,,Active platform feature — Item Reviews (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+item-specifics,existing_validated,B,,Active platform feature — Item Specifics (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+item-specifics-filter,existing_validated,B,,Active platform feature — Item Specifics Filter (parent: search). Consistent with current eBay functionality.,2026-04-29,yes
+items-watched,existing_validated,B,,Active platform feature — Items Watched (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+jewelry-authentication,existing_validated,A,,AG Jewelry variant — live,2026-04-29,yes
+keyword-targeting,existing_validated,B,,Active platform feature — Keyword Targeting (parent: promoted-listings). Consistent with current eBay functionality.,2026-04-29,yes
+klarna,existing_validated,B,,Active platform feature — Klarna (parent: payments). Consistent with current eBay functionality.,2026-04-29,yes
+knownorigin,status_changed_deprecated,A,Wave 5 node — review status in registry,KnownOrigin — NFT marketplace acquired June 2022. eBay laid off 30% of staff Feb 2024 and shut down mid-2024. Status in ,2026-04-29,yes
+kruse-international,existing_legacy_validated,A,,"Kruse International — automobile auctioneer acquired 1999, repurchased by Dean Kruse 2002. Correctly marked legacy.",2026-04-29,yes
+label-printer,existing_validated,B,,Active platform feature — Label Printer (parent: thermal-printer). Consistent with current eBay functionality.,2026-04-29,yes
+language-translation,existing_validated,B,,Active platform feature — Language Translation (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+late-shipment-rate,existing_validated,B,,Active platform feature — Late Shipment Rate (parent: seller-performance-standards). Consistent with current eBay functi,2026-04-29,yes
+leave-feedback,existing_validated,B,,Active platform feature — Leave Feedback (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+linked-accounts-policy,existing_validated,A,,Legal/policy document — Linked Accounts Policy maintained by eBay legal/compliance team,2026-04-29,yes
+list-price,existing_validated,B,,Active platform feature — List Price (parent: sellertools). Consistent with current eBay functionality.,2026-04-29,yes
+listing,existing_validated,A,,Structural hierarchy node — Listing is valid taxonomy entry,2026-04-29,yes
+listing-analytics,existing_validated,B,,Active platform feature — Listing Analytics (parent: analytics). Consistent with current eBay functionality.,2026-04-29,yes
+listing-confirmed-notification,existing_validated,B,,Active platform feature — Listing Confirmed Notification (parent: selling-activity-notifications). Consistent with curre,2026-04-29,yes
+listing-designer,existing_legacy_validated,B,,Listing Designer — retired template tool,2026-04-29,yes
+listing-enhancement,existing_validated,B,,Active platform feature — Listing Enhancement (parent: advertising). Consistent with current eBay functionality.,2026-04-29,yes
+listing-error,existing_validated,B,,Active platform feature — Listing Error (parent: sellertools). Consistent with current eBay functionality.,2026-04-29,yes
+listing-features,existing_validated,A,,Structural hierarchy node — Listing Features is valid taxonomy entry,2026-04-29,yes
+listing-formats,existing_validated,A,,Structural hierarchy node — Listing Formats is valid taxonomy entry,2026-04-29,yes
+listing-policies,existing_validated,A,,Structural hierarchy node — Listing Policies is valid taxonomy entry,2026-04-29,yes
+listing-quality-report,existing_validated,B,,Active platform feature — Listing Quality Report (parent: seller-hub). Consistent with current eBay functionality.,2026-04-29,yes
+listing-removal-notice,existing_validated,B,,Active platform feature — Listing Removal Notice (parent: trust). Consistent with current eBay functionality.,2026-04-29,yes
+listing-template,existing_validated,B,,Active platform feature — Listing Template (parent: template-builder). Consistent with current eBay functionality.,2026-04-29,yes
+listing-templates,existing_validated,B,,Active platform feature — Listing Templates (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+listing-tools,existing_validated,A,,Structural hierarchy node — Listing Tools is valid taxonomy entry,2026-04-29,yes
+listing-upgrades,existing_validated,B,,Active platform feature — Listing Upgrades (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+live,existing_validated,A,,Structural hierarchy node — Live is valid taxonomy entry,2026-04-29,yes
+live-chat-support,existing_validated,B,,Active platform feature — Live Chat Support (parent: support). Consistent with current eBay functionality.,2026-04-29,yes
+live-commerce,existing_validated,A,,Structural hierarchy node — Live Commerce is valid taxonomy entry,2026-04-29,yes
+local-delivery,existing_validated,B,,Active platform feature — Local Delivery (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+local-pickup,existing_validated,A,,Core transaction feature — live,2026-04-29,yes
+location-filter,existing_validated,B,,Active platform feature — Location Filter (parent: search). Consistent with current eBay functionality.,2026-04-29,yes
+login-alerts,existing_validated,B,,Active platform feature — Login Alerts (parent: trust). Consistent with current eBay functionality.,2026-04-29,yes
+logistica-ebay-by-orange-connex,existing_validated,B,,Italian eBay logistics — live,2026-04-29,yes
+logistica-ebay-orange-connex,duplicate,B,verify; merge if same,Duplicate of logistica-ebay-by-orange-connex,2026-04-29,yes
+magento,existing_legacy_validated,A,,"Magento — e-commerce platform acquired 2011, divested 2015. Correctly marked legacy.",2026-04-29,yes
+magical-bulk-listing-tool,existing_validated,A,,"Magical Bulk Listing Tool — AI-powered bulk listing, launched 2024. Live. (Note: 'Magical Listing' as descriptive phrase",2026-04-29,yes
+magical-listing,existing_validated,B,,Active platform feature — Magical Listing (parent: ebay-selling-app). Consistent with current eBay functionality.,2026-04-29,yes
+make-an-offer,existing_validated,B,,Active platform feature — Make An Offer (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+make-offer,existing_validated,B,,Active platform feature — Make Offer (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+make-offer-button,existing_validated,B,,Active platform feature — Make Offer Button (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+managed-delivery,status_changed_deprecated,A,Update status to deprecated/legacy; add end_date: 2019; add note: unrelated to UK Simple Delivery; distinguish from managed-payments,"eBay Managed Delivery was the original US fulfillment service announced in 2019 (warehousing, pick/pack/ship via logisti",2026-04-29,yes
+managed-display,false_positive,C,"Remove from registry or reclassify as legacy internal label; if referring to enterprise display, note as internal term only",No public eBay product called 'Managed Display' found 2022-2026. The self-serve display product was 'Promoted Display' (,2026-04-29,yes
+managed-payments,existing_validated,B,,Payment infrastructure live; branded 'eBay Managed Payments' name retired; 'Managed Payments' label used in navigation,2026-04-29,yes
+managed-returns,existing_validated,B,,Active platform feature — Managed Returns (parent: support). Consistent with current eBay functionality.,2026-04-29,yes
+mark-as-shipped,existing_validated,B,,Active platform feature — Mark as Shipped (parent: order-management). Consistent with current eBay functionality.,2026-04-29,yes
+markdown-manager,existing_legacy_validated,B,,Markdown Manager — retired pricing tool,2026-04-29,yes
+marketing,existing_validated,A,,Structural hierarchy node — Marketing is valid taxonomy entry,2026-04-29,yes
+matching-categories,existing_validated,B,,Active platform feature — Matching Categories (parent: search). Consistent with current eBay functionality.,2026-04-29,yes
+maximum-bid,existing_validated,B,,Active platform feature — Maximum Bid (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+merchant-integration-platform,existing_validated,B,,Merchant Integration Platform (MIP) is eBay's developer/enterprise integration layer. Referenced in eBay developer docum,2026-04-29,yes
+message-buyer,existing_validated,B,,Active platform feature — Message Buyer (parent: sellertools). Consistent with current eBay functionality.,2026-04-29,yes
+message-center,existing_validated,A,,eBay Message Center — live,2026-04-29,yes
+mission-fish-seller-account,existing_legacy_validated,A,,Mission Fish Seller Account — charity seller program retired 2015. Correctly marked legacy. renamedTo: donation-account.,2026-04-29,yes
+mobile-analytics,existing_validated,B,,Active platform feature — Mobile Analytics (parent: analytics). Consistent with current eBay functionality.,2026-04-29,yes
+mobile-checkout,existing_validated,B,,Active platform feature — Mobile Checkout (parent: payments). Consistent with current eBay functionality.,2026-04-29,yes
+mobile-deals,existing_validated,B,,Active platform feature — Mobile Deals (parent: ebay-deals). Consistent with current eBay functionality.,2026-04-29,yes
+mobile-notifications,existing_validated,B,,Active platform feature — Mobile Notifications (parent: push-notifications). Consistent with current eBay functionality.,2026-04-29,yes
+mobile-photo-editor,existing_validated,B,,Active platform feature — Mobile Photo Editor (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+mobile-quick-list,existing_validated,B,,Active platform feature — Mobile Quick List (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+mobile-responsive-template,existing_validated,B,,Active platform feature — Mobile-Responsive Template (parent: listing-designer). Consistent with current eBay functional,2026-04-29,yes
+mobile-responsive-templates,existing_validated,B,,Active platform feature — Mobile Responsive Templates (parent: mobile-responsive-template). Consistent with current eBay,2026-04-29,yes
+mobile-seller-hub,existing_validated,A,,Mobile Seller Hub — live,2026-04-29,yes
+mobile-web,existing_validated,A,,eBay mobile web — live,2026-04-29,yes
+money-back-guarantee,duplicate,B,verify; merge if same,"Likely duplicate of ebay-money-back-guarantee — same concept, two IDs",2026-04-29,yes
+more-from-this-seller,existing_validated,B,,Active platform feature — More From This Seller (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+mothers-day-gifts,existing_validated,A,,Mother's Day campaign — seasonal,2026-04-29,yes
+multi-variation-listing,existing_validated,B,,Active platform feature — Multi-Variation Listing (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+multi-variation-listings,existing_validated,B,,Active platform feature — Multi-Variation Listings (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+mutual-feedback-withdrawal,existing_validated,B,,Active platform feature — Mutual Feedback Withdrawal (parent: feedback). Consistent with current eBay functionality.,2026-04-29,yes
+my-collection,existing_validated,A,,Collector portfolio feature — live in My eBay,2026-04-29,yes
+my-ebay,existing_validated,A,,Core buyer/seller hub — live,2026-04-29,yes
+my-ebay-summary,existing_validated,B,,Active platform feature — My eBay Summary (parent: my-ebay). Consistent with current eBay functionality.,2026-04-29,yes
+my-garage,existing_validated,A,,Vehicle owner feature in Motors — live,2026-04-29,yes
+mymix-fashion-campaign,existing_legacy_validated,A,,MYMIX Fashion Campaign — UK Spring/Summer 2012 campaign. Correctly marked legacy.,2026-04-29,yes
+new-seller-journey,name_correction,B,Update canonical URL to export.ebay.com/en/nsj/; add note: scoped to international/export sellers (not domestic US Seller Hub); update parent to Export Academy umbrella if applicable,New Seller Journey LIVE at export.ebay.com/en/nsj/ — under the eBay Export platform (not domestic Seller Center). Applic,2026-04-29,yes
+newly-listed,existing_validated,B,,Active platform feature — Newly Listed (parent: search). Consistent with current eBay functionality.,2026-04-29,yes
+no-bids,existing_validated,B,,Active platform feature — No Bids (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+no-returns-accepted,existing_legacy_validated,B,,No Returns Accepted — policy option retired,2026-04-29,yes
+notification-preferences,existing_validated,B,,Active platform feature — Notification Preferences (parent: notification-settings). Consistent with current eBay functio,2026-04-29,yes
+notification-settings,existing_validated,B,,Active platform feature — Notification Settings (parent: account-settings). Consistent with current eBay functionality.,2026-04-29,yes
+notifications,existing_validated,A,,Structural hierarchy node — Notifications is valid taxonomy entry,2026-04-29,yes
+notify-me,existing_validated,B,,Active platform feature — Notify Me (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+number-of-bids,existing_validated,B,,Active platform feature — Number of Bids (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+offer-accepted,existing_validated,B,,Active platform feature — Offer Accepted (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+offer-declined,existing_validated,B,,Active platform feature — Offer Declined (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+offer-expires,existing_validated,B,,Active platform feature — Offer Expires (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+offer-history,existing_validated,B,,Active platform feature — Offer History (parent: best-offer). Consistent with current eBay functionality.,2026-04-29,yes
+offer-sent,existing_validated,B,,Active platform feature — Offer Sent (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+offers-received,existing_validated,B,,Active platform feature — Offers Received (parent: best-offer). Consistent with current eBay functionality.,2026-04-29,yes
+offers-sent,existing_validated,B,,Active platform feature — Offers Sent (parent: best-offer). Consistent with current eBay functionality.,2026-04-29,yes
+offers-to-buyers,existing_validated,B,,Active platform feature — Offers to Buyers (parent: marketing). Consistent with current eBay functionality.,2026-04-29,yes
+offers-to-watchers,existing_validated,B,,Active platform feature — Offers to Watchers (parent: marketing). Consistent with current eBay functionality.,2026-04-29,yes
+offsite-ads,status_changed_renamed,A,Mark as renamed; renamedTo: promoted-offsite; effective_date: 2024-07-01,'Offsite Ads' was the old name for Promoted Offsite. Renamed to 'Promoted Offsite' in July 2024. CPC model for external ,2026-04-29,yes
+offsite-ads-opt-out,existing_validated,B,,Active platform feature — Offsite Ads Opt Out (parent: offsite-ads). Consistent with current eBay functionality.,2026-04-29,yes
+open-box,existing_validated,B,,Active platform feature — Open Box (parent: refurbished). Consistent with current eBay functionality.,2026-04-29,yes
+order-details,existing_validated,B,,Active platform feature — Order Details (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+order-discounts,existing_validated,B,,Active platform feature — Order Discounts (parent: marketing). Consistent with current eBay functionality.,2026-04-29,yes
+order-management,existing_validated,A,,Structural hierarchy node — Order Management is valid taxonomy entry,2026-04-29,yes
+order-report,existing_validated,B,,Active platform feature — Order Report (parent: analytics). Consistent with current eBay functionality.,2026-04-29,yes
+order-total,existing_validated,B,,Active platform feature — Order Total (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+order-updates,existing_validated,B,,Active platform feature — Order Updates (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+out-for-delivery,existing_validated,B,,Active platform feature — Out for Delivery (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+out-of-stock-control,existing_validated,B,,Active platform feature — Out of Stock Control (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+out-of-stock-listing,existing_validated,B,,Active platform feature — Out of Stock Listing (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+outbid-alert,existing_validated,B,,Active platform feature — Outbid Alert (parent: notifications). Consistent with current eBay functionality.,2026-04-29,yes
+outbid-notice,existing_validated,B,,Active platform feature — Outbid Notice (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+outbid-notification,existing_validated,B,,Active platform feature — Outbid Notification (parent: outbid-alert). Consistent with current eBay functionality.,2026-04-29,yes
+package-tracking,existing_validated,B,,Active platform feature — Package Tracking (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+page-views,existing_validated,B,,Active platform feature — Page Views (parent: analytics). Consistent with current eBay functionality.,2026-04-29,yes
+partial-refund,existing_validated,B,,Active platform feature — Partial Refund (parent: returns). Consistent with current eBay functionality.,2026-04-29,yes
+parts-compatibility,existing_validated,A,,Parts & Accessories fitment — live,2026-04-29,yes
+passkeys,existing_validated,B,,Active platform feature — Passkeys (parent: account-security). Consistent with current eBay functionality.,2026-04-29,yes
+password-reset,existing_validated,B,,Active platform feature — Password Reset (parent: trust). Consistent with current eBay functionality.,2026-04-29,yes
+pay-in-4,existing_validated,B,,Active platform feature — Pay in 4 (parent: payment). Consistent with current eBay functionality.,2026-04-29,yes
+pay-now,existing_validated,B,,Active platform feature — Pay Now (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+payment,existing_validated,A,,Structural hierarchy node — Payment is valid taxonomy entry,2026-04-29,yes
+payment-dispute,existing_validated,B,,Active platform feature — Payment Dispute (parent: payments). Consistent with current eBay functionality.,2026-04-29,yes
+payment-failed,existing_validated,B,,Active platform feature — Payment Failed (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+payment-holds,existing_validated,B,,Active platform feature — Payment Holds (parent: payments). Consistent with current eBay functionality.,2026-04-29,yes
+payment-pending,existing_validated,B,,Active platform feature — Payment Pending (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+payment-processing,existing_validated,B,,Active platform feature — Payment Processing (parent: payments). Consistent with current eBay functionality.,2026-04-29,yes
+payment-received,existing_validated,B,,Active platform feature — Payment Received (parent: sellertools). Consistent with current eBay functionality.,2026-04-29,yes
+payments,existing_validated,A,,Structural hierarchy node — Payments is valid taxonomy entry,2026-04-29,yes
+payments-checkout,existing_validated,A,,Structural hierarchy node — Payments & Checkout is valid taxonomy entry,2026-04-29,yes
+payout-schedule,existing_validated,B,,Active platform feature — Payout Schedule (parent: managed-payments). Consistent with current eBay functionality.,2026-04-29,yes
+payouts-on-demand,existing_validated,B,,Active platform feature — Payouts on Demand (parent: payments). Consistent with current eBay functionality.,2026-04-29,yes
+paypal,existing_legacy_validated,B,,PayPal — spun off from eBay 2015,2026-04-29,yes
+paypal-checkout,existing_legacy_validated,B,,PayPal Checkout on eBay — replaced by Managed Payments,2026-04-29,yes
+paypal-spinoff,existing_legacy_validated,A,,PayPal Spinoff — corporate separation 2015. Correctly marked legacy as a corporate event entry.,2026-04-29,yes
+performance-dashboard,existing_validated,A,,Seller Hub performance dashboard — live,2026-04-29,yes
+phone-support,existing_validated,B,,Active platform feature — Phone Support (parent: support). Consistent with current eBay functionality.,2026-04-29,yes
+photo-background-removal,existing_validated,B,,Active platform feature — Photo Background Removal (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+photo-enhancement,existing_validated,B,,Active platform feature — Photo Enhancement (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+photo-requirements,existing_validated,A,,Legal/policy document — Photo Requirements maintained by eBay legal/compliance team,2026-04-29,yes
+photo-tips,existing_validated,B,,Active platform feature — Photo Tips (parent: ebay-selling-app). Consistent with current eBay functionality.,2026-04-29,yes
+photo-uploader,existing_validated,B,,Active platform feature — Photo Uploader (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+picture-manager,existing_legacy_validated,B,,Picture Manager — retired photo tool,2026-04-29,yes
+picture-policy,existing_validated,A,,Legal/policy document — Picture Policy maintained by eBay legal/compliance team,2026-04-29,yes
+picture-services,existing_validated,B,,Active platform feature — Picture Services (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+picture-zoom,existing_validated,B,,Active platform feature — Picture Zoom (parent: listing-designer). Consistent with current eBay functionality.,2026-04-29,yes
+place-bid,existing_validated,B,,Active platform feature — Place Bid (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+positive-feedback-percentage,existing_validated,B,,Active platform feature — Positive Feedback Percentage (parent: feedback). Consistent with current eBay functionality.,2026-04-29,yes
+powerseller,existing_legacy_validated,B,,"PowerSeller — retired, replaced by Top Rated Seller",2026-04-29,yes
+pre-loved-fashion-week,existing_validated,A,,Pre-Loved Fashion Week event — live and recurring (CFDA/BFC co-branded),2026-04-29,yes
+pre-loved-partner-program,existing_validated,A,,Pre-Loved Partner Program LIVE at ebay.com/sellercenter/selling/what-to-sell/pre-loved-partner-program. Seller badge pro,2026-04-29,yes
+preloved-partner-program,duplicate,B,merge into pre-loved-partner-program,Duplicate of pre-loved-partner-program,2026-04-29,yes
+premium-placement,existing_validated,A,,Premium Placement is a feature of Promoted Listings Priority (renamed from Promoted Listings Advanced July 2024) — exclu,2026-04-29,yes
+price-alert,existing_validated,B,,Active platform feature — Price Alert (parent: shopping-updates). Consistent with current eBay functionality.,2026-04-29,yes
+price-drop-alert,existing_validated,B,,Active platform feature — Price Drop Alert (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+price-drop-alerts,existing_validated,B,,Active platform feature — Price Drop Alerts (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+price-guide,existing_validated,B,,Active platform feature — Price Guide (parent: collectibles). Consistent with current eBay functionality.,2026-04-29,yes
+price-plus-shipping-sort,existing_validated,B,,Active platform feature — Price + Shipping Sort (parent: search). Consistent with current eBay functionality.,2026-04-29,yes
+price-range,existing_validated,B,,Active platform feature — Price Range (parent: search). Consistent with current eBay functionality.,2026-04-29,yes
+price-range-filter,existing_validated,B,,Active platform feature — Price Range Filter (parent: search). Consistent with current eBay functionality.,2026-04-29,yes
+price-suggestions,existing_validated,B,,Active platform feature — Price Suggestions (parent: pricing-tools). Consistent with current eBay functionality.,2026-04-29,yes
+pricing-tools,existing_validated,A,,Structural hierarchy node — Pricing Tools is valid taxonomy entry,2026-04-29,yes
+print-coupons,existing_validated,B,,Active platform feature — Print Coupons (parent: marketing). Consistent with current eBay functionality.,2026-04-29,yes
+print-label,existing_validated,B,,Active platform feature — Print Label (parent: print-shipping-label). Consistent with current eBay functionality.,2026-04-29,yes
+print-shipping-label,existing_validated,B,,Active platform feature — Print Shipping Label (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+priority-campaign,existing_validated,A,,Promoted Listings Priority Campaign — live,2026-04-29,yes
+privacy-policy,existing_validated,A,,Legal/policy document — Privacy Policy maintained by eBay legal/compliance team,2026-04-29,yes
+private-listing,existing_validated,B,,Active platform feature — Private Listing (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+private-offers,existing_validated,B,,Active platform feature — Private Offers (parent: marketing). Consistent with current eBay functionality.,2026-04-29,yes
+pro-seller-program,existing_validated,B,,"Pro Seller Program (US) LIVE as of 2025. Free, invite-only, 10-week program with dedicated ProSeller Advisor (~6 meeting",2026-04-29,yes
+pro-trader-program,name_correction,B,Clarify market scope for pro-trader-program node; UK version may need rename to 'Account Management Services'; DE version is 'Pro Trader Programme'. Consider splitting into market-specific nodes.,Pro Trader programs are live but named differently per market: UK = 'Account Management Services' (formerly 'Pro-Trader ,2026-04-29,yes
+proceed-to-checkout,existing_validated,B,,Active platform feature — Proceed to Checkout (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+product-identifiers,existing_validated,B,,Active platform feature — Product Identifiers (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+product-research,existing_validated,A,,Product Research is the live Seller Hub feature (successor to Terapeak) found at seller-hub under Research section. Conf,2026-04-29,yes
+product-reviews,existing_validated,B,,Active platform feature — Product Reviews (parent: feedback). Consistent with current eBay functionality.,2026-04-29,yes
+product-video,existing_validated,B,,Active platform feature — Product Video (parent: listing-designer). Consistent with current eBay functionality.,2026-04-29,yes
+prohibited-items-list,existing_validated,A,,Legal/policy document — Prohibited Items List maintained by eBay legal/compliance team,2026-04-29,yes
+prohibited-restricted-items-by-country,existing_validated,A,,Legal/policy document — Prohibited & Restricted Items by Country maintained by eBay legal/compliance team,2026-04-29,yes
+promote-similar-items,existing_validated,B,,Active platform feature — Promote Similar Items (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+promote-your-listing,existing_validated,B,,Active platform feature — Promote Your Listing (parent: promoted-listings). Consistent with current eBay functionality.,2026-04-29,yes
+promoted-brand,false_positive,C,Remove from registry as false positive; no eBay advertising product by this name,"'Promoted Brand' does not exist as a named eBay advertising product. No public page, press release, or seller-facing doc",2026-04-29,yes
+promoted-listings,existing_validated,A,,T1 advertising umbrella — live,2026-04-29,yes
+promoted-listings-advanced,status_changed_renamed,A,update status: renamed; renamedTo: promoted-listings-priority,Promoted Listings Advanced (old name) — renamed to Promoted Listings Priority Summer 2024,2026-04-29,yes
+promoted-listings-dashboard,existing_validated,B,,Active platform feature — Promoted Listings Dashboard (parent: promoted-listings). Consistent with current eBay function,2026-04-29,yes
+promoted-listings-express,existing_legacy_validated,B,,Promoted Listings Express — retired advertising tier,2026-04-29,yes
+promoted-listings-general,name_correction,A,update name to 'Promoted Listings General',ID says 'general' but display name shows 'Promoted Listings Standard' — correct name is 'Promoted Listings General' (ren,2026-04-29,yes
+promoted-listings-priority,name_correction,A,update name to 'Promoted Listings Priority',ID says 'priority' but display name shows 'Promoted Listings Advanced' — correct name is 'Promoted Listings Priority' (r,2026-04-29,yes
+promoted-listings-standard,status_changed_renamed,A,update status: renamed; renamedTo: promoted-listings-general,Promoted Listings Standard (old name) — renamed to Promoted Listings General Summer 2024,2026-04-29,yes
+promoted-offsite,name_correction,A,Update name if still showing 'Offsite Ads'; confirm canonical_url to /sellercenter/growth/ebay-advertising/promoted-offsite; mark offsite-ads as renamed predecessor,Promoted Offsite LIVE at ebay.com/sellercenter/growth/ebay-advertising/promoted-offsite. Renamed from 'Offsite Ads' in J,2026-04-29,yes
+promoted-stores,existing_validated,A,,Promoted Stores advertising product — live,2026-04-29,yes
+promoted-stores-custom,existing_validated,B,,Promoted Stores Custom tier — live,2026-04-29,yes
+promoted-to-international,existing_legacy_validated,B,,Promoted to International — retired cross-border feature,2026-04-29,yes
+promotional-codes,existing_validated,B,,Active platform feature — Promotional Codes (parent: marketing). Consistent with current eBay functionality.,2026-04-29,yes
+promotional-credit,existing_validated,B,,Active platform feature — Promotional Credit (parent: marketing). Consistent with current eBay functionality.,2026-04-29,yes
+promotions-manager,status_changed_renamed,A,update status: renamed; renamedTo: seller-hub-discounts,Promotions Manager URL redirects to seller-hub-promotions; live page calls tool 'Seller Hub Discounts',2026-04-29,yes
+proseller-growth-program,existing_validated,B,,ProSeller Growth Program — live,2026-04-29,yes
+proxy-bidding,existing_validated,B,,Active platform feature — Proxy Bidding (parent: auction-format). Consistent with current eBay functionality.,2026-04-29,yes
+purchase-history,existing_validated,B,,Active platform feature — Purchase History (parent: my-ebay). Consistent with current eBay functionality.,2026-04-29,yes
+purchase-limits,existing_validated,B,,Active platform feature — Purchase Limits (parent: buyer-requirements). Consistent with current eBay functionality.,2026-04-29,yes
+purchase-protection,existing_validated,C,,"'Purchase Protection' is confirmed as an internal umbrella category label, not a standalone branded program. The phrase ",2026-04-29,yes
+push-notifications,existing_validated,B,,Active platform feature — Push Notifications (parent: notifications). Consistent with current eBay functionality.,2026-04-29,yes
+quantity-available,existing_validated,B,,Active platform feature — Quantity Available (parent: inventory). Consistent with current eBay functionality.,2026-04-29,yes
+quantity-limits,existing_validated,B,,Active platform feature — Quantity Limits (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+quantity-selector,existing_validated,B,,Active platform feature — Quantity Selector (parent: checkout). Consistent with current eBay functionality.,2026-04-29,yes
+quick-listing-tool,existing_validated,B,,Active platform feature — Quick Listing Tool (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+real-time-notifications,existing_validated,B,,Active platform feature — Real-Time Notifications (parent: mobile-notifications). Consistent with current eBay functiona,2026-04-29,yes
+real-time-tracking,existing_validated,B,,Active platform feature — Real-Time Tracking (parent: delivery-status). Consistent with current eBay functionality.,2026-04-29,yes
+recently-viewed,existing_validated,B,,Active platform feature — Recently Viewed (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+refine-search,existing_validated,B,,Active platform feature — Refine Search (parent: search). Consistent with current eBay functionality.,2026-04-29,yes
+refund-issued,existing_validated,B,,Active platform feature — Refund Issued (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+refurbished,existing_validated,A,,Structural hierarchy node — Refurbished is valid taxonomy entry,2026-04-29,yes
+refurbished-open-box,existing_validated,A,,Structural hierarchy node — Refurbished & Open Box is valid taxonomy entry,2026-04-29,yes
+regional,existing_validated,A,,Regional taxonomy umbrella — structural node,2026-04-29,yes
+relist,existing_validated,B,,Active platform feature — Relist (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+relist-item,existing_validated,B,,Active platform feature — Relist Item (parent: sellertools). Consistent with current eBay functionality.,2026-04-29,yes
+reply-to-feedback,existing_validated,B,,Active platform feature — Reply to Feedback (parent: sellertools). Consistent with current eBay functionality.,2026-04-29,yes
+report-buyer,existing_validated,B,,Active platform feature — Report Buyer (parent: trust). Consistent with current eBay functionality.,2026-04-29,yes
+report-this-item,existing_validated,B,,Active platform feature — Report This Item (parent: trust). Consistent with current eBay functionality.,2026-04-29,yes
+request-feedback-revision,existing_validated,B,,Active platform feature — Request Feedback Revision (parent: sellertools). Consistent with current eBay functionality.,2026-04-29,yes
+request-return,existing_validated,B,,Active platform feature — Request Return (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+request-total,existing_validated,B,,Active platform feature — Request Total (parent: checkout). Consistent with current eBay functionality.,2026-04-29,yes
+reserve-met,existing_validated,B,,Active platform feature — Reserve Met (parent: sellertools). Consistent with current eBay functionality.,2026-04-29,yes
+reserve-not-met,existing_validated,B,,Active platform feature — Reserve Not Met (parent: sellertools). Consistent with current eBay functionality.,2026-04-29,yes
+reserve-price,existing_validated,B,,Active platform feature — Reserve Price (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+resolution-center,existing_legacy_validated,B,,"Resolution Center — retired, replaced by Issue Resolution Center",2026-04-29,yes
+restocking-fee,existing_validated,B,,Active platform feature — Restocking Fee (parent: returns). Consistent with current eBay functionality.,2026-04-29,yes
+return-approved,existing_validated,B,,Active platform feature — Return Approved (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+return-preferences,existing_validated,B,,Active platform feature — Return Preferences (parent: selling-preferences). Consistent with current eBay functionality.,2026-04-29,yes
+return-received,existing_validated,B,,Active platform feature — Return Received (parent: sellertools). Consistent with current eBay functionality.,2026-04-29,yes
+return-requested,existing_validated,B,,Active platform feature — Return Requested (parent: sellertools). Consistent with current eBay functionality.,2026-04-29,yes
+return-shipped,existing_validated,B,,Active platform feature — Return Shipped (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+return-to-sender,existing_validated,B,,Active platform feature — Return to Sender (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+returns,existing_validated,A,,Structural hierarchy node — Returns is valid taxonomy entry,2026-04-29,yes
+returns-accepted-filter,existing_validated,B,,Active platform feature — Returns Accepted Filter (parent: search). Consistent with current eBay functionality.,2026-04-29,yes
+review-offer,existing_validated,B,,Active platform feature — Review Offer (parent: sellertools). Consistent with current eBay functionality.,2026-04-29,yes
+review-offers,existing_validated,B,,Active platform feature — Review Offers (parent: seller-hub). Consistent with current eBay functionality.,2026-04-29,yes
+revise-listing,existing_validated,B,,Active platform feature — Revise Listing (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+rich-text-editor,existing_validated,B,,Active platform feature — Rich Text Editor (parent: visual-editor). Consistent with current eBay functionality.,2026-04-29,yes
+royal-mail-tracked-24,existing_validated,B,,Active platform feature — Royal Mail Tracked 24 (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+safeharbor,existing_legacy_validated,A,,SafeHarbor — early fraud/dispute system 1999. Correctly marked legacy.,2026-04-29,yes
+sale-events,existing_validated,B,,Active platform feature — Sale Events (parent: marketing). Consistent with current eBay functionality.,2026-04-29,yes
+sales-conversion-rate,existing_validated,B,,Active platform feature — Sales Conversion Rate (parent: analytics). Consistent with current eBay functionality.,2026-04-29,yes
+sales-events,existing_validated,B,,Active platform feature — Sales Events (parent: sellertools). Consistent with current eBay functionality.,2026-04-29,yes
+sales-report,existing_validated,B,,Active platform feature — Sales Report (parent: analytics). Consistent with current eBay functionality.,2026-04-29,yes
+sales-reports,existing_validated,B,,Active platform feature — Sales Reports (parent: seller-hub). Consistent with current eBay functionality.,2026-04-29,yes
+sales-reports-plus,existing_validated,B,,Active platform feature — Sales Reports Plus (parent: seller-hub). Consistent with current eBay functionality.,2026-04-29,yes
+sales-tax-collection,existing_validated,A,,eBay sales tax collection in applicable US states — live,2026-04-29,yes
+same-day-handling,existing_validated,B,,Active platform feature — Same-Day Handling (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+save-for-later,existing_validated,B,,Active platform feature — Save for Later (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+saved,existing_validated,B,,Active platform feature — Saved (parent: my-ebay). Consistent with current eBay functionality.,2026-04-29,yes
+saved-drafts,existing_validated,B,,Active platform feature — Saved Drafts (parent: drafts). Consistent with current eBay functionality.,2026-04-29,yes
+saved-payment-methods,existing_validated,B,,Active platform feature — Saved Payment Methods (parent: payments). Consistent with current eBay functionality.,2026-04-29,yes
+saved-searches,existing_validated,A,,Core buyer feature — live,2026-04-29,yes
+saved-seller,existing_validated,B,,Active platform feature — Saved Seller (parent: saved-sellers). Consistent with current eBay functionality.,2026-04-29,yes
+saved-sellers,existing_validated,A,,Core buyer feature — live,2026-04-29,yes
+schedule-listing,existing_validated,B,,Active platform feature — Schedule Listing (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+schedule-start-time,existing_validated,B,,Active platform feature — Schedule Start Time (parent: sellertools). Consistent with current eBay functionality.,2026-04-29,yes
+scheduled-listing,existing_validated,B,,Active platform feature — Scheduled Listing (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+scheduled-listings,existing_validated,B,,Active platform feature — Scheduled Listings (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+search,existing_validated,A,,Structural hierarchy node — Search is valid taxonomy entry,2026-04-29,yes
+search-filters,existing_validated,B,,Active platform feature — Search Filters (parent: search). Consistent with current eBay functionality.,2026-04-29,yes
+search-standing-dashboard,existing_validated,B,,Active platform feature — Search Standing Dashboard (parent: analytics). Consistent with current eBay functionality.,2026-04-29,yes
+seasonal-seller-standards,existing_validated,A,,Seasonal performance standard adjustments — live policy,2026-04-29,yes
+second-chance-offer,existing_validated,A,,Auction follow-on offer — live,2026-04-29,yes
+secure-checkout,existing_validated,B,,Active platform feature — Secure Checkout (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+self-hosted-images,existing_validated,B,,Active platform feature — Self-Hosted Images (parent: listing-designer). Consistent with current eBay functionality.,2026-04-29,yes
+sell-similar,existing_validated,B,,Active platform feature — Sell Similar (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+sell-through-rate,existing_validated,B,,Active platform feature — Sell-Through Rate (parent: analytics). Consistent with current eBay functionality.,2026-04-29,yes
+seller-centre,existing_validated,B,,Non-US Seller Centre (British spelling) — valid regional name,2026-04-29,yes
+seller-clinics,name_correction,A,"Confirm as distinct program from eBay Academy (not a replacement); add canonical URL; correct parent: should be community/growth, not Internal Tools",Seller Clinics is LIVE and DISTINCT from eBay Academy. Launched Oct 2024. One-on-one 45-min phone consultations with eBa,2026-04-29,yes
+seller-community,existing_validated,A,,Seller community forums — live,2026-04-29,yes
+seller-coupon,existing_validated,B,,Active platform feature — Seller Coupon (parent: marketing). Consistent with current eBay functionality.,2026-04-29,yes
+seller-help,existing_validated,A,,Seller Help — live,2026-04-29,yes
+seller-hub,existing_validated,A,,Core seller platform — live,2026-04-29,yes
+seller-hub-reports,existing_validated,B,,Active platform feature — Seller Hub Reports (parent: seller-hub). Consistent with current eBay functionality.,2026-04-29,yes
+seller-hub-tasks,existing_validated,B,,Active platform feature — Seller Hub Tasks (parent: seller-hub). Consistent with current eBay functionality.,2026-04-29,yes
+seller-initiated-offers,existing_validated,B,,Active platform feature — Seller Initiated Offers (parent: marketing). Consistent with current eBay functionality.,2026-04-29,yes
+seller-news,existing_validated,B,,Active platform feature — Seller News (parent: seller-hub). Consistent with current eBay functionality.,2026-04-29,yes
+seller-newsletter,existing_validated,A,,eBay Seller Newsletter — live,2026-04-29,yes
+seller-pays-return-shipping,existing_validated,B,,Active platform feature — Seller Pays Return Shipping (parent: returns). Consistent with current eBay functionality.,2026-04-29,yes
+seller-performance-standards,existing_validated,A,,Seller performance standards — live,2026-04-29,yes
+seller-programs,existing_validated,A,,Seller Programs taxonomy umbrella — structural node,2026-04-29,yes
+seller-protections,existing_validated,A,,Seller protection policies — live,2026-04-29,yes
+seller-refurbished,existing_legacy_validated,B,,Seller Refurbished condition tier — retired,2026-04-29,yes
+seller-responded,existing_validated,B,,Active platform feature — Seller Responded (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+seller-response,existing_validated,B,,Active platform feature — Seller Response (parent: sellertools). Consistent with current eBay functionality.,2026-04-29,yes
+seller-tools,existing_validated,A,,Structural hierarchy node — Seller Tools is valid taxonomy entry,2026-04-29,yes
+seller-tools-hub,existing_validated,A,,Structural hierarchy node — Seller Tools & Hub is valid taxonomy entry,2026-04-29,yes
+seller-transaction-report,existing_validated,B,,Active platform feature — Seller Transaction Report (parent: payments). Consistent with current eBay functionality.,2026-04-29,yes
+seller-updates,existing_validated,A,,Seller Updates page — live,2026-04-29,yes
+seller-verification,existing_validated,B,,Active platform feature — Seller Verification (parent: trust). Consistent with current eBay functionality.,2026-04-29,yes
+sellertools,existing_validated,A,,Structural hierarchy node — Seller Tools is valid taxonomy entry,2026-04-29,yes
+selling-activity-notifications,existing_validated,B,,Active platform feature — Selling Activity Notifications (parent: seller-hub). Consistent with current eBay functionalit,2026-04-29,yes
+selling-coach,existing_legacy_validated,B,,Selling Coach — retired seller guidance tool,2026-04-29,yes
+selling-manager,existing_legacy_validated,B,,"Selling Manager — legacy tool, replaced by Seller Hub",2026-04-29,yes
+selling-manager-pro,existing_legacy_validated,B,,"Selling Manager Pro — legacy tool, replaced by Seller Hub",2026-04-29,yes
+selling-notifications,existing_validated,B,,Active platform feature — Selling Notifications (parent: seller-hub). Consistent with current eBay functionality.,2026-04-29,yes
+selling-preferences,existing_validated,B,,Active platform feature — Selling Preferences (parent: seller-hub). Consistent with current eBay functionality.,2026-04-29,yes
+selling-restrictions,existing_validated,B,,Active platform feature — Selling Restrictions (parent: trust). Consistent with current eBay functionality.,2026-04-29,yes
+selling-with-ai,existing_validated,B,,Active platform feature — Selling with AI (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+send-coupon,existing_validated,B,,Active platform feature — Send Coupon (parent: marketing). Consistent with current eBay functionality.,2026-04-29,yes
+send-invoice,existing_validated,B,,Active platform feature — Send Invoice (parent: order-management). Consistent with current eBay functionality.,2026-04-29,yes
+send-message,existing_validated,B,,Active platform feature — Send Message (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+send-offer,existing_validated,B,,Active platform feature — Send Offer (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+send-refund,existing_validated,B,,Active platform feature — Send Refund (parent: order-management). Consistent with current eBay functionality.,2026-04-29,yes
+services,existing_validated,A,,Services taxonomy umbrella — structural node,2026-04-29,yes
+services-paiement-ebay,existing_validated,A,,French payments label — live,2026-04-29,yes
+session-duration,existing_validated,B,,Active platform feature — Session Duration (parent: analytics). Consistent with current eBay functionality.,2026-04-29,yes
+session-expired,existing_validated,B,,Active platform feature — Session Expired (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+shake-to-search,existing_legacy_validated,B,,Shake to Search — retired mobile feature,2026-04-29,yes
+share-listing,existing_validated,B,,Active platform feature — Share Listing (parent: ebay-mobile-app). Consistent with current eBay functionality.,2026-04-29,yes
+share-this-item,existing_validated,B,,Active platform feature — Share This Item (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+shill-bidding-policy,existing_validated,A,,Legal/policy document — Shill Bidding Policy maintained by eBay legal/compliance team,2026-04-29,yes
+ship-from-address,existing_validated,B,,Active platform feature — Ship From Address (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+ship-to-store,existing_legacy_validated,B,,Ship to Store — retired pickup feature,2026-04-29,yes
+shipment-confirmation,existing_validated,B,,Active platform feature — Shipment Confirmation (parent: notifications). Consistent with current eBay functionality.,2026-04-29,yes
+shipping,existing_validated,A,,Structural hierarchy node — Shipping is valid taxonomy entry,2026-04-29,yes
+shipping-calculator,existing_validated,B,,Active platform feature — Shipping Calculator (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+shipping-cost,existing_validated,B,,Active platform feature — Shipping Cost (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+shipping-discount,existing_validated,B,,Active platform feature — Shipping Discount (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+shipping-discounts,existing_validated,B,,Active platform feature — Shipping Discounts (parent: marketing). Consistent with current eBay functionality.,2026-04-29,yes
+shipping-labels,existing_validated,B,,Active platform feature — Shipping Labels (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+shipping-logistics,existing_validated,A,,Structural hierarchy node — eBay Shipping & Logistics is valid taxonomy entry,2026-04-29,yes
+shipping-restrictions,existing_validated,B,,Active platform feature — Shipping Restrictions (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+ships-to,existing_validated,B,,Active platform feature — Ships To (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+shop-by-category,existing_validated,B,,Active platform feature — Shop by Category (parent: browse). Consistent with current eBay functionality.,2026-04-29,yes
+shop-by-diagram,existing_validated,B,,Active platform feature — Shop by Diagram (parent: ebay-motors). Consistent with current eBay functionality.,2026-04-29,yes
+shopping-cart,existing_validated,B,,Active platform feature — Shopping Cart (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+shopping-updates,existing_validated,B,,Active platform feature — Shopping Updates (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+shoprunner,existing_legacy_validated,A,,ShopRunner — premium shipping service via GSI Commerce. Mostly divested. Correctly marked legacy.,2026-04-29,yes
+show-only,existing_validated,B,,Active platform feature — Show Only (parent: search). Consistent with current eBay functionality.,2026-04-29,yes
+significantly-not-as-described,existing_validated,B,,Active platform feature — Significantly Not as Described (parent: ebay-money-back-guarantee). Consistent with current eB,2026-04-29,yes
+similar-items,existing_validated,B,,Active platform feature — Similar Items (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+similar-sponsored-items,existing_validated,B,,Active platform feature — Similar Sponsored Items (parent: promoted-listings). Consistent with current eBay functionalit,2026-04-29,yes
+simple-delivery,existing_validated,B,,Active platform feature — Simple Delivery (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+simple-delivery-uk,existing_validated,B,,Active platform feature — Simple Delivery (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+site-preferences,existing_validated,B,,Active platform feature — Site Preferences (parent: account-settings). Consistent with current eBay functionality.,2026-04-29,yes
+smartmarket-technology,existing_legacy_validated,A,,SmartMarket Technology — eBay's auction platform technology licensed 1996. Correctly marked legacy.,2026-04-29,yes
+sms-alerts,existing_validated,B,,Active platform feature — SMS Alerts (parent: notifications). Consistent with current eBay functionality.,2026-04-29,yes
+sms-notifications,existing_validated,B,,Active platform feature — SMS Notifications (parent: sms-alerts). Consistent with current eBay functionality.,2026-04-29,yes
+sneaker-authentication,existing_validated,A,,AG Sneakers variant — live,2026-04-29,yes
+sold-items-filter,existing_validated,B,,Active platform feature — Sold Items Filter (parent: search). Consistent with current eBay functionality.,2026-04-29,yes
+sold-listings,existing_validated,B,,Active platform feature — Sold Listings (parent: seller-hub). Consistent with current eBay functionality.,2026-04-29,yes
+sold-quantity-display,existing_validated,B,,Active platform feature — Sold Quantity Display (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+sort-by,existing_validated,B,,Active platform feature — Sort By (parent: search). Consistent with current eBay functionality.,2026-04-29,yes
+sports-memorabilia,existing_validated,A,,Sports Memorabilia vertical — live,2026-04-29,yes
+spotlight-deals,existing_validated,B,,Active platform feature — Spotlight Deals (parent: ebay-deals). Consistent with current eBay functionality.,2026-04-29,yes
+spring-clearance,existing_validated,A,,Spring Clearance — seasonal,2026-04-29,yes
+stamps,existing_validated,A,,Stamps vertical — live,2026-04-29,yes
+starting-bid,existing_validated,B,,Active platform feature — Starting Bid (parent: auction-format). Consistent with current eBay functionality.,2026-04-29,yes
+stock-quantity,existing_validated,B,,Active platform feature — Stock Quantity (parent: inventory). Consistent with current eBay functionality.,2026-04-29,yes
+store-categories,existing_validated,B,,Active platform feature — Store Categories (parent: ebay-stores). Consistent with current eBay functionality.,2026-04-29,yes
+store-email-campaigns,existing_validated,B,,Active platform feature — Store Email Campaigns (parent: ebay-stores). Consistent with current eBay functionality.,2026-04-29,yes
+store-header,existing_validated,B,,Active platform feature — Store Header (parent: ebay-stores). Consistent with current eBay functionality.,2026-04-29,yes
+store-newsletters,existing_validated,B,,Active platform feature — Store Newsletters (parent: ebay-stores). Consistent with current eBay functionality.,2026-04-29,yes
+store-promotions-box,existing_validated,B,,Active platform feature — Store Promotions Box (parent: ebay-stores). Consistent with current eBay functionality.,2026-04-29,yes
+store-tier-anchor,existing_validated,A,,eBay Stores Anchor tier — live,2026-04-29,yes
+store-tier-basic,existing_validated,A,,eBay Stores Basic/Starter tier — live,2026-04-29,yes
+store-tier-enterprise,existing_validated,A,,eBay Stores Enterprise tier — live,2026-04-29,yes
+store-tier-enterprise-us,duplicate,B,merge with market: US or clarify,Duplicate of store-tier-enterprise (US-specific label),2026-04-29,yes
+store-tier-featured,existing_validated,A,,eBay Stores Featured tier — live,2026-04-29,yes
+store-tier-platin,existing_validated,A,,eBay Stores Platin tier (DE) — live,2026-04-29,yes
+store-tier-platin-de,duplicate,B,merge into store-tier-platin with market: DE,Duplicate of store-tier-platin (DE-specific),2026-04-29,yes
+store-tier-premium,existing_validated,A,,eBay Stores Premium tier — live,2026-04-29,yes
+store-tier-premium-plus,existing_validated,A,,eBay Stores Premium Plus tier — live,2026-04-29,yes
+store-tier-premium-plus-it,duplicate,B,merge into store-tier-premium-plus with market: IT,Duplicate of store-tier-premium-plus (IT-specific),2026-04-29,yes
+store-tier-starter,existing_validated,A,,eBay Stores Starter tier — live,2026-04-29,yes
+stores,existing_validated,A,,Stores taxonomy umbrella — structural node,2026-04-29,yes
+subtitle,existing_validated,B,,Active platform feature — Subtitle (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+supersize-pictures,existing_legacy_validated,B,,Supersize Pictures — retired listing feature,2026-04-29,yes
+support,existing_validated,A,,Structural hierarchy node — Support is valid taxonomy entry,2026-04-29,yes
+sustainability,existing_validated,A,,Structural hierarchy node — Sustainability is valid taxonomy entry,2026-04-29,yes
+tax,existing_validated,A,,Structural hierarchy node — Tax is valid taxonomy entry,2026-04-29,yes
+tax-documents,existing_validated,B,,Active platform feature — Tax Documents (parent: payments). Consistent with current eBay functionality.,2026-04-29,yes
+tcgplayer,existing_validated,A,,"TCGplayer — eBay subsidiary, live",2026-04-29,yes
+tcgplayer-authentication-center,existing_validated,A,,TCGplayer Authentication Center — grading and verification service. Live within TCGplayer ecosystem.,2026-04-29,yes
+tcgplayer-marketplace,existing_validated,A,,TCGplayer Marketplace — trading card marketplace platform. Live.,2026-04-29,yes
+techstars-future-of-ecommerce,existing_validated,A,,Techstars Future of Ecommerce powered by eBay — accelerator program launched Sept 2023. Live.,2026-04-29,yes
+template-builder,existing_validated,B,,Active platform feature — Template Builder (parent: listing-designer). Consistent with current eBay functionality.,2026-04-29,yes
+terapeak,status_changed_renamed,A,update status: renamed; renamedTo: product-research,Terapeak name fully absent from live Seller Center; renamed to 'Product Research',2026-04-29,yes
+terms-of-service,existing_validated,A,,Legal/policy document — Terms of Service maintained by eBay legal/compliance team,2026-04-29,yes
+thermal-printer,existing_validated,B,,Active platform feature — Thermal Printer (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+things-people-love,existing_validated,A,,Things.People.Love — creative platform and brand strategy launched 2024. Unified messaging framework with eBay Evo desig,2026-04-29,yes
+third-party-providers,existing_validated,B,,Third-party providers taxonomy node — valid,2026-04-29,yes
+time-away,existing_validated,B,,Active platform feature — Time Away (parent: seller-hub). Consistent with current eBay functionality.,2026-04-29,yes
+time-left,existing_validated,B,,Active platform feature — Time Left (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+tise,existing_validated,A,,Tise — Norway C2C secondhand fashion marketplace acquired Oct 2025. Live in NO and EU markets.,2026-04-29,yes
+top-rated-filter,existing_validated,B,,Active platform feature — Top Rated Filter (parent: seller-performance-standards). Consistent with current eBay function,2026-04-29,yes
+top-rated-plus,existing_validated,A,,T1 seller badge — live,2026-04-29,yes
+top-rated-seller,existing_validated,A,,Top Rated Seller performance tier — live,2026-04-29,yes
+track-package,existing_validated,B,,Active platform feature — Track Package (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+tracking-number,existing_validated,B,,Active platform feature — Tracking Number (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+trademark,existing_validated,A,,Legal/policy document — Trademark maintained by eBay legal/compliance team,2026-04-29,yes
+trading-card-authentication,existing_validated,A,,AG Trading Cards variant — live,2026-04-29,yes
+trading-card-hub,existing_validated,A,,Trading Card Hub — live,2026-04-29,yes
+traffic-report,existing_validated,B,,Active platform feature — Traffic Report (parent: analytics). Consistent with current eBay functionality.,2026-04-29,yes
+traffic-reports,existing_validated,B,,Active platform feature — Traffic Reports (parent: seller-hub). Consistent with current eBay functionality.,2026-04-29,yes
+transaction-defect-rate,existing_validated,B,,Active platform feature — Transaction Defect Rate (parent: seller-performance-standards). Consistent with current eBay f,2026-04-29,yes
+transaction-interference-policy,existing_validated,A,,Legal/policy document — Transaction Interference Policy maintained by eBay legal/compliance team,2026-04-29,yes
+transaction-report,existing_validated,B,,Active platform feature — Transaction Report (parent: analytics). Consistent with current eBay functionality.,2026-04-29,yes
+trust,existing_validated,A,,Structural hierarchy node — Trust is valid taxonomy entry,2026-04-29,yes
+trust-safety,existing_validated,A,,Structural hierarchy node — Platform-Wide Trust & Safety is valid taxonomy entry,2026-04-29,yes
+try-again,existing_validated,B,,Active platform feature — Try Again (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+turbo-lister,existing_legacy_validated,B,,"Turbo Lister — legacy listing tool, discontinued",2026-04-29,yes
+twice-acquisition,existing_legacy_validated,A,,Twice — clothing resale startup acquired July 2015. Integrated into Valet. Correctly marked legacy.,2026-04-29,yes
+two-factor-authentication,existing_validated,B,,Active platform feature — Two-Factor Authentication (parent: account-security). Consistent with current eBay functionali,2026-04-29,yes
+unique-visitors,existing_validated,B,,Active platform feature — Unique Visitors (parent: analytics). Consistent with current eBay functionality.,2026-04-29,yes
+unpaid-item-assistant,existing_validated,B,,Active platform feature — Unpaid Item Assistant (parent: support). Consistent with current eBay functionality.,2026-04-29,yes
+unpaid-item-case,existing_validated,B,,Active platform feature — Unpaid Item Case (parent: support). Consistent with current eBay functionality.,2026-04-29,yes
+unread-messages,existing_validated,B,,Active platform feature — Unread Messages (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+unsold-listings,existing_validated,B,,Active platform feature — Unsold Listings (parent: seller-hub). Consistent with current eBay functionality.,2026-04-29,yes
+up4sale,existing_legacy_validated,A,,Up4Sale — trading site acquired 1998. Correctly marked legacy.,2026-04-29,yes
+upload-tracking,existing_validated,B,,Active platform feature — Upload Tracking (parent: shipping). Consistent with current eBay functionality.,2026-04-29,yes
+user-agreement,existing_validated,A,,Legal/policy document — User Agreement maintained by eBay legal/compliance team,2026-04-29,yes
+valid-tracking-rate,existing_validated,B,,Active platform feature — Valid Tracking Rate (parent: seller-performance-standards). Consistent with current eBay funct,2026-04-29,yes
+variation-photos,existing_validated,B,,Active platform feature — Variation Photos (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+variation-specifics,existing_validated,B,,Active platform feature — Variation Specifics (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+vat-collection,existing_validated,B,,Active platform feature — VAT Collection (parent: payments). Consistent with current eBay functionality.,2026-04-29,yes
+vat-services-uk-eu,existing_validated,B,,Active platform feature — VAT Services (UK/EU) (parent: tax). Consistent with current eBay functionality.,2026-04-29,yes
+vehicle-history-report,existing_validated,B,,Active platform feature — Vehicle History Report (parent: ebay-motors). Consistent with current eBay functionality.,2026-04-29,yes
+vehicle-purchase-protection,existing_validated,A,,Vehicle Purchase Protection — live. Mis-parented: should be under ebay-motors not general trust.,2026-04-29,yes
+venmo,existing_validated,B,,Active platform feature — Venmo (parent: payments). Consistent with current eBay functionality.,2026-04-29,yes
+verified-purchase,existing_validated,B,,Active platform feature — Verified Purchase (parent: feedback). Consistent with current eBay functionality.,2026-04-29,yes
+verify-account,existing_validated,B,,Active platform feature — Verify Account (parent: trust). Consistent with current eBay functionality.,2026-04-29,yes
+verkaufer-cockpit-pro,existing_validated,A,,German Seller Hub Pro variant — live,2026-04-29,yes
+vero-program,existing_validated,A,,VeRO IP protection program — live,2026-04-29,yes
+verticals,existing_validated,A,,Structural hierarchy node — Verticals is valid taxonomy entry,2026-04-29,yes
+very-good-refurbished,existing_validated,A,,Very Good refurbished tier — live,2026-04-29,yes
+video-games,existing_validated,A,,Video Games vertical — live,2026-04-29,yes
+view-count,existing_validated,B,,Active platform feature — View Count (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+view-item,existing_validated,B,,Active platform feature — View Item (parent: sellertools). Consistent with current eBay functionality.,2026-04-29,yes
+view-item-page,existing_validated,B,,Active platform feature — View Item Page (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+view-order,existing_validated,B,,Active platform feature — View Order (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+views,existing_validated,B,,Active platform feature — Views (parent: page-views). Consistent with current eBay functionality.,2026-04-29,yes
+vin-lookup,existing_validated,B,,Active platform feature — VIN Lookup (parent: ebay-motors). Consistent with current eBay functionality.,2026-04-29,yes
+virtual-assistant,existing_validated,B,,Active platform feature — Virtual Assistant (parent: support). Consistent with current eBay functionality.,2026-04-29,yes
+visitor-count,existing_validated,B,,Active platform feature — Visitor Count (parent: seller-hub). Consistent with current eBay functionality.,2026-04-29,yes
+visits,existing_validated,B,,Active platform feature — Visits (parent: analytics). Consistent with current eBay functionality.,2026-04-29,yes
+visual-editor,existing_validated,B,,Active platform feature — Visual Editor (parent: listing-designer). Consistent with current eBay functionality.,2026-04-29,yes
+volume-pricing,existing_validated,A,,Seller discount feature — live in Seller Hub Discounts,2026-04-29,yes
+wata-grading,existing_validated,B,,Active platform feature — WATA Grading (parent: collectibles). Consistent with current eBay functionality.,2026-04-29,yes
+watch-authentication,existing_validated,A,,AG Watches variant — live,2026-04-29,yes
+watch-count,existing_validated,B,,Active platform feature — Watch Count (parent: analytics). Consistent with current eBay functionality.,2026-04-29,yes
+watch-list,existing_validated,B,,Active platform feature — Watch List (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+watch-this-item,existing_validated,B,,Active platform feature — Watch This Item (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+watchers,existing_validated,B,,Active platform feature — Watchers (parent: sellertools). Consistent with current eBay functionality.,2026-04-29,yes
+watchers-count,existing_validated,B,,Active platform feature — Watchers Count (parent: listing). Consistent with current eBay functionality.,2026-04-29,yes
+watching,existing_validated,B,,Active platform feature — Watching (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+watchlist,existing_validated,A,,Core buyer feature — live,2026-04-29,yes
+weekly-deals,existing_validated,B,,Active platform feature — Weekly Deals (parent: ebay-deals). Consistent with current eBay functionality.,2026-04-29,yes
+weekly-payout,existing_validated,B,,Active platform feature — Weekly Payout (parent: payments). Consistent with current eBay functionality.,2026-04-29,yes
+winning-bid,existing_validated,B,,Active platform feature — Winning Bid (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+winning-notice,existing_validated,B,,Active platform feature — Winning Notice (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+write-review,existing_validated,B,,Active platform feature — Write Review (parent: buyer). Consistent with current eBay functionality.,2026-04-29,yes
+wysiwyg-editor,existing_validated,B,,Active platform feature — WYSIWYG Editor (parent: visual-editor). Consistent with current eBay functionality.,2026-04-29,yes
+xcommerce,existing_legacy_validated,A,,X.commerce — unified eBay/PayPal/Magento developer ecosystem 2011-2013. Correctly marked legacy.,2026-04-29,yes
+you-cant-fake-fashion-campaign,existing_legacy_validated,A,,YOU CAN'T FAKE FASHION Campaign — 2011 fashion authenticity campaign with CFDA. Correctly marked legacy.,2026-04-29,yes
+zahlungsabwicklung-ebay,existing_validated,A,,German payments label — live,2026-04-29,yes
+zong-mobile-payments,existing_legacy_validated,A,,Zong — mobile payments via carrier billing 2011. Correctly marked legacy.,2026-04-29,yes

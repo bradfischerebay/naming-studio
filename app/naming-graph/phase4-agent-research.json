@@ -1,0 +1,224 @@
+{
+  "phase": "Phase 4: Multi-Agent Evidence Research",
+  "date": "2026-04-21",
+  "agents_launched": 6,
+  "programs_researched": 27,
+  "research_results": [
+    {
+      "canonical_name": "My eBay",
+      "url": "https://pages.ebay.com/cl/en-us/buyandsell/myebay/index.html",
+      "title": "All About My eBay",
+      "source_type": "ebay_official",
+      "year": null,
+      "notes": "Personalized hub for tracking all eBay buying, selling, and favorites activities."
+    },
+    {
+      "canonical_name": "Watchlist",
+      "url": "https://www.ebay.com/help/buying/search-tips/watchlist?id=4046",
+      "title": "Your Watchlist",
+      "source_type": "ebay_official",
+      "year": null,
+      "notes": "Allows users to save up to 1,000 items they're interested in without obligation to purchase."
+    },
+    {
+      "canonical_name": "Saved Searches",
+      "url": "https://www.ebay.com/help/buying/search-tips/saved-searches?id=4051",
+      "title": "Saved searches",
+      "source_type": "ebay_official",
+      "year": null,
+      "notes": "Save valuable shopping time by creating saved searches for items users regularly search for."
+    },
+    {
+      "canonical_name": "Best Match",
+      "url": "https://www.ebay.com/help/selling/listings/listing-tips/optimising-listings-best-match?id=4166",
+      "title": "Optimizing your listings for Best Match",
+      "source_type": "ebay_official",
+      "year": 2008,
+      "notes": "Default search ranking algorithm designed to show the most relevant listings."
+    },
+    {
+      "canonical_name": "Managed Payments",
+      "url": "https://pages.ebay.com/ebay-is-managing-payments/",
+      "title": "eBay is managing payments",
+      "source_type": "ebay_official",
+      "year": 2018,
+      "notes": "eBay's payment intermediation platform that processes payments directly."
+    },
+    {
+      "canonical_name": "Immediate Payment",
+      "url": "https://www.ebay.com/help/selling/listings/creating-managing-listings/immediate-payment-works?id=4151",
+      "title": "How immediate payment works",
+      "source_type": "ebay_official",
+      "year": null,
+      "notes": "Feature allowing sellers to require buyers to complete payment before securing an item."
+    },
+    {
+      "canonical_name": "PayPal on eBay",
+      "url": "https://investors.ebayinc.com/investor-news/press-release-details/2002/EBay-Inc-Announces-Third-Quarter-2002-Financial-Results/default.aspx",
+      "title": "eBay Inc. Announces Third Quarter 2002 Financial Results",
+      "source_type": "press_release",
+      "year": 2002,
+      "notes": "eBay acquired PayPal in 2002 for $1.5 billion, making it the primary payment method on the platform."
+    },
+    {
+      "canonical_name": "eBay Labels",
+      "url": "https://www.ebay.com/help/selling/posting-items/labels-packaging-tips/buying-printing-postage-labels?id=4157",
+      "title": "Printing and canceling shipping labels",
+      "source_type": "ebay_official",
+      "year": null,
+      "notes": "Prepaid shipping label service offering negotiated rates below retail for USPS, FedEx, and UPS."
+    },
+    {
+      "canonical_name": "eBay Shipping",
+      "url": "https://pages.ebay.com/seller-center/shipping/ebay-domestic-shipping-services.html",
+      "title": "Choosing a carrier and service | Seller Center",
+      "source_type": "ebay_official",
+      "year": null,
+      "notes": "Umbrella page for eBay's shipping services including labels, carriers, and shipping options."
+    },
+    {
+      "canonical_name": "Global Shipping Program",
+      "url": "https://pages.ebay.com/buy/globalshippingprogram/",
+      "title": "eBay: Global Shipping Program",
+      "source_type": "ebay_official",
+      "year": 2013,
+      "notes": "International shipping service to 100+ countries where eBay handles customs and international logistics."
+    },
+    {
+      "canonical_name": "eBay International Shipping",
+      "url": "https://pages.ebay.com/international-shipping/",
+      "title": "eIS - eBay International Shipping | eBay.com",
+      "source_type": "ebay_official",
+      "year": 2022,
+      "notes": "Successor to Global Shipping Program; ships to 200+ countries with eBay managing customs, returns, and tracking."
+    },
+    {
+      "canonical_name": "eBay Standard Envelope",
+      "url": "https://www.ebay.com/help/selling/shipping-items/setting-shipping-options/ebay-standard-envelope?id=5308",
+      "title": "eBay standard envelope | eBay",
+      "source_type": "ebay_official",
+      "year": 2021,
+      "notes": "Low-cost shipping for small items under 3oz with integrated tracking and $20-50 protection."
+    },
+    {
+      "canonical_name": "Promotions Manager",
+      "url": "https://www.ebay.com/sellercenter/growth/seller-hub-promotions",
+      "title": "Seller Hub Discounts | Seller Center",
+      "source_type": "ebay_official",
+      "year": 2017,
+      "notes": "Integrated tool combining markdown and promotion features, launched as part of eBay's Fall 2017 Seller Update."
+    },
+    {
+      "canonical_name": "File Exchange",
+      "url": "https://www.ebay.com/help/selling/selling-tools/seller-hub-reports?id=4096",
+      "title": "Seller Hub Reports | eBay",
+      "source_type": "ebay_official",
+      "year": null,
+      "notes": "Now called Seller Hub Reports (migrated June 2021). Legacy bulk management tool using CSV/Excel templates."
+    },
+    {
+      "canonical_name": "Top-Rated Seller",
+      "url": "https://www.ebay.com/sellercenter/protections/top-rated-program",
+      "title": "Top Rated Seller Program | Seller Center",
+      "source_type": "ebay_official",
+      "year": 2009,
+      "notes": "Recognition program for sellers delivering exceptional customer service. Announced July 2009."
+    },
+    {
+      "canonical_name": "Best Offer",
+      "url": "https://www.ebay.com/pages/help/sell/best-offer.html",
+      "title": "Adding Best Offer to your listing and sending offers to buyers",
+      "source_type": "ebay_official",
+      "year": 2005,
+      "notes": "Negotiation feature allowing buyers to make offers on fixed-price listings."
+    },
+    {
+      "canonical_name": "Buy It Now",
+      "url": "https://www.ebay.com/pages/help/buy/how-buy-bin.html",
+      "title": "How buying works on eBay",
+      "source_type": "ebay_official",
+      "year": 2000,
+      "notes": "Fixed-price purchasing option launched November 2000."
+    },
+    {
+      "canonical_name": "eBay Stores",
+      "url": "https://www.ebay.com/sellercenter/payments-and-fees/subscriptions-and-fees",
+      "title": "Subscriptions and fees | Seller Center",
+      "source_type": "ebay_official",
+      "year": 2001,
+      "notes": "Subscription storefronts launched June 2001. Five tiers ranging from $4.95-$2,999.95/month."
+    },
+    {
+      "canonical_name": "My Garage",
+      "url": "https://www.ebay.com/g/mygarage",
+      "title": "My Garage | eBay",
+      "source_type": "ebay_official",
+      "year": null,
+      "notes": "Allows users to save vehicle profiles to find compatible parts and accessories."
+    },
+    {
+      "canonical_name": "Parts Compatibility",
+      "url": "https://pages.ebay.com/motors/compatibility/bestPractices.html",
+      "title": "Parts Compatibility Listings | eBay Motors",
+      "source_type": "ebay_official",
+      "year": 2010,
+      "notes": "Feature that allows sellers to associate automotive parts with compatible vehicles using Year, Make, and Model data."
+    },
+    {
+      "canonical_name": "eBay Guaranteed Fit",
+      "url": "https://pages.ebay.com/motors/ebay-guaranteed-fit/",
+      "title": "eBay Guaranteed Fit",
+      "source_type": "ebay_official",
+      "year": 2023,
+      "notes": "Guarantees that eligible automotive parts will fit buyer's vehicle or they can return for free."
+    },
+    {
+      "canonical_name": "Fits Your Vehicle",
+      "url": "https://pages.ebay.com/motors/ebay-guaranteed-fit/",
+      "title": "eBay Guaranteed Fit (Fits Your Vehicle checkmark)",
+      "source_type": "ebay_official",
+      "year": 2023,
+      "notes": "Green checkmark badge that appears on listings when eBay verifies a part matches the buyer's vehicle."
+    },
+    {
+      "canonical_name": "eBay Money Back Guarantee",
+      "url": "https://www.ebay.com/help/policies/ebay-money-back-guarantee-policy/ebay-money-back-guarantee-policy?id=4210",
+      "title": "eBay Money Back Guarantee policy",
+      "source_type": "ebay_official",
+      "year": null,
+      "notes": "Buyer protection covering items not received, not as described, or faulty/damaged."
+    },
+    {
+      "canonical_name": "eBay Guaranteed Delivery",
+      "url": "https://pages.ebay.com/shipping/guaranteed-delivery.html",
+      "title": "Buying items with eBay Guaranteed Delivery",
+      "source_type": "ebay_official",
+      "year": 2017,
+      "notes": "Launched September 2017. Guarantees delivery within 1-4 business days or eBay makes it right."
+    },
+    {
+      "canonical_name": "Verified Rights Owner (VeRO) Program",
+      "url": "https://www.ebay.com/help/policies/listing-policies/selling-policies/intellectual-property-vero-program?id=4349",
+      "title": "Intellectual property policy",
+      "source_type": "ebay_official",
+      "year": 1998,
+      "notes": "Launched 1998 following the Digital Millennium Copyright Act. Allows IP rights owners to report infringing listings."
+    },
+    {
+      "canonical_name": "Resolution Center",
+      "url": "https://resolutioncenter.ebay.com/",
+      "title": "Resolution Center",
+      "source_type": "ebay_official",
+      "year": null,
+      "notes": "Central dispute resolution hub. Traditional Resolution Center has been largely phased out with functions integrated into Purchase History and Seller Hub."
+    },
+    {
+      "canonical_name": "Security Center",
+      "url": "https://pages.ebay.com/securitycenter/",
+      "title": "eBay Security Center - Homepage",
+      "source_type": "ebay_official",
+      "year": null,
+      "notes": "Central trust and safety hub covering account protection, scam prevention, reporting concerns, and security resources."
+    }
+  ]
+}

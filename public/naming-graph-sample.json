@@ -1,0 +1,713 @@
+{
+  "nodes": [
+    {
+      "id": "ebay",
+      "name": "eBay",
+      "type": "masterbrand",
+      "tier": "master",
+      "status": "current",
+      "market": "global",
+      "year": 1995,
+      "desc": "eBay masterbrand - global marketplace platform",
+      "namingTreatment": "owned_marketing_name",
+      "countsAsManagedName": true,
+      "relationshipCount": 10
+    },
+    {
+      "id": "ebay-advertising",
+      "name": "eBay Advertising",
+      "type": "advertising",
+      "tier": "umbrella",
+      "status": "current",
+      "parent": "ebay",
+      "market": "global",
+      "year": 2015,
+      "desc": "Portfolio brand encompassing all paid advertising products including Promoted Listings variants, Promoted Stores, and Promoted Offsite.",
+      "namingTreatment": "owned_marketing_name",
+      "countsAsManagedName": true,
+      "relationshipCount": 14
+    },
+    {
+      "id": "ebay-money-back-guarantee",
+      "name": "eBay Money Back Guarantee",
+      "type": "trust",
+      "tier": "program",
+      "status": "current",
+      "parent": "trust",
+      "market": "global",
+      "year": 2011,
+      "desc": "eBay's primary buyer protection program providing money-back guarantees for purchases",
+      "namingTreatment": "owned_marketing_name",
+      "countsAsManagedName": true,
+      "relationshipCount": 9
+    },
+    {
+      "id": "payments",
+      "name": "Payments",
+      "type": "category",
+      "tier": "umbrella",
+      "status": "current",
+      "parent": "payments-checkout",
+      "market": "global",
+      "desc": "Umbrella for payment methods, processing, and financial services",
+      "namingTreatment": "internal_label",
+      "countsAsManagedName": false,
+      "relationshipCount": 12
+    },
+    {
+      "id": "authenticity-guarantee",
+      "name": "Authenticity Guarantee",
+      "type": "trust",
+      "tier": "program",
+      "status": "current",
+      "parent": "trust",
+      "market": "global",
+      "year": 2020,
+      "desc": "Third-party authentication service verifying luxury items like watches, sneakers, handbags, jewelry, and trading cards before delivery.",
+      "namingTreatment": "owned_marketing_name",
+      "countsAsManagedName": true,
+      "relationshipCount": 20
+    },
+    {
+      "id": "authenticity-guarantee-handbags",
+      "name": "Authenticity Guarantee - Handbags",
+      "type": "trust",
+      "tier": "variant",
+      "status": "current",
+      "parent": "authenticity-guarantee",
+      "market": "global",
+      "year": 2021,
+      "desc": "Authentication for luxury handbags in US, UK, DE, AU and limited EU markets.",
+      "namingTreatment": "owned_marketing_name",
+      "countsAsManagedName": true,
+      "relationshipCount": 7
+    },
+    {
+      "id": "authenticity-guarantee-sneakers",
+      "name": "Authenticity Guarantee - Sneakers",
+      "type": "trust",
+      "tier": "variant",
+      "status": "current",
+      "parent": "authenticity-guarantee",
+      "market": "global",
+      "year": 2020,
+      "desc": "Authentication service for sneakers available across all 7 markets.",
+      "namingTreatment": "owned_marketing_name",
+      "countsAsManagedName": true,
+      "relationshipCount": 5
+    },
+    {
+      "id": "authenticity-guarantee-trading-cards",
+      "name": "Authenticity Guarantee - Trading Cards",
+      "type": "trust",
+      "tier": "variant",
+      "status": "current",
+      "parent": "authenticity-guarantee",
+      "market": "US",
+      "year": 2021,
+      "desc": "PSA partnership for trading card authentication available in US and CA only.",
+      "namingTreatment": "owned_marketing_name",
+      "countsAsManagedName": true,
+      "relationshipCount": 6
+    },
+    {
+      "id": "authenticity-guarantee-watches",
+      "name": "Authenticity Guarantee - Watches",
+      "type": "trust",
+      "tier": "variant",
+      "status": "current",
+      "parent": "authenticity-guarantee",
+      "market": "global",
+      "year": 2020,
+      "desc": "Third-party authentication for luxury watches available in US, UK, DE and limited EU markets.",
+      "namingTreatment": "owned_marketing_name",
+      "countsAsManagedName": true,
+      "relationshipCount": 6
+    },
+    {
+      "id": "ebay-international-shipping",
+      "name": "eBay International Shipping",
+      "type": "category",
+      "tier": "program",
+      "status": "current",
+      "parent": "shipping",
+      "market": "US",
+      "year": 2023,
+      "desc": "International shipping service for US and Canada sellers, replacing Global Shipping Program in July 2023.",
+      "namingTreatment": "owned_marketing_name",
+      "countsAsManagedName": true,
+      "relationshipCount": 11
+    },
+    {
+      "id": "ebay-stores",
+      "name": "eBay Stores",
+      "type": "category",
+      "tier": "program",
+      "status": "current",
+      "parent": "ebay",
+      "market": "global",
+      "year": 2001,
+      "desc": "Subscription-based customizable storefronts offering reduced fees, marketing tools, and enhanced seller branding across multiple tiers.",
+      "namingTreatment": "owned_marketing_name",
+      "countsAsManagedName": true,
+      "relationshipCount": 20
+    },
+    {
+      "id": "ebay-vault",
+      "name": "eBay Vault",
+      "type": "category",
+      "tier": "program",
+      "status": "current",
+      "parent": "collectibles",
+      "market": "US",
+      "year": 2022,
+      "desc": "Secure storage and authentication service for high-value collectibles including trading cards. US-only program. Physical vault operation sold to PSA (Collectors) May 2024 but consumer brand remains 'eBay Vault' at ebay.com/vault. My eBay navigation shows 'PSA Vault' label — possible gradual name transition. 'Send to PSA Vault' checkout feature launched November 2025.",
+      "namingTreatment": "owned_marketing_name",
+      "countsAsManagedName": true,
+      "relationshipCount": 9
+    },
+    {
+      "id": "managed-payments",
+      "name": "Managed Payments",
+      "type": "category",
+      "tier": "platform",
+      "status": "current",
+      "parent": "payments",
+      "market": "global",
+      "year": 2018,
+      "desc": "eBay's integrated payment processing infrastructure handling all transactions. Not consumer-facing brand.",
+      "namingTreatment": "owned_marketing_name",
+      "countsAsManagedName": true,
+      "relationshipCount": 8
+    },
+    {
+      "id": "paypal",
+      "name": "PayPal",
+      "type": "category",
+      "tier": "platform",
+      "status": "legacy",
+      "parent": "payments",
+      "market": "global",
+      "year": 2002,
+      "desc": "Third-party payment processor formerly required for eBay transactions, now optional as eBay manages payments directly.",
+      "namingTreatment": "unknown",
+      "countsAsManagedName": false,
+      "relationshipCount": 8
+    },
+    {
+      "id": "promoted-listings",
+      "name": "Promoted Listings",
+      "type": "advertising",
+      "tier": "product",
+      "status": "current",
+      "parent": "advertising",
+      "market": "global",
+      "year": 2015,
+      "desc": "Pay-per-sale advertising program increasing listing visibility in search results and browse pages.",
+      "namingTreatment": "owned_marketing_name",
+      "countsAsManagedName": true,
+      "relationshipCount": 9
+    },
+    {
+      "id": "promoted-listings-express",
+      "name": "Promoted Listings Express",
+      "type": "advertising",
+      "tier": "variant",
+      "status": "legacy",
+      "parent": "promoted-listings",
+      "market": "global",
+      "year": 2022,
+      "desc": "Automated promoted listings variant with simplified campaign management. Deprecated globally April 2024 (Germany July 2023).",
+      "namingTreatment": "owned_marketing_name",
+      "countsAsManagedName": false,
+      "relationshipCount": 7
+    },
+    {
+      "id": "promoted-listings-general",
+      "name": "Promoted Listings General",
+      "type": "advertising",
+      "tier": "product",
+      "status": "current",
+      "parent": "promoted-listings",
+      "market": "global",
+      "year": 2015,
+      "desc": "Cost-per-sale (CPC) advertising product boosting listings in on-site search results. Renamed from Promoted Listings Standard in Summer 2024.",
+      "namingTreatment": "owned_marketing_name",
+      "countsAsManagedName": true,
+      "relationshipCount": 3
+    },
+    {
+      "id": "promoted-listings-priority",
+      "name": "Promoted Listings Priority",
+      "type": "advertising",
+      "tier": "product",
+      "status": "current",
+      "parent": "promoted-listings",
+      "market": "global",
+      "year": 2020,
+      "desc": "Premium CPC advertising with priority placement in search and homepage. Renamed from Promoted Listings Advanced in Summer 2024. Exclusive top ad slots added January 2026.",
+      "namingTreatment": "owned_marketing_name",
+      "countsAsManagedName": true,
+      "relationshipCount": 3
+    },
+    {
+      "id": "seller-hub",
+      "name": "Seller Hub",
+      "type": "category",
+      "tier": "platform",
+      "status": "current",
+      "parent": "sellertools",
+      "market": "global",
+      "year": 2017,
+      "desc": "Centralized dashboard for managing eBay selling activities, listings, orders, and performance metrics. Replaced Selling Manager and Selling Manager Pro.",
+      "namingTreatment": "owned_marketing_name",
+      "countsAsManagedName": true,
+      "relationshipCount": 13
+    },
+    {
+      "id": "top-rated-seller",
+      "name": "Top Rated Seller",
+      "type": "trust",
+      "tier": "program",
+      "status": "current",
+      "parent": "trust",
+      "market": "global",
+      "year": 2008,
+      "desc": "Elite seller status offering fee discounts and Top Rated Plus badge for excellent performance, customer service, and fast shipping.",
+      "namingTreatment": "owned_marketing_name",
+      "countsAsManagedName": true,
+      "relationshipCount": 7
+    },
+    {
+      "id": "payments",
+      "name": "Payments",
+      "type": "category",
+      "tier": "umbrella",
+      "status": "current",
+      "year": 2002,
+      "desc": "Payment processing and checkout platform",
+      "relationshipCount": 12
+    },
+    {
+      "id": "promoted-listings-express",
+      "name": "Promoted Listings Express",
+      "type": "category",
+      "tier": "program",
+      "status": "legacy",
+      "parent": "advertising",
+      "market": [
+        "US",
+        "UK",
+        "DE",
+        "AU",
+        "CA"
+      ],
+      "year": 2021,
+      "desc": "Flat fee upfront payment for sponsored placements on similar listing pages. Designed for auction listings. DISCONTINUED April 15, 2024.",
+      "relationshipCount": 7
+    }
+  ],
+  "links": [
+    {
+      "source": "ebay",
+      "target": "seller-hub",
+      "type": "integrates_with",
+      "year": 2016,
+      "desc": "Seller Hub is the primary seller dashboard under the eBay masterbrand"
+    },
+    {
+      "source": "ebay",
+      "target": "managed-payments",
+      "type": "integrates_with",
+      "year": 2018,
+      "desc": "Managed Payments is eBay's owned payment processing replacing PayPal"
+    },
+    {
+      "source": "ebay",
+      "target": "authenticity-guarantee",
+      "type": "integrates_with",
+      "year": 2020,
+      "desc": "AG is a flagship trust program under the eBay masterbrand"
+    },
+    {
+      "source": "ebay",
+      "target": "ebay-advertising",
+      "type": "integrates_with",
+      "year": 2015,
+      "desc": "eBay Advertising portfolio sits under the eBay masterbrand"
+    },
+    {
+      "source": "ebay",
+      "target": "ebay-international-shipping",
+      "type": "integrates_with",
+      "year": 2021,
+      "desc": "eBay International Shipping is a key logistics program"
+    },
+    {
+      "source": "ebay",
+      "target": "ebay-money-back-guarantee",
+      "type": "integrates_with",
+      "year": 2011,
+      "desc": "MBG is eBay's core buyer protection promise"
+    },
+    {
+      "source": "ebay",
+      "target": "paypal",
+      "type": "related_to",
+      "year": 2002,
+      "desc": "PayPal was eBay's primary payment method for over a decade before spinoff"
+    },
+    {
+      "source": "ebay",
+      "target": "ebay-stores",
+      "type": "integrates_with",
+      "year": 2002,
+      "desc": "eBay Stores subscription tiers are a core seller program"
+    },
+    {
+      "source": "ebay",
+      "target": "promoted-listings",
+      "type": "integrates_with",
+      "year": 2015,
+      "desc": "Promoted Listings is eBay's flagship advertising product"
+    },
+    {
+      "source": "ebay",
+      "target": "top-rated-seller",
+      "type": "integrates_with",
+      "year": 2010,
+      "desc": "Top Rated Seller is eBay's premier seller recognition program"
+    },
+    {
+      "source": "ebay",
+      "target": "ebay-advertising",
+      "type": "parent"
+    },
+    {
+      "source": "ebay-advertising",
+      "target": "promoted-listings",
+      "type": "integrates_with",
+      "year": 2015
+    },
+    {
+      "source": "ebay-advertising",
+      "target": "seller-hub",
+      "type": "integrates_with",
+      "year": 2016,
+      "desc": "Advertising dashboard is accessed through Seller Hub"
+    },
+    {
+      "source": "ebay-money-back-guarantee",
+      "target": "managed-payments",
+      "type": "depends_on",
+      "year": 2018,
+      "desc": "Managed Payments enables automatic refund disbursement"
+    },
+    {
+      "source": "payments",
+      "target": "managed-payments",
+      "type": "integrates_with",
+      "year": 2018
+    },
+    {
+      "source": "payments",
+      "target": "paypal",
+      "type": "replaced_by",
+      "year": 2021
+    },
+    {
+      "source": "payments",
+      "target": "ebay-money-back-guarantee",
+      "type": "integrates_with",
+      "year": 2010,
+      "desc": "Money Back Guarantee depends on payments for refunds"
+    },
+    {
+      "source": "authenticity-guarantee",
+      "target": "authenticity-guarantee-sneakers",
+      "type": "integrates_with",
+      "year": 2020
+    },
+    {
+      "source": "authenticity-guarantee",
+      "target": "authenticity-guarantee-handbags",
+      "type": "integrates_with",
+      "year": 2021
+    },
+    {
+      "source": "authenticity-guarantee",
+      "target": "authenticity-guarantee-watches",
+      "type": "integrates_with",
+      "year": 2020
+    },
+    {
+      "source": "authenticity-guarantee",
+      "target": "authenticity-guarantee-trading-cards",
+      "type": "integrates_with",
+      "year": 2021
+    },
+    {
+      "source": "authenticity-guarantee",
+      "target": "ebay-vault",
+      "type": "integrates_with",
+      "year": 2022,
+      "desc": "Items authenticated via AG can be stored in The Vault"
+    },
+    {
+      "source": "authenticity-guarantee",
+      "target": "authenticity-guarantee-handbags",
+      "type": "parent"
+    },
+    {
+      "source": "authenticity-guarantee-handbags",
+      "target": "authenticity-guarantee",
+      "type": "depends_on",
+      "year": 2021
+    },
+    {
+      "source": "authenticity-guarantee-handbags",
+      "target": "ebay-vault",
+      "type": "integrates_with",
+      "year": 2022
+    },
+    {
+      "source": "authenticity-guarantee-handbags",
+      "target": "authenticity-guarantee-watches",
+      "type": "related_to"
+    },
+    {
+      "source": "authenticity-guarantee",
+      "target": "authenticity-guarantee-sneakers",
+      "type": "parent"
+    },
+    {
+      "source": "authenticity-guarantee-sneakers",
+      "target": "authenticity-guarantee",
+      "type": "depends_on",
+      "year": 2020
+    },
+    {
+      "source": "authenticity-guarantee-sneakers",
+      "target": "ebay-vault",
+      "type": "integrates_with",
+      "year": 2022
+    },
+    {
+      "source": "authenticity-guarantee",
+      "target": "authenticity-guarantee-trading-cards",
+      "type": "parent"
+    },
+    {
+      "source": "authenticity-guarantee-trading-cards",
+      "target": "authenticity-guarantee",
+      "type": "depends_on",
+      "year": 2021
+    },
+    {
+      "source": "authenticity-guarantee-trading-cards",
+      "target": "ebay-vault",
+      "type": "integrates_with",
+      "year": 2022,
+      "desc": "Graded cards can be stored in The Vault"
+    },
+    {
+      "source": "authenticity-guarantee",
+      "target": "authenticity-guarantee-watches",
+      "type": "parent"
+    },
+    {
+      "source": "authenticity-guarantee-watches",
+      "target": "authenticity-guarantee",
+      "type": "depends_on",
+      "year": 2020
+    },
+    {
+      "source": "authenticity-guarantee-watches",
+      "target": "ebay-vault",
+      "type": "integrates_with",
+      "year": 2022
+    },
+    {
+      "source": "authenticity-guarantee-watches",
+      "target": "authenticity-guarantee-handbags",
+      "type": "related_to"
+    },
+    {
+      "source": "ebay-international-shipping",
+      "target": "seller-hub",
+      "type": "integrates_with"
+    },
+    {
+      "source": "ebay",
+      "target": "ebay-stores",
+      "type": "parent"
+    },
+    {
+      "source": "ebay-stores",
+      "target": "seller-hub",
+      "type": "integrates_with",
+      "year": 2016,
+      "desc": "Seller Hub is the primary management interface for store owners"
+    },
+    {
+      "source": "ebay-vault",
+      "target": "authenticity-guarantee",
+      "type": "integrates_with",
+      "year": 2022,
+      "desc": "Items stored in Vault undergo authentication process"
+    },
+    {
+      "source": "ebay-vault",
+      "target": "authenticity-guarantee-trading-cards",
+      "type": "integrates_with"
+    },
+    {
+      "source": "payments",
+      "target": "managed-payments",
+      "type": "parent"
+    },
+    {
+      "source": "managed-payments",
+      "target": "paypal",
+      "type": "replaces",
+      "year": 2021,
+      "desc": "Managed Payments fully replaced PayPal as eBay's payment system by 2021"
+    },
+    {
+      "source": "managed-payments",
+      "target": "seller-hub",
+      "type": "integrates_with",
+      "year": 2018
+    },
+    {
+      "source": "payments",
+      "target": "paypal",
+      "type": "parent"
+    },
+    {
+      "source": "paypal",
+      "target": "managed-payments",
+      "type": "replaced_by",
+      "year": 2021,
+      "desc": "eBay replaced PayPal with Managed Payments as primary processor 2018-2021"
+    },
+    {
+      "source": "paypal",
+      "target": "managed-payments",
+      "type": "renamed_to",
+      "year": 2002,
+      "desc": "PayPal was renamed to managed-payments"
+    },
+    {
+      "source": "promoted-listings",
+      "target": "seller-hub",
+      "type": "integrates_with",
+      "year": 2017,
+      "desc": "Seller Hub marketing tab is primary access point for Promoted Listings"
+    },
+    {
+      "source": "promoted-listings",
+      "target": "ebay-advertising",
+      "type": "integrates_with",
+      "year": 2015,
+      "desc": "Promoted Listings is eBay's flagship advertising product"
+    },
+    {
+      "source": "promoted-listings",
+      "target": "promoted-listings-express",
+      "type": "parent"
+    },
+    {
+      "source": "promoted-listings-express",
+      "target": "promoted-listings",
+      "type": "integrates_with",
+      "year": 2022,
+      "desc": "Express was an automated variant within Promoted Listings program"
+    },
+    {
+      "source": "promoted-listings-express",
+      "target": "promoted-listings",
+      "type": "related_to",
+      "year": 2021,
+      "desc": "Express was a flat-fee variant of the Promoted Listings family"
+    },
+    {
+      "source": "promoted-listings",
+      "target": "promoted-listings-general",
+      "type": "parent"
+    },
+    {
+      "source": "promoted-listings-general",
+      "target": "promoted-listings",
+      "type": "integrates_with",
+      "year": 2015,
+      "desc": "General was the original cost-per-sale campaign type"
+    },
+    {
+      "source": "promoted-listings",
+      "target": "promoted-listings-priority",
+      "type": "parent"
+    },
+    {
+      "source": "promoted-listings-priority",
+      "target": "promoted-listings",
+      "type": "integrates_with",
+      "year": 2020,
+      "desc": "Priority was the premium CPC tier within Promoted Listings"
+    },
+    {
+      "source": "seller-hub",
+      "target": "promoted-listings",
+      "type": "integrates_with",
+      "year": 2017,
+      "desc": "Promoted Listings campaigns are created and managed from Seller Hub"
+    },
+    {
+      "source": "seller-hub",
+      "target": "managed-payments",
+      "type": "integrates_with",
+      "year": 2019,
+      "desc": "Payments data and payouts are surfaced within Seller Hub"
+    },
+    {
+      "source": "seller-hub",
+      "target": "ebay-advertising",
+      "type": "integrates_with",
+      "year": 2017,
+      "desc": "eBay advertising tools are launched from Seller Hub"
+    },
+    {
+      "source": "payments",
+      "target": "managed-payments",
+      "type": "integrates_with",
+      "year": 2018
+    },
+    {
+      "source": "payments",
+      "target": "paypal",
+      "type": "replaced_by",
+      "year": 2021
+    },
+    {
+      "source": "payments",
+      "target": "ebay-money-back-guarantee",
+      "type": "integrates_with",
+      "year": 2010,
+      "desc": "Money Back Guarantee depends on payments for refunds"
+    },
+    {
+      "source": "promoted-listings-express",
+      "target": "promoted-listings",
+      "type": "integrates_with",
+      "year": 2022,
+      "desc": "Express was an automated variant within Promoted Listings program"
+    },
+    {
+      "source": "promoted-listings-express",
+      "target": "promoted-listings",
+      "type": "related_to",
+      "year": 2021,
+      "desc": "Express was a flat-fee variant of the Promoted Listings family"
+    }
+  ]
+}

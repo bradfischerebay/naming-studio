@@ -1,0 +1,443 @@
+[
+  {
+    "canonical_name": "eBay Imperdibili",
+    "node_id": "ebay-imperdibili",
+    "url": "https://www.ebay.it/deals",
+    "title": "Le migliori offerte della settimana, con spedizione gratuita| Scopri eBay Imperdibili",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Italian deals program featuring best weekly deals with free shipping across multiple categories"
+  },
+  {
+    "canonical_name": "eBay Imperdibili - Best Price Guarantee",
+    "node_id": "ebay-imperdibili-it",
+    "url": "https://pages.ebay.it/miglior-prezzo-garantito/",
+    "title": "eBay Imperdibili: Scopri il Miglior Prezzo Garantito | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Best Price Guarantee program for Italian buyers - eBay issues discount coupons if item is found cheaper on eligible competitor sites"
+  },
+  {
+    "canonical_name": "eBay international standard delivery",
+    "node_id": "ebay-international-standard-delivery",
+    "url": "https://www.ebay.com/help/selling/shipping-items/setting-shipping-options/ebay-international-standard-delivery?id=5011",
+    "title": "eBay international standard delivery | eBay",
+    "source_type": "ebay_official",
+    "year": 2018,
+    "notes": "Cross-border shipping service enabling sellers to ship to 210+ countries, launched 2018, includes $100 shipping protection"
+  },
+  {
+    "canonical_name": "eBay Italy",
+    "node_id": "ebay-italy",
+    "url": "https://www.ebay.it/",
+    "title": "Acquista, vendi e risparmia sul mercato globale di eBay.",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "eBay's Italian marketplace platform"
+  },
+  {
+    "canonical_name": "eBay Live",
+    "node_id": "ebay-live",
+    "url": "https://www.ebay.com/help/buying/ebay-live/ebay-live?id=5421",
+    "title": "Livestream shopping with eBay Live | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Real-time livestream shopping experience featuring auctions and purchases for Collectibles, Luxury, Sneakers, and Apparel"
+  },
+  {
+    "canonical_name": "eBay Mastercard",
+    "node_id": "ebay-mastercard",
+    "url": "https://pages.ebay.com/CreditCard/",
+    "title": "eBay Mastercard | eBay.com",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Credit card offering up to 5X points per $1 spent on eBay, issued by Synchrony Bank - no longer accepting applications"
+  },
+  {
+    "canonical_name": "eBay Mobile App",
+    "node_id": "ebay-mobile-app",
+    "url": "https://pages.ebay.com/mobile-app/",
+    "title": "Life's easier in the eBay app | eBay.com",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Mobile app for iOS and Android supporting both buying and selling functions"
+  },
+  {
+    "canonical_name": "eBay Motors",
+    "node_id": "ebay-motors",
+    "url": "https://pages.ebay.com/ebaymotors",
+    "title": "eBay Motors Site Map",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Dedicated marketplace for vehicles, boats, motorcycles, trucks, parts, boats, and accessories"
+  },
+  {
+    "canonical_name": "eBay Motors Parts & Accessories",
+    "node_id": "ebay-motors-parts",
+    "url": "https://pages.ebay.com/motors/ebay-guaranteed-fit/",
+    "title": "eBay Guaranteed Fit | eBay.com",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Parts and accessories marketplace with Guaranteed Fit program - free returns within 30 days if part doesn't fit"
+  },
+  {
+    "canonical_name": "eBay Partner Network",
+    "node_id": "ebay-partner-network",
+    "url": "https://partnernetwork.ebay.com/",
+    "title": "Homepage | eBay Partner Network",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "eBay's affiliate marketing program (EPN) - free to join, earn commissions on qualifying transactions"
+  },
+  {
+    "canonical_name": "eBay Picture Services",
+    "node_id": "ebay-picture-services",
+    "url": "https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/picture-hosting.html",
+    "title": "Picture hosting | eBay Developers Program",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "eBay Picture Service (EPS) stores uploaded images on eBay servers, supports up to 24 pictures per listing, max 1600x1600 pixels"
+  },
+  {
+    "canonical_name": "eBay Plus",
+    "node_id": "ebay-plus",
+    "url": "https://www.ebay.com.au/ebayplus/home",
+    "title": "eBay Plus | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Australian membership program offering free delivery, free returns, and exclusive deals - $4.99/month or $49/year"
+  },
+  {
+    "canonical_name": "eBay Plus Membership",
+    "node_id": "ebay-plus-membership",
+    "url": "https://www.ebay.com.au/help/buying/buying-ebay-plus/buying-ebay-plus?id=4755",
+    "title": "Buying with eBay Plus | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Member benefits include free express delivery to metro areas and free standard delivery on millions of items"
+  },
+  {
+    "canonical_name": "eBay Plus (Multi-Market)",
+    "node_id": "ebay-plus-multi-market",
+    "url": "https://www.ebay.com.au/sellercentre/ebay-plus-sellers",
+    "title": "eBay Plus for Sellers | Seller Centre",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "From May 1, 2026, eBay Plus badge only available to Pro sellers meeting performance and listing criteria"
+  },
+  {
+    "canonical_name": "eBay Premium Service",
+    "node_id": "ebay-premium-service",
+    "url": "https://www.ebay.co.uk/sellercentre/protection/ebay-premium-service",
+    "title": "eBay Premium Service | UK Seller Centre",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "UK program for Top Rated Sellers offering 10% discount on Final Value Fees, requires free domestic delivery within 3 days"
+  },
+  {
+    "canonical_name": "eBay Premium Service (UK)",
+    "node_id": "ebay-premium-service-uk",
+    "url": "https://www.ebay.co.uk/sellercentre/protection/ebay-premium-service",
+    "title": "eBay Premium Service | UK Seller Centre",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "UK business sellers program requiring Top Rated status, tracked shipping for items £20+, and 30-day returns"
+  },
+  {
+    "canonical_name": "eBay Premium Services",
+    "node_id": "ebay-premium-services",
+    "url": "https://www.ebay.co.uk/sellercentre/protection/ebay-premium-service",
+    "title": "eBay Premium Service | UK Seller Centre",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Premium service badge for qualifying UK listings strengthens buyer trust and boosts sales conversion"
+  },
+  {
+    "canonical_name": "eBay Rachat",
+    "node_id": "ebay-rachat",
+    "url": "https://www.ebay.fr/help/buying/ebay-tradein-works/fonctionnement-debay-rachat?id=5420",
+    "title": "Fonctionnement d'eBay rachat | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "French trade-in/buyback program in partnership with CircularX - sell used tech products for instant payment, France only"
+  },
+  {
+    "canonical_name": "eBay Radio",
+    "node_id": "ebay-radio",
+    "url": "https://www.ebayinc.com/stories/news/air-ebay-radio/",
+    "title": "On the Air with eBay Radio",
+    "source_type": "ebay_official",
+    "year": 2003,
+    "notes": "Internet-delivered interactive show hosted by Jim 'Griff' Griffith since 2003, twice-weekly program for eBay buyers and sellers"
+  },
+  {
+    "canonical_name": "eBay Refurbished",
+    "node_id": "ebay-refurbished",
+    "url": "https://pages.ebay.com/refurbished/",
+    "title": "eBay Refurbished | Save up to 50% on quality products | eBay.com",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Program offering refurbished products at up to 50% savings with warranties - conditions include Good, Very Good, Excellent, and Certified"
+  },
+  {
+    "canonical_name": "eBay Refurbished Warranty",
+    "node_id": "ebay-refurbished-warranty",
+    "url": "https://pages.ebay.com/refurbishedprogramwarranty/index.html",
+    "title": "eBay Refurbished Warranty",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Warranty serviced by Allstate - 2 years for Certified items, 1 year for Excellent/Very Good/Good items, included at no extra cost"
+  },
+  {
+    "canonical_name": "eBay Selling App",
+    "node_id": "ebay-selling-app",
+    "url": "https://www.ebay.com/help/selling/selling-tools/selling-ebay-app?id=4100",
+    "title": "Selling with the eBay app | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Mobile app for iOS and Android enabling listing creation via barcode scanning, order management, and adding tracking"
+  },
+  {
+    "canonical_name": "eBay Spain",
+    "node_id": "ebay-spain",
+    "url": "https://www.ebay.es/",
+    "title": "Compra, vende y ahorra en el mercado global de eBay.",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "eBay's Spanish marketplace platform"
+  },
+  {
+    "canonical_name": "eBay SpeedPAK",
+    "node_id": "ebay-speedpak",
+    "url": "https://export.ebay.com/en/ebay-speedpak/",
+    "title": "eBay SpeedPAK",
+    "source_type": "ebay_official",
+    "year": 2018,
+    "notes": "Shipping service by Orange Connex for cross-border deliveries from China to 50+ countries, launched 2018, includes seller protection on INR"
+  },
+  {
+    "canonical_name": "eBay Stores - Basic",
+    "node_id": "ebay-stores-basic",
+    "url": "https://www.ebay.com/help/selling/ebay-stores/ebay-stores?id=4071",
+    "title": "eBay Stores overview | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Basic Store tier with 1,000 free listings per month and discounted fees"
+  },
+  {
+    "canonical_name": "eBay Stores - Enterprise",
+    "node_id": "ebay-stores-enterprise",
+    "url": "https://www.ebay.com/sellercenter/payments-and-fees/subscriptions-and-fees",
+    "title": "Subscriptions and fees | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Highest tier with dedicated customer support, earn 10,000 additional free listings per 300 transactions after reaching 3,000/month"
+  },
+  {
+    "canonical_name": "eBay Stores (Multi-Market)",
+    "node_id": "ebay-stores-multi-market",
+    "url": "https://pages.ebay.com/stores/subscriptionterms.html",
+    "title": "eBay Stores Subscription Terms of Service | eBay.com",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Store subscription program available across multiple markets with varying fee structures and benefits"
+  },
+  {
+    "canonical_name": "eBay Stores - Premium",
+    "node_id": "ebay-stores-premium",
+    "url": "https://www.ebay.com/help/selling/ebay-stores/ebay-stores?id=4071",
+    "title": "eBay Stores overview | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Premium Store tier with 10,000 free listings per month and discounted fees"
+  },
+  {
+    "canonical_name": "eBay Top-Service",
+    "node_id": "ebay-top-service",
+    "url": "https://www.ebay.de/verkaeuferportal/programme-gewerbliche-verkaeufer/ebay-top-service",
+    "title": "eBay Top-Service | Verkäuferportal",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "German program for commercial sellers with outstanding delivery/service standards - replaced eBay-Guarantee and eBay-Plus logos"
+  },
+  {
+    "canonical_name": "eBay Top-Service (Germany)",
+    "node_id": "ebay-top-service-de",
+    "url": "https://www.ebay.de/help/selling/selling/ebay-top-service?id=5464",
+    "title": "eBay Top-Service | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Automatic logo for German sellers with Top-Rating or Above Average status, max 1-day handling, max 3-day total delivery"
+  },
+  {
+    "canonical_name": "eBay UK",
+    "node_id": "ebay-uk",
+    "url": "https://www.ebay.co.uk/",
+    "title": "eBay UK | Electronics, Cars, Fashion, Collectibles & More",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "eBay's United Kingdom marketplace platform"
+  },
+  {
+    "canonical_name": "eBay University",
+    "node_id": "ebay-university",
+    "url": "https://www.ebay.com/sellercenter/ebay-for-business/ebay-academy",
+    "title": "eBay Academy | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Free interactive training courses for sellers covering listing, fees, market research, logistics - includes eBay Academy and Seller School"
+  },
+  {
+    "canonical_name": "eBay Valet",
+    "node_id": "ebay-valet-original",
+    "url": "https://www.ebay.com/help/account/changing-account-settings/ebay-concierge?id=4358",
+    "title": "eBay Concierge | eBay",
+    "source_type": "ebay_official",
+    "year": 2018,
+    "notes": "Concierge selling service where team handled photos, descriptions, shipping - service ended around 2018"
+  },
+  {
+    "canonical_name": "eBay WOW!",
+    "node_id": "ebay-wow",
+    "url": "https://www.ebay.de/deals",
+    "title": "eBay WOW! des Tages | Angebote und Schnäppchen, versandkostenfrei!",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "German daily deals program featuring top products from trusted sellers at bargain prices with free shipping"
+  },
+  {
+    "canonical_name": "eBay WOW! (Germany)",
+    "node_id": "ebay-wow-de",
+    "url": "https://www.ebay.de/deals",
+    "title": "eBay WOW! des Tages | Angebote und Schnäppchen, versandkostenfrei!",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Deal of the Day program on eBay Germany with categories including electronics, home & garden, fashion"
+  },
+  {
+    "canonical_name": "Edit Listing",
+    "node_id": "edit-listing",
+    "url": "https://www.ebay.com/help/Selling/Listing_Your_Item/All_about_listings?id=4072",
+    "title": "All about listings - overview | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Feature allowing sellers to revise active listings - limitations apply during final 12 hours or with active bids/offers"
+  },
+  {
+    "canonical_name": "Edit Payment",
+    "node_id": "edit-payment",
+    "url": "https://www.ebay.com/help/buying/paying-items/changing-payment-method?id=4006",
+    "title": "Changing your payment method | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Feature for managing payment methods and preferences in eBay account settings"
+  },
+  {
+    "canonical_name": "Email Alerts",
+    "node_id": "email-alerts",
+    "url": "https://www.ebay.com/help/account/changing-account-settings/push-notifications?id=4203",
+    "title": "Push Notifications | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Notification system for eBay activity - can be configured via Communication preferences for email, app, or SMS"
+  },
+  {
+    "canonical_name": "Email Notifications",
+    "node_id": "email-notifications",
+    "url": "https://www.ebay.com/help/account/changing-account-settings/push-notifications?id=4203",
+    "title": "Push Notifications | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Automated emails sent about eBay activity - configurable via Communication preferences at commspreferences.ebay.com"
+  },
+  {
+    "canonical_name": "End Listing",
+    "node_id": "end-listing",
+    "url": "https://www.ebay.com/help/selling/listings/ending-listing-early?id=4146",
+    "title": "Ending a listing early | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Feature allowing sellers to end listings before scheduled end time - accessed via My eBay > Selling > More actions menu"
+  },
+  {
+    "canonical_name": "End Listing Early",
+    "node_id": "end-listing-early",
+    "url": "https://www.ebay.com/help/selling/listings/ending-listing-early?id=4146",
+    "title": "Ending a listing early | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Option to cancel auction bids or sell to highest bidder when ending early - may incur final value fees if auction has bids"
+  },
+  {
+    "canonical_name": "Ended Listings",
+    "node_id": "ended-listings",
+    "url": "https://www.ebay.com/help/selling/selling-tools/seller-hub?id=4524",
+    "title": "Seller Hub | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "View in Seller Hub showing completed listings - eBay stores for 90 days, can filter by status and use 'sell similar' function"
+  },
+  {
+    "canonical_name": "Ending Soon",
+    "node_id": "ending-soon",
+    "url": "https://www.ebay.com/b/Auctions-Ending-Soon/bn_7114028787",
+    "title": "Auctions Ending Soon products for sale | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Browse category and sort option for auctions nearing end time - includes WatchedItemEndingSoon notifications 15 min before end"
+  },
+  {
+    "canonical_name": "Ends Soon",
+    "node_id": "ends-soon",
+    "url": "https://www.ebay.com/help/buying/search-tips/watchlist?id=4046",
+    "title": "Your Watchlist | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Watchlist sort option showing items ending soonest - primarily displays auctions as Buy It Now listings auto-renew"
+  },
+  {
+    "canonical_name": "Estimated Delivery",
+    "node_id": "estimated-delivery",
+    "url": "https://www.ebay.com/help/buying/shipping-delivery/expected-delivery-dates-buyers?id=4025",
+    "title": "Expected delivery dates for buyers | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Delivery date calculation based on handling time, shipping service, and payment clearance - generated by eBay, not seller-controlled"
+  },
+  {
+    "canonical_name": "EU Consumer Rights Directive",
+    "node_id": "eu-consumer-rights-directive",
+    "url": "https://export.ebay.com/en/fees-regulations-policies/international-regulations/14-day-right-of-withdrawal-under-the-eu-consumer-rights-directive/",
+    "title": "14-day right of withdrawal under the EU Consumer Rights Directive",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "EU regulation requiring business sellers to offer 14-day return right to EU consumers - includes template return policy text"
+  },
+  {
+    "canonical_name": "Excellent - Refurbished",
+    "node_id": "excellent-refurbished",
+    "url": "https://www.ebay.com/sellercenter/ebay-for-business/ebay-refurbished-program",
+    "title": "eBay Refurbished Program | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Refurbished condition grade - like-new condition with 1-year warranty, professionally refurbished with original or new accessories"
+  },
+  {
+    "canonical_name": "Expedited International Shipping",
+    "node_id": "expedited-international-shipping",
+    "url": "https://www.ebay.com/help/selling/shipping-items/setting-shipping-options/ebay-international-shipping-program?id=5348",
+    "title": "eBay International Shipping program",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Fast international shipping option typically taking up to 10 business days - available via eBay International Shipping, GSP, or SpeedPAK"
+  },
+  {
+    "canonical_name": "Export Academy",
+    "node_id": "export-academy",
+    "url": "https://export.ebay.com/en/academy/",
+    "title": "Export Academy",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Educational platform for sellers covering policies, listing optimization, shipping/logistics, order fulfillment, and account health - free training"
+  }
+]

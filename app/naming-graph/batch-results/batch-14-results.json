@@ -1,0 +1,263 @@
+[
+  {
+    "canonical_name": "Return Preferences",
+    "node_id": "return-preferences",
+    "url": "https://www.ebay.co.uk/help/selling/managing-returns-refunds/handling-return-requests/setting-return-policy?id=4368",
+    "title": "Setting up your return policy | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Sellers can set preferences for automating returns, refunds, and replacements. Accessible through My eBay > Account > Site Preferences > Selling Preferences > Return preferences."
+  },
+  {
+    "canonical_name": "Seller Hub",
+    "node_id": "seller-hub-multi-market",
+    "url": "https://www.ebay.com/sellercenter/selling/how-to-sell/seller-hub",
+    "title": "Seller Hub | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2015,
+    "notes": "Brings all eBay selling tools together in one place - listings, orders, marketing, performance tracking. Free to use. Announced in 2015 Fall Seller Update."
+  },
+  {
+    "canonical_name": "Sales Reports Plus",
+    "node_id": "sales-reports-plus",
+    "url": "https://pages.ebay.com/tg/en-us/salesreports/salesreportsplus.html",
+    "title": "Sales Reports Plus",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Free comprehensive view of sales numbers with downloadable reports. Shows sales by category, selling format, ending time, and unpaid item activity. Reports available for 2 years vs 6 months for standard reports."
+  },
+  {
+    "canonical_name": "Sales Report",
+    "node_id": "sales-report",
+    "url": "https://pages.ebay.com/tg/en-us/storefronts/tracking.html",
+    "title": "eBay Stores: Track Your Sales",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Standard sales reporting accessible from Seller Hub Performance tab. Provides sales, selling costs, traffic, and buyer traffic source analytics."
+  },
+  {
+    "canonical_name": "Sales Report (Multi-Market)",
+    "node_id": "sales-report-multi-market",
+    "url": "https://pages.ebay.com/tg/en-us/storefronts/tracking.html",
+    "title": "eBay Stores: Track Your Sales",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Sales reporting available across multiple eBay marketplaces through Seller Hub."
+  },
+  {
+    "canonical_name": "Seller Coupon",
+    "node_id": "seller-coupon",
+    "url": "https://pages.ebay.com/specialoffers/sellerterms.html",
+    "title": "Pricing and Discounts Terms and Conditions | eBay.com",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "eBay invites sellers to offer coupons funded by them as promotional tools. eBay distributes promotional codes that can be redeemed for discounts, seller receives full price but is invoiced for the Seller Funded Amount."
+  },
+  {
+    "canonical_name": "Seller Standards",
+    "node_id": "seasonal-seller-standards",
+    "url": "https://pages.ebay.com/sellerinformation/news/fallupdate16/below-standard.html",
+    "title": "Seller Performance Standards | eBay Seller Center",
+    "source_type": "ebay_official",
+    "year": 2016,
+    "notes": "Performance metrics including cases closed without seller resolution, transaction defect rate (max 2%), and late shipment rate (max 10%). Four regional standards programs based on delivery address."
+  },
+  {
+    "canonical_name": "Secure Checkout",
+    "node_id": "secure-checkout",
+    "url": "https://www.ebay.com/help/buying/paying/checkout?id=4036",
+    "title": "Checkout | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Secure payment processing where payment data is never shared with seller. Supports credit/debit/gift cards, Apple Pay, Google Pay, PayPal, Venmo. Level 1 PCI DSS certified."
+  },
+  {
+    "canonical_name": "Saved Searches",
+    "node_id": "saved-searches-multi-market",
+    "url": "http://pages.ebay.com/help/buy/searches-follow.html",
+    "title": "Saved searches | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Email alerts when new items matching saved search are listed. Appears in feed when signed in or via Saved on eBay homepage. Can toggle email notifications on/off."
+  },
+  {
+    "canonical_name": "Saved Sellers",
+    "node_id": "saved-sellers",
+    "url": "http://pages.ebay.com/help/buy/searches-follow.html",
+    "title": "Saved searches | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Follow favorite sellers using blue heart icon. Accessible through My eBay. Can filter Advanced search to show only items from saved sellers. Shows follower count metric."
+  },
+  {
+    "canonical_name": "Schedule Listing",
+    "node_id": "schedule-listing",
+    "url": "http://pages.ebay.com/help/sell/duration.html",
+    "title": "Listing durations and timings | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Schedule listings to start up to 3 weeks in advance. Available in quick and advanced listing tools. Can view scheduled items in My eBay and download report in Seller Hub."
+  },
+  {
+    "canonical_name": "Schedule Listing (Multi-Market)",
+    "node_id": "schedule-listing-multi-market",
+    "url": "http://pages.ebay.com/help/sell/duration.html",
+    "title": "Listing durations and timings | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Scheduling capability available across multiple eBay marketplaces."
+  },
+  {
+    "canonical_name": "Scheduled Listings",
+    "node_id": "scheduled-listings",
+    "url": "http://pages.ebay.com/help/sell/duration.html",
+    "title": "Listing durations and timings | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "View of all listings scheduled for future start times. Accessible in My eBay with downloadable reports in Seller Hub."
+  },
+  {
+    "canonical_name": "Second Chance Offer",
+    "node_id": "second-chance-offer",
+    "url": "http://pages.ebay.com/help/sell/second_chance_offer.html",
+    "title": "Making a Second Chance Offer | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Allows non-winning bidders to purchase at their last bid price. Can make offers up to 60 days after auction ends. Free to make offer, final value fee if accepted."
+  },
+  {
+    "canonical_name": "Sell Similar",
+    "node_id": "sell-similar",
+    "url": "https://pages.ebay.com/seller-center/listing-and-marketing/promoted-listings.html",
+    "title": "Promoted Listings Standard | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Create new listing based on existing one. Inherits Promoted Listings settings if item was previously promoted. Supports bulk operations up to 500 listings."
+  },
+  {
+    "canonical_name": "Sell Similar (Multi-Market)",
+    "node_id": "sell-similar-multi-market",
+    "url": "https://pages.ebay.com/seller-center/listing-and-marketing/promoted-listings.html",
+    "title": "Promoted Listings Standard | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Sell Similar functionality available across multiple eBay marketplaces."
+  },
+  {
+    "canonical_name": "Seller Clinics",
+    "node_id": "seller-clinics",
+    "url": "https://www.ebay.com/sellercenter/growth/seller-clinics",
+    "title": "Seller Clinics | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Free one-on-one support for business sellers with GMV under $100K/year. Three 45-minute sessions per calendar year with Marketplace Advisor for personalized growth advice."
+  },
+  {
+    "canonical_name": "Seller Community",
+    "node_id": "seller-community",
+    "url": "https://community.ebay.com/t5/eBay-Sellers/ct-p/1214",
+    "title": "eBay Sellers - The eBay Community",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Online forum for eBay sellers. Includes discussion boards for new sellers, seller groups, and topics on listing, pricing, policies, and shipping."
+  },
+  {
+    "canonical_name": "Seller Help",
+    "node_id": "seller-help",
+    "url": "https://pages.ebay.com/seller-center/service-and-payments/customer-service.html",
+    "title": "Seller Help | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Self-service resource for managing refunds, returns, INR/INAD cases, and common issues. Available on desktop and mobile. Can submit feedback removal requests and report policy violations."
+  },
+  {
+    "canonical_name": "Sale Events",
+    "node_id": "sale-events",
+    "url": "http://pages.ebay.com/help/sell/items_on_sale.html",
+    "title": "Discounts Manager | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Create promotional discounts for selected items or categories for set time periods. Sale prices appear in search results. Managed through Seller Hub Marketing tab using Discounts Manager."
+  },
+  {
+    "canonical_name": "Sale Events (Multi-Market)",
+    "node_id": "sale-events-multi-market",
+    "url": "http://pages.ebay.com/help/sell/items_on_sale.html",
+    "title": "Discounts Manager | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Sale Events promotional tool available across multiple eBay marketplaces."
+  },
+  {
+    "canonical_name": "Sales Conversion Rate",
+    "node_id": "sales-conversion-rate",
+    "url": "https://pages.ebay.com/seller-center/listing-and-marketing/promoted-listings.html",
+    "title": "Promoted Listings Standard | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Metric showing percentage of promoted listings purchased after click. Calculated as Sold/Clicks. Available in Promoted Listings advertising dashboard."
+  },
+  {
+    "canonical_name": "Same-Day Handling",
+    "node_id": "same-day-handling",
+    "url": "https://pages.ebay.com/seller-center/shipping/handling-time.html",
+    "title": "Handling time | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Ship packages same day as payment received. Set custom order cut-off times per business day. Helps qualify for Top Rated Plus when combined with 30-day return policy."
+  },
+  {
+    "canonical_name": "Review Offer",
+    "node_id": "review-offer",
+    "url": "http://pages.ebay.com/help/sell/best-offer.html",
+    "title": "Adding Best Offer to your listing and sending offers to buyers | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Review and respond to Best Offers from buyers. Sellers have 24 hours to accept, decline, or counteroffer. Each counteroffer expires after 96 hours."
+  },
+  {
+    "canonical_name": "Review Offers",
+    "node_id": "review-offers",
+    "url": "http://pages.ebay.com/help/sell/best-offer.html",
+    "title": "Adding Best Offer to your listing and sending offers to buyers | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Manage multiple Best Offers. Counteroffers must be below Buy It Now price but above received offer. Maximum 4 counteroffers per negotiation."
+  },
+  {
+    "canonical_name": "Sales Tax Collection",
+    "node_id": "sales-tax-collection",
+    "url": "https://www.ebay.com/sellercenter/resources/tax-information",
+    "title": "Tax Information | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "eBay automatically calculates, collects, and remits sales tax as Marketplace Facilitator in 46 jurisdictions. No seller action required. Tax rate based on ship-to address."
+  },
+  {
+    "canonical_name": "Sales Tax / VAT Collection",
+    "node_id": "sales-tax-vat-collection",
+    "url": "https://www.ebay.com/sellercenter/resources/tax-information",
+    "title": "Tax Information | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Automatic tax collection for both US sales tax and international VAT transactions through marketplace facilitator obligations."
+  },
+  {
+    "canonical_name": "Sell-Through Rate",
+    "node_id": "sell-through-rate",
+    "url": "https://pages.ebay.com/seller/fees/faq.html",
+    "title": "eBay: Seller Fees FAQs",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Metric indicating how often items sell on first listing. Referenced in context of choosing between auction-style and fixed-price formats."
+  },
+  {
+    "canonical_name": "Seller Centre",
+    "node_id": "seller-centre",
+    "url": "https://www.ebay.com/sellercenter",
+    "title": "Home | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Central hub for seller resources, tools, and information. US spelling 'Seller Center' is standard across eBay platforms."
+  }
+]

@@ -1,0 +1,353 @@
+[
+  {
+    "canonical_name": "Everything Else",
+    "node_id": "everything-else",
+    "url": "https://pages.ebay.com/sellerinformation/growing/categorychanges/everythingelse.html",
+    "title": "eBay Category Changes: Everything Else",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Cross-category for items that don't fit in other categories, includes subcategories like Information Products, Genealogy, Religious Products"
+  },
+  {
+    "canonical_name": "Buyer Protection",
+    "node_id": "buyer",
+    "url": "https://pages.ebay.com/ebay-buyer-protection/",
+    "title": "eBay Buyer Protection",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Buyer protection program with money back guarantee on virtually all items"
+  },
+  {
+    "canonical_name": "Notifications",
+    "node_id": "notifications",
+    "url": "https://pages.ebay.com/push-notifications/",
+    "title": "How to Enable eBay App Notifications",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Push notifications for order updates, shopping updates, selling activities via app, email, or SMS"
+  },
+  {
+    "canonical_name": "Order Management",
+    "node_id": "order-management",
+    "url": "https://www.ebay.com/sellercenter/ebay-for-business/seller-hub",
+    "title": "Seller Hub | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Centralized order management through Seller Hub for managing orders, shipping labels, returns, and tracking"
+  },
+  {
+    "canonical_name": "Managed Payments",
+    "node_id": "payment",
+    "url": "https://pages.ebay.com/ebay-is-managing-payments/",
+    "title": "eBay is managing payments",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "eBay's managed payments system for buyers and sellers, replacing PayPal as primary payment processor"
+  },
+  {
+    "canonical_name": "Seller Tools",
+    "node_id": "seller-tools",
+    "url": "https://www.ebay.com/sellercenter/selling/how-to-sell/seller-hub",
+    "title": "Seller Hub | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Suite of seller tools including Seller Hub, research tools, bulk listing tools, and AI-powered features"
+  },
+  {
+    "canonical_name": "Seller Tools",
+    "node_id": "sellertools",
+    "url": "https://www.ebay.com/sellercenter/selling/how-to-sell/seller-hub",
+    "title": "Seller Hub | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Duplicate node - same as seller-tools"
+  },
+  {
+    "canonical_name": "Services",
+    "node_id": "services",
+    "url": "https://pages.ebay.com/hipo/business/service-providers/",
+    "title": "Service providers | eBay.en",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Third-party service providers and eBay services category for specialized business services"
+  },
+  {
+    "canonical_name": "eBay Stores",
+    "node_id": "stores",
+    "url": "https://www.ebay.com/sellercenter/ebay-for-business/ebay-stores-shopping-experience",
+    "title": "The eBay Stores Shopping Experience | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Subscription-based branded storefronts for sellers with discounted fees and exclusive tools"
+  },
+  {
+    "canonical_name": "Customer Support",
+    "node_id": "support",
+    "url": "https://pages.ebay.com/seller-center/service-and-payments/customer-service.html",
+    "title": "Seller Help | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Customer support resources including help center, chat, and phone support"
+  },
+  {
+    "canonical_name": "Sustainability",
+    "node_id": "sustainability",
+    "url": "https://www.ebayinc.com/impact/sustainable-commerce/",
+    "title": "Sustainable Commerce - eBay Inc.",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "eBay's sustainability initiatives including 100% renewable energy operations and net-zero emissions target by 2045"
+  },
+  {
+    "canonical_name": "Tax",
+    "node_id": "tax",
+    "url": "https://pages.ebay.com/seller-center/service-and-payments/tax-information.html",
+    "title": "Tax Information | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Tax information for sellers including 1099-K reporting and sales tax collection"
+  },
+  {
+    "canonical_name": "Verticals",
+    "node_id": "verticals",
+    "url": "https://www.ebayinc.com/stories/news/ebay-verticals-apps-go-universal/",
+    "title": "eBay Verticals Apps Go Universal",
+    "source_type": "press_release",
+    "year": null,
+    "notes": "Category-specific teams and experiences for Motors, Fashion, Collectibles, and other specialized verticals"
+  },
+  {
+    "canonical_name": "1-Day Handling",
+    "node_id": "1-day-handling",
+    "url": "https://www.ebay.com/sellercenter/shipping/preparing-your-shipment/handling-time",
+    "title": "Handling time | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Handling time requirement for same-day or 1-day package preparation, required for Top Rated Plus status"
+  },
+  {
+    "canonical_name": "1099-K Tax Form",
+    "node_id": "1099-k-tax-form",
+    "url": "https://pages.ebay.com/seller-center/service-and-payments/2022-changes-to-ebay-and-your-1099-k.html",
+    "title": "1099-K and Tax Withholding FAQs | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2022,
+    "notes": "Tax form for reporting payment transactions, threshold restored to $20,000 and 200 transactions for 2025"
+  },
+  {
+    "canonical_name": "2-Step Verification",
+    "node_id": "2-step-verification",
+    "url": "https://pages.ebay.com/sv/svterms.html",
+    "title": "Spendable Funds Terms and Conditions",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Two-factor authentication security feature required for Stored Value Account and certain account actions"
+  },
+  {
+    "canonical_name": "30-Day Returns",
+    "node_id": "30-day-returns",
+    "url": "https://www.ebay.com/sellercenter/protections/returns",
+    "title": "Returns | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Minimum 30-day return policy option for sellers, required for Top Rated Seller status and Parts & Accessories"
+  },
+  {
+    "canonical_name": "60-Day Returns",
+    "node_id": "60-day-returns",
+    "url": "https://www.ebay.com/sellercenter/protections/returns",
+    "title": "Returns | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Extended 60-day return policy option available as buyer-paid or free returns"
+  },
+  {
+    "canonical_name": "Above Standard",
+    "node_id": "above-standard",
+    "url": "https://pages.ebay.com/sellerinformation/news/fallupdate16/below-standard.html",
+    "title": "Seller Performance Standards | eBay Seller Center",
+    "source_type": "ebay_official",
+    "year": 2016,
+    "notes": "Seller performance level based on cases closed without resolution, transaction defects, and late shipments"
+  },
+  {
+    "canonical_name": "Above Standard",
+    "node_id": "above-standard-status",
+    "url": "https://pages.ebay.com/sellerinformation/news/fallupdate16/below-standard.html",
+    "title": "Seller Performance Standards | eBay Seller Center",
+    "source_type": "ebay_official",
+    "year": 2016,
+    "notes": "Duplicate node - same as above-standard"
+  },
+  {
+    "canonical_name": "Accept Offer",
+    "node_id": "accept-offer",
+    "url": "http://pages.ebay.com/help/sell/best-offer.html",
+    "title": "Adding Best Offer to your listing and sending offers to buyers",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Feature allowing sellers to accept, decline, or counter buyer offers through Best Offer"
+  },
+  {
+    "canonical_name": "Accept Return",
+    "node_id": "accept-return",
+    "url": "https://www.ebay.com/sellercenter/shipping/managing-returns",
+    "title": "Managing returns | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Seller action to accept return requests with options for full refund, partial refund, or replacement"
+  },
+  {
+    "canonical_name": "Account Security",
+    "node_id": "account-security",
+    "url": "https://pages.ebay.com/securitycenter/",
+    "title": "eBay Security Center - Homepage",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Security resources for protecting accounts, reporting concerns, and preventing unauthorized access"
+  },
+  {
+    "canonical_name": "Account Settings",
+    "node_id": "account-settings",
+    "url": "https://pages.ebay.com/bb/en-us/My_eBay/account/",
+    "title": "All About My eBay - My Account",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Account configuration and preferences including team access, notifications, and personal information"
+  },
+  {
+    "canonical_name": "Account Suspension",
+    "node_id": "account-suspended",
+    "url": "http://pages.ebay.com/help/account/suspended-accounts.html",
+    "title": "Account restrictions and suspensions",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Account restrictions due to outstanding fees, policy violations, or security concerns"
+  },
+  {
+    "canonical_name": "Account Suspension",
+    "node_id": "account-suspension",
+    "url": "http://pages.ebay.com/help/account/suspended-accounts.html",
+    "title": "Account restrictions and suspensions",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Duplicate node - same as account-suspended"
+  },
+  {
+    "canonical_name": "Active Content Policy",
+    "node_id": "active-content-policy",
+    "url": "https://pages.ebay.com/sellerinformation/news/fallupdate16/active-content.html",
+    "title": "Active Content | eBay Seller Center",
+    "source_type": "ebay_official",
+    "year": 2017,
+    "notes": "Policy prohibiting JavaScript, Flash, and other active content in listings as of June 2017"
+  },
+  {
+    "canonical_name": "Active Listings",
+    "node_id": "active-listings",
+    "url": "https://pages.ebay.com/selling/all-selling-in-seller-hub.html",
+    "title": "The 'All Selling' view in Seller Hub",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Seller Hub feature for managing live listings, sending offers, and updating item specifics in bulk"
+  },
+  {
+    "canonical_name": "Ad Attribution",
+    "node_id": "ad-attribution",
+    "url": "https://pages.ebay.com/sell/pl/attribution.html",
+    "title": "How eBay Advertising attribution works",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Attribution models for tracking sales from promoted listings including direct and halo attribution"
+  },
+  {
+    "canonical_name": "Ad Fee",
+    "node_id": "ad-fee",
+    "url": "https://pages.ebay.com/sell/pl/attribution.html",
+    "title": "How eBay Advertising attribution works",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Fees charged for promoted listings based on ad rate percentage or cost-per-click depending on strategy"
+  },
+  {
+    "canonical_name": "Ad Rate",
+    "node_id": "ad-rate-recommendation",
+    "url": "https://pages.ebay.com/ad/en-us/promoted-listings/adrates.html",
+    "title": "Promoted Listings - Ad Rate Trends",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Suggested ad rate percentages for promoted listings based on item attributes, seasonality, and competition"
+  },
+  {
+    "canonical_name": "Add Payment Method",
+    "node_id": "add-payment-method",
+    "url": "http://pages.ebay.com/help/sell/contextual/add-payment.html",
+    "title": "Adding a reimbursement payment method",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Feature for adding credit/debit cards or bank accounts for fee payments and seller reimbursements"
+  },
+  {
+    "canonical_name": "Add to Cart",
+    "node_id": "add-to-cart",
+    "url": "https://pages.ebay.com/shoppingcart/",
+    "title": "eBay's Shopping Cart",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Shopping cart feature allowing buyers to add multiple items before checkout"
+  },
+  {
+    "canonical_name": "Add to Watch List",
+    "node_id": "add-to-watch-list",
+    "url": "http://pages.ebay.com/help/buy/questions/add-note.html",
+    "title": "Your Watchlist",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Feature allowing buyers to save up to 1,000 items for tracking with price drop alerts"
+  },
+  {
+    "canonical_name": "Add to Watchlist",
+    "node_id": "add-to-watchlist",
+    "url": "http://pages.ebay.com/help/buy/questions/add-note.html",
+    "title": "Your Watchlist",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Duplicate node - same as add-to-watch-list"
+  },
+  {
+    "canonical_name": "Advanced Listing Tool",
+    "node_id": "advanced-listing-tool",
+    "url": "https://pages.ebay.com/sell/advancedtoolfaq.html",
+    "title": "The new Advanced listing tool: Frequently asked questions",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Enhanced listing creation tool with AI features for descriptions and backgrounds"
+  },
+  {
+    "canonical_name": "Advanced Listing Tool",
+    "node_id": "advanced-listing-tool-multi-market",
+    "url": "https://pages.ebay.com/sell/advancedtoolfaq.html",
+    "title": "The new Advanced listing tool: Frequently asked questions",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Duplicate node - same as advanced-listing-tool"
+  },
+  {
+    "canonical_name": "Advanced Search",
+    "node_id": "advanced-search",
+    "url": "https://www.ebay.com/help/buying/search-tips/advanced-search?id=4049",
+    "title": "Advanced search",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Search refinement tool with filters for category, price, condition, seller, and Boolean operators"
+  },
+  {
+    "canonical_name": "Anniversary Sale",
+    "node_id": "anniversary-sale",
+    "url": "https://www.ebayinc.com/stories/news/celebrating-25-years-shop-25-top-brands-in-special-ebay-anniversary-sale-from-tech-to-apparel/",
+    "title": "Celebrating 25 Years: Shop 25 Top Brands in Special eBay Anniversary Sale",
+    "source_type": "press_release",
+    "year": 2020,
+    "notes": "Annual sales event celebrating eBay milestones, including 20th (2015) and 25th (2020) anniversaries"
+  }
+]

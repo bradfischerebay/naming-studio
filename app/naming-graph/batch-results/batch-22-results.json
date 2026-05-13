@@ -1,0 +1,398 @@
+[
+  {
+    "canonical_name": "Free 3-Day Shipping",
+    "node_id": "free-3-day-shipping",
+    "url": "https://www.ebay.com/help/selling/listings/creating-managing-listings/adding-shipping-options-listings",
+    "title": "Adding shipping options to listings",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "eBay shipping option allowing sellers to offer guaranteed delivery within 3 days"
+  },
+  {
+    "canonical_name": "Free 4-Day Shipping",
+    "node_id": "free-4-day-shipping",
+    "url": "https://www.ebay.com/help/selling/listings/creating-managing-listings/adding-shipping-options-listings",
+    "title": "Adding shipping options to listings",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "eBay shipping option allowing sellers to offer guaranteed delivery within 4 days"
+  },
+  {
+    "canonical_name": "Free Shipping",
+    "node_id": "free-shipping",
+    "url": "https://innovation.ebayinc.com/stories/faster-and-local-shopping-on-ebay-just-got-simpler/",
+    "title": "Faster and Local Shopping on eBay Just Got Simpler",
+    "source_type": "ebay_official",
+    "year": 2025,
+    "notes": "eBay shipping program where sellers offer free shipping to buyers, prominently displayed in search results with algorithm preference"
+  },
+  {
+    "canonical_name": "Free Shipping Filter",
+    "node_id": "free-shipping-filter",
+    "url": "https://innovation.ebayinc.com/stories/faster-and-local-shopping-on-ebay-just-got-simpler/",
+    "title": "Faster and Local Shopping on eBay Just Got Simpler",
+    "source_type": "ebay_official",
+    "year": 2025,
+    "notes": "Search filter allowing buyers to show only items with free shipping, consolidated into Shipping and pickup filter in 2025"
+  },
+  {
+    "canonical_name": "Free Shipping Threshold",
+    "node_id": "free-shipping-threshold",
+    "url": "https://www.ebay.com/help/selling/listings/creating-managing-listings/adding-shipping-options-listings",
+    "title": "Adding shipping options to listings",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Seller option to set minimum purchase amount before free shipping is offered"
+  },
+  {
+    "canonical_name": "Gallery",
+    "node_id": "gallery",
+    "url": "https://pages.ebay.com/sell/opt_guide/gallery.html",
+    "title": "Optional Seller Features Information: Gallery Image",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Standard photo display in eBay listings and search results showing item's main image"
+  },
+  {
+    "canonical_name": "Get Alerts",
+    "node_id": "get-alerts",
+    "url": "https://www.ebay.com/help/buying/search-tips/saved-searches",
+    "title": "Saved searches",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "eBay feature allowing buyers to save searches and receive email or mobile push notifications when new matching listings appear"
+  },
+  {
+    "canonical_name": "GST Collection (Australia)",
+    "node_id": "gst-collection-australia",
+    "url": "https://www.ebay.com.au/help/selling/fees-credits-invoices/taxes-import-charges",
+    "title": "Taxes and import charges",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "eBay program for collecting and remitting Goods and Services Tax (GST) on sales to Australian buyers"
+  },
+  {
+    "canonical_name": "Hand-Picked Collections",
+    "node_id": "hand-picked-collections",
+    "url": "https://www.ebay.com/help/buying/shopping-ebay-home-page/browsing-items",
+    "title": "Browsing items",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Curated editorial collections showcasing themed or seasonal product groupings for buyer discovery"
+  },
+  {
+    "canonical_name": "Helpful Review",
+    "node_id": "helpful-review",
+    "url": "https://www.ebay.com/help/selling/listings/product-reviews",
+    "title": "Product reviews",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Feature allowing buyers to vote product reviews as helpful, surfacing most useful reviews for other shoppers"
+  },
+  {
+    "canonical_name": "Holiday Gift Guide",
+    "node_id": "holiday-gift-guide",
+    "url": "https://www.ebay.com/",
+    "title": "eBay Homepage",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Seasonal editorial content featuring curated product recommendations for holiday shopping"
+  },
+  {
+    "canonical_name": "HTML Editor",
+    "node_id": "html-editor",
+    "url": "https://www.ebay.com/help/selling/listings/using-advanced-listing-tool",
+    "title": "The advanced listing tool",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Advanced listing tool feature allowing sellers to edit item descriptions using HTML code for custom formatting"
+  },
+  {
+    "canonical_name": "Image Search",
+    "node_id": "image-search",
+    "url": "https://www.ebayinc.com/stories/news/an-easier-way-to-search-ebay-computer-vision-with-find-it-on-ebay-and-image-search-is-now-live/",
+    "title": "An Easier Way to Search eBay: Computer Vision with Find It On eBay and Image Search Is Now Live",
+    "source_type": "ebay_official",
+    "year": 2017,
+    "notes": "Visual search feature using AI to search eBay's 1.1 billion listings by uploading photos or using camera, powered by convolutional neural networks"
+  },
+  {
+    "canonical_name": "In-App Messaging",
+    "node_id": "in-app-messaging",
+    "url": "https://www.ebay.com/help/buying/working-sellers/communicating-sellers",
+    "title": "Communicating with sellers",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Mobile app messaging system allowing buyers and sellers to communicate within the eBay app with conversation threading and AI Assistant"
+  },
+  {
+    "canonical_name": "In-App QR Code",
+    "node_id": "in-app-qr-code",
+    "url": "https://community.ebay.com/t5/Shipping/Local-Pickup-Buyer-Scan-Code/td-p/30925852",
+    "title": "Local Pickup Buyer Scan Code",
+    "source_type": "secondary_source",
+    "year": 2022,
+    "notes": "QR code feature in eBay mobile app for sellers to scan at local pickup to verify buyer identity and protect against item-not-received claims"
+  },
+  {
+    "canonical_name": "In Transit",
+    "node_id": "in-transit",
+    "url": "https://www.ebay.com/help/buying/postage-delivery/tracking-parcel",
+    "title": "Tracking your parcel",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Order tracking status indicating package is actively moving through postal carriers or hubs toward destination"
+  },
+  {
+    "canonical_name": "Inactive Listings",
+    "node_id": "inactive-listings",
+    "url": "https://www.ebay.com/sellercenter/selling/how-to-sell/seller-hub",
+    "title": "Seller Hub",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Seller Hub section showing expired, ended, or out-of-stock listings with 90-day retention period"
+  },
+  {
+    "canonical_name": "Item Comparison",
+    "node_id": "item-comparison",
+    "url": "https://www.valueaddedresource.net/ebay-item-compare-in-search/",
+    "title": "eBay Launches Item Compare in Search",
+    "source_type": "secondary_source",
+    "year": 2026,
+    "notes": "Feature allowing buyers to select up to 3 items and view side-by-side comparison of specifications in electronics categories"
+  },
+  {
+    "canonical_name": "Item Description Editor",
+    "node_id": "item-description-editor",
+    "url": "https://www.ebay.com/help/selling/listings/using-advanced-listing-tool",
+    "title": "The advanced listing tool",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Rich text WYSIWYG editor in listing tools for creating formatted item descriptions with text styling and layout options"
+  },
+  {
+    "canonical_name": "Item No Longer Available",
+    "node_id": "item-no-longer-available",
+    "url": "https://www.ebay.com/help/buying/buying/canceling-purchase",
+    "title": "Canceling a purchase",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Message displayed when listings are removed, ended, sold out, or seller cancels with 'Out of Stock or Damaged' reason"
+  },
+  {
+    "canonical_name": "Item Reviews",
+    "node_id": "item-reviews",
+    "url": "https://www.ebay.com/help/selling/listings/product-reviews",
+    "title": "Product reviews",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Product review system launched May 2024 allowing buyers to rate and comment on items, shared across all sellers listing same product"
+  },
+  {
+    "canonical_name": "Item Specifics Filter",
+    "node_id": "item-specifics-filter",
+    "url": "https://www.ebay.com/help/selling/listings/creating-managing-listings/item-specifics-category-listings",
+    "title": "Item specifics in category listings",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Search filters based on category-specific attributes like brand, size, condition allowing precise product browsing"
+  },
+  {
+    "canonical_name": "Items Watched",
+    "node_id": "items-watched",
+    "url": "https://www.ebay.com/help/buying/bidding/using-watch-list",
+    "title": "Using your watch list",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Buyer watchlist feature for saving and tracking items of interest, with automatic removal if eBay removes listing"
+  },
+  {
+    "canonical_name": "Label Printer",
+    "node_id": "label-printer",
+    "url": "https://www.ebay.com/sellercenter/shipping/buy-postage",
+    "title": "Buy postage",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Integration with thermal printers for sellers to print shipping labels purchased through eBay Labels"
+  },
+  {
+    "canonical_name": "Linked Accounts Policy",
+    "node_id": "linked-accounts-policy",
+    "url": "https://www.ebay.com/help/policies/identity-policies/linked-accounts-policy",
+    "title": "Linked accounts policy",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "eBay policy governing multiple user IDs and account relationships for the same individual or business"
+  },
+  {
+    "canonical_name": "Listing Confirmed Notification",
+    "node_id": "listing-confirmed-notification",
+    "url": "https://www.ebay.com/help/selling/listings/creating-managing-listings",
+    "title": "Creating and managing listings",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Email notification sent to sellers confirming successful item listing publication on eBay"
+  },
+  {
+    "canonical_name": "Listing Enhancement",
+    "node_id": "listing-enhancement",
+    "url": "https://www.salehoo.com/learn/ebay-listing-upgrades",
+    "title": "Quick Guide to eBay Listing Upgrades",
+    "source_type": "secondary_source",
+    "year": 2024,
+    "notes": "Paid optional listing upgrades including Bold ($2-$4), Subtitle ($1.50-$3.00), and Gallery Plus ($0.35) for increased visibility"
+  },
+  {
+    "canonical_name": "Listing Error",
+    "node_id": "listing-error",
+    "url": "https://help.ebaymag.com/en/articles/4130923-ebay-listing-errors-and-how-to-resolve-them",
+    "title": "eBay listing errors and how to resolve them",
+    "source_type": "secondary_source",
+    "year": 2026,
+    "notes": "Error messages preventing listing publication due to payment setup, category issues, policy violations, or duplicate items, shown in Attention Required tab"
+  },
+  {
+    "canonical_name": "Listing Removal Notice",
+    "node_id": "listing-removal-notice",
+    "url": "https://www.ebay.com/help/policies/listing-policies/listing-policies",
+    "title": "Listing policies",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Notification sent to sellers when listings are removed for policy violations, prohibited items, or legal restrictions with explanation and appeal options"
+  },
+  {
+    "canonical_name": "Live Chat Support",
+    "node_id": "live-chat-support",
+    "url": "https://community.ebay.com/t5/Buying/Live-Chat-support-Isn-t-appearing-as-an-Option/td-p/34810212",
+    "title": "Live Chat support Isn't appearing as an Option",
+    "source_type": "secondary_source",
+    "year": 2024,
+    "notes": "Customer service chat feature available until November 2024, then removed in favor of callback requests and social media support"
+  },
+  {
+    "canonical_name": "Location Filter",
+    "node_id": "location-filter",
+    "url": "https://www.ebay.com/help/buying/search-tips/searching-items-seller-location",
+    "title": "Searching for items by seller location",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Search filter allowing buyers to specify distance radius from zip code for local pickup and nearby items with 'Nearest First' sort option"
+  },
+  {
+    "canonical_name": "Login Alerts",
+    "node_id": "login-alerts",
+    "url": "https://www.ebay.com/help/account/protecting-account/account-security",
+    "title": "Account security",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Security notifications alerting users to new login attempts or account access from unrecognized devices or locations"
+  },
+  {
+    "canonical_name": "Managed Display",
+    "node_id": "managed-display",
+    "url": "https://www.ebay.com/sellercenter/growth/ebay-advertising/promoted-listings",
+    "title": "Promoted Listings",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Display advertising product within eBay's advertising portfolio including Promoted Listings Standard, Advanced, and Promoted Stores"
+  },
+  {
+    "canonical_name": "Matching Categories",
+    "node_id": "matching-categories",
+    "url": "https://www.auctionmapper.com/guides/ebay-advanced-search/",
+    "title": "eBay Advanced Search: The Complete Guide",
+    "source_type": "secondary_source",
+    "year": 2026,
+    "notes": "Auto-complete category suggestion feature during listing creation showing dynamically filtered category tree matching search terms"
+  },
+  {
+    "canonical_name": "Message Buyer",
+    "node_id": "message-buyer",
+    "url": "https://www.ebay.com/help/selling/managing-returns-refunds/working-buyers-after-sale",
+    "title": "Working with buyers after the sale",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Seller function to initiate contact with buyers through eBay messaging system with optional phone number sharing"
+  },
+  {
+    "canonical_name": "Mobile Analytics",
+    "node_id": "mobile-analytics",
+    "url": "https://www.ebay.com/sellercenter/resources/seller-updates/timeline/seller-hub-enhancements",
+    "title": "Seller Hub enhancements",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Performance insights on mobile app showing listing views, click-through rate, traffic sources, and business metrics accessible on-the-go"
+  },
+  {
+    "canonical_name": "Mobile Photo Editor",
+    "node_id": "mobile-photo-editor",
+    "url": "https://pages.ebay.com/sellingwithAI/",
+    "title": "Selling is now even easier with AI",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "AI-powered background enhancement tool in mobile app offering background removal, solid colors, and AI-generated scenes for listing photos"
+  },
+  {
+    "canonical_name": "Mobile Quick List",
+    "node_id": "mobile-quick-list",
+    "url": "https://www.ebay.com/help/selling/listings/creating-listing",
+    "title": "Creating a listing",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Fast mobile listing tool with barcode scanning, pre-filled fields, and up to 250 draft capacity for on-the-go selling at stores"
+  },
+  {
+    "canonical_name": "Mobile-Responsive Template",
+    "node_id": "mobile-responsive-template",
+    "url": "https://www.ebay.com/itm/116544844747",
+    "title": "eBay Mobile Responsive Templates eBay Listing Auction Template",
+    "source_type": "secondary_source",
+    "year": 2025,
+    "notes": "HTML templates designed for mobile-responsive listing descriptions displaying properly on smartphones and tablets"
+  },
+  {
+    "canonical_name": "Mobile Responsive Templates",
+    "node_id": "mobile-responsive-templates",
+    "url": "https://pages.ebay.com/as/en-us/sell/itemdescription/mobilefriendlyguidelines.html",
+    "title": "Best practices for creating mobile-friendly listings",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "eBay guidelines and templates for creating listing descriptions optimized for mobile viewing experience"
+  },
+  {
+    "canonical_name": "More From This Seller",
+    "node_id": "more-from-this-seller",
+    "url": "https://www.ebay.com/help/selling/listings/creating-managing-listings",
+    "title": "Creating and managing listings",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Link on item pages allowing buyers to browse additional items from same seller or visit seller's eBay Store"
+  },
+  {
+    "canonical_name": "Mutual Feedback Withdrawal",
+    "node_id": "mutual-feedback-withdrawal",
+    "url": "https://www.ebay.com/help/feedback/feedback-you-leave-others/feedback-revision",
+    "title": "Feedback revision",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Process allowing buyers and sellers to mutually agree to withdraw negative or neutral feedback by both parties"
+  },
+  {
+    "canonical_name": "Newly Listed",
+    "node_id": "newly-listed",
+    "url": "https://www.ebay.com/help/buying/search-tips/sorting-search-results",
+    "title": "Sorting search results",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Default search sort option displaying items in chronological order with most recently listed appearing first, customizable through sort menu"
+  },
+  {
+    "canonical_name": "No Bids",
+    "node_id": "no-bids",
+    "url": "https://nobids.net/",
+    "title": "No Bids - eBay Items Ending Soon",
+    "source_type": "secondary_source",
+    "year": 2026,
+    "notes": "Status for auction-format listings without bidding activity, searchable through specialized tools like NoBids.net and ZeroBidFinder for bargain hunting"
+  }
+]

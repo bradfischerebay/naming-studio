@@ -1,0 +1,224 @@
+{
+  "generatedAt": "2026-04-29",
+  "registryFile": "enriched-consolidated-DEDUPLICATED.ts",
+  "totalNodes": 1017,
+  "byStatus": {
+    "current": 943,
+    "legacy": 66,
+    "renamed": 7,
+    "unknown": 1
+  },
+  "byType": {
+    "masterbrand": 1,
+    "category": 835,
+    "trust": 97,
+    "advertising": 37,
+    "developer": 18,
+    "impact": 17,
+    "regional": 12
+  },
+  "byTier": {
+    "master": 1,
+    "umbrella": 73,
+    "platform": 40,
+    "product": 71,
+    "program": 110,
+    "feature": 625,
+    "legal": 22,
+    "campaign": 16,
+    "vertical": 9,
+    "variant": 38,
+    "event": 4,
+    "publication": 2,
+    "organization": 6
+  },
+  "byBrandTier": {
+    "t1": 6,
+    "t2_badge": 20,
+    "t2_name": 41,
+    "t3": 29,
+    "unclassified": 0,
+    "unset": 921
+  },
+  "syntaxErrorsFixed": [
+    {
+      "line": 4343,
+      "description": "Duplicate opening brace on feedback-left node"
+    },
+    {
+      "line": 9667,
+      "description": "Duplicate opening brace on template-builder node"
+    },
+    {
+      "line": 1507,
+      "description": "Missing closing brace on authorized-seller-filter; dangling renamedFrom='expert-verification' removed (wrong node)"
+    },
+    {
+      "line": 3318,
+      "description": "Dangling renamedFrom='ebay-university' removed from ebay-academy-multi-market (translations object interference)"
+    },
+    {
+      "line": 3774,
+      "description": "Dangling renamedFrom='ebay-bucks' removed from ebay-mobile-app (wrong node — ebay-bucks renames to ebay-mastercard)"
+    },
+    {
+      "line": 5317,
+      "description": "Dangling renamedFrom='promoted-to-international' removed from international-standard-delivery (wrong node)"
+    },
+    {
+      "line": 5659,
+      "description": "Dangling renamedFrom='selling-coach' removed from listing-removal-notice (wrong node — selling-coach renames to listing-quality-report)"
+    }
+  ],
+  "orphanNodesFixed": [
+    "goldin-marketplace",
+    "goldin-vault",
+    "goldin-weekly-auctions",
+    "goldin-elite-auctions",
+    "studio-auctions",
+    "depop-payments",
+    "depop-shipping",
+    "depop-protection",
+    "depop-outfits",
+    "caramel-dealer-services",
+    "butterfield-butterfield",
+    "critical-path-software",
+    "gsi-commerce-ebay-enterprise",
+    "kruse-international",
+    "shoprunner",
+    "tise",
+    "twice-acquisition",
+    "up4sale",
+    "ebay-milo",
+    "ebay-redlaser",
+    "electronic-travel-auction",
+    "mymix-fashion-campaign",
+    "you-cant-fake-fashion-campaign",
+    "ebay-moda-latin-america",
+    "paypal-spinoff",
+    "ebay-4-0-mobile-app",
+    "ebay-fashion-app",
+    "ebay-mobile-app-android"
+  ],
+  "orphanNodesFixedCount": 28,
+  "nodesAddedThisPass": [],
+  "nodesAlreadyExistInRegistry": [
+    {
+      "id": "goldin",
+      "name": "Goldin",
+      "note": "Already in registry at line ~369 with parent='collectibles-trading', tier='product'. All goldin-* children already pointed to it correctly."
+    },
+    {
+      "id": "depop",
+      "name": "Depop",
+      "note": "Already in registry at line ~380 with parent='fashion-luxury', tier='product'. All depop-* children already pointed to it correctly."
+    },
+    {
+      "id": "caramel",
+      "name": "Caramel",
+      "note": "Already in registry at line ~391 with parent='ebay-motors', tier='product'. caramel-dealer-services pointed to it correctly."
+    },
+    {
+      "id": "acquisitions",
+      "name": "Acquisitions & Subsidiaries",
+      "note": "Already in registry as navigation umbrella. All acquisitions-* children already pointed to it correctly."
+    },
+    {
+      "id": "partnerships",
+      "name": "Partnerships",
+      "note": "Already in registry as navigation umbrella."
+    },
+    {
+      "id": "fashion",
+      "name": "Fashion",
+      "note": "Already in registry with parent='fashion-luxury' as navigation umbrella."
+    },
+    {
+      "id": "corporate",
+      "name": "Corporate & Investor Relations",
+      "note": "Already in registry as navigation umbrella."
+    },
+    {
+      "id": "mobile",
+      "name": "Mobile Apps",
+      "note": "Already in registry as navigation umbrella."
+    }
+  ],
+  "umbrellaTypeAdded": false,
+  "umbrellaTypeReason": "Cannot confidently distinguish 19 V2 canonical (brand-architecture) nodes from 50 Phase 1 technical (navigation-taxonomy) nodes without insertion-phase metadata. Node content alone (names, descriptions, parents) does not uniquely identify which phase each umbrella was added in. Misclassification risk too high. Field added to GraphNode interface but no values applied.",
+  "validatorRulesAdded": [
+    "INVALID_BRAND_TIER — brandTier present but not in ['t1','t2_badge','t2_name','t3','unclassified']",
+    "INVALID_UMBRELLA_TYPE — umbrellaType present but not in ['brand-architecture','navigation-taxonomy']",
+    "UMBRELLA_TYPE_WRONG_TIER — umbrellaType set on non-umbrella-tier node",
+    "BROKEN_RELATIONSHIP_REF — relationships[].target does not resolve to an existing ID"
+  ],
+  "validationIssuesRemaining": [
+    {
+      "rule": "RENAME_ASYMMETRIC",
+      "id": "paypal",
+      "detail": "renamedTo='managed-payments' but managed-payments.renamedFrom missing — paypal and paypal-checkout are both predecessors, renamedFrom can only hold one value"
+    },
+    {
+      "rule": "RENAME_ASYMMETRIC",
+      "id": "paypal-checkout",
+      "detail": "renamedTo='managed-payments' but managed-payments.renamedFrom missing — same multi-predecessor issue as paypal"
+    },
+    {
+      "rule": "RENAME_ASYMMETRIC",
+      "id": "picture-manager",
+      "detail": "renamedTo='seller-hub' but seller-hub.renamedFrom missing — seller-hub has multiple predecessors (picture-manager, selling-manager, selling-manager-pro)"
+    },
+    {
+      "rule": "RENAME_ASYMMETRIC",
+      "id": "selling-manager",
+      "detail": "renamedTo='seller-hub' but seller-hub.renamedFrom missing — multi-predecessor issue"
+    },
+    {
+      "rule": "RENAME_ASYMMETRIC",
+      "id": "selling-manager-pro",
+      "detail": "renamedTo='seller-hub' but seller-hub.renamedFrom missing — multi-predecessor issue"
+    },
+    {
+      "rule": "UNKNOWN_STATUS",
+      "id": "ebay-academy",
+      "detail": "status='unknown' — Seller Center URL returns 404, ebay.academy unreachable. May be renamed or discontinued. Needs human verification."
+    }
+  ],
+  "assumptionsRequiringHumanDecision": [
+    {
+      "assumption": "goldin node parent",
+      "detail": "goldin is in registry with parent='collectibles-trading'. The task brief specified parent='ebay' for a freestanding platform brand. The existing registry has it under collectibles-trading. Left as-is (already existed; not this pass's decision to reclassify)."
+    },
+    {
+      "assumption": "depop node market",
+      "detail": "depop is in registry with market=['US','UK']. The task brief specified ['US','UK','AU']. Left as-is (existing data, not reclassifying)."
+    },
+    {
+      "assumption": "caramel node parent",
+      "detail": "caramel is in registry with parent='ebay-motors'. Left as-is (existing data — caramel is an automotive transaction platform, ebay-motors parent is reasonable)."
+    },
+    {
+      "assumption": "managed-payments renamedFrom",
+      "detail": "managed-payments is the successor to both paypal and paypal-checkout. The renamedFrom field only holds one value. Either needs: (a) renamedFrom=['paypal','paypal-checkout'] schema change, or (b) choosing primary predecessor. Human decision required."
+    },
+    {
+      "assumption": "seller-hub renamedFrom",
+      "detail": "seller-hub succeeded picture-manager, selling-manager, and selling-manager-pro. Same multi-predecessor issue. Human decision required."
+    },
+    {
+      "assumption": "ebay-academy status",
+      "detail": "Status set to 'unknown' because ebay.academy is unreachable as of 2026-04-29. May be 'legacy' if discontinued or 'renamed' if rebranded. Human verification of current state required."
+    },
+    {
+      "assumption": "umbrellaType classification",
+      "detail": "73 umbrella nodes exist. Phase comments indicate 19 V2 canonical and 50 technical, but no phase marker distinguishes them in node data. Without insertion-history metadata, classification would be guesswork. Left unclassified."
+    }
+  ],
+  "testsAdded": [
+    "tests/registry-integrity.test.ts — extended with 6 new tests: goldin/depop/caramel nodes, brandTier validity, umbrellaType validity, relationship target resolution"
+  ],
+  "testCount": 24,
+  "testsPassed": 24,
+  "beforeOrphanCount": 30,
+  "afterOrphanCount": 0
+}

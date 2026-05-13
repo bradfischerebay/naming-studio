@@ -1,0 +1,200 @@
+[
+  {
+    "canonical_name": "Volume Pricing",
+    "node_id": "volume-pricing-multi-market",
+    "url": "https://pages.ebay.com/specialoffers/volumepricing/index.html",
+    "title": "Volume Pricing | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Official eBay page for Volume Pricing feature allowing tiered discounts for buyers purchasing multiple quantities"
+  },
+  {
+    "canonical_name": "Volume Pricing",
+    "node_id": "volume-pricing-multi-market",
+    "url": "https://www.ebay.com/sellercenter/growth/seller-hub-discounts/volume-pricing",
+    "title": "Volume pricing | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Seller Center guide for setting up volume pricing discounts"
+  },
+  {
+    "canonical_name": "Volume Pricing",
+    "node_id": "volume-pricing-multi-market",
+    "url": "https://innovation.ebayinc.com/stories/ebay-users-can-save-with-more/",
+    "title": "eBay Users Can Save With More - Innovation Stories",
+    "source_type": "press_release",
+    "year": null,
+    "notes": "Innovation blog post about Volume Pricing feature launch"
+  },
+  {
+    "canonical_name": "Watch Authentication",
+    "node_id": "watch-authentication",
+    "url": "https://pages.ebay.com/authenticity-guarantee-watches-seller/",
+    "title": "Authenticity Guarantee for Watches | eBay.com",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Official eBay page for Authenticity Guarantee service for watches $2,000+, authenticated by Stoll & Co."
+  },
+  {
+    "canonical_name": "Watch Authentication",
+    "node_id": "watch-authentication",
+    "url": "https://www.ebayinc.com/stories/news/ebay-launches-authentication-on-all-watches-sold-for-2-000-or-more-in-the-us-with-new-service-authenticity-guarantee/",
+    "title": "eBay Launches Authentication On All Watches Sold for $2,000 or More in the US with New Service, Authenticity Guarantee",
+    "source_type": "press_release",
+    "year": 2020,
+    "notes": "Press release announcing launch of Authenticity Guarantee for watches in September 2020"
+  },
+  {
+    "canonical_name": "Watch List",
+    "node_id": "watch-list",
+    "url": "http://pages.ebay.com/help/buy/watching-items.html",
+    "title": "Your Watchlist | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Official eBay help page explaining how to add items to Watchlist and manage watching items"
+  },
+  {
+    "canonical_name": "Watchlist",
+    "node_id": "watchlist-multi-market",
+    "url": "http://pages.ebay.com/help/buy/watching-items.html",
+    "title": "Your Watchlist | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Official eBay help page for Watchlist feature with notifications for price drops and ending listings"
+  },
+  {
+    "canonical_name": "Watchlist",
+    "node_id": "watchlist-multi-market",
+    "url": "https://innovation.ebayinc.com/stories/ebays-new-feature-lets-you-organize-your-watch-list-by-category/",
+    "title": "eBay's New Feature Lets You Organize Your Watch List by Category",
+    "source_type": "press_release",
+    "year": null,
+    "notes": "Innovation blog post about Watchlist organization features"
+  },
+  {
+    "canonical_name": "Watchers",
+    "node_id": "watchers",
+    "url": "https://pages.ebay.com/seller-center/listing-and-marketing/offer-to-buyers.html",
+    "title": "Offers to Buyers and Best Offer | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Seller Center page explaining how sellers can send offers to watchers and use watcher count as engagement signal"
+  },
+  {
+    "canonical_name": "Watchers",
+    "node_id": "watchers",
+    "url": "https://innovation.ebayinc.com/stories/ebay-makes-it-easier-with-three-new-ways-for-sellers-to-send-offers-to-buyers/",
+    "title": "eBay Makes It Easier with Three New Ways for Sellers to Send Offers to Buyers",
+    "source_type": "press_release",
+    "year": null,
+    "notes": "Innovation blog post about offers to watchers feature, noting ~30% of C2C listings have at least one watcher"
+  },
+  {
+    "canonical_name": "Watching",
+    "node_id": "watching",
+    "url": "http://pages.ebay.com/help/buy/watching-items.html",
+    "title": "Your Watchlist | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Official eBay help page about watching items and accessing watched items via My eBay"
+  },
+  {
+    "canonical_name": "Weekly Deals",
+    "node_id": "weekly-deals",
+    "url": "https://www.ebay.com/deals",
+    "title": "Daily Deals on eBay | Best deals and Free Shipping",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Official eBay deals page updated daily with featured, trending, and category-specific deals"
+  },
+  {
+    "canonical_name": "Weekly Payout",
+    "node_id": "weekly-payout",
+    "url": "https://pages.ebay.com/seller-center/service-and-payments/payments-and-earnings.html",
+    "title": "Payments and earnings | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Official Seller Center page explaining weekly payout schedule (Tuesdays) and other payout options"
+  },
+  {
+    "canonical_name": "Weekly Payout",
+    "node_id": "weekly-payout",
+    "url": "https://innovation.ebayinc.com/stories/consumer-sellers-getting-paid-on-ebay-just-got-easier/",
+    "title": "Consumer Sellers: Getting Paid on eBay Just Got Easier",
+    "source_type": "press_release",
+    "year": null,
+    "notes": "Innovation blog post about payout schedule options including daily, weekly, biweekly, and monthly"
+  },
+  {
+    "canonical_name": "Winning Bid",
+    "node_id": "winning-bid",
+    "url": "http://pages.ebay.com/help/buy/bidding-overview.html",
+    "title": "All about bidding | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Official eBay help page explaining how winning bid works - highest bidder when listing ends wins and pays"
+  },
+  {
+    "canonical_name": "Write Review",
+    "node_id": "write-review",
+    "url": "https://pages.ebay.com/help/feedback/howitworks.html",
+    "title": "Leaving feedback for sellers | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Official eBay help page about leaving feedback/reviews (positive, neutral, or negative) with up to 80-character comment"
+  },
+  {
+    "canonical_name": "WYSIWYG Editor",
+    "node_id": "wysiwyg-editor",
+    "url": "http://pages.ebay.com/help/sell/listing-designer.html",
+    "title": "Creating a listing | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Official eBay help page about listing creation tools including description editor (requires HTML formatting)"
+  },
+  {
+    "canonical_name": "WYSIWYG Editor",
+    "node_id": "wysiwyg-editor",
+    "url": "https://pages.ebay.com/sellingwithAI/",
+    "title": "Selling is now even easier with AI | eBay.com",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Official page about AI-powered description generator and listing tools for sellers"
+  },
+  {
+    "canonical_name": "Zahlungsabwicklung bei eBay",
+    "node_id": "zahlungsabwicklung-ebay",
+    "url": "https://www.ebay.de/verkaeuferportal/verkaufen-bei-ebay/zahlungsabwicklung",
+    "title": "Zahlungsabwicklung bei eBay | Verkäuferportal",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Official eBay Germany seller portal page about managed payments (Zahlungsabwicklung)"
+  },
+  {
+    "canonical_name": "Zahlungsabwicklung bei eBay",
+    "node_id": "zahlungsabwicklung-ebay",
+    "url": "https://www.ebay.de/help/selling/getting-paid/einfhrung-der-zahlungsabwicklung-bei-ebay?id=4795",
+    "title": "So funktioniert die Zahlungsabwicklung bei eBay | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Official eBay Germany help page explaining how managed payments works"
+  },
+  {
+    "canonical_name": "Zahlungsabwicklung bei eBay",
+    "node_id": "zahlungsabwicklung-ebay",
+    "url": "https://www.ebayinc.com/stories/press-room/de/ebay-startet-neue-zahlungsabwicklung-in-deutschland/",
+    "title": "eBay startet neue Zahlungsabwicklung in Deutschland - eBay Inc.",
+    "source_type": "press_release",
+    "year": 2019,
+    "notes": "Press release from April 2019 announcing launch of managed payments in Germany"
+  },
+  {
+    "canonical_name": "Zahlungsabwicklung bei eBay",
+    "node_id": "zahlungsabwicklung-ebay",
+    "url": "https://www.ebayinc.com/stories/press-room/de/ebay-weitet-neue-zahlungsabwicklung-auf-deutschland-aus/",
+    "title": "eBay weitet neue Zahlungsabwicklung auf Deutschland aus - eBay Inc.",
+    "source_type": "press_release",
+    "year": 2019,
+    "notes": "Press release from September 2019 about rollout of managed payments to first German sellers"
+  }
+]

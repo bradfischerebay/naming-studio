@@ -1,0 +1,15 @@
+{
+  "total_research_items": 45,
+  "matched": 44,
+  "unmatched": [
+    {
+      "canonical_name": "Seller Hub",
+      "expected_id": "seller-hub",
+      "evidence_url": "https://www.ebayinc.com/stories/news/ebays-seller-hub-now-live-for-all-u-s-sellers/"
+    }
+  ],
+  "evidence_created": 44,
+  "generated_at": "2026-04-21T00:32:04.923Z",
+  "graph_nodes_total": 944,
+  "evidence_coverage_percent": 4.7
+}

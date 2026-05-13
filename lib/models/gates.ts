@@ -25,6 +25,7 @@ export const GateEvaluationSchema = z.object({
     G3: GateResultSchema,
     G4: GateResultSchema,
     G5: GateResultSchema,
+    G6: GateResultSchema,
   }),
   any_failures: z.boolean(),
   missing_info: z.boolean(),

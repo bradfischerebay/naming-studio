@@ -1,0 +1,46 @@
+{
+  "total_programs": 27,
+  "matched": 22,
+  "merged_into_existing": 1,
+  "created_new": 21,
+  "unmatched": [],
+  "node_id_not_in_graph": [
+    {
+      "canonical_name": "Immediate Payment",
+      "expected_id": "immediate-payment",
+      "url": "https://www.ebay.com/help/selling/listings/creating-managing-listings/immediate-payment-works?id=4151",
+      "reason": "Node ID not found in production graph"
+    },
+    {
+      "canonical_name": "eBay Labels",
+      "expected_id": "ebay-labels",
+      "url": "https://www.ebay.com/help/selling/posting-items/labels-packaging-tips/buying-printing-postage-labels?id=4157",
+      "reason": "Node ID not found in production graph"
+    },
+    {
+      "canonical_name": "eBay Shipping",
+      "expected_id": "ebay-shipping",
+      "url": "https://pages.ebay.com/seller-center/shipping/ebay-domestic-shipping-services.html",
+      "reason": "Node ID not found in production graph"
+    },
+    {
+      "canonical_name": "Fits Your Vehicle",
+      "expected_id": "fits-your-vehicle",
+      "url": "https://pages.ebay.com/motors/ebay-guaranteed-fit/",
+      "reason": "Node ID not found in production graph"
+    },
+    {
+      "canonical_name": "Security Center",
+      "expected_id": "security-center",
+      "url": "https://pages.ebay.com/securitycenter/",
+      "reason": "Node ID not found in production graph"
+    }
+  ],
+  "generated_at": "2026-04-21T00:52:15.776Z",
+  "phase": "Phase 4: Multi-Agent Research Integration",
+  "graph_nodes_total": 944,
+  "evidence_coverage_percent": 7.5,
+  "evidence_total": 71,
+  "phase3_baseline": 50,
+  "phase4_delta": 21
+}

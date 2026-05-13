@@ -1,0 +1,279 @@
+[
+  {
+    "canonical_name": "Leave Feedback",
+    "node_id": "leave-feedback",
+    "url": "https://www.ebay.com/help/buying/leaving-feedback-sellers/leaving-feedback-sellers?id=4007",
+    "title": "Leaving feedback for sellers | eBay",
+    "source_type": "ebay_official",
+    "notes": "Buyers can leave positive, neutral, or negative feedback ratings with comments and pictures within 60 days of purchase"
+  },
+  {
+    "canonical_name": "List Price",
+    "node_id": "list-price",
+    "url": "https://pages.ebay.com/specialoffers/sellerterms.html",
+    "title": "Pricing and Discounts Terms and Conditions | eBay.com",
+    "source_type": "ebay_official",
+    "notes": "Sellers must provide accurate List Price throughout listing duration with documentation available within 3 days upon request"
+  },
+  {
+    "canonical_name": "Listing Analytics",
+    "node_id": "listing-analytics",
+    "url": "https://pages.ebay.com/bo/en-us/listing_analytics/",
+    "title": "eBay: Seller Tools: Listing Analytics",
+    "source_type": "ebay_official",
+    "notes": "Listing analytics tool that transitioned to MySales on Terapeak.com for tracking listing performance"
+  },
+  {
+    "canonical_name": "Listing Designer",
+    "node_id": "listing-designer",
+    "url": "https://pages.ebay.com/ebaymotors/help/sell/contextual/inframe/listing-designer.html",
+    "title": "Listing Designer",
+    "source_type": "ebay_official",
+    "notes": "Tool allowing sellers to give listings professional look without HTML knowledge through pre-designed themes and layouts"
+  },
+  {
+    "canonical_name": "Listing Quality Report",
+    "node_id": "listing-quality-report",
+    "url": "https://pages.ebay.com/listing-quality-report/",
+    "title": "The Listing Quality Report | eBay.com",
+    "source_type": "ebay_official",
+    "notes": "Downloadable Excel report providing listing analysis at category level for top 10 categories with most live listings"
+  },
+  {
+    "canonical_name": "Listing Template",
+    "node_id": "listing-template",
+    "url": "https://www.ebay.com/help/selling/selling-tools/selling-templates?id=4097",
+    "title": "Selling templates | eBay",
+    "source_type": "ebay_official",
+    "notes": "Reusable templates created from Seller Hub to save listing details for similar items"
+  },
+  {
+    "canonical_name": "Listing Templates",
+    "node_id": "listing-templates",
+    "url": "https://export.ebay.com/en/manage-listings/selling-templates/",
+    "title": "How to create and use selling templates",
+    "source_type": "ebay_official",
+    "notes": "Feature allowing sellers to create and reuse listing templates from Seller Hub"
+  },
+  {
+    "canonical_name": "Listing Upgrades",
+    "node_id": "listing-upgrades",
+    "url": "https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/listing-upgrades.html",
+    "title": "Listing upgrades | eBay Developers Program",
+    "source_type": "ebay_official",
+    "notes": "Optional paid features including subtitle, bold title, gallery plus, and listing designer to make listings stand out"
+  },
+  {
+    "canonical_name": "Local Delivery",
+    "node_id": "local-delivery",
+    "url": "https://innovation.ebayinc.com/stories/faster-and-local-shopping-on-ebay-just-got-simpler/",
+    "title": "Faster and Local Shopping on eBay Just Got Simpler",
+    "source_type": "ebay_official",
+    "notes": "Suite of delivery solutions including local pickup with QR codes and eBay Local program for last-mile delivery"
+  },
+  {
+    "canonical_name": "Local Pickup",
+    "node_id": "local-pickup",
+    "url": "https://www.ebay.com/help/selling/posting-items/setting-postage-options/local-pickup?id=4181",
+    "title": "Offering local pickup | eBay",
+    "source_type": "ebay_official",
+    "notes": "Feature allowing sellers to offer local pickup with secure QR code verification system for in-person exchanges"
+  },
+  {
+    "canonical_name": "Local Pickup",
+    "node_id": "local-pickup-multi-market",
+    "url": "https://innovation.ebayinc.com/stories/ebay-launches-secure-local-pickup-to-simplify-the-shipping-experience/",
+    "title": "eBay Launches Secure Local Pickup To Simplify The Shipping Experience",
+    "source_type": "ebay_official",
+    "notes": "Enhanced local pickup feature with QR code system developed during 2018 Hack Week"
+  },
+  {
+    "canonical_name": "Logistica eBay by Orange Connex",
+    "node_id": "logistica-ebay-by-orange-connex",
+    "url": "https://www.ebayinc.com/stories/press-room/uk/ebay-launches-fulfilment-for-uk-sellers-to-deliver-end-to-end-logistics-management/",
+    "title": "eBay launches fulfilment for UK sellers to deliver end-to-end logistics management - eBay Inc.",
+    "source_type": "press_release",
+    "year": 2021,
+    "notes": "eBay Fulfillment by Orange Connex launched in UK July 2021, offering next-day delivery and dedicated fulfillment centers"
+  },
+  {
+    "canonical_name": "Logistica eBay by Orange Connex",
+    "node_id": "logistica-ebay-orange-connex",
+    "url": "https://www.ebayinc.com/stories/press-room/de/neue-services-und-zus%C3%A4tzliche-partner-ebay-baut-sein-fulfillment-programm-in-deutschland-weiter-ausnew-local-press-room-article/",
+    "title": "Neue Services und zusätzliche Partner: eBay baut sein Fulfillment Programm in Deutschland weiter aus - eBay Inc.",
+    "source_type": "press_release",
+    "year": 2020,
+    "notes": "eBay Fulfillment by Orange Connex beta launched in Germany fall 2020, managing logistics and shipping for commercial sellers"
+  },
+  {
+    "canonical_name": "Magical Listing",
+    "node_id": "magical-listing",
+    "url": "https://innovation.ebayinc.com/stories/magical-listing-tool-harnesses-the-power-of-ai-to-make-selling-on-ebay-faster-easier-and-more-accurate/",
+    "title": "'Magical' Listing Tool Harnesses the Power of AI to Make Selling on eBay Faster, Easier, and More Accurate",
+    "source_type": "ebay_official",
+    "notes": "AI-powered listing tool using image recognition to auto-populate titles, descriptions, and item details; won 2024 AI Breakthrough Award"
+  },
+  {
+    "canonical_name": "Make An Offer",
+    "node_id": "make-an-offer",
+    "url": "https://www.ebay.com/help/buying/buy-now/making-best-offer?id=4019",
+    "title": "Making a Best Offer | eBay",
+    "source_type": "ebay_official",
+    "notes": "Feature allowing buyers to make offers on listings, with sellers having 24 hours to accept, decline, or counter-offer"
+  },
+  {
+    "canonical_name": "Make Offer",
+    "node_id": "make-offer",
+    "url": "https://export.ebay.com/en/marketing/promote-listings/offer-buyers/",
+    "title": "Offer to buyers",
+    "source_type": "ebay_official",
+    "notes": "Sellers can send custom offers to buyers who send questions, with up to 3 offers allowed per item valid for 96 hours"
+  },
+  {
+    "canonical_name": "Make Offer Button",
+    "node_id": "make-offer-button",
+    "url": "https://www.ebay.com/help/buying/buy-now/making-best-offer?id=4019",
+    "title": "Making a Best Offer | eBay",
+    "source_type": "ebay_official",
+    "notes": "Best Offer button on eligible listings allowing buyers to negotiate price; eBay adds this automatically to some listings"
+  },
+  {
+    "canonical_name": "Make Offer",
+    "node_id": "make-offer-multi-market",
+    "url": "https://innovation.ebayinc.com/stories/ebay-makes-it-easier-with-three-new-ways-for-sellers-to-send-offers-to-buyers/",
+    "title": "eBay Makes It Easier with Three New Ways for Sellers to Send Offers to Buyers",
+    "source_type": "ebay_official",
+    "notes": "Enhanced offer system including Seller Initiated Offers with personalized messages to buyers watching items or with items in cart"
+  },
+  {
+    "canonical_name": "Managed Delivery",
+    "node_id": "managed-delivery",
+    "url": "https://www.ebayinc.com/stories/news/ebay-to-launch-managed-delivery-an-end-to-end-fulfillment-service-for-sellers/",
+    "title": "eBay to Launch Managed Delivery, an End-to-end Fulfillment Service for Sellers",
+    "source_type": "press_release",
+    "year": 2019,
+    "notes": "Defunct U.S. fulfillment pilot announced 2019, closed December 2019; replaced by international fulfillment services in UK, Germany, China"
+  },
+  {
+    "canonical_name": "Managed Payments (Multi-Currency)",
+    "node_id": "managed-payments-multi-currency",
+    "url": "https://www.ebayinc.com/stories/news/ebays-management-of-payments-begins-scaling-globally/",
+    "title": "eBay's Management of Payments Begins Scaling Globally",
+    "source_type": "press_release",
+    "notes": "eBay's payment platform supporting 150+ currencies and 200+ payment methods via Adyen, now live in all global markets"
+  },
+  {
+    "canonical_name": "Managed Returns",
+    "node_id": "managed-returns",
+    "url": "https://pages.ebay.com/dz/en-us/sell/returns/optin.html",
+    "title": "eBay: Managed Returns process",
+    "source_type": "ebay_official",
+    "notes": "Automated returns process for opt-in sellers that streamlines communications, label generation, and refund processing"
+  },
+  {
+    "canonical_name": "Managed Returns",
+    "node_id": "managed-returns-multi-market",
+    "url": "https://www.ebayinc.com/stories/news/ebay-shakes-and-smooths-out-returns-process/",
+    "title": "eBay Shakes Up and Smooths Out the Returns Process",
+    "source_type": "press_release",
+    "notes": "Managed returns pilot launched July 10 for select sellers, went public on opt-in basis for Top-rated sellers"
+  },
+  {
+    "canonical_name": "Mark as Shipped",
+    "node_id": "mark-as-shipped",
+    "url": "https://www.ebay.com/help/selling/shipping-items/tracking-items-youve-sold?id=4088",
+    "title": "Tracking items you've sold | eBay",
+    "source_type": "ebay_official",
+    "notes": "Feature allowing sellers to manually mark items as shipped from Orders tab or add tracking numbers after shipping"
+  },
+  {
+    "canonical_name": "Markdown Manager",
+    "node_id": "markdown-manager",
+    "url": "https://pages.ebay.com/tg/en-us/storefronts/managing.html",
+    "title": "eBay Stores: Optimize Your Listings",
+    "source_type": "ebay_official",
+    "notes": "eBay Stores exclusive feature for discounts and free shipping; merged into Promotions Manager as Sale Event + Markdown"
+  },
+  {
+    "canonical_name": "Maximum Bid",
+    "node_id": "maximum-bid",
+    "url": "https://www.ebay.com/help/buying/bidding/automatic-bidding?id=4014",
+    "title": "Automatic bidding | eBay",
+    "source_type": "ebay_official",
+    "notes": "Automatic bidding system where buyers enter maximum bid amount and eBay bids incrementally up to that limit on their behalf"
+  },
+  {
+    "canonical_name": "Merchant Integration Platform",
+    "node_id": "merchant-integration-platform",
+    "url": "https://developer.ebay.com/develop/selling-apps/listing-management/merchant-integration-platform",
+    "title": "Merchant Integration Platform | eBay Developers Program",
+    "source_type": "ebay_official",
+    "notes": "Feed-based platform for bulk inventory management via CSV/XML files for enterprise merchants and high-volume sellers"
+  },
+  {
+    "canonical_name": "Message Center",
+    "node_id": "message-center",
+    "url": "https://www.ebay.com/help/policies/member-behaviour-policies/user-agreement?id=4259",
+    "title": "User Agreement | eBay",
+    "source_type": "ebay_official",
+    "notes": "eBay's official messaging system for buyer-seller communication referenced in User Agreement for notifications"
+  },
+  {
+    "canonical_name": "Message Center",
+    "node_id": "message-center-multi-market",
+    "url": "https://www.ebay.com/help/policies/member-behaviour-policies/user-agreement?id=4259",
+    "title": "User Agreement | eBay",
+    "source_type": "ebay_official",
+    "notes": "Official communication platform for eBay users with updated chat-style format and threaded messaging on mobile"
+  },
+  {
+    "canonical_name": "Mobile Checkout",
+    "node_id": "mobile-checkout",
+    "url": "https://www.ebayinc.com/stories/news/ebay-launches-venmo-as-a-payment-option-a-continued-push-to-expand-ways-to-pay-and-invest-in-digital-natives/",
+    "title": "eBay Launches Venmo as a Payment Option, a Continued Push to Expand Ways to Pay and Invest in Digital Natives",
+    "source_type": "press_release",
+    "notes": "Over 60% of eBay volume comes from mobile devices; eBay developed Checkout Experience Service for multi-screen checkout"
+  },
+  {
+    "canonical_name": "Mobile Deals",
+    "node_id": "mobile-deals",
+    "url": "https://www.ebayinc.com/stories/news/ebay-launches-the-summer-of-choice-letting-americans-vote-for-their-favorite-mobile-deals-all-season-long/",
+    "title": "eBay Launches the \"Summer of Choice\" Letting Americans Vote for Their Favorite Mobile Deals All Season Long",
+    "source_type": "press_release",
+    "year": 2016,
+    "notes": "Campaign allowing users to vote for mobile-exclusive seasonal deals on fashion, tech, and home items with free shipping"
+  },
+  {
+    "canonical_name": "Mobile Notifications",
+    "node_id": "mobile-notifications",
+    "url": "https://innovation.ebayinc.com/stories/push-notification-based-2-step-verification/",
+    "title": "Push Notifications-based 2-step Verification - Innovation Stories",
+    "source_type": "ebay_official",
+    "notes": "Push notification system using FIDO UAF 1.0 protocol for authentication and real-time business event notifications"
+  },
+  {
+    "canonical_name": "Mobile Seller Hub",
+    "node_id": "mobile-seller-hub",
+    "url": "https://innovation.ebayinc.com/stories/ebay-empowers-sellers-with-innovative-tools-at-ebay-open-2024/",
+    "title": "eBay Empowers Sellers with Innovative Tools at eBay Open 2024",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Dedicated Sell Mode announced at eBay Open 2024 providing customized selling experience in mobile app for on-the-go management"
+  },
+  {
+    "canonical_name": "Mobile Web",
+    "node_id": "mobile-web",
+    "url": "https://pages.ebay.com/mobile/mobileweb.html",
+    "title": "eBay: Mobile - Mobile Web",
+    "source_type": "ebay_official",
+    "notes": "Mobile web platform with WebAuthn biometric authentication, Progressive Web Apps, and AMP technology for 16M+ product pages"
+  },
+  {
+    "canonical_name": "Money Back Guarantee",
+    "node_id": "money-back-guarantee",
+    "url": "https://www.ebay.com/help/policies/ebay-money-back-guarantee-policy/ebay-money-back-guarantee-policy?id=4210",
+    "title": "eBay Money Back Guarantee policy",
+    "source_type": "ebay_official",
+    "notes": "Automatic coverage for most eBay transactions when items don't arrive, are faulty/damaged, or don't match listing within 30 days"
+  }
+]

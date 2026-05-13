@@ -1,0 +1,416 @@
+[
+  {
+    "canonical_name": "Combined Shipping",
+    "node_id": "combined-shipping",
+    "url": "https://www.ebay.com/help/selling/shipping-items/shipping-rates/offering-combined-shipping?id=4169",
+    "title": "Offering combined shipping | eBay",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Official help page explaining how sellers can offer combined shipping discounts to buyers who purchase multiple items"
+  },
+  {
+    "canonical_name": "Combined Shipping Discount",
+    "node_id": "combined-shipping-discount",
+    "url": "https://www.ebay.com/help/selling/shipping-items/shipping-rates/shipping-discounts?id=4168",
+    "title": "Shipping discounts | eBay",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Official help page on automatically applying discounts to shipping costs when buyers purchase multiple items"
+  },
+  {
+    "canonical_name": "Community Forums",
+    "node_id": "community-forums",
+    "url": "https://community.ebay.com/",
+    "title": "Home - The eBay Community",
+    "source_type": "platform",
+    "year": null,
+    "notes": "Official eBay Community forum platform where sellers, buyers and eBay employees share knowledge and connect"
+  },
+  {
+    "canonical_name": "Competitive Pricing",
+    "node_id": "competitive-pricing",
+    "url": "https://www.ebay.com/sellercenter/growth/ebay-research-tools",
+    "title": "eBay research tools | Seller Center",
+    "source_type": "seller_center",
+    "year": null,
+    "notes": "Seller Center page on Product Research tool (Terapeak) providing pricing insights and competitive analysis"
+  },
+  {
+    "canonical_name": "Completed Listings",
+    "node_id": "completed-listings",
+    "url": "https://www.ebay.com/help/selling/selling-tools/product-research?id=4853",
+    "title": "Product research | eBay",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Official help page on Product Research tool enabling sellers to search completed listings and pricing data"
+  },
+  {
+    "canonical_name": "Completed Listings",
+    "node_id": "completed-listings",
+    "url": "https://pages.ebay.com/dj/en-us/completedlistings/",
+    "title": "Search Completed Listings",
+    "source_type": "pages",
+    "year": null,
+    "notes": "eBay pages.ebay.com feature page for searching completed listings to research pricing"
+  },
+  {
+    "canonical_name": "Condition Description",
+    "node_id": "condition-description",
+    "url": "https://www.ebay.com/help/selling/listings/creating-managing-listings/item-conditions-category?id=4765",
+    "title": "Item condition by category | eBay",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Official help page explaining item condition requirements and the Condition Description field for non-new items"
+  },
+  {
+    "canonical_name": "Contact Seller",
+    "node_id": "contact-seller",
+    "url": "https://www.ebay.com/help/buying/resolving-issues-sellers/contacting-seller?id=4021",
+    "title": "Contacting a seller | eBay",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Official help page explaining how buyers can contact sellers before or after purchasing"
+  },
+  {
+    "canonical_name": "Communication Preferences",
+    "node_id": "communication-preferences",
+    "url": "https://www.ebay.com/help/account/changing-account-settings/notifications?id=4203",
+    "title": "Push Notifications | eBay",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Official help page on managing notification and communication preferences for email, push, and SMS"
+  },
+  {
+    "canonical_name": "Console venditori",
+    "node_id": "console-venditori",
+    "url": "https://www.ebay.it/help/selling/selling-tools/console-venditori?id=4095",
+    "title": "Console venditori | eBay",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Official eBay Italy help page for Console venditori (Seller Hub Italy version)"
+  },
+  {
+    "canonical_name": "Console venditori",
+    "node_id": "console-venditori",
+    "url": "https://www.ebay.it/sh/landing",
+    "title": "Console venditori di eBay",
+    "source_type": "platform",
+    "year": null,
+    "notes": "Landing page for eBay Italy Seller Hub (Console venditori)"
+  },
+  {
+    "canonical_name": "Consommation Raisonnée",
+    "node_id": "consommation-raisonnee",
+    "url": "https://pages.ebay.fr/consommation-raisonnee/",
+    "title": "Consommation raisonnée | eBay.fr",
+    "source_type": "pages",
+    "year": null,
+    "notes": "eBay France sustainable shopping initiative promoting second-hand, refurbishment, and responsible consumption"
+  },
+  {
+    "canonical_name": "Counter Offer",
+    "node_id": "counter-offer",
+    "url": "https://www.ebay.com/help/buying/buy-now/counteroffers?id=4020",
+    "title": "Counteroffers | eBay",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Official help page for buyers on receiving and making counteroffers within Best Offer"
+  },
+  {
+    "canonical_name": "Counter Offer",
+    "node_id": "counteroffer",
+    "url": "https://www.ebay.com/help/selling/listings/selling-buy-now/adding-best-offer-listing?id=4144",
+    "title": "Adding Best Offer to your listing and sending offers to buyers | eBay",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Official help page for sellers on adding Best Offer and making counteroffers to buyers"
+  },
+  {
+    "canonical_name": "Counterfeit Detection",
+    "node_id": "counterfeit-detection",
+    "url": "https://www.ebay.com/help/policies/prohibited-restricted-items/counterfeit-item-policy?id=4276",
+    "title": "Counterfeit policy | eBay",
+    "source_type": "policy",
+    "year": null,
+    "notes": "Official eBay policy prohibiting counterfeit items and outlining detection enforcement"
+  },
+  {
+    "canonical_name": "Counterfeit Detection",
+    "node_id": "counterfeit-detection",
+    "url": "https://pages.ebay.com/authenticity-guarantee-seller/",
+    "title": "eBay Authenticity Guarantee | eBay.com",
+    "source_type": "pages",
+    "year": null,
+    "notes": "eBay Authenticity Guarantee program using expert authentication to detect counterfeits"
+  },
+  {
+    "canonical_name": "Coupons",
+    "node_id": "coupons",
+    "url": "https://www.ebay.com/sellercenter/growth/seller-hub-discounts/coded-coupons",
+    "title": "Coded coupons | Seller Center",
+    "source_type": "seller_center",
+    "year": null,
+    "notes": "Seller Center page on creating and sharing coded coupons for buyers"
+  },
+  {
+    "canonical_name": "Coupons",
+    "node_id": "coupons",
+    "url": "https://pages.ebay.com/coupons/faq.html",
+    "title": "eBay Coupon FAQs",
+    "source_type": "pages",
+    "year": null,
+    "notes": "FAQ page for buyers and sellers on using eBay coupons and promotional codes"
+  },
+  {
+    "canonical_name": "Copyright",
+    "node_id": "copyright",
+    "url": "https://www.ebay.com/help/policies/listing-policies/selling-policies/intellectual-property-vero-program?id=4349",
+    "title": "Intellectual property policy | eBay",
+    "source_type": "policy",
+    "year": null,
+    "notes": "Official eBay intellectual property policy including copyright, trademark, and VeRO program"
+  },
+  {
+    "canonical_name": "Cost Per Click",
+    "node_id": "cost-per-click",
+    "url": "https://www.ebay.com/help/selling/ebay-advertising/promoted-listings/priority-campaign-strategy?id=5299",
+    "title": "Priority campaign strategy | eBay",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Official help page on Promoted Listings Priority using cost-per-click (CPC) model"
+  },
+  {
+    "canonical_name": "Cross-Border Trade",
+    "node_id": "cross-border-trade",
+    "url": "https://www.ebay.com/help/selling/shipping-items/setting-shipping-options/ebay-international-shipping-program?id=5348",
+    "title": "eBay International Shipping program",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Official help page on eBay International Shipping program for cross-border trade"
+  },
+  {
+    "canonical_name": "Cross-Border Trade",
+    "node_id": "cross-border-trade",
+    "url": "https://www.ebay.com/sellercenter/shipping/ebay-international-shipping",
+    "title": "eBay International Shipping | Seller Center",
+    "source_type": "seller_center",
+    "year": null,
+    "notes": "Seller Center page on international shipping and cross-border trade tools"
+  },
+  {
+    "canonical_name": "CSV Upload",
+    "node_id": "csv-upload",
+    "url": "https://www.ebay.com/help/selling/selling-tools/file-exchange?id=4096",
+    "title": "Seller Hub Reports | eBay",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Official help page on File Exchange (Seller Hub Reports) for CSV/XLS bulk uploads"
+  },
+  {
+    "canonical_name": "CSV Upload",
+    "node_id": "csv-upload",
+    "url": "https://www.ebay.com/sellercenter/listings/ebay-bulk-listing-tools",
+    "title": "eBay bulk listing tools | Seller Center",
+    "source_type": "seller_center",
+    "year": null,
+    "notes": "Seller Center page on bulk listing tools including CSV upload via File Exchange"
+  },
+  {
+    "canonical_name": "Currency Conversion",
+    "node_id": "currency-conversion",
+    "url": "https://www.ebay.com/help/selling/fees-credits-invoices/international-fees-ebay-global-sellers?id=5224",
+    "title": "International fees for eBay global sellers | eBay",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Official help page on international fees including currency conversion charges for sellers"
+  },
+  {
+    "canonical_name": "Cyber Monday",
+    "node_id": "cyber-monday",
+    "url": "https://export.ebay.com/en/resources/seasonal-guide-for-ebay-sellers/run-marketing-campaign/how-to-maximize-your-black-friday-and-cyber-monday-sales/",
+    "title": "How to maximize your Black Friday and Cyber Monday sales",
+    "source_type": "export_article",
+    "year": null,
+    "notes": "eBay export.ebay.com guide for sellers on maximizing Cyber Monday sales events"
+  },
+  {
+    "canonical_name": "Daily Deals",
+    "node_id": "daily-deals",
+    "url": "https://www.ebay.com/deals",
+    "title": "Daily Deals on eBay | Best deals and Free Shipping",
+    "source_type": "platform",
+    "year": null,
+    "notes": "eBay Daily Deals page featuring curated deals updated daily with free shipping"
+  },
+  {
+    "canonical_name": "Daily Payout",
+    "node_id": "daily-payout",
+    "url": "https://www.ebay.com/help/selling/getting-paid/payouts-work-managed-payments-sellers?id=4814",
+    "title": "Getting paid for items you've sold | eBay",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Official help page on managed payments payouts including daily payout schedule option"
+  },
+  {
+    "canonical_name": "Credit Card",
+    "node_id": "credit-card",
+    "url": "https://www.ebay.com/help/buying/paying-items/paying-items-credit-debit-card?id=4038",
+    "title": "Paying for items with a credit or debit card | eBay",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Official help page on paying with credit or debit cards as a buyer"
+  },
+  {
+    "canonical_name": "Debit Card",
+    "node_id": "debit-card",
+    "url": "https://www.ebay.com/help/selling/fees-credits-invoices/choosing-payment-method-selling-costs-managed-payments?id=5205",
+    "title": "Setting up and changing your payment method for fees and selling costs | eBay",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Official help page on setting up debit card as payment method for seller fees under managed payments"
+  },
+  {
+    "canonical_name": "Delivery Status",
+    "node_id": "delivery-status",
+    "url": "https://www.ebay.com/help/buying/shipping-delivery/tracking-item?id=4027",
+    "title": "Tracking your item | eBay",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Official help page for buyers on tracking items and viewing delivery status"
+  },
+  {
+    "canonical_name": "Delivery Status",
+    "node_id": "delivery-status",
+    "url": "https://www.ebay.com/help/selling/shipping-items/tracking-items-youve-sold?id=4088",
+    "title": "Tracking items you've sold | eBay",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Official help page for sellers on uploading tracking and monitoring delivery status"
+  },
+  {
+    "canonical_name": "Description Templates",
+    "node_id": "description-templates",
+    "url": "https://www.ebay.com/help/selling/selling-tools/selling-templates?id=4097",
+    "title": "Selling templates | eBay",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Official help page on creating reusable listing templates in Seller Hub"
+  },
+  {
+    "canonical_name": "Detailed Seller Ratings",
+    "node_id": "detailed-seller-ratings",
+    "url": "https://www.ebay.com/help/buying/resolving-issues-sellers/seller-ratings?id=4023",
+    "title": "Seller ratings | eBay",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Official help page on Detailed Seller Ratings (DSR) 1-5 star ratings on 4 criteria"
+  },
+  {
+    "canonical_name": "Conversion Rate",
+    "node_id": "conversion-rate",
+    "url": "https://www.ebay.com/help/selling/seller-levels-performance-standards/seller-levels-performance-standards?id=4080",
+    "title": "Seller performance overview | eBay",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Official help page on seller performance metrics including conversion rate in Traffic section"
+  },
+  {
+    "canonical_name": "Decline Offer",
+    "node_id": "decline-offer",
+    "url": "https://www.ebay.com/help/selling/listings/selling-buy-now/adding-best-offer-listing?id=4144",
+    "title": "Adding Best Offer to your listing and sending offers to buyers | eBay",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Official help page on Best Offer including automatic decline settings and manual decline options"
+  },
+  {
+    "canonical_name": "Copy to Inventory",
+    "node_id": "copy-to-inventory",
+    "url": "https://www.ebay.com/help/selling/listings/listing-tips/bulk-listings?id=4160",
+    "title": "Bulk listing tools | eBay",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Official help page on Bulk Listing Tool for copying listings to inventory and managing up to 2,000 listings"
+  },
+  {
+    "canonical_name": "Digest Notifications",
+    "node_id": "digest-notifications",
+    "url": "https://www.ebay.com/help/account/changing-account-settings/notifications?id=4203",
+    "title": "Push Notifications | eBay",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Official help page on notification preferences including digest frequency options for email summaries"
+  },
+  {
+    "canonical_name": "Developer Loyalty Program",
+    "node_id": "developer-loyalty-program",
+    "url": "https://developer.ebay.com/grow/loyalty-program",
+    "title": "Loyalty Program | eBay Developers Program",
+    "source_type": "developer",
+    "year": null,
+    "notes": "eBay Developers Program Loyalty Program with Gold, Silver, and Bronze tiers for API partners"
+  },
+  {
+    "canonical_name": "Delivery Exception",
+    "node_id": "delivery-exception",
+    "url": "https://www.ebay.com/help/buying/returns-refunds/get-help-item-hasnt-arrived?id=4042",
+    "title": "Get help with an item that hasn't arrived | eBay",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Official help page for buyers on delivery exceptions and item not received issues"
+  },
+  {
+    "canonical_name": "Deals Seller Portal",
+    "node_id": "deals-seller-portal",
+    "url": "https://www.ebay.com.au/help/selling/selling-tools/Creating-Deals-using-the-Seller-Portal?id=5329",
+    "title": "Creating Deals using the Seller Portal | eBay",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Official help page for invited sellers on using Seller Portal to upload and schedule deals"
+  },
+  {
+    "canonical_name": "Deals Seller Portal",
+    "node_id": "deals-seller-portal",
+    "url": "https://www.ebay.com/sellercenter/growth/seller-hub-discounts",
+    "title": "Seller Hub Discounts | Seller Center",
+    "source_type": "seller_center",
+    "year": null,
+    "notes": "Seller Center page on discounts and promotions including Deals and Discounts Manager"
+  },
+  {
+    "canonical_name": "Cost Per Sale",
+    "node_id": "cost-per-sale",
+    "url": "https://www.ebay.com/help/selling/ebay-advertising/promoted-listings/general-campaign-strategy?id=4164",
+    "title": "General campaign strategy | eBay",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Official help page on Promoted Listings General strategy using cost-per-sale model where sellers only pay when items sell"
+  },
+  {
+    "canonical_name": "Current Bid",
+    "node_id": "current-bid",
+    "url": "https://www.ebay.com/help/buying/bidding/bidding?id=4003",
+    "title": "All about bidding | eBay",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Official help page on auction bidding including current bid, automatic bidding, and how the bidding system works"
+  },
+  {
+    "canonical_name": "Description Builder",
+    "node_id": "description-builder",
+    "url": "https://pages.ebay.com/sellingwithAI/",
+    "title": "Selling is now even easier with AI | eBay.com",
+    "source_type": "pages",
+    "year": null,
+    "notes": "eBay's AI-powered description builder tool that automatically generates item descriptions from photos"
+  },
+  {
+    "canonical_name": "Custom Label",
+    "node_id": "custom-label",
+    "url": "https://www.ebay.com/help/selling/selling-tools/seller-hub?id=4095",
+    "title": "Seller Hub | eBay",
+    "source_type": "help_article",
+    "year": null,
+    "notes": "Seller Hub documentation includes Custom Label (SKU) functionality for inventory management accessed via Selling Manager"
+  }
+]

@@ -1,0 +1,362 @@
+[
+  {
+    "canonical_name": "About Me",
+    "evidence_url": "https://www.liveabout.com/create-your-about-me-page-1140000",
+    "first_seen": "1998",
+    "notes": "Free HTML-based seller profile page. Operational by 1998. Allowed sellers to personalize presence and build trust.",
+    "market": "Global",
+    "status": "active"
+  },
+  {
+    "canonical_name": "Automated Promoted Listings Campaigns",
+    "evidence_url": "https://innovation.ebayinc.com/stories/introducing-ebays-automated-promoted-listings-campaigns/",
+    "first_seen": "2025-03",
+    "notes": "Launched March 2025. Rule-based automation for Promoted Listings with auto ad rate adjustment.",
+    "market": "US",
+    "status": "active"
+  },
+  {
+    "canonical_name": "Billpoint",
+    "evidence_url": "https://investors.ebayinc.com/investor-news/press-release-details/2000/EBay-Inc-Announces-Fourth-Quarter-and-Year-End-1999-Financial-Results/default.aspx",
+    "first_seen": "1999",
+    "notes": "Payment solution launched as beta Q4 1999. Phased out January 2003 after PayPal acquisition.",
+    "market": "US",
+    "status": "retired"
+  },
+  {
+    "canonical_name": "Butterfield & Butterfield",
+    "evidence_url": "https://www.encyclopedia.com/economics/encyclopedias-almanacs-transcripts-and-maps/ebay",
+    "first_seen": "1999",
+    "notes": "135-year-old San Francisco art/antiques auction house acquired May 1999 for ~$260M. Sold to Bonhams 2002.",
+    "market": "US",
+    "status": "retired"
+  },
+  {
+    "canonical_name": "COMC",
+    "evidence_url": "https://www.ebayinc.com/stories/news/ebay-announces-commercial-agreement-and-investment-in-sports-trading-card-company-comc-strengthening-commitment-to-collectible-enthusiasts/",
+    "first_seen": "2023-11",
+    "notes": "Commercial agreement + investment announced Nov 2023. 100M+ cards under management. Not acquisition, but partnership.",
+    "market": "US",
+    "status": "active"
+  },
+  {
+    "canonical_name": "Circular Fashion Innovator of the Year",
+    "evidence_url": "https://www.ebayinc.com/stories/news/ebay-expands-circular-fashion-fund-to-start-ups-delivering-1.2-million-investment-by-the-end-of-2025/",
+    "first_seen": "2025",
+    "notes": "Special $300K prize within Circular Fashion Fund. New for 2025 cohort.",
+    "market": "Global",
+    "status": "active"
+  },
+  {
+    "canonical_name": "Critical Path Software (acquisition)",
+    "evidence_url": "https://innovation.ebayinc.com/stories/celebrating-the-15th-anniversary-of-ebays-mobile-app/",
+    "first_seen": null,
+    "notes": "Acquired December 2010. Talent acquisition for mobile strategy. Not in baseline.",
+    "market": null,
+    "status": null
+  },
+  {
+    "canonical_name": "Electronic Travel Auction",
+    "evidence_url": "https://businessabc.net/wiki/ebay",
+    "first_seen": "1996",
+    "notes": "First third-party licensing partner, November 1996. Used SmartMarket Technology for travel auctions.",
+    "market": "US",
+    "status": "retired"
+  },
+  {
+    "canonical_name": "Feedback Forum",
+    "evidence_url": "https://pages.ebay.com/services/forum/feedback-foundersnote.html",
+    "first_seen": "1996",
+    "notes": "Launched February 26, 1996 by Pierre Omidyar. Original feedback/rating system. Foundation of eBay's trust infrastructure.",
+    "market": "US",
+    "status": "active"
+  },
+  {
+    "canonical_name": "Find It On eBay",
+    "evidence_url": "https://www.ebayinc.com/stories/news/an-easier-way-to-search-ebay-computer-vision-with-find-it-on-ebay-and-image-search-is-now-live/",
+    "first_seen": "2017",
+    "notes": "Android-specific variant of Image Search launched Fall 2017. Campaign name also appears in 2024 Goldin integration. May be umbrella campaign vs product feature.",
+    "market": "US",
+    "status": "uncertain"
+  },
+  {
+    "canonical_name": "GSI Commerce / eBay Enterprise",
+    "evidence_url": "https://investors.ebayinc.com/investor-news/press-release-details/2011/EBay-Inc-to-Acquire-GSI-Commerce/default.aspx",
+    "first_seen": null,
+    "notes": "Announced March 28, 2011. Closed June 20, 2011. Rebranded to eBay Enterprise June 20, 2013. Listed in baseline as [Legacy].",
+    "market": null,
+    "status": null
+  },
+  {
+    "canonical_name": "Global Shipping Program",
+    "evidence_url": "https://www.ebayinc.com/stories/news/cross-border-trade-a-key-strength-of-ebay/",
+    "first_seen": null,
+    "notes": "Active by 2013-2014 based on sources. Baseline lists as [Legacy] coexisting with eBay International Shipping. Major driver of eBay's export business.",
+    "market": null,
+    "status": null
+  },
+  {
+    "canonical_name": "KnownOrigin",
+    "evidence_url": "https://www.ebayinc.com/stories/news/ebay-acquires-leading-nft-marketplace-knownorigin/",
+    "first_seen": "2022-06",
+    "notes": "NFT marketplace acquired June 2022. Baseline mentions 'NFT Sales' but not KnownOrigin as a product name. Founded 2018 in Manchester, UK.",
+    "market": "Global",
+    "status": "active"
+  },
+  {
+    "canonical_name": "Kruse International",
+    "evidence_url": "https://www.encyclopedia.com/economics/encyclopedias-almanacs-transcripts-and-maps/ebay",
+    "first_seen": "1999",
+    "notes": "Automobile auctioneer acquired 1999 for $165M stock. Launched automotive category, precursor to eBay Motors. Repurchased by Dean Kruse 2002.",
+    "market": "US",
+    "status": "retired"
+  },
+  {
+    "canonical_name": "MYMIX Fashion Campaign",
+    "evidence_url": "https://www.ebayinc.com/stories/press-room/uk/ebay-presents-mymix-spring-summer-2012-fashion-campaign/",
+    "first_seen": null,
+    "notes": "UK-specific fashion campaign from 2012. Part of eBay's fashion vertical initiatives. Not found in baseline campaigns section.",
+    "market": null,
+    "status": null
+  },
+  {
+    "canonical_name": "Magento",
+    "evidence_url": "https://investors.ebayinc.com/investor-news/press-release-details/2011/EBay-Inc-Agrees-to-Acquire-Magento/default.aspx",
+    "first_seen": null,
+    "notes": "Initial investment March 2010, full acquisition announced June 6, 2011, completed August 2011. Core component of X.commerce platform. Not in baseline.",
+    "market": null,
+    "status": null
+  },
+  {
+    "canonical_name": "Magical Bulk Listing Tool",
+    "evidence_url": "https://innovation.ebayinc.com/stories/magical-bulk-listing-tool-is-ebays-latest-ai-powered-time-saver-for-sellers/",
+    "first_seen": "2024",
+    "notes": "Extension of Magical Listing Tool for batch processing. Baseline only mentions 'Magical Listing' singular.",
+    "market": "US",
+    "status": "active"
+  },
+  {
+    "canonical_name": "Mission Fish Seller Account",
+    "evidence_url": "https://www.ebayinc.com/stories/news/good-stuff/",
+    "first_seen": "2015",
+    "notes": "Retired 2015, replaced by Donation Account within eBay Giving Works/eBay for Charity.",
+    "market": "US",
+    "status": "retired"
+  },
+  {
+    "canonical_name": "PayPal Spinoff/Separation",
+    "evidence_url": "https://www.ebayinc.com/stories/news/ebay-inc-announces-leadership-transition/",
+    "first_seen": null,
+    "notes": "Completed 2015. Major corporate event. Not listed in baseline as it's corporate structure rather than product/program naming.",
+    "market": null,
+    "status": null
+  },
+  {
+    "canonical_name": "SafeHarbor",
+    "evidence_url": "https://community.ebay.com/t5/Archive-Trust-Safety-SafeHarbor/I-think-my-buyer-is-attempting-insurance-fraud/qaq-p/9270567",
+    "first_seen": "1999",
+    "notes": "Early fraud and dispute reporting system, contactable via SafeHarbor@eBay.com. Precursor to modern Trust & Safety programs.",
+    "market": "US",
+    "status": "retired"
+  },
+  {
+    "canonical_name": "Seller Hub",
+    "evidence_url": "https://www.ebayinc.com/stories/news/ebays-seller-hub-now-live-for-all-u-s-sellers/",
+    "first_seen": null,
+    "notes": "Debuted September 2015, full US rollout August 2016. Listed in baseline as [Product] under Seller Tools & Hub umbrella.",
+    "market": null,
+    "status": null
+  },
+  {
+    "canonical_name": "ShopRunner",
+    "evidence_url": "https://en.wikipedia.org/wiki/EBay_Enterprise",
+    "first_seen": null,
+    "notes": "Part of GSI Commerce acquisition but mostly divested. eBay had minority ownership 2011-2013. Not a core eBay product but associated during this period.",
+    "market": null,
+    "status": null
+  },
+  {
+    "canonical_name": "SmartMarket Technology",
+    "evidence_url": "https://en.wikipedia.org/wiki/EBay",
+    "first_seen": "1996",
+    "notes": "eBay's auction platform technology licensed to Electronic Travel Auction (November 1996). First third-party licensing deal. May be internal tech name.",
+    "market": "US",
+    "status": "retired"
+  },
+  {
+    "canonical_name": "TCGplayer",
+    "evidence_url": "https://investors.ebayinc.com/investor-news/press-release-details/2022/eBay-Acquires-TCGplayer/default.aspx",
+    "first_seen": "2022-10",
+    "notes": "Acquired Oct 2022 for ~$295M. Marketplace for collectible card games, operates autonomously.",
+    "market": "US",
+    "status": "active"
+  },
+  {
+    "canonical_name": "TCGplayer Authentication Center",
+    "evidence_url": "https://investors.ebayinc.com/investor-news/press-release-details/2022/eBay-Acquires-TCGplayer/default.aspx",
+    "first_seen": "2022",
+    "notes": "Authentication service operated by TCGplayer.",
+    "market": "US",
+    "status": "active"
+  },
+  {
+    "canonical_name": "TCGplayer Marketplace",
+    "evidence_url": "https://investors.ebayinc.com/investor-news/press-release-details/2022/eBay-Acquires-TCGplayer/default.aspx",
+    "first_seen": "2022",
+    "notes": "The marketplace platform within TCGplayer. May be considered same as parent TCGplayer entry.",
+    "market": "US",
+    "status": "active"
+  },
+  {
+    "canonical_name": "Techstars Future of Ecommerce powered by eBay",
+    "evidence_url": "https://www.ebayinc.com/stories/news/techstars-and-ebay-announce-partnership-to-launch-techstars-future-of-ecommerce-powered-by-ebay/",
+    "first_seen": "2023-09",
+    "notes": "Accelerator program launched Sept 2023 with Techstars.",
+    "market": "US",
+    "status": "active"
+  },
+  {
+    "canonical_name": "Things.People.Love",
+    "evidence_url": "https://innovation.ebayinc.com/stories/ebay-evo-the-evolution-of-ebays-brand-and-design-system/",
+    "first_seen": "2024",
+    "notes": "New creative platform/brand strategy launched with eBay Evo.",
+    "market": "Global",
+    "status": "active"
+  },
+  {
+    "canonical_name": "Tise",
+    "evidence_url": "https://www.ebayinc.com/stories/news/ebay-to-acquire-tise/",
+    "first_seen": "2025-10",
+    "notes": "Acquired Oct 2025. Norway-based C2C social marketplace for Gen Z/Millennial secondhand. eBay Ventures invested 2022.",
+    "market": "Norway/EU",
+    "status": "active"
+  },
+  {
+    "canonical_name": "Twice (acquisition)",
+    "evidence_url": "https://techcrunch.com/2015/07/20/ebay-doubles-down-on-its-valet-service-with-acquisition-of-clothing-resale-startup-twice/",
+    "first_seen": null,
+    "notes": "Acquired July 2015. Bolt-on acquisition for eBay Valet fashion expansion. Not mentioned in baseline.",
+    "market": null,
+    "status": null
+  },
+  {
+    "canonical_name": "Up4Sale",
+    "evidence_url": "https://www.ebayinc.com/company/our-history",
+    "first_seen": "1998",
+    "notes": "Trading site acquired in 1998.",
+    "market": "US",
+    "status": "retired"
+  },
+  {
+    "canonical_name": "X.commerce",
+    "evidence_url": "https://www.ebayinc.com/stories/news/ebay-incs-new-xcommerce-open-commerce-ecosystem-now-includes-technologies-magento/",
+    "first_seen": null,
+    "notes": "Announced October 2011 at Innovate conference. Unified eBay/PayPal/Magento developer ecosystem. Platform active 2011-2013 era. Not in baseline.",
+    "market": null,
+    "status": null
+  },
+  {
+    "canonical_name": "YOU CAN'T FAKE FASHION Campaign",
+    "evidence_url": "https://www.ebayinc.com/stories/news/more-75-leading-american-designers-join-ebay-and-council-fashion-designers-america/",
+    "first_seen": null,
+    "notes": "Launched 2011 with CFDA partnership. Major fashion authenticity initiative during fashion vertical push. Not in baseline campaigns.",
+    "market": null,
+    "status": null
+  },
+  {
+    "canonical_name": "Zong (mobile payments)",
+    "evidence_url": "https://www.ebayinc.com/stories/news/ebay-incs-new-xcommerce-open-commerce-ecosystem-now-includes-technologies-magento/",
+    "first_seen": null,
+    "notes": "Part of X.commerce 2011. Mobile payments via carrier billing. Unclear if acquisition or partnership. Not in baseline.",
+    "market": null,
+    "status": null
+  },
+  {
+    "canonical_name": "eBay 4.0 (mobile app version)",
+    "evidence_url": "https://www.ebayinc.com/stories/news/introducing-ebay-4-0/",
+    "first_seen": null,
+    "notes": "Referenced in eBay Inc. stories. Major app version from mobile-first era. Not explicitly in baseline.",
+    "market": null,
+    "status": null
+  },
+  {
+    "canonical_name": "eBay Bucks",
+    "evidence_url": "https://techcrunch.com/2010/08/13/ebay-launches-cashback-program-with-paypal/",
+    "first_seen": null,
+    "notes": "Public launch August 2010 after year-long pilot. Described as 'first-ever free rewards program'. Listed in baseline as [Legacy] under Loyalty & Membership umbrella.",
+    "market": null,
+    "status": null
+  },
+  {
+    "canonical_name": "eBay Fashion App",
+    "evidence_url": "https://www.ebayinc.com/stories/news/simplifying-the-ebay-commerce-experience/",
+    "first_seen": "2015",
+    "notes": "Vertical mobile app retired 2015. Migrated to flagship app.",
+    "market": "US",
+    "status": "retired"
+  },
+  {
+    "canonical_name": "eBay Innovate Developer Conference",
+    "evidence_url": "https://www.ebayinc.com/stories/news/xcommerce-updates-bring-open-commerce-ecosystem-life-merchants-developers/",
+    "first_seen": null,
+    "notes": "Held 2011 (at minimum). Announced X.commerce. Not listed in baseline Events section (which lists eBay Open but not Innovate).",
+    "market": null,
+    "status": null
+  },
+  {
+    "canonical_name": "eBay Milo",
+    "evidence_url": "https://investors.ebayinc.com/investor-news/press-release-details/2010/EBay-Acquires-Milo-a-Leading-Local-Shopping-Engine/default.aspx",
+    "first_seen": null,
+    "notes": "Acquisition announced December 2, 2010. Founded 2007, raised only $5M in VC. Strategic play for $917B online-to-offline market. Integrated into RedLaser by December 2010.",
+    "market": null,
+    "status": null
+  },
+  {
+    "canonical_name": "eBay Mobile App (Android)",
+    "evidence_url": "https://innovation.ebayinc.com/stories/celebrating-the-15th-anniversary-of-ebays-mobile-app/",
+    "first_seen": null,
+    "notes": "Launched February 16, 2010. Early mover in mobile commerce alongside iOS app. Baseline lists 'eBay Motors App' but not general Android/iOS apps from this era.",
+    "market": null,
+    "status": null
+  },
+  {
+    "canonical_name": "eBay Moda (Latin America)",
+    "evidence_url": "https://www.ebayinc.com/stories/news/ebay-delivers-localized-shopping-experiences-latin-america/",
+    "first_seen": null,
+    "notes": "Launched September 2013. Regional fashion app for Latin America. Not found in baseline regional products.",
+    "market": null,
+    "status": null
+  },
+  {
+    "canonical_name": "eBay Now",
+    "evidence_url": "https://innovation.ebayinc.com/stories/faster-and-local-shopping-on-ebay-just-got-simpler/",
+    "first_seen": null,
+    "notes": "Launched 2012, retired 2015. Pilots in SF, NYC, San Jose. Listed in baseline as [Legacy] under Marketplace Variants.",
+    "market": null,
+    "status": null
+  },
+  {
+    "canonical_name": "eBay Playbook",
+    "evidence_url": "https://innovation.ebayinc.com/stories/ebay-evo-the-evolution-of-ebays-brand-and-design-system/",
+    "first_seen": "2024",
+    "notes": "Comprehensive brand guide with 280+ pages, 2700+ images/videos. Part of eBay Evo initiative.",
+    "market": "Global",
+    "status": "active"
+  },
+  {
+    "canonical_name": "eBay RedLaser",
+    "evidence_url": "https://techcrunch.com/2010/06/23/ebay-acquires-barcode-scanning-iphone-app-redlaser/",
+    "first_seen": null,
+    "notes": "Acquisition announced June 23, 2010. App had 2M+ downloads pre-acquisition. Reached 9M downloads by March 2011. Part of eBay's mobile commerce strategy 2010-2015.",
+    "market": null,
+    "status": null
+  },
+  {
+    "canonical_name": "eBay Valet",
+    "evidence_url": "https://techcrunch.com/2014/06/17/ebay-launches-ebay-valet-an-iphone-app-that-does-the-selling-for-you/",
+    "first_seen": null,
+    "notes": "Launched June 17, 2014. Closed 2018. Listed in baseline as [Legacy] under Premium Services.",
+    "market": null,
+    "status": null
+  }
+]

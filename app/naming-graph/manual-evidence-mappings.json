@@ -1,0 +1,40 @@
+{
+  "manual_mappings": [
+    {
+      "canonical_name": "PayPal Spinoff/Separation",
+      "node_id": "paypal-spinoff"
+    },
+    {
+      "canonical_name": "Seller Hub",
+      "node_id": "seller-hub"
+    },
+    {
+      "canonical_name": "Techstars Future of Ecommerce powered by eBay",
+      "node_id": "techstars-future-of-ecommerce"
+    },
+    {
+      "canonical_name": "Things.People.Love",
+      "node_id": "things-people-love"
+    },
+    {
+      "canonical_name": "Twice (acquisition)",
+      "node_id": "twice-acquisition"
+    },
+    {
+      "canonical_name": "Zong (mobile payments)",
+      "node_id": "zong-mobile-payments"
+    },
+    {
+      "canonical_name": "eBay 4.0 (mobile app version)",
+      "node_id": "ebay-4-0-mobile-app"
+    },
+    {
+      "canonical_name": "eBay Mobile App (Android)",
+      "node_id": "ebay-mobile-app-android"
+    },
+    {
+      "canonical_name": "eBay Moda (Latin America)",
+      "node_id": "ebay-moda-latin-america"
+    }
+  ]
+}

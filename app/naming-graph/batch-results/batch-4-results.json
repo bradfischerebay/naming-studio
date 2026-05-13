@@ -1,0 +1,362 @@
+[
+  {
+    "canonical_name": "Buy It Now",
+    "node_id": "buy-it-now-multi-market",
+    "url": "https://www.ebay.com/help/selling/listings/selling-buy-now?id=4109",
+    "title": "Selling with Buy It Now | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Fixed-price listing format allowing buyers to purchase immediately without bidding"
+  },
+  {
+    "canonical_name": "Buy It Now in Auctions",
+    "node_id": "buy-it-now-in-auctions",
+    "url": "https://pages.ebay.com/services/buyandsell/buyitnow-seller.html",
+    "title": "eBay: Fixed Price Help",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Option to add Buy It Now price to auction-style listings"
+  },
+  {
+    "canonical_name": "Business Policies",
+    "node_id": "business-policies",
+    "url": "https://www.ebay.com/help/selling/business-policies/business-policies?id=4212",
+    "title": "Business policies | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Payment, shipping, and return policy templates for sellers to streamline listing creation"
+  },
+  {
+    "canonical_name": "Buyer Protection",
+    "node_id": "buyer-protection",
+    "url": "https://pages.ebay.com/ebay-money-back-guarantee/",
+    "title": "eBay Money Back Guarantee | eBay.com",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "eBay Money Back Guarantee protecting buyers for items not received or not as described"
+  },
+  {
+    "canonical_name": "Promoted Listings",
+    "node_id": "brand-funded-promoted-listings-priority",
+    "url": "https://www.ebay.com/sellercenter/growth/ebay-advertising/promoted-listings",
+    "title": "Promoted Listings | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "eBay advertising service allowing sellers to promote listings with priority ad placements"
+  },
+  {
+    "canonical_name": "Certified Refurbished",
+    "node_id": "certified-refurbished",
+    "url": "https://www.ebay.com/sellercenter/ebay-for-business/ebay-refurbished-program",
+    "title": "eBay Refurbished Program | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Program for selling certified refurbished items with warranties and quality guarantees"
+  },
+  {
+    "canonical_name": "Brand Outlet",
+    "node_id": "brand-outlet",
+    "url": "https://www.ebayinc.com/stories/press-room/uk/ebay-launches-designer-brand-outlet-fashion-hub-up-to-70-off/",
+    "title": "eBay launches designer Brand Outlet fashion hub up to 70% off - eBay Inc.",
+    "source_type": "press_release",
+    "year": 2022,
+    "notes": "Fashion hub featuring designer brands at outlet prices up to 70% off"
+  },
+  {
+    "canonical_name": "Bulk Listing Tool",
+    "node_id": "bulk-listing-tool",
+    "url": "https://www.ebay.com/sellercenter/listings/ebay-bulk-listing-tools",
+    "title": "eBay bulk listing tools | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Tools for managing up to 2,000 listings efficiently with bulk operations"
+  },
+  {
+    "canonical_name": "Checkout",
+    "node_id": "checkout",
+    "url": "https://www.ebay.com/help/buying/paying-items/checkout?id=4036",
+    "title": "Checkout | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Payment and order completion process for buyers"
+  },
+  {
+    "canonical_name": "Cassini",
+    "node_id": "cassini",
+    "url": "https://webinterpret.com/en/blog/understanding-ebay-cassini-algorithm",
+    "title": "Securing the top spot in search rankings: Understanding eBay's Cassini algorithm",
+    "source_type": "secondary_source",
+    "year": 2013,
+    "notes": "eBay's search algorithm replacing Voyager, using Best Match to rank listings"
+  },
+  {
+    "canonical_name": "Buyer Requirements",
+    "node_id": "buyer-requirements",
+    "url": "https://www.ebay.com/help/selling/listings/creating-managing-listings/setting-buyer-requirements?id=4152",
+    "title": "Setting buyer requirements | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Settings allowing sellers to block buyers based on specific criteria"
+  },
+  {
+    "canonical_name": "Calculated Shipping",
+    "node_id": "calculated-shipping",
+    "url": "https://www.ebay.com/sellercenter/shipping/calculated-shipping-rates",
+    "title": "Calculated shipping rates | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Automatic shipping cost calculation based on buyer location and package details"
+  },
+  {
+    "canonical_name": "Certificate of Authenticity",
+    "node_id": "certificate-of-authenticity",
+    "url": "https://pages.ebay.com/authenticity-guarantee-seller/",
+    "title": "eBay Authenticity Guarantee | eBay.com",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Authentication program providing verification cards for luxury items including sneakers, handbags, watches, and jewelry"
+  },
+  {
+    "canonical_name": "Certified by Brand",
+    "node_id": "certified-by-brand",
+    "url": "https://pages.ebay.com/certified-by-brand/",
+    "title": "Certified by Brand",
+    "source_type": "ebay_official",
+    "year": 2023,
+    "notes": "Program partnering with brands to sell authenticated luxury watches, handbags, and jewelry"
+  },
+  {
+    "canonical_name": "Certified Recycled Program",
+    "node_id": "certified-recycled-program",
+    "url": "https://www.ebayinc.com/stories/press-room/uk/ebay-launches-certified-recycled-portal/",
+    "title": "eBay launches 'Certified Recycled Portal' - eBay Inc.",
+    "source_type": "press_release",
+    "year": 2023,
+    "notes": "UK program for certified recycled automotive parts from VRA-certified sellers"
+  },
+  {
+    "canonical_name": "Cancel Order",
+    "node_id": "cancel-order",
+    "url": "https://www.ebay.com/help/selling/getting-paid/sellers-can-cancel-order?id=4136",
+    "title": "How sellers can cancel an order | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Process for sellers to cancel orders up to 30 days after sale"
+  },
+  {
+    "canonical_name": "CCPA Compliance",
+    "node_id": "ccpa-compliance",
+    "url": "https://www.ebay.com/adchoice/ccpa",
+    "title": "Your Privacy Choices",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "California Consumer Privacy Act compliance with opt-out mechanisms and data rights"
+  },
+  {
+    "canonical_name": "Checkout as Guest",
+    "node_id": "checkout-as-guest",
+    "url": "https://www.ebay.com/help/buying/paying-items/buying-guest?id=4035",
+    "title": "Buying as a guest | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Option for buyers to purchase items without creating a full eBay account"
+  },
+  {
+    "canonical_name": "Business Equipment Purchase Protection",
+    "node_id": "business-equipment-purchase-protection",
+    "url": "https://www.ebay.com/help/buying/paying-items/ebay-business-equipment-purchase-protection?id=4637",
+    "title": "eBay Business Equipment Purchase Protection | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Protection program covering capital equipment purchases up to $100,000 for fraud and misrepresentation"
+  },
+  {
+    "canonical_name": "Buyer Pays Return Shipping",
+    "node_id": "buyer-pays-return-shipping",
+    "url": "https://www.oreateai.com/blog/ebay-return-policy-buyer-pays-shipping/1c35882ba4b8892d734798d9edf949c3",
+    "title": "eBay Return Policy Buyer Pays Shipping",
+    "source_type": "secondary_source",
+    "year": 2026,
+    "notes": "Return policy option where buyers pay return shipping for buyer's remorse returns"
+  },
+  {
+    "canonical_name": "Buyer Messages",
+    "node_id": "buyer-messages",
+    "url": "https://www.ebay.com/help/account/messages/messages?id=4194",
+    "title": "Messages | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Threaded messaging system for buyer-seller communication with AI-powered response assistance"
+  },
+  {
+    "canonical_name": "Buying Format",
+    "node_id": "buying-format",
+    "url": "https://www.zikanalytics.com/blog/ebay-buy-it-now-vs-auction/",
+    "title": "eBay Buy It Now vs Auction: Which Listing Format Wins?",
+    "source_type": "secondary_source",
+    "year": 2026,
+    "notes": "Filter allowing buyers to choose between auction and fixed-price listings"
+  },
+  {
+    "canonical_name": "Buying Restrictions",
+    "node_id": "buying-restrictions",
+    "url": "https://www.ebay.com/help/buying/buying-limits-restrictions/buying-limits-restrictions?id=4012",
+    "title": "Buying limits and restrictions | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Account restrictions preventing purchases due to policy violations or payment issues"
+  },
+  {
+    "canonical_name": "Cart Total",
+    "node_id": "cart-total",
+    "url": "https://www.ebay.com/help/buying/paying-items/shopping-cart?id=4360",
+    "title": "Your shopping cart | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Shopping cart feature showing combined total cost before checkout including shipping"
+  },
+  {
+    "canonical_name": "Seller Hub",
+    "node_id": "cbt-seller-dashboard",
+    "url": "https://www.ebay.com/help/selling/selling-tools/seller-hub?id=4095",
+    "title": "Seller Hub | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Central dashboard for managing eBay business with listings, orders, and performance tracking"
+  },
+  {
+    "canonical_name": "Category Browse",
+    "node_id": "category-browse",
+    "url": "https://www.dummies.com/article/technology/notable-websites/ebay/how-to-navigate-ebays-categories-204254/",
+    "title": "How to Navigate eBay's Categories | dummies",
+    "source_type": "secondary_source",
+    "year": 2026,
+    "notes": "Navigation system organizing millions of items into categories and subcategories"
+  },
+  {
+    "canonical_name": "Buy Again",
+    "node_id": "buy-again",
+    "url": "https://innovation.ebayinc.com/stories/buy-the-items-you-love-again-and-again-on-ebay/",
+    "title": "Buy the Items You Love Again and Again on eBay",
+    "source_type": "ebay_official",
+    "year": 2019,
+    "notes": "Feature allowing buyers to repurchase items from previous purchases with one click"
+  },
+  {
+    "canonical_name": "Buyer Groups",
+    "node_id": "buyer-groups",
+    "url": "https://www.ebay.com/sellercenter/growth/seller-hub-discounts/buyer-groups",
+    "title": "Buyer groups | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Marketing tool for sellers to segment buyers and send targeted coded coupons"
+  },
+  {
+    "canonical_name": "Bulk Upload",
+    "node_id": "bulk-upload",
+    "url": "https://www.autods.com/blog/dropshipping-tips-strategies/ebay-file-exchange/",
+    "title": "eBay File Exchange: Everything You Need To Know In 2026",
+    "source_type": "secondary_source",
+    "year": 2026,
+    "notes": "CSV-based File Exchange tool for bulk uploading and managing multiple listings"
+  },
+  {
+    "canonical_name": "Business & Industrial",
+    "node_id": "business-industrial",
+    "url": "https://pages.ebay.com/sellerinformation/growing/categorychanges/Business.html",
+    "title": "eBay Category Changes: Business & Industrial",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Major category (12576) including business equipment, supplies, and industrial products"
+  },
+  {
+    "canonical_name": "Campaign Bidding",
+    "node_id": "campaign-bidding",
+    "url": "https://www.ebay.com/help/selling/ebay-advertising/promoted-listings/priority-campaign-strategy?id=5299",
+    "title": "Priority campaign strategy | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Cost-per-click bidding system for Promoted Listings with smart and manual targeting options"
+  },
+  {
+    "canonical_name": "Cancellation Request",
+    "node_id": "cancellation-request",
+    "url": "https://www.ebay.com/help/buying/buyers-can-cancel-order/buyers-can-cancel-order?id=4004",
+    "title": "How buyers can cancel an order | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Process for buyers to request order cancellation before shipment with 3-day seller response window"
+  },
+  {
+    "canonical_name": "Cases Closed Without Seller Resolution",
+    "node_id": "cases-closed-without-seller-resolution",
+    "url": "https://www.ebay.com/help/policies/selling-policies/seller-standards-policy?id=4347",
+    "title": "Seller standards policy | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Seller performance metric tracking unresolved buyer cases where eBay stepped in"
+  },
+  {
+    "canonical_name": "Buy It Now Price",
+    "node_id": "buy-it-now-price",
+    "url": "https://www.ebay.com/help/selling/listings/selling-buy-now?id=4109",
+    "title": "Selling with Buy It Now | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Fixed price option for auctions, must be 30-40% higher than starting bid"
+  },
+  {
+    "canonical_name": "Bulk Edit",
+    "node_id": "bulk-edit",
+    "url": "https://www.ebay.com/sellercenter/listings/ebay-bulk-listing-tools",
+    "title": "eBay bulk listing tools | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Tool for editing hundreds of live listings at once with bulk operations"
+  },
+  {
+    "canonical_name": "Canada Post Expedited",
+    "node_id": "canada-post-expedited",
+    "url": "https://www.ebay.ca/sellercentre/shipping/ebay-labels/canada-post-expedited-lite",
+    "title": "Canada Post Expedited Lite | Seller Centre",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Domestic tracked shipping service exclusive to eBay Canada for packages under 250g"
+  },
+  {
+    "canonical_name": "Buyer Review",
+    "node_id": "buyer-review",
+    "url": "https://www.ebay.com/help/buying/leaving-feedback-sellers/leaving-feedback-sellers?id=4007",
+    "title": "Leaving feedback for sellers | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Feedback system allowing buyers to rate sellers and leave detailed seller ratings"
+  },
+  {
+    "canonical_name": "Promoted Stores",
+    "node_id": "brand-funded-promoted-stores",
+    "url": "https://www.ebay.com/sellercenter/growth/ebay-advertising/promoted-stores",
+    "title": "Promoted Stores | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Advertising solution to promote eBay stores with high visibility placements featuring coupons or categories"
+  },
+  {
+    "canonical_name": "Browse Categories",
+    "node_id": "browse-categories",
+    "url": "https://www.ebay.com/help/selling/listings/creating-managing-listings/adding-category-listing?id=4149",
+    "title": "Add categories | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Category navigation tool for sellers to find appropriate listing categories"
+  },
+  {
+    "canonical_name": "Boost Buyer Engagement",
+    "node_id": "boost-buyer-engagement",
+    "url": "https://www.ebay.com/help/selling/selling-tools/discounts-manager?id=4094",
+    "title": "Discounts Manager | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Feature in eBay mobile app for sending coupons and creating special offers to engage buyers"
+  }
+]

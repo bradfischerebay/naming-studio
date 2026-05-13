@@ -1,0 +1,1016 @@
+"use client";
+
+import { useEffect, useRef, useState, useMemo, useCallback } from 'react';
+import dynamic from 'next/dynamic';
+import Link from 'next/link';
+import { ChevronLeft, Moon, Sun, Box, Globe, Settings, Tag, ChevronDown } from 'lucide-react';
+import { forceCollide } from 'd3-force';
+import {
+  ENRICHED_PROGRAMS,
+  NODE_COLORS,
+  getNodeColor,
+  getNodeSize,
+  generateLinks,
+  getGraphStats,
+  filterByMarket,
+  getTranslatedName,
+  LINK_STYLES,
+  getMostConnected,
+  findShortestPath,
+  findClusters,
+  type GraphNode,
+  type RelationshipType,
+} from '@/lib/enriched-naming-data';
+
+// react-force-graph-3d requires SSR disabled — it uses Three.js/WebGL
+// Install: npm install react-force-graph-3d three
+const ForceGraph3D = dynamic(() => import('react-force-graph-3d'), { ssr: false });
+
+const MARKETS = [
+  { id: 'global', label: 'Global', flag: '🌐' },
+  { id: 'US', label: 'United States', flag: '🇺🇸' },
+  { id: 'UK', label: 'United Kingdom', flag: '🇬🇧' },
+  { id: 'DE', label: 'Germany', flag: '🇩🇪' },
+  { id: 'FR', label: 'France', flag: '🇫🇷' },
+  { id: 'IT', label: 'Italy', flag: '🇮🇹' },
+  { id: 'AU', label: 'Australia', flag: '🇦🇺' },
+  { id: 'CA', label: 'Canada', flag: '🇨🇦' },
+];
+
+// ── Chord-based 3D sector layout ─────────────────────────────────────────────
+// Adapts the 2-6 sector algorithm to world-unit coordinates (no pixel dependency).
+// Structural nodes (master / umbrella / sub-umbrella) are pinned in the XY plane.
+// T1–T3 nodes get slight Z variation so the ring has visible depth when orbited.
+function computeNodePositions(nodes: any[]) {
+  const UMBRELLA_RADIUS = 200;
+  const nodeMap = new Map<string, any>(nodes.map(n => [n.id, n]));
+
+  const findUmbrellaAncestor = (node: any): string | null => {
+    let cur = node;
+    let depth = 0;
+    while (cur?.parent && depth < 10) {
+      const p = nodeMap.get(cur.parent);
+      if (!p) break;
+      if (p.tier === 'umbrella') return p.id;
+      cur = p;
+      depth++;
+    }
+    return null;
+  };
+
+  const findAngleAncestor = (node: any): any => {
+    let cur = node.parent ? nodeMap.get(node.parent) : null;
+    let depth = 0;
+    while (cur && cur.angle === undefined && cur.parent && depth < 10) {
+      cur = nodeMap.get(cur.parent);
+      depth++;
+    }
+    return cur;
+  };
+
+  // Calculate hierarchy depth from nearest structural ancestor
+  const calculateHierarchyDepth = (node: any): number => {
+    let cur = node;
+    let depth = 0;
+    while (cur?.parent && depth < 20) {
+      const p = nodeMap.get(cur.parent);
+      if (!p) break;
+      depth++;
+      if (['sub-umbrella', 'umbrella', 'master'].includes(p.tier)) return depth;
+      cur = p;
+    }
+    return depth || 1;
+  };
+
+  // Pre-calculate depth for non-structural nodes
+  nodes.forEach(node => {
+    if (!['master', 'umbrella', 'sub-umbrella'].includes(node.tier)) {
+      node._hierarchyDepth = calculateHierarchyDepth(node);
+    }
+  });
+
+  // Group sub-umbrellas by their umbrella parent
+  const subsByParent = new Map<string, any[]>();
+  nodes.filter(n => n.tier === 'sub-umbrella').forEach(node => {
+    const uid = findUmbrellaAncestor(node);
+    if (!uid) return;
+    if (!subsByParent.has(uid)) subsByParent.set(uid, []);
+    subsByParent.get(uid)!.push(node);
+  });
+  for (const subs of subsByParent.values()) subs.sort((a, b) => a.name.localeCompare(b.name));
+
+  const sortedUmbrellas = nodes.filter(n => n.tier === 'umbrella').sort((a, b) => a.name.localeCompare(b.name));
+  const maxSubSize = Math.max(...nodes.filter(n => n.tier === 'sub-umbrella').map(n => n.size || 25), 25);
+  const subChord = maxSubSize * 2 + 52;
+  const sectorPaddingAngle = 0.06;
+  const sectorBaseWeight = 1.08;
+
+  const buildRequiredAngles = (radius: number): Map<string, number> => {
+    const out = new Map<string, number>();
+    for (const u of sortedUmbrellas) {
+      const count = subsByParent.get(u.id)?.length || 0;
+      const arc = count <= 1 ? 0.18 : ((count - 1) * subChord) / radius + sectorPaddingAngle;
+      out.set(u.id, Math.max(0.18, arc) * sectorBaseWeight);
+    }
+    return out;
+  };
+
+  // Expand sub-umbrella radius until all sectors fit in 2π
+  let subRadius = Math.max(380, UMBRELLA_RADIUS + 180);
+  let requiredAngles = buildRequiredAngles(subRadius);
+  let totalRequired = Array.from(requiredAngles.values()).reduce((a, b) => a + b, 0);
+  let guard = 0;
+  while (totalRequired > Math.PI * 2 * 0.96 && guard < 20) {
+    subRadius *= 1.08;
+    requiredAngles = buildRequiredAngles(subRadius);
+    totalRequired = Array.from(requiredAngles.values()).reduce((a, b) => a + b, 0);
+    guard++;
+  }
+
+  // Place umbrellas at sector centers
+  const sectorScale = (Math.PI * 2) / totalRequired;
+  const umbrellaSectors = new Map<string, { startAngle: number; endAngle: number; centerAngle: number }>();
+  let currentAngle = -Math.PI / 2;
+
+  sortedUmbrellas.forEach(node => {
+    const widthAngle = (requiredAngles.get(node.id) || 0.18) * sectorScale;
+    const startAngle = currentAngle;
+    const endAngle = currentAngle + widthAngle;
+    const centerAngle = startAngle + widthAngle / 2;
+    umbrellaSectors.set(node.id, { startAngle, endAngle, centerAngle });
+
+    node.x = Math.cos(centerAngle) * UMBRELLA_RADIUS;
+    node.y = Math.sin(centerAngle) * UMBRELLA_RADIUS;
+    node.z = 0;
+    node.fx = node.x; node.fy = node.y; node.fz = 0;
+    node.angle = centerAngle;
+    node._sector = { startAngle, endAngle, centerAngle };
+    currentAngle = endAngle;
+  });
+
+  // Place sub-umbrellas within their sector, spread evenly
+  const sectorMargin = 0.03;
+  subsByParent.forEach((subs, parentId) => {
+    const sector = umbrellaSectors.get(parentId);
+    if (!sector) return;
+    const usableStart = sector.startAngle + sectorMargin;
+    const usableEnd = sector.endAngle - sectorMargin;
+    const usableWidth = Math.max(0.05, usableEnd - usableStart);
+
+    if (subs.length === 1) {
+      const angle = sector.centerAngle;
+      subs[0].x = Math.cos(angle) * subRadius;
+      subs[0].y = Math.sin(angle) * subRadius;
+      subs[0].z = 0;
+      subs[0].fx = subs[0].x; subs[0].fy = subs[0].y; subs[0].fz = 0;
+      subs[0].angle = angle;
+      subs[0]._parentUmbrellaAngle = sector.centerAngle;
+      return;
+    }
+
+    const step = usableWidth / (subs.length - 1);
+    subs.forEach((sub, i) => {
+      const angle = usableStart + i * step;
+      sub.x = Math.cos(angle) * subRadius;
+      sub.y = Math.sin(angle) * subRadius;
+      sub.z = 0;
+      sub.fx = sub.x; sub.fy = sub.y; sub.fz = 0;
+      sub.angle = angle;
+      sub._parentUmbrellaAngle = sector.centerAngle;
+    });
+  });
+
+  // Pre-position non-structural nodes outward from their nearest ancestor, with Z variation for depth
+  const descendantFloor = subRadius + 60;
+  nodes.forEach(node => {
+    if (['master', 'umbrella', 'sub-umbrella'].includes(node.tier)) return;
+    const ancestor = findAngleAncestor(node);
+    
+    // Bug fix: nodes with broken parent chains should scatter randomly, not pile at origin
+    if (!ancestor?.angle) {
+      const fallbackAngle = Math.random() * Math.PI * 2;
+      const fallbackRadius = descendantFloor + 200 + Math.random() * 150;
+      node.x = Math.cos(fallbackAngle) * fallbackRadius;
+      node.y = Math.sin(fallbackAngle) * fallbackRadius;
+      node.z = (Math.random() - 0.5) * 120;
+      return;
+    }
+
+    const uid = findUmbrellaAncestor(node);
+    const sector = uid ? umbrellaSectors.get(uid) : null;
+    const edgeMargin = 0.04;
+    const angle = sector
+      ? sector.startAngle + edgeMargin + Math.random() * Math.max(0, sector.endAngle - sector.startAngle - 2 * edgeMargin)
+      : ancestor.angle + (Math.random() - 0.5) * 0.5;
+
+    // Use hierarchy depth for positioning instead of tier name
+    const depth = node._hierarchyDepth || 1;
+    const tierOffset = depth === 1 ? 80 : depth === 2 ? 160 : 250;
+    const distVariation = depth === 1 ? 40 : depth === 2 ? 70 : 110;
+    const radius = descendantFloor + tierOffset + Math.abs(Math.random() - 0.3) * distVariation;
+
+    // Z variation gives the 3D depth effect — structural ring stays flat, descendants float
+    const zSpread = depth === 1 ? 60 : depth === 2 ? 120 : 180;
+    node.x = Math.cos(angle) * radius;
+    node.y = Math.sin(angle) * radius;
+    node.z = (Math.random() - 0.5) * zSpread;
+    node._ancestorAngle = ancestor.angle;
+  });
+
+  // Pin master at origin
+  const master = nodes.find(n => n.id === 'ebay');
+  if (master) {
+    master.x = 0; master.y = 0; master.z = 0;
+    master.fx = 0; master.fy = 0; master.fz = 0;
+  }
+
+  return { nodeMap, umbrellaSectors, subRadius };
+}
+
+export default function NamingGraph27Page() {
+  const fgRef = useRef<any>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const mousePos = useRef({ x: 0, y: 0 });
+
+  const [isClient, setIsClient] = useState(false);
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [darkMode, setDarkMode] = useState(false);
+
+  // Filters (from 2-6)
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filterType, setFilterType] = useState('all');
+  const [filterTier, setFilterTier] = useState('all');
+  const [selectedMarket, setSelectedMarket] = useState('global');
+  const [filterStatus, setFilterStatus] = useState('current');
+
+  // Relationship types (from graph-3)
+  const [selectedRelTypes, setSelectedRelTypes] = useState<Set<RelationshipType>>(
+    new Set(['parent', 'renamed_to', 'replaced_by', 'integrates_with', 'depends_on'])
+  );
+
+  // Timeline
+  const [timelineYear, setTimelineYear] = useState(2026);
+
+  // Tooltip
+  const [hoveredNode, setHoveredNode] = useState<any>(null);
+
+  // Analytics (from graph-3)
+  const [showAnalytics, setShowAnalytics] = useState(false);
+  const [pathStart, setPathStart] = useState('');
+  const [pathEnd, setPathEnd] = useState('');
+  const [shortestPath, setShortestPath] = useState<string[] | null>(null);
+
+  // Collision checker (from 2-6)
+  const [collisionCheck, setCollisionCheck] = useState('');
+  const [collisionResults, setCollisionResults] = useState<string[]>([]);
+
+  // Advanced settings
+  const [showLabels, setShowLabels] = useState(false);
+  const [showAdvanced, setShowAdvanced] = useState(false);
+
+  const theme = {
+    bg: darkMode ? '#05050f' : '#ffffff',
+    bgSecondary: darkMode ? '#0f0f1e' : '#f8f9fa',
+    bgTertiary: darkMode ? '#14142a' : '#f0f1f3',
+    bgCard: darkMode ? 'rgba(10,10,28,0.96)' : 'rgba(255,255,255,0.96)',
+    textPrimary: darkMode ? '#e8e8f0' : '#111820',
+    textSecondary: darkMode ? '#8888aa' : '#555555',
+    textMuted: darkMode ? '#50507a' : '#888888',
+    border: darkMode ? '#1e1e3a' : '#e0e0e0',
+    canvasBg: darkMode ? '#03030c' : '#f0f0f8',
+  };
+
+  useEffect(() => { setIsClient(true); }, []);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    
+    // Set initial dimensions immediately
+    const rect = el.getBoundingClientRect();
+    if (rect.width > 0 && rect.height > 0) {
+      setDimensions({ width: rect.width, height: rect.height });
+    }
+    
+    const ro = new ResizeObserver(entries => {
+      for (const e of entries) {
+        setDimensions({ width: e.contentRect.width, height: e.contentRect.height });
+      }
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [isClient]);
+
+  // Build graph data — all filtering happens here so ForceGraph3D gets clean data
+  const graphData = useMemo(() => {
+    const filtered = filterByMarket(ENRICHED_PROGRAMS, selectedMarket);
+    let nodesRaw: any[] = filtered.map((node: GraphNode) => ({
+      id: node.id,
+      name: getTranslatedName(node, selectedMarket),
+      originalName: node.name,
+      type: node.type,
+      tier: node.tier,
+      status: node.status,
+      parent: (node as any).parent,
+      desc: node.desc,
+      market: node.market || 'global',
+      color: getNodeColor(node),
+      size: getNodeSize(node),
+      // react-force-graph-3d sizes spheres by val (proportional to volume)
+      val: Math.pow(getNodeSize(node), 2),
+      year: (node as any).year || 2020,
+      relationships: (node as any).relationships || [],
+    }));
+
+    if (filterStatus !== 'all') nodesRaw = nodesRaw.filter(n => n.status === filterStatus);
+    if (filterType !== 'all') nodesRaw = nodesRaw.filter(n => n.type === filterType);
+    if (filterTier !== 'all') nodesRaw = nodesRaw.filter(n => n.tier === filterTier);
+
+    // Apply chord-based sector layout (positions set in-place)
+    computeNodePositions(nodesRaw);
+
+    // Build link set from selected relationship types
+    const nodeIds = new Set(nodesRaw.map((n: any) => n.id));
+    const allLinks = generateLinks(ENRICHED_PROGRAMS);
+    const links = allLinks
+      .filter(l => selectedRelTypes.has(l.type) && nodeIds.has(l.source) && nodeIds.has(l.target))
+      .map(l => ({
+        source: l.source,
+        target: l.target,
+        type: l.type,
+        year: l.year,
+        desc: l.desc,
+        color: LINK_STYLES[l.type]?.color || '#cccccc',
+        linkOpacity: LINK_STYLES[l.type]?.opacity || 0.5,
+        width: LINK_STYLES[l.type]?.width || 1,
+      }));
+
+    return { nodes: nodesRaw, links };
+  }, [selectedMarket, filterStatus, filterType, filterTier, selectedRelTypes]);
+
+  // Configure D3 forces after ForceGraph3D mounts and whenever graphData changes.
+  // requestAnimationFrame gives the browser one frame to mount the component + populate fgRef.
+  useEffect(() => {
+    if (!dimensions.width) return;
+    const id = requestAnimationFrame(() => {
+      const fg = fgRef.current;
+      if (!fg) return;
+
+      // Structural nodes are pinned (fx/fy/fz set), so zero charge for them
+      // Use hierarchy depth for non-structural nodes
+      fg.d3Force('charge')?.strength((d: any) => {
+        if (['master', 'umbrella', 'sub-umbrella'].includes(d.tier)) return 0;
+        const depth = d._hierarchyDepth || 1;
+        if (depth === 1) return -220;
+        if (depth === 2) return -160;
+        return -100;
+      });
+
+      // Add collision force to prevent node bunching (synchronous to apply before warmup)
+      if (fg.d3Force && typeof fg.d3Force === 'function') {
+        fg.d3Force('collision', forceCollide()
+          .radius((d: any) => {
+            if (d.tier === 'master') return 35;
+            if (d.tier === 'umbrella') return 25;
+            if (d.tier === 'sub-umbrella') return 18;
+            const depth = d._hierarchyDepth || 1;
+            if (depth === 1) return 14;
+            if (depth === 2) return 12;
+            return 10;
+          })
+          .strength(0.9)
+          .iterations(3)
+        );
+      }
+
+      // Link distances tuned per relationship type
+      fg.d3Force('link')
+        ?.distance((d: any) => {
+          if (d.type === 'parent') {
+            if (d.source?.tier === 'master') return 200;
+            if (d.source?.tier === 'umbrella') return 120;
+            return 80;
+          }
+          if (d.type === 'integrates_with') return 180;
+          if (d.type === 'depends_on') return 160;
+          if (d.type === 'replaced_by' || d.type === 'replaces') return 140;
+          if (d.type === 'renamed_to' || d.type === 'renamed_from') return 110;
+          return 130;
+        })
+        .strength((d: any) => {
+          if (['master', 'umbrella', 'sub-umbrella'].includes(d.target?.tier)) return 0.02;
+          const depth = d.target?._hierarchyDepth || 1;
+          return depth === 1 ? 0.08 : depth === 2 ? 0.06 : 0.04;
+        });
+
+      // Outward push: T1–T3 nodes are pushed in their ancestor sub-umbrella's angular direction.
+      // This is the "face outward" rule — keeps the interior of the ring free from leaf nodes.
+      // Strength is kept low so link forces still win for cross-umbrella connected nodes.
+      const nodes = graphData.nodes as any[];
+      const nodeMap = new Map(nodes.map(n => [n.id, n]));
+      const minOuterRadius = (graphData.nodes as any[]).reduce((max, n) => {
+        if (n.tier === 'sub-umbrella') {
+          const r = Math.sqrt((n.x || 0) ** 2 + (n.y || 0) ** 2);
+          return Math.max(max, r);
+        }
+        return max;
+      }, 0) + 80;
+
+      fg.d3Force('outward', () => {
+        nodes.forEach((node: any) => {
+          // Skip structural nodes - only apply outward push to leaf nodes
+          if (['master', 'umbrella', 'sub-umbrella'].includes(node.tier)) return;
+          // Walk up to nearest ancestor that has an angle (sub-umbrella or umbrella)
+          let anc: any = node.parent ? nodeMap.get(node.parent) : null;
+          let d = 0;
+          while (anc && anc.angle === undefined && anc.parent && d < 10) {
+            anc = nodeMap.get(anc.parent);
+            d++;
+          }
+          if (anc?.angle !== undefined) {
+            node.vx = (node.vx || 0) + Math.cos(anc.angle) * 0.012;
+            node.vy = (node.vy || 0) + Math.sin(anc.angle) * 0.012;
+          }
+          // Enforce minimum radial distance so nodes don't collapse inward
+          const xyDist = Math.sqrt((node.x || 0) ** 2 + (node.y || 0) ** 2);
+          if (xyDist < minOuterRadius && xyDist > 0) {
+            const push = (minOuterRadius - xyDist) * 0.04;
+            node.vx = (node.vx || 0) + ((node.x || 0) / xyDist) * push;
+            node.vy = (node.vy || 0) + ((node.y || 0) / xyDist) * push;
+          }
+        });
+      });
+
+      fg.d3ReheatSimulation();
+    });
+    return () => cancelAnimationFrame(id);
+  }, [dimensions.width, graphData]);
+
+  // Year filter — dims nodes/links older than selected year
+  const nodeVisibility = useCallback((node: any) => {
+    if (searchQuery) {
+      return node.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        node.originalName?.toLowerCase().includes(searchQuery.toLowerCase());
+    }
+    return node.year <= timelineYear;
+  }, [searchQuery, timelineYear]);
+
+  const linkVisibility = useCallback((link: any) => {
+    const srcYear = (link.source as any)?.year ?? 1995;
+    const tgtYear = (link.target as any)?.year ?? 1995;
+    if (timelineYear < 2026 && (srcYear > timelineYear || tgtYear > timelineYear)) return false;
+    return true;
+  }, [timelineYear]);
+
+  const handleNodeHover = useCallback((node: any) => {
+    setHoveredNode(node || null);
+  }, []);
+
+  // Click: fly camera to focus on the clicked node
+  const handleNodeClick = useCallback((node: any) => {
+    if (!fgRef.current || !node) return;
+    const dist = 300;
+    const { x = 0, y = 0, z = 0 } = node;
+    fgRef.current.cameraPosition(
+      { x: x + dist * 0.5, y: y + dist * 0.2, z: z + dist },
+      { x, y, z },
+      800
+    );
+  }, []);
+
+  const toggleRelType = (type: RelationshipType) => {
+    setSelectedRelTypes(prev => {
+      const next = new Set(prev);
+      if (next.has(type)) next.delete(type); else next.add(type);
+      return next;
+    });
+  };
+
+  const checkCollisionFn = (name: string) => {
+    if (!name.trim()) return [];
+    const q = name.toLowerCase();
+    return graphData.nodes
+      .filter((n: any) => n.name.toLowerCase().includes(q) || n.originalName?.toLowerCase().includes(q))
+      .map((n: any) => `${n.name} (${n.type})`);
+  };
+
+  const stats = getGraphStats();
+
+  if (!isClient) {
+    return (
+      <div className="h-screen w-full flex items-center justify-center" style={{ backgroundColor: theme.bg }}>
+        <div style={{ color: theme.textPrimary }}>Loading 3D knowledge graph...</div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="h-screen w-full flex flex-col overflow-hidden" style={{ backgroundColor: theme.bg }}>
+      {/* Header */}
+      <div className="flex items-center justify-between px-4 py-3 relative z-20"
+        style={{ borderBottom: `1px solid ${theme.border}`, backgroundColor: theme.bg }}>
+        <Link href="/" className="flex items-center gap-2 transition-colors" style={{ color: theme.textSecondary }}>
+          <ChevronLeft className="w-5 h-5" /><span>Back to Studio</span>
+        </Link>
+        <div className="text-center">
+          <h1 className="text-xl font-bold flex items-center gap-2 justify-center" style={{ color: theme.textPrimary }}>
+            <Box className="w-5 h-5" />eBay Naming 3D Knowledge Graph
+          </h1>
+          <p className="text-sm" style={{ color: theme.textSecondary }}>
+            {graphData.nodes.length} programs · {graphData.links.length} relationships · drag to orbit
+          </p>
+        </div>
+        <button onClick={() => setDarkMode(d => !d)} className="p-2 rounded-full transition-colors"
+          style={{ border: `1px solid ${theme.border}`, backgroundColor: darkMode ? theme.bgTertiary : 'transparent', color: theme.textPrimary }}>
+          {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+        </button>
+      </div>
+
+      {/* Main canvas area */}
+      <div className="flex-1 flex relative">
+        {/* 3D graph */}
+        <div
+          ref={containerRef}
+          className="flex-1 overflow-hidden"
+          onMouseMove={e => { mousePos.current = { x: e.clientX, y: e.clientY }; }}
+        >
+          {dimensions.width > 0 && dimensions.height > 0 ? (
+            <ForceGraph3D
+              ref={fgRef}
+              graphData={graphData}
+              width={dimensions.width}
+              height={dimensions.height}
+              backgroundColor={theme.canvasBg}
+
+              // Node appearance
+              nodeColor={(node: any) => node.color}
+              nodeVal={(node: any) => node.val}
+              nodeOpacity={1}
+              nodeResolution={16}
+              nodeLabel={showLabels ? (node: any) => node.name : () => ''}
+              nodeThreeObject={showLabels ? (node: any) => {
+                // Add text sprites for labels when enabled
+                const THREE = (window as any).THREE;
+                if (!THREE) return undefined;
+                const sprite = new THREE.Sprite(
+                  new THREE.SpriteMaterial({
+                    map: (() => {
+                      const canvas = document.createElement('canvas');
+                      const ctx = canvas.getContext('2d')!;
+                      const fontSize = node.tier === 'master' ? 48 : node.tier === 'umbrella' ? 36 : node.tier === 'sub-umbrella' ? 28 : 20;
+                      canvas.width = 512;
+                      canvas.height = 64;
+                      ctx.font = `${fontSize}px Arial`;
+                      ctx.fillStyle = darkMode ? '#ffffff' : '#111820';
+                      ctx.textAlign = 'center';
+                      ctx.fillText(node.name.substring(0, 30), 256, 40);
+                      const texture = new THREE.CanvasTexture(canvas);
+                      texture.needsUpdate = true;
+                      return texture;
+                    })(),
+                    transparent: true,
+                  })
+                );
+                sprite.scale.set(80, 10, 1);
+                sprite.position.set(0, node.val * 0.6 + 8, 0);
+                return sprite;
+              } : undefined}
+              nodeThreeObjectExtend={showLabels}
+              nodeVisibility={nodeVisibility}
+
+              // Link appearance — each relationship type has its own color from LINK_STYLES
+              linkColor={(link: any) => link.color}
+              linkOpacity={0.55}
+              linkWidth={(link: any) => link.width || 1}
+              linkVisibility={linkVisibility}
+
+              // Directional particles on integrates_with and depends_on edges to show flow
+              linkDirectionalParticles={(link: any) =>
+                link.type === 'integrates_with' || link.type === 'depends_on' ? 3 : 0
+              }
+              linkDirectionalParticleColor={(link: any) => link.color}
+              linkDirectionalParticleWidth={2}
+              linkDirectionalParticleSpeed={0.005}
+
+              // Interaction
+              onNodeHover={handleNodeHover}
+              onNodeClick={handleNodeClick}
+              enableNodeDrag={true}
+
+              // Simulation settings — give enough time for collision force to load and take effect
+              cooldownTicks={500}
+              warmupTicks={200}
+              cooldownTime={8000}
+              d3AlphaDecay={0.015}
+              d3VelocityDecay={0.4}
+            />
+          ) : (
+            <div className="flex items-center justify-center h-full" style={{ color: theme.textSecondary }}>
+              <div className="text-center">
+                <div className="animate-spin w-8 h-8 border-2 border-current border-t-transparent rounded-full mx-auto mb-2"></div>
+                <div>Loading 3D visualization...</div>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Hover tooltip — pure React, no D3 DOM manipulation */}
+        {hoveredNode && (
+          <div
+            className="fixed pointer-events-none z-50 rounded-xl text-xs"
+            style={{
+              left: mousePos.current.x + 16,
+              top: mousePos.current.y - 12,
+              backgroundColor: 'rgba(5,5,20,0.96)',
+              color: '#fff',
+              padding: '14px',
+              maxWidth: '320px',
+              border: `1px solid ${hoveredNode.color}55`,
+              boxShadow: `0 4px 24px rgba(0,0,0,0.6), 0 0 14px ${hoveredNode.color}22`,
+            }}
+          >
+            <div style={{ color: hoveredNode.color, fontSize: 14, fontWeight: 700 }}>{hoveredNode.name}</div>
+            <div className="mt-2 space-y-0.5" style={{ color: '#999' }}>
+              <div><span style={{ color: '#555' }}>Type:</span> {hoveredNode.type}</div>
+              <div><span style={{ color: '#555' }}>Tier:</span> {hoveredNode.tier}</div>
+              <div><span style={{ color: '#555' }}>Status:</span> {hoveredNode.status}</div>
+              <div><span style={{ color: '#555' }}>Year:</span> {hoveredNode.year || 'N/A'}</div>
+            </div>
+            {hoveredNode.desc && (
+              <div className="mt-2 text-[10px]" style={{ color: '#777' }}>{hoveredNode.desc}</div>
+            )}
+            {hoveredNode.relationships?.length > 0 && (
+              <div className="mt-3 pt-2" style={{ borderTop: '1px solid #1e1e3a' }}>
+                <div style={{ color: '#86b817', fontWeight: 700, marginBottom: 5 }}>Relationships:</div>
+                {hoveredNode.relationships.slice(0, 6).map((r: any, i: number) => {
+                  const style = LINK_STYLES[r.type as RelationshipType];
+                  return (
+                    <div key={i} className="text-[10px] mb-1" style={{ color: '#ccc' }}>
+                      <span style={{ color: style?.color || '#fff', fontWeight: 600 }}>
+                        {style?.label || r.type}
+                      </span>
+                      {' → '}{r.target}
+                      {r.desc && <span style={{ color: '#555' }}> — {r.desc}</span>}
+                    </div>
+                  );
+                })}
+                {hoveredNode.relationships.length > 6 && (
+                  <div style={{ color: '#555', fontSize: 9 }}>+{hoveredNode.relationships.length - 6} more</div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* ── Left sidebar: PMM Tools + Relationship Filters ─────────────────── */}
+        <div
+          className="absolute top-4 left-4 rounded-xl p-4 z-10"
+          style={{
+            width: 272,
+            backgroundColor: theme.bgCard,
+            border: `1px solid ${theme.border}`,
+            maxHeight: 'calc(100vh - 200px)',
+            overflowY: 'auto',
+          }}
+        >
+          <h3 className="text-[#e53238] font-bold mb-3 flex items-center gap-2 text-sm">
+            <Globe className="w-4 h-4" />PMM Tools
+          </h3>
+
+          {/* Search */}
+          <div className="mb-3">
+            <label className="text-[10px] text-[#86b817] block mb-1">Search Programs</label>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+              placeholder="e.g., Motors, Shipping..."
+              className="w-full px-3 py-2 rounded text-xs"
+              style={{ backgroundColor: theme.bgSecondary, border: `1px solid ${theme.border}`, color: theme.textPrimary }}
+            />
+          </div>
+
+          {/* Market */}
+          <div className="mb-3">
+            <label className="text-[10px] text-[#0064d2] block mb-1">Market</label>
+            <select value={selectedMarket} onChange={e => setSelectedMarket(e.target.value)}
+              className="w-full px-3 py-2 rounded text-xs"
+              style={{ backgroundColor: theme.bgSecondary, border: `1px solid ${theme.border}`, color: theme.textPrimary }}>
+              {MARKETS.map(m => <option key={m.id} value={m.id}>{m.flag} {m.label}</option>)}
+            </select>
+          </div>
+
+          {/* Type */}
+          <div className="mb-3">
+            <label className="text-[10px] text-[#86b817] block mb-1">Type</label>
+            <select value={filterType} onChange={e => setFilterType(e.target.value)}
+              className="w-full px-3 py-2 rounded text-xs"
+              style={{ backgroundColor: theme.bgSecondary, border: `1px solid ${theme.border}`, color: theme.textPrimary }}>
+              <option value="all">All Types</option>
+              <option value="category">Category</option>
+              <option value="trust">Trust & Safety</option>
+              <option value="advertising">Advertising</option>
+              <option value="impact">Social Impact</option>
+              <option value="regional">Regional</option>
+              <option value="developer">Developer</option>
+            </select>
+          </div>
+
+          {/* Tier */}
+          <div className="mb-3">
+            <label className="text-[10px] text-[#e67e22] block mb-1">Tier</label>
+            <select value={filterTier} onChange={e => setFilterTier(e.target.value)}
+              className="w-full px-3 py-2 rounded text-xs"
+              style={{ backgroundColor: theme.bgSecondary, border: `1px solid ${theme.border}`, color: theme.textPrimary }}>
+              <option value="all">All Tiers</option>
+              <option value="master">Masterbrand</option>
+              <option value="umbrella">Umbrella</option>
+              <option value="sub-umbrella">Sub-Umbrella</option>
+              <option value="t1">Tier 1</option>
+              <option value="t2">Tier 2</option>
+              <option value="t3">Tier 3</option>
+            </select>
+          </div>
+
+          {/* Status */}
+          <div className="mb-3">
+            <label className="text-[10px] text-[#f5af02] block mb-1">Status</label>
+            <select value={filterStatus} onChange={e => setFilterStatus(e.target.value)}
+              className="w-full px-3 py-2 rounded text-xs"
+              style={{ backgroundColor: theme.bgSecondary, border: `1px solid ${theme.border}`, color: theme.textPrimary }}>
+              <option value="all">All Statuses</option>
+              <option value="current">Current</option>
+              <option value="legacy">Legacy</option>
+              <option value="renamed">Renamed</option>
+            </select>
+          </div>
+
+          <button
+            onClick={() => { setSelectedMarket('global'); setFilterType('all'); setFilterTier('all'); setFilterStatus('current'); setSearchQuery(''); setTimelineYear(2026); }}
+            className="w-full px-3 py-2 rounded text-xs font-medium mb-3"
+            style={{ backgroundColor: '#e74c3c', color: '#fff' }}
+          >
+            Clear All Filters
+          </button>
+
+          {/* Relationship type toggles — from naming-graph-3 */}
+          <div className="mb-3 pt-3" style={{ borderTop: `1px solid ${theme.border}` }}>
+            <label className="text-[10px] text-[#9b59b6] font-bold block mb-2">Relationship Types</label>
+            <div className="space-y-1.5">
+              {Object.entries(LINK_STYLES).map(([type, style]) => (
+                <label key={type} className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={selectedRelTypes.has(type as RelationshipType)}
+                    onChange={() => toggleRelType(type as RelationshipType)}
+                    className="w-3 h-3 flex-shrink-0"
+                  />
+                  <div
+                    className="flex-shrink-0"
+                    style={{
+                      width: 24, height: 2,
+                      backgroundColor: style.color,
+                      borderBottom: style.dashArray ? `2px dashed ${style.color}` : undefined,
+                    }}
+                  />
+                  <span className="text-[10px]" style={{ color: theme.textSecondary }}>{style.label}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          {/* Timeline */}
+          <div className="mb-3 pt-3" style={{ borderTop: `1px solid ${theme.border}` }}>
+            <label className="text-[10px] text-[#86b817] block mb-1">
+              Timeline — <span className="font-mono font-bold">{timelineYear}</span>
+            </label>
+            <input
+              type="range" min="1995" max="2026" value={timelineYear}
+              onChange={e => setTimelineYear(parseInt(e.target.value))}
+              className="w-full"
+              style={{ accentColor: '#86b817' }}
+            />
+            <div className="flex justify-between text-[9px] mt-0.5" style={{ color: theme.textMuted }}>
+              <span>1995</span><span>2010</span><span>2026</span>
+            </div>
+            {timelineYear < 2026 && (
+              <button onClick={() => setTimelineYear(2026)}
+                className="w-full mt-1.5 py-1 rounded text-[10px]"
+                style={{ backgroundColor: theme.bgSecondary, color: theme.textSecondary, border: `1px solid ${theme.border}` }}>
+                Show All Years
+              </button>
+            )}
+          </div>
+
+          {/* Collision checker */}
+          <div className="mb-3 pt-3" style={{ borderTop: `1px solid ${theme.border}` }}>
+            <label className="text-[10px] text-[#e53238] block mb-1">Collision Checker</label>
+            <input
+              type="text" value={collisionCheck}
+              onChange={e => { setCollisionCheck(e.target.value); setCollisionResults(checkCollisionFn(e.target.value)); }}
+              placeholder="Enter proposed name..."
+              className="w-full px-2 py-1.5 rounded text-xs"
+              style={{ backgroundColor: theme.bgSecondary, border: `1px solid ${theme.border}`, color: theme.textPrimary }}
+            />
+            {collisionResults.length > 0 && (
+              <div className="mt-1.5 text-[10px] text-yellow-400">
+                <div className="font-bold">Conflicts:</div>
+                {collisionResults.slice(0, 4).map((r, i) => <div key={i}>- {r}</div>)}
+              </div>
+            )}
+          </div>
+
+          {/* Advanced Settings */}
+          <div className="mb-3 pt-3" style={{ borderTop: `1px solid ${theme.border}` }}>
+            <button
+              onClick={() => setShowAdvanced(!showAdvanced)}
+              className="flex items-center gap-2 w-full text-left"
+            >
+              <Settings className="w-3 h-3" style={{ color: theme.textSecondary }} />
+              <span className="text-[10px] font-bold" style={{ color: theme.textSecondary }}>Advanced Settings</span>
+              <ChevronDown 
+                className={`w-3 h-3 ml-auto transition-transform ${showAdvanced ? 'rotate-180' : ''}`} 
+                style={{ color: theme.textMuted }} 
+              />
+            </button>
+            {showAdvanced && (
+              <div className="mt-2 space-y-2">
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={showLabels}
+                    onChange={() => setShowLabels(!showLabels)}
+                    className="w-3 h-3"
+                  />
+                  <Tag className="w-3 h-3" style={{ color: '#86b817' }} />
+                  <span className="text-[10px]" style={{ color: theme.textSecondary }}>Show Node Labels</span>
+                </label>
+                <p className="text-[9px]" style={{ color: theme.textMuted }}>
+                  Displays text labels above each node. May impact performance with many nodes visible.
+                </p>
+              </div>
+            )}
+          </div>
+
+          {/* Export */}
+          <div className="mb-3">
+            <label className="text-[10px] text-[#86b817] block mb-1">Export</label>
+            <button
+              onClick={() => {
+                const csv = 'ID,Name,Type,Tier,Status,Year,Relationships\n' +
+                  graphData.nodes.map((n: any) =>
+                    `${n.id},"${n.name}",${n.type},${n.tier},${n.status},${n.year},${n.relationships.length}`
+                  ).join('\n');
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
+                a.download = 'ebay-naming-3d-graph.csv';
+                a.click();
+              }}
+              className="w-full py-2 bg-[#0064d2] text-white rounded text-xs"
+            >
+              Export CSV
+            </button>
+          </div>
+
+          {/* Analytics toggle */}
+          <div className="pt-3" style={{ borderTop: `1px solid ${theme.border}` }}>
+            <button
+              onClick={() => setShowAnalytics(!showAnalytics)}
+              className="w-full py-2 bg-[#9b59b6] text-white rounded text-xs font-medium"
+            >
+              {showAnalytics ? 'Hide Analytics' : 'Show Analytics'}
+            </button>
+          </div>
+        </div>
+
+        {/* ── Analytics panel (right side) — from naming-graph-3 ──────────────── */}
+        {showAnalytics && (
+          <div
+            className="absolute top-4 right-4 rounded-xl p-4 z-10"
+            style={{
+              width: 288,
+              backgroundColor: theme.bgCard,
+              border: `1px solid ${theme.border}`,
+              maxHeight: 'calc(100vh - 200px)',
+              overflowY: 'auto',
+            }}
+          >
+            <h3 className="text-[#9b59b6] font-bold mb-3 text-sm">Analytics</h3>
+
+            {/* Most connected */}
+            <div className="mb-4">
+              <h4 className="text-[10px] font-bold mb-2" style={{ color: theme.textPrimary }}>Most Connected Programs</h4>
+              {getMostConnected(ENRICHED_PROGRAMS, 5).map((node, i) => (
+                <div key={node.id} className="text-[10px] flex justify-between mb-0.5" style={{ color: theme.textSecondary }}>
+                  <span>{i + 1}. {node.name}</span>
+                  <span className="font-mono text-[#86b817]">{node.degree}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Shortest path finder */}
+            <div className="mb-4 pt-3" style={{ borderTop: `1px solid ${theme.border}` }}>
+              <h4 className="text-[10px] font-bold mb-2" style={{ color: theme.textPrimary }}>Find Path Between Programs</h4>
+              <input type="text" placeholder="Start (e.g., motors)" value={pathStart}
+                onChange={e => setPathStart(e.target.value)}
+                className="w-full px-2 py-1 rounded text-[10px] mb-1"
+                style={{ backgroundColor: theme.bgSecondary, border: `1px solid ${theme.border}`, color: theme.textPrimary }} />
+              <input type="text" placeholder="End (e.g., vault)" value={pathEnd}
+                onChange={e => setPathEnd(e.target.value)}
+                className="w-full px-2 py-1 rounded text-[10px] mb-2"
+                style={{ backgroundColor: theme.bgSecondary, border: `1px solid ${theme.border}`, color: theme.textPrimary }} />
+              <button
+                onClick={() => {
+                  if (pathStart && pathEnd) setShortestPath(findShortestPath(ENRICHED_PROGRAMS, pathStart, pathEnd));
+                }}
+                className="w-full py-1 bg-[#0064d2] text-white rounded text-[10px]"
+              >
+                Find Shortest Path
+              </button>
+              {shortestPath && (
+                <div className="mt-2 p-2 rounded text-[10px]" style={{ backgroundColor: theme.bgTertiary }}>
+                  {shortestPath.length > 0
+                    ? <>
+                      <div className="font-bold text-[#86b817]">Path ({shortestPath.length} steps):</div>
+                      <div style={{ color: theme.textSecondary }}>{shortestPath.join(' → ')}</div>
+                    </>
+                    : <div style={{ color: theme.textMuted }}>No path found</div>
+                  }
+                </div>
+              )}
+            </div>
+
+            {/* Clusters */}
+            <div className="pt-3" style={{ borderTop: `1px solid ${theme.border}` }}>
+              <h4 className="text-[10px] font-bold mb-2" style={{ color: theme.textPrimary }}>Graph Clusters</h4>
+              {Array.from(findClusters(ENRICHED_PROGRAMS).entries())
+                .sort((a, b) => b[1].length - a[1].length)
+                .slice(0, 3)
+                .map(([id, clusterNodes], i) => (
+                  <div key={id} className="text-[10px] mb-0.5" style={{ color: theme.textSecondary }}>
+                    Cluster {i + 1}: {clusterNodes.length} programs
+                  </div>
+                ))}
+            </div>
+          </div>
+        )}
+
+        {/* ── Legend + camera reset (bottom-right when analytics hidden) ──────── */}
+        <div className="absolute bottom-4 right-4 rounded-xl p-3 z-10"
+          style={{ backgroundColor: theme.bgCard, border: `1px solid ${theme.border}` }}>
+          <div className="text-[9px] font-bold mb-1.5" style={{ color: theme.textPrimary }}>Node Types</div>
+          <div className="flex flex-wrap gap-x-2 gap-y-1 text-[9px] max-w-[220px]">
+            {Object.entries(NODE_COLORS).map(([key, color]) => (
+              <span key={key} style={{ color: theme.textSecondary }}>
+                <span style={{ color: color as string }}>●</span> {key}
+              </span>
+            ))}
+          </div>
+          <div className="mt-1.5 text-[9px]" style={{ color: theme.textMuted }}>
+            Drag to orbit · Scroll to zoom · Click to focus
+          </div>
+        </div>
+
+        {/* Camera controls (top-right when analytics panel is hidden) */}
+        {!showAnalytics && (
+          <div className="absolute top-4 right-4 flex flex-col gap-2 z-10">
+            <button
+              onClick={() => fgRef.current?.cameraPosition({ x: 0, y: 0, z: 1400 }, { x: 0, y: 0, z: 0 }, 800)}
+              className="px-3 py-2 rounded text-xs font-medium"
+              style={{ backgroundColor: theme.bgCard, border: `1px solid ${theme.border}`, color: theme.textPrimary }}
+            >
+              Top View
+            </button>
+            <button
+              onClick={() => fgRef.current?.cameraPosition({ x: 1400, y: 0, z: 400 }, { x: 0, y: 0, z: 0 }, 800)}
+              className="px-3 py-2 rounded text-xs font-medium"
+              style={{ backgroundColor: theme.bgCard, border: `1px solid ${theme.border}`, color: theme.textPrimary }}
+            >
+              Side View
+            </button>
+            <div className="px-3 py-1.5 rounded text-[10px]"
+              style={{ backgroundColor: theme.bgCard, border: `1px solid ${theme.border}`, color: theme.textMuted }}>
+              {graphData.nodes.length} nodes<br />{graphData.links.length} links
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Bottom bar */}
+      <div className="flex items-center gap-3 px-4 py-3 relative z-20"
+        style={{ borderTop: `1px solid ${theme.border}`, backgroundColor: theme.bg }}>
+        <button
+          onClick={() => fgRef.current?.cameraPosition({ x: 0, y: 0, z: 1400 }, { x: 0, y: 0, z: 0 }, 800)}
+          className="px-5 py-2 bg-[#0064d2] text-white rounded text-sm font-medium"
+        >
+          Reset Camera
+        </button>
+        <div className="flex-1" />
+        <div className="text-xs" style={{ color: theme.textMuted }}>
+          Drag to orbit · Scroll to zoom · Click node to focus · Hover for details · Particles show data flow
+        </div>
+      </div>
+    </div>
+  );
+}
+

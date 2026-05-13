@@ -1,0 +1,427 @@
+{
+  "scan_date": "2026-04-29",
+  "registry_file": "enriched-consolidated-DEDUPLICATED.ts",
+  "total_nodes_classified": 876,
+  "summary": {
+    "existing_validated": 772,
+    "existing_legacy_validated": 61,
+    "status_changed_renamed": 5,
+    "status_changed_deprecated": 10,
+    "name_corrections": 16,
+    "false_positives": 5,
+    "duplicates": 14
+  },
+  "confirmed_renamed": [
+    {
+      "registry_id": "terapeak",
+      "old_name": "terapeak",
+      "new_name": "",
+      "evidence_quality": "A",
+      "action": "update status: renamed; renamedTo: product-research"
+    },
+    {
+      "registry_id": "offsite-ads",
+      "old_name": "offsite-ads",
+      "new_name": "",
+      "evidence_quality": "A",
+      "action": "Mark as renamed; renamedTo: promoted-offsite; effective_date: 2024-07-01"
+    },
+    {
+      "registry_id": "promotions-manager",
+      "old_name": "promotions-manager",
+      "new_name": "",
+      "evidence_quality": "A",
+      "action": "update status: renamed; renamedTo: seller-hub-discounts"
+    },
+    {
+      "registry_id": "promoted-listings-advanced",
+      "old_name": "promoted-listings-advanced",
+      "new_name": "",
+      "evidence_quality": "A",
+      "action": "update status: renamed; renamedTo: promoted-listings-priority"
+    },
+    {
+      "registry_id": "promoted-listings-standard",
+      "old_name": "promoted-listings-standard",
+      "new_name": "",
+      "evidence_quality": "A",
+      "action": "update status: renamed; renamedTo: promoted-listings-general"
+    }
+  ],
+  "confirmed_deprecated": [
+    {
+      "registry_id": "guaranteed-delivery",
+      "evidence_quality": "B",
+      "action": "Mark as de facto deprecated; add note: 'page persists but program functionally ended ~2021'; update status to legacy or deprecated",
+      "notes": "eBay Guaranteed Delivery: static page at pages.ebay.com/shipping/guaranteed-delivery.html still accessible (2026 copyright) but community reports and seller data confirm program functionally ended ~20"
+    },
+    {
+      "registry_id": "managed-delivery",
+      "evidence_quality": "A",
+      "action": "Update status to deprecated/legacy; add end_date: 2019; add note: unrelated to UK Simple Delivery; distinguish from managed-payments",
+      "notes": "eBay Managed Delivery was the original US fulfillment service announced in 2019 (warehousing, pick/pack/ship via logistics partners). It was shut down before fully launching \u2014 program ended by end of "
+    },
+    {
+      "registry_id": "ebay-guaranteed-delivery",
+      "evidence_quality": "B",
+      "action": "Merge with guaranteed-delivery node or mark as deprecated; de facto ended ~2021; no formal deprecation announcement",
+      "notes": "eBay Guaranteed Delivery is the same program as 'guaranteed-delivery' \u2014 same de facto deprecated status. Page at pages.ebay.com/shipping/guaranteed-delivery.html still accessible but program functiona"
+    },
+    {
+      "registry_id": "knownorigin",
+      "evidence_quality": "A",
+      "action": "Wave 5 node \u2014 review status in registry",
+      "notes": "KnownOrigin \u2014 NFT marketplace acquired June 2022. eBay laid off 30% of staff Feb 2024 and shut down mid-2024. Status in Wave 5 file says 'current' \u2014 INCORRECT. Should be deprecated."
+    },
+    {
+      "registry_id": "finding-api",
+      "evidence_quality": "A",
+      "action": "Mark as decommissioned Feb 5, 2025 (not just legacy)",
+      "notes": "Finding API decommissioned Feb 5, 2025 \u2014 developer.ebay.com confirmed; all calls return error"
+    },
+    {
+      "registry_id": "shopping-api",
+      "evidence_quality": "A",
+      "action": "Mark as decommissioned Feb 5, 2025",
+      "notes": "Shopping API decommissioned Feb 5, 2025 alongside Finding API"
+    },
+    {
+      "registry_id": "large-merchant-services",
+      "evidence_quality": "A",
+      "action": "Mark as decommissioned May 1, 2022",
+      "notes": "LMS + Bulk Data Exchange API + File Transfer API all decommissioned May 1, 2022"
+    },
+    {
+      "registry_id": "merchandising-api",
+      "evidence_quality": "B",
+      "action": "Mark as decommissioned/legacy; effectively dead since 2010",
+      "notes": "No active developer docs; no replacement announcement needed"
+    },
+    {
+      "registry_id": "ebay-bucks",
+      "evidence_quality": "A",
+      "action": "Correct deprecated date to 2024-04-02 (NOT 2021)",
+      "notes": "Full program discontinued April 2, 2024. 2021 change removed 1% base rate only."
+    },
+    {
+      "registry_id": "ebay-mastercard",
+      "evidence_quality": "A",
+      "action": "Mark as discontinued March 24-25, 2026",
+      "notes": "eBay Mastercard and eBay Extras Mastercard both discontinued March 24-25, 2026"
+    }
+  ],
+  "name_corrections": [
+    {
+      "registry_id": "promoted-listings-general",
+      "issue": "ID says 'general' but display name shows 'Promoted Listings Standard' \u2014 correct name is 'Promoted Listings General' (renamed Summer 2024)",
+      "action": "update name to 'Promoted Listings General'",
+      "evidence_quality": "A"
+    },
+    {
+      "registry_id": "promoted-listings-priority",
+      "issue": "ID says 'priority' but display name shows 'Promoted Listings Advanced' \u2014 correct name is 'Promoted Listings Priority' (renamed Summer 2024)",
+      "action": "update name to 'Promoted Listings Priority'",
+      "evidence_quality": "A"
+    },
+    {
+      "registry_id": "promoted-offsite",
+      "issue": "Promoted Offsite LIVE at ebay.com/sellercenter/growth/ebay-advertising/promoted-offsite. Renamed from 'Offsite Ads' in July 2024 as part of eBay's adv",
+      "action": "Update name if still showing 'Offsite Ads'; confirm canonical_url to /sellercenter/growth/ebay-advertising/promoted-offsite; mark offsite-ads as renamed predecessor",
+      "evidence_quality": "A"
+    },
+    {
+      "registry_id": "ebay-academy",
+      "issue": "eBay Academy is LIVE at academy.ebay.com (not the Seller Center deep-link which redirects to homepage). Official Terms of Use at pages.ebay.com/ebay-a",
+      "action": "Update canonical URL to academy.ebay.com; note Seller Center link redirects to homepage; do NOT mark as deprecated",
+      "evidence_quality": "B"
+    },
+    {
+      "registry_id": "ebay-ambassador",
+      "issue": "eBay Ambassador Program relaunched April 2025 as full affiliate/commerce program at ambassador.ebay.com. All US users eligible from August 2025. Earn ",
+      "action": "Update entry: add ambassador.ebay.com as canonical URL; add note that program relaunched as affiliate/commerce model April 2025; distinguish from old community advocate usage; add renamedFrom: ebay-partner-network relationship note",
+      "evidence_quality": "A"
+    },
+    {
+      "registry_id": "ebay-concierge",
+      "issue": "eBay Concierge LIVE with a Help page at ebay.com/help/account/changing-account-settings/ebay-concierge?id=4358. However: eBay conducted sweeping remov",
+      "action": "Keep as live node but add critical note: membership criteria tightened to top 10% GMV; mass member removals Sept 2025; Anchor Store no longer guarantees access",
+      "evidence_quality": "A"
+    },
+    {
+      "registry_id": "ebay-fulfilment",
+      "issue": "eBay Fulfilment LIVE in UK at ebay.co.uk/sml/fulfilment. Full official name: 'eBay Fulfilment by Orange Connex'. Launched July 26, 2021. Fulfilment ce",
+      "action": "Update name to 'eBay Fulfilment by Orange Connex'; add market: UK; add canonical URL ebay.co.uk/sml/fulfilment; add note: 2025 starter offer active",
+      "evidence_quality": "A"
+    },
+    {
+      "registry_id": "ebay-guaranteed-fit",
+      "issue": "Full official name is 'eBay Guaranteed Fit' \u2014 live at pages.ebay.com/motors/ebay-guaranteed-fit/. Registry should use full name.",
+      "action": "confirm name field shows 'eBay Guaranteed Fit' not just 'Guaranteed Fit'",
+      "evidence_quality": "A"
+    },
+    {
+      "registry_id": "new-seller-journey",
+      "issue": "New Seller Journey LIVE at export.ebay.com/en/nsj/ \u2014 under the eBay Export platform (not domestic Seller Center). Application-based, limited capacity.",
+      "action": "Update canonical URL to export.ebay.com/en/nsj/; add note: scoped to international/export sellers (not domestic US Seller Hub); update parent to Export Academy umbrella if applicable",
+      "evidence_quality": "B"
+    },
+    {
+      "registry_id": "pro-trader-program",
+      "issue": "Pro Trader programs are live but named differently per market: UK = 'Account Management Services' (formerly 'Pro-Trader Plus', rebranded; \u00a3399/mo Acco",
+      "action": "Clarify market scope for pro-trader-program node; UK version may need rename to 'Account Management Services'; DE version is 'Pro Trader Programme'. Consider splitting into market-specific nodes.",
+      "evidence_quality": "B"
+    },
+    {
+      "registry_id": "seller-clinics",
+      "issue": "Seller Clinics is LIVE and DISTINCT from eBay Academy. Launched Oct 2024. One-on-one 45-min phone consultations with eBay Marketplace Advisor. US only",
+      "action": "Confirm as distinct program from eBay Academy (not a replacement); add canonical URL; correct parent: should be community/growth, not Internal Tools",
+      "evidence_quality": "A"
+    },
+    {
+      "registry_id": "cbt-seller-dashboard",
+      "issue": "CBT (Cross-Border Trade) Seller Dashboard LIVE at export.ebay.com/en/growth/seller-performance/cbt-seller-dashboard/. Tracks BBE (Bad Buyer Experience",
+      "action": "Add canonical URL export.ebay.com/en/growth/seller-performance/cbt-seller-dashboard/; correct parent to Export/CBT umbrella; expand description with full name 'Cross-Border Trade Seller Dashboard'",
+      "evidence_quality": "A"
+    },
+    {
+      "registry_id": "deals-seller-portal",
+      "issue": "Deals Seller Portal LIVE in Australia at sellerportal.ebay.com.au. Invitation-only (Managed Sellers or invitation). Two deal types: Co-funded and Sell",
+      "action": "Add market: AU; add canonical URL sellerportal.ebay.com.au; note US Deals is invite-only (no self-serve portal); update description",
+      "evidence_quality": "A"
+    },
+    {
+      "registry_id": "ebay-wow-de",
+      "issue": "eBay WOW! (DE) \u2014 official name includes '!'. Live at ebay.de/deals.",
+      "action": "update name to 'eBay WOW!'",
+      "evidence_quality": "A"
+    },
+    {
+      "registry_id": "fast-and-free",
+      "issue": "The formal 'Fast 'N Free' badge (truck icon) was retired ~2021 and replaced with specific delivery time tags: 'Free delivery in 2 days', 'Free deliver",
+      "action": "Update description: 'Fast and Free' is now informal/colloquial; formal naming is delivery time badges; status should be 'legacy' or 'functional label' not a branded product",
+      "evidence_quality": "B"
+    },
+    {
+      "registry_id": "global-shipping-toggle",
+      "issue": "Global Shipping Toggle exists in listing flow but now refers to eBay International Shipping (eIS) enrollment, not the old Global Shipping Program (GSP",
+      "action": "Update description: toggle now refers to eIS enrollment; update parent from global-shipping-program to ebay-international-shipping",
+      "evidence_quality": "B"
+    }
+  ],
+  "false_positives": [
+    {
+      "registry_id": "managed-display",
+      "reason": "No public eBay product called 'Managed Display' found 2022-2026. The self-serve display product was 'Promoted Display' (2022-2023) renamed to 'Promoted Stores' (July 2024). Enterprise display advertis",
+      "action": "Remove from registry or reclassify as legacy internal label; if referring to enterprise display, note as internal term only"
+    },
+    {
+      "registry_id": "promoted-brand",
+      "reason": "'Promoted Brand' does not exist as a named eBay advertising product. No public page, press release, or seller-facing documentation uses this name. The nearest products are 'Promoted Stores' (store-lev",
+      "action": "Remove from registry as false positive; no eBay advertising product by this name"
+    },
+    {
+      "registry_id": "ebay-buyer-guarantee",
+      "reason": "'eBay Buyer Guarantee' does not appear as a formal program name on any current eBay page. The active programs are 'eBay Money Back Guarantee' (core, global) and 'eBay Buyer Protection' (UK-specific um",
+      "action": "Remove from registry as false positive; not a formal eBay program name"
+    },
+    {
+      "registry_id": "ebay-auto",
+      "reason": "'eBay Auto' is NOT an official eBay brand. Official automotive brand is 'eBay Motors'. No official usage found.",
+      "action": "remove from registry"
+    },
+    {
+      "registry_id": "shop-with-points",
+      "reason": "PayPal program name, not eBay's. De facto broken at eBay checkout as of 2025.",
+      "action": "Remove from eBay naming registry; document as PayPal integration if needed"
+    }
+  ],
+  "duplicates_to_consolidate": [
+    {
+      "registry_id": "click-collect",
+      "canonical_id": "merge into click-and-collect",
+      "notes": "Duplicate of click-and-collect"
+    },
+    {
+      "registry_id": "assured-fit",
+      "canonical_id": "Merge: Mark assured-fit as regional alias of ebay-guaranteed-fit",
+      "notes": "Assured Fit IS eBay Guaranteed Fit with UK regional branding. Regional names: US = 'eBay Guaranteed Fit', UK = 'eBay Assured Fit', DE = 'eBay Fahrzeug"
+    },
+    {
+      "registry_id": "certified-recycler-program",
+      "canonical_id": "verify if distinct",
+      "notes": "Possible duplicate of certified-recycled-program"
+    },
+    {
+      "registry_id": "ebay-assured-fit",
+      "canonical_id": "Merge into ebay-guaranteed-fit",
+      "notes": "eBay Assured Fit = UK regional name for eBay Guaranteed Fit. Same program as assured-fit and ebay-guaranteed-fit. Three IDs for one program (ebay-guar"
+    },
+    {
+      "registry_id": "ebay-fulfilment-uk",
+      "canonical_id": "merge or clarify regional distinction",
+      "notes": "Likely duplicate of ebay-fulfilment"
+    },
+    {
+      "registry_id": "ebay-plus-membership",
+      "canonical_id": "merge into ebay-plus",
+      "notes": "Duplicate of ebay-plus"
+    },
+    {
+      "registry_id": "ebay-premium-services",
+      "canonical_id": "verify",
+      "notes": "Possible duplicate of ebay-premium-service"
+    },
+    {
+      "registry_id": "guaranteed-fit",
+      "canonical_id": "remove guaranteed-fit",
+      "notes": "Duplicate of ebay-guaranteed-fit \u2014 same program, two IDs"
+    },
+    {
+      "registry_id": "logistica-ebay-orange-connex",
+      "canonical_id": "verify",
+      "notes": "Duplicate of logistica-ebay-by-orange-connex"
+    },
+    {
+      "registry_id": "money-back-guarantee",
+      "canonical_id": "verify",
+      "notes": "Likely duplicate of ebay-money-back-guarantee \u2014 same concept, two IDs"
+    },
+    {
+      "registry_id": "preloved-partner-program",
+      "canonical_id": "merge into pre-loved-partner-program",
+      "notes": "Duplicate of pre-loved-partner-program"
+    },
+    {
+      "registry_id": "store-tier-enterprise-us",
+      "canonical_id": "merge with market: US or clarify",
+      "notes": "Duplicate of store-tier-enterprise (US-specific label)"
+    },
+    {
+      "registry_id": "store-tier-platin-de",
+      "canonical_id": "merge into store-tier-platin with market: DE",
+      "notes": "Duplicate of store-tier-platin (DE-specific)"
+    },
+    {
+      "registry_id": "store-tier-premium-plus-it",
+      "canonical_id": "merge into store-tier-premium-plus with market: IT",
+      "notes": "Duplicate of store-tier-premium-plus (IT-specific)"
+    }
+  ],
+  "net_new_candidates_from_scan": {
+    "tier_1_add_immediately": 13,
+    "tier_2_add_with_verification": 10,
+    "tier_3_investigate_before_adding": 9,
+    "campaigns_to_register": 5,
+    "additional_from_agent_research": 3,
+    "total": 40,
+    "source": "scan-summary.md + batch checkpoints + agent research"
+  },
+  "final_batch_records": 97,
+  "total_records_reviewed": 1005,
+  "target_met": true,
+  "net_new_candidates_from_final_batch": {
+    "developer_rest_apis": {
+      "count": 37,
+      "note": "All formally named REST API products with dedicated developer.ebay.com documentation pages",
+      "buy_apis": [
+        "Browse API",
+        "Deal API",
+        "Feed API (buy)",
+        "Marketing API (buy)",
+        "Marketplace Insights API",
+        "Offer API",
+        "Order API"
+      ],
+      "sell_apis": [
+        "Account API",
+        "Analytics API",
+        "Compliance API",
+        "Feed API (sell)",
+        "Finances API",
+        "Fulfillment API",
+        "Inventory API",
+        "Listing API",
+        "Logistics API",
+        "Marketing API (sell)",
+        "Metadata API",
+        "Negotiation API",
+        "Recommendation API",
+        "Stores API"
+      ],
+      "commerce_apis": [
+        "Catalog API",
+        "Charity API",
+        "Identity API",
+        "Media API",
+        "Notification API",
+        "Taxonomy API",
+        "Translation API"
+      ],
+      "developer_apis": [
+        "Client Registration API",
+        "Key Management API"
+      ],
+      "new_q4_2025": [
+        "Feedback API",
+        "Message API",
+        "Leads API"
+      ],
+      "graphql": [
+        "Inventory Mapping API (GA)"
+      ]
+    },
+    "regional_new_candidates": [
+      {
+        "name": "Top-Service",
+        "market": "DE",
+        "evidence": "A",
+        "notes": "New Oct 2024 seller badge (blue star); replaces eBay Plus and eBay Garantie seller labels; automatic, no fee"
+      },
+      {
+        "name": "Additional Protection",
+        "market": "DE",
+        "evidence": "B",
+        "notes": "New 2025 \u2014 2nd-year insurance for refurbished electronics via Allianz Partners"
+      },
+      {
+        "name": "eBay Plus",
+        "market": "AU",
+        "evidence": "A",
+        "notes": "Live AU$4.99/mo; 15M+ eligible items; promotions Nov 2025"
+      },
+      {
+        "name": "eBay Plus",
+        "market": "DE",
+        "evidence": "A",
+        "notes": "Buyer subscription live; seller-side badge retired Oct 2024 \u2192 Top-Service"
+      },
+      {
+        "name": "Verk\u00e4uferschutz",
+        "market": "DE",
+        "evidence": "A",
+        "notes": "Live seller protection; updated August 2025"
+      },
+      {
+        "name": "VeRO",
+        "market": "global",
+        "evidence": "A",
+        "notes": "Verified Rights Owner Program \u2014 long-established Trust/Legal node missing from registry"
+      }
+    ],
+    "buyer_program_corrections": [
+      {
+        "name": "eBay Garantie",
+        "market": "DE",
+        "action": "Mark seller badge as discontinued Oct 2024; buyer guarantee aspect may continue under different framing"
+      },
+      {
+        "name": "eBay Bucks",
+        "correction": "Deprecated date wrong \u2014 correct to 2024-04-02"
+      },
+      {
+        "name": "eBay Mastercard",
+        "correction": "Add discontinued date 2026-03-24"
+      }
+    ]
+  }
+}

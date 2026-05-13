@@ -1,0 +1,12 @@
+{
+  "batch": "4",
+  "results_loaded": 40,
+  "matched": 40,
+  "merged": 5,
+  "created": 33,
+  "skipped": [],
+  "consolidated_at": "2026-04-21T01:36:20.045Z",
+  "evidence_before": 188,
+  "evidence_after": 221,
+  "coverage_percent": 24.6
+}

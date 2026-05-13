@@ -20,6 +20,7 @@ export function evaluateGates(facts: NamingFacts): GateEvaluation {
   const g3 = evaluateG3(facts);
   const g4 = evaluateG4(facts);
   const g5 = evaluateG5(facts);
+  const g6 = evaluateG6(facts);
 
   if (g0.status !== "Unknown" && g0.status !== "Pending") markGateAnswered(facts, "G0");
   if (g1.status !== "Unknown" && g1.status !== "Pending") markGateAnswered(facts, "G1");
@@ -27,13 +28,14 @@ export function evaluateGates(facts: NamingFacts): GateEvaluation {
   if (g3.status !== "Unknown" && g3.status !== "Pending") markGateAnswered(facts, "G3");
   if (g4.status !== "Unknown" && g4.status !== "Pending") markGateAnswered(facts, "G4");
   if (g5.status !== "Unknown" && g5.status !== "Pending") markGateAnswered(facts, "G5");
+  if (g6.status !== "Unknown" && g6.status !== "Pending") markGateAnswered(facts, "G6");
 
-  const allGates = [g0, g1, g2, g3, g4, g5];
+  const allGates = [g0, g1, g2, g3, g4, g5, g6];
   const any_failures = allGates.some(g => g.status === "Fail");
   const missing_info = allGates.some(g => g.status === "Unknown" || g.status === "Pending");
 
   return {
-    gate_results: { G0: g0, G1: g1, G2: g2, G3: g3, G4: g4, G5: g5 },
+    gate_results: { G0: g0, G1: g1, G2: g2, G3: g3, G4: g4, G5: g5, G6: g6 },
     any_failures,
     missing_info,
   };
@@ -277,5 +279,53 @@ function evaluateG5(facts: NamingFacts): GateResult {
     status: "Unknown",
     evidence: "Legal review has not been completed for this offering.",
     reasoning: "We need to know whether legal has screened this for trademark availability and regulatory compliance in the target markets. Some markets have mandatory consumer-protection terminology that cannot be overridden by a brand name, which would affect whether a proper name is even viable.",
+  };
+}
+
+/**
+ * G6: Linguistic & Cultural Fit
+ * Does the product concept work across non-English-speaking target markets?
+ */
+function evaluateG6(facts: NamingFacts): GateResult {
+  const { markets } = facts.facts;
+  const wasExplicitlyAnswered = isGateAnswered(facts, "G6");
+
+  const nonEnglishMarkets = markets.filter(m => {
+    const english = ["US", "UK", "AU", "CA", "IE", "NZ", "us", "uk", "au", "ca", "ie", "nz"];
+    return !english.includes(m);
+  });
+
+  if (markets.length > 0 && nonEnglishMarkets.length === 0) {
+    return {
+      label: GATE_DEFINITIONS.G6.label,
+      status: "Pass",
+      evidence: `All target markets are English-speaking: ${markets.join(", ")}.`,
+      reasoning: "When all target markets use English as their primary language, cross-linguistic risks (false cognates, pronunciation issues, cultural connotations, script incompatibility) do not apply. The name only needs to work in one language family.",
+    };
+  }
+
+  if (wasExplicitlyAnswered) {
+    return {
+      label: GATE_DEFINITIONS.G6.label,
+      status: "Pass",
+      evidence: `Non-English markets present (${nonEnglishMarkets.join(", ")}) — linguistic and cultural fit confirmed.`,
+      reasoning: "The naming direction has been reviewed against the non-English target markets and no significant linguistic barriers have been identified. The concept can be carried across language boundaries without harmful connotations, pronunciation issues, or script incompatibility.",
+    };
+  }
+
+  if (nonEnglishMarkets.length > 0) {
+    return {
+      label: GATE_DEFINITIONS.G6.label,
+      status: "Pending",
+      evidence: `Non-English markets targeted: ${nonEnglishMarkets.join(", ")}. Linguistic fit review not yet completed.`,
+      reasoning: "The brief targets markets where English is not the primary language. Before finalizing a naming direction, we need to verify that the proposed concept (and any names being considered) does not carry harmful connotations, pose pronunciation challenges, or conflict with regulatory naming requirements in those markets.",
+    };
+  }
+
+  return {
+    label: GATE_DEFINITIONS.G6.label,
+    status: "Unknown",
+    evidence: "No target market information found in the brief.",
+    reasoning: "We need to know which markets this product will launch in before we can assess cross-language risk. If non-English markets are included, a linguistic and cultural fit review is required before naming.",
   };
 }

@@ -1,0 +1,270 @@
+[
+  {
+    "canonical_name": "Good Til Cancelled",
+    "node_id": "good-til-cancelled",
+    "url": "https://pages.ebay.com/help/pay/require-immediate-payment.html",
+    "title": "How immediate payment works",
+    "source_type": "ebay_official",
+    "notes": "Fixed Price listings automatically set to Good Till Canceled; renew monthly on same day"
+  },
+  {
+    "canonical_name": "Google Pay",
+    "node_id": "google-pay",
+    "url": "https://www.ebay.com/help/selling/listings/choosing-get-paid/accepting-payment-methods?id=4184",
+    "title": "Accepted payment methods",
+    "source_type": "ebay_official",
+    "notes": "Google Pay automatically added as payment option for managed payments sellers"
+  },
+  {
+    "canonical_name": "Green Monday",
+    "node_id": "green-monday",
+    "url": "https://community.ebay.com/t5/Announcements/It-s-so-eBay-being-Green-Monday/ba-p/31429812",
+    "title": "It's so eBay being Green (Monday)",
+    "source_type": "ebay_official",
+    "year": 2007,
+    "notes": "eBay coined term in 2007; second Monday of December - busiest last-minute holiday shopping day"
+  },
+  {
+    "canonical_name": "eBay Guaranteed Fit",
+    "node_id": "guaranteed-fit",
+    "url": "https://pages.ebay.com/motors/ebay-guaranteed-fit/",
+    "title": "eBay Guaranteed Fit",
+    "source_type": "ebay_official",
+    "notes": "Guarantees automotive parts fit buyer's vehicle or free return; excludes tires and wheels"
+  },
+  {
+    "canonical_name": "Guest Checkout",
+    "node_id": "guest-checkout",
+    "url": "https://pages.ebay.com/bb/en-us/buyandsell/myebay/guests.html",
+    "title": "My eBay for Guests",
+    "source_type": "ebay_official",
+    "notes": "Allows purchases without eBay account; access via email confirmation with guest order code"
+  },
+  {
+    "canonical_name": "Authenticity Guarantee for Handbags",
+    "node_id": "handbag-authentication",
+    "url": "https://pages.ebay.com/authenticity-guarantee-handbags-seller/",
+    "title": "Authenticity Guarantee for Handbags Sellers",
+    "source_type": "ebay_official",
+    "notes": "Free authentication for handbags $500+; optional $40 service for $200-$499"
+  },
+  {
+    "canonical_name": "Handling Time",
+    "node_id": "handling-time",
+    "url": "https://www.ebay.com/sellercenter/shipping/preparing-your-shipment/handling-time",
+    "title": "Handling time",
+    "source_type": "ebay_official",
+    "notes": "Business days between payment and carrier scan; recommended 2 days or less"
+  },
+  {
+    "canonical_name": "Help Center",
+    "node_id": "help-center",
+    "url": "https://help.ebay.com/",
+    "title": "eBay Customer Service",
+    "source_type": "ebay_official",
+    "notes": "Main eBay help and customer service portal"
+  },
+  {
+    "canonical_name": "Hermes PaketShop",
+    "node_id": "hermes-paketshop",
+    "url": "https://community.ebay.de/t5/Versand/Hermes-Paketshop/td-p/4802442",
+    "title": "Hermes Paketshop",
+    "source_type": "ebay_official",
+    "notes": "Delivery to Hermes PaketShop locations in Germany; policy changes effective January 2026"
+  },
+  {
+    "canonical_name": "Hub vendeur",
+    "node_id": "hub-vendeur",
+    "url": "https://www.ebay.fr/help/selling/selling-tools/hub-vendeur?id=4095",
+    "title": "Hub vendeur",
+    "source_type": "ebay_official",
+    "notes": "French Seller Hub - centralized seller management tool; free for all sellers with at least one sale"
+  },
+  {
+    "canonical_name": "Image Requirements",
+    "node_id": "image-requirements",
+    "url": "https://developer.ebay.com/api-docs/sell/static/inventory/managing-image-media.html",
+    "title": "Managing images",
+    "source_type": "ebay_official",
+    "notes": "Supports JPG, GIF, PNG, BMP, TIFF, AVIF, HEIC, WEBP; max 12MB, 15,000 pixel dimension limit"
+  },
+  {
+    "canonical_name": "Immediate Payment Required",
+    "node_id": "immediate-payment-required",
+    "url": "http://pages.ebay.com/help/pay/require-immediate-payment.html",
+    "title": "How immediate payment works",
+    "source_type": "ebay_official",
+    "notes": "Requires payment at checkout for fixed-price and auction Buy It Now; not available with Best Offer"
+  },
+  {
+    "canonical_name": "Import Charges",
+    "node_id": "import-charges",
+    "url": "https://www.ebay.com/help/selling/fees-credits-invoices/taxes-import-charges?id=4121",
+    "title": "Taxes and import charges",
+    "source_type": "ebay_official",
+    "notes": "Customs duties, taxes, and fees for international purchases; paid at checkout or on delivery"
+  },
+  {
+    "canonical_name": "Impressions",
+    "node_id": "impressions",
+    "url": "https://developer.ebay.com/api-docs/sell/static/performance/traffic-report.html",
+    "title": "Traffic report details",
+    "source_type": "ebay_official",
+    "notes": "Appearance of item thumbnail on eBay search pages; tracked via Analytics API and Seller Hub"
+  },
+  {
+    "canonical_name": "In-Store Pickup",
+    "node_id": "in-store-pickup",
+    "url": "https://pages.ebay.com/instorepickup/",
+    "title": "eBay: In-Store pickup",
+    "source_type": "ebay_official",
+    "notes": "US site feature for large retail sellers; equivalent Click and Collect on UK, AU, DE sites"
+  },
+  {
+    "canonical_name": "In-Store Pickup",
+    "node_id": "in-store-pickup-us",
+    "url": "https://pages.ebay.com/instorepickup/",
+    "title": "eBay: In-Store pickup",
+    "source_type": "ebay_official",
+    "notes": "Buy online, pickup in store (BOPIS); available to eligible large retail merchants"
+  },
+  {
+    "canonical_name": "Indefinite Suspension",
+    "node_id": "indefinite-suspension",
+    "url": "https://community.ebay.com/t5/Selling/Indefinite-suspension/td-p/32907083",
+    "title": "Indefinite suspension",
+    "source_type": "ebay_official",
+    "notes": "Permanent account suspension; no recovery; funds held 60 days; MC999 code commonly used"
+  },
+  {
+    "canonical_name": "Instant Payout",
+    "node_id": "instant-payout",
+    "url": "https://community.ebay.com/t5/Payments/Starting-July-1-2024-Ebay-will-be-charging-a-2-flat-fee-for/td-p/34516392",
+    "title": "Starting July 1, 2024, Ebay will be charging a $2 flat fee for express payouts",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Express payout to debit card within 30 minutes for $2 flat fee; started July 2024"
+  },
+  {
+    "canonical_name": "Intellectual Property",
+    "node_id": "intellectual-property",
+    "url": "https://www.ebay.com/help/policies/listing-policies/selling-policies/intellectual-property-vero-program?id=4349",
+    "title": "Intellectual property policy",
+    "source_type": "ebay_official",
+    "notes": "Verified Rights Owner (VeRO) program for copyright, trademark, patent infringement reporting"
+  },
+  {
+    "canonical_name": "International Site Visibility",
+    "node_id": "international-site-visibility",
+    "url": "https://www.ebay.com/help/selling/selling/selling-internationally?id=4132",
+    "title": "Selling internationally",
+    "source_type": "ebay_official",
+    "notes": "Optional upgrade for listings to appear in top search results on international eBay sites"
+  },
+  {
+    "canonical_name": "International Standard Delivery",
+    "node_id": "international-standard-delivery",
+    "url": "https://www.ebay.com/help/selling/shipping-items/setting-shipping-options/ebay-international-standard-delivery?id=5011",
+    "title": "eBay international standard delivery",
+    "source_type": "ebay_official",
+    "notes": "Ships to 210+ countries; $100 protection included; DDU (Delivered Duties Unpaid)"
+  },
+  {
+    "canonical_name": "Inventory Management",
+    "node_id": "inventory-management",
+    "url": "https://www.ebay.com/sellercenter/listings/ebay-bulk-listing-tools",
+    "title": "eBay bulk listing tools",
+    "source_type": "ebay_official",
+    "notes": "Seller Hub Reports, Bulk Listing Tool, Inventory API for SKU-based inventory management"
+  },
+  {
+    "canonical_name": "Issue Resolution Center",
+    "node_id": "issue-resolution-center",
+    "url": "https://www.ebay.com/sellercenter/news/2026-april/issue-resolution-center-launch",
+    "title": "Issue Resolution Center Launch",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Launched March 2026; central place to view and manage compliance-related tasks"
+  },
+  {
+    "canonical_name": "Item Condition",
+    "node_id": "item-condition",
+    "url": "https://www.ebay.com/help/selling/listings/creating-managing-listings/item-conditions-category?id=4765",
+    "title": "Item condition by category",
+    "source_type": "ebay_official",
+    "notes": "Preset condition options vary by category; New, Certified/Seller Refurbished, Used categories"
+  },
+  {
+    "canonical_name": "Item Location",
+    "node_id": "item-location",
+    "url": "https://www.ebay.com/help/policies/listing-policies/item-location-policy?id=4244",
+    "title": "Item location policy",
+    "source_type": "ebay_official",
+    "notes": "Sellers must provide accurate ship-from location; violations result in listing removal or suspension"
+  },
+  {
+    "canonical_name": "Item Not Received",
+    "node_id": "item-not-received",
+    "url": "https://www.ebay.com/help/buying/returns-refunds/get-help-item-hasnt-arrived?id=4042",
+    "title": "Get help with an item that hasn't arrived",
+    "source_type": "ebay_official",
+    "notes": "Money Back Guarantee; report within 30 days of delivery date; refund within 3-5 business days"
+  },
+  {
+    "canonical_name": "Item Specifics",
+    "node_id": "item-specifics",
+    "url": "https://www.ebay.com/sellercenter/listings/item-specifics",
+    "title": "Item specifics",
+    "source_type": "ebay_official",
+    "notes": "Descriptive keywords (brand, size, color, etc.); improve search visibility and filtering"
+  },
+  {
+    "canonical_name": "Item Specifics",
+    "node_id": "item-specifics-multi-market",
+    "url": "https://www.ebay.com/sellercenter/listings/item-specifics",
+    "title": "Item specifics",
+    "source_type": "ebay_official",
+    "notes": "Required, Required Soon, and Recommended item specifics; critical for search filtering"
+  },
+  {
+    "canonical_name": "Authenticity Guarantee for Jewelry",
+    "node_id": "jewelry-authentication",
+    "url": "https://pages.ebay.com/authenticity-guarantee-jewelry-seller/",
+    "title": "Authenticity Guarantee for Jewelry",
+    "source_type": "ebay_official",
+    "notes": "Free for $500+; $40 for $200-$499; authenticated by GIA; includes loose diamonds"
+  },
+  {
+    "canonical_name": "Keyword Targeting",
+    "node_id": "keyword-targeting",
+    "url": "https://www.ebay.com/help/selling/ebay-advertising/promoted-listings/priority-campaign-strategy?id=5299",
+    "title": "Priority campaign strategy",
+    "source_type": "ebay_official",
+    "notes": "Promoted Listings Advanced manual targeting; exact and phrase match; 10-15 keywords recommended"
+  },
+  {
+    "canonical_name": "Klarna",
+    "node_id": "klarna",
+    "url": "https://www.ebay.com/help/buying/paying-items/paying-klarna?id=5338",
+    "title": "eBay | Paying with Klarna",
+    "source_type": "ebay_official",
+    "notes": "Pay in 4 (interest-free) or Klarna Financing (6-24 months); $35-$30,000 purchase range"
+  },
+  {
+    "canonical_name": "Language Translation",
+    "node_id": "language-translation",
+    "url": "https://developer.ebay.com/api-docs/commerce/translation/resources/language/methods/translate",
+    "title": "translate: eBay Translation API",
+    "source_type": "ebay_official",
+    "year": 2018,
+    "notes": "API for translating listing titles and descriptions; machine learning optimized for e-commerce"
+  },
+  {
+    "canonical_name": "Late Shipment Rate",
+    "node_id": "late-shipment-rate",
+    "url": "https://www.ebay.com/help/policies/selling-policies/seller-standards-policy?id=4347",
+    "title": "Seller standards policy",
+    "source_type": "ebay_official",
+    "notes": "Must be ≤3% with ≤5 late shipments for Top Rated; carrier scan must occur within handling time"
+  }
+]

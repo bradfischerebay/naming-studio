@@ -1,0 +1,192 @@
+{
+  "phase": "Phase 5: Additional Round 2 Research",
+  "date": "2026-04-21",
+  "agents_launched": 6,
+  "programs_researched": 23,
+  "research_results": [
+    {
+      "canonical_name": "eBay for Charity",
+      "url": "https://charity.ebay.com",
+      "title": "eBay for Charity | Doing Good Together Through Our Charity Program",
+      "source_type": "ebay_official",
+      "year": 2003,
+      "notes": "Launched in November 2003 as 'eBay Giving Works', rebranded to 'eBay for Charity' before 2015."
+    },
+    {
+      "canonical_name": "eBay Foundation",
+      "url": "https://www.ebayinc.com/impact/ebay-foundation/",
+      "title": "eBay Foundation - eBay Inc.",
+      "source_type": "ebay_official",
+      "year": 1998,
+      "notes": "Established in 1998 as the first corporate foundation endowed with pre-IPO stock."
+    },
+    {
+      "canonical_name": "eBay Community Forums",
+      "url": "https://community.ebay.com",
+      "title": "Home - The eBay Community",
+      "source_type": "ebay_official",
+      "year": 1996,
+      "notes": "Launched February 1996 as the Feedback Forum."
+    },
+    {
+      "canonical_name": "Small Business Ambassador Network",
+      "url": "https://www.ebaymainstreet.com/sban",
+      "title": "SBAN | eBay Main Street",
+      "source_type": "ebay_official",
+      "year": null,
+      "notes": "Government relations and advocacy program for eBay sellers. 100+ members in 26 countries."
+    },
+    {
+      "canonical_name": "eBay Mobile App",
+      "url": "https://pages.ebay.com/mobile-app/",
+      "title": "Life's easier in the eBay app",
+      "source_type": "ebay_official",
+      "year": 2008,
+      "notes": "Launched July 10, 2008 as a launch partner for the Apple App Store. Android version launched February 16, 2010."
+    },
+    {
+      "canonical_name": "eBay Motors App",
+      "url": "https://pages.ebay.com/motors/motorsapp/",
+      "title": "Motors app",
+      "source_type": "ebay_official",
+      "year": 2019,
+      "notes": "Launched December 12, 2019. Dedicated app for buying/selling vehicles and automotive parts."
+    },
+    {
+      "canonical_name": "eBay Mobile Web",
+      "url": "https://pages.ebay.com/mobile/mobileweb.html",
+      "title": "eBay: Mobile - Mobile Web",
+      "source_type": "ebay_official",
+      "year": 2003,
+      "notes": "Mobile web experience accessible at m.ebay.com. First launched in 2003, redesigned in 2008."
+    },
+    {
+      "canonical_name": "Terapeak Product Research",
+      "url": "https://www.ebay.com/help/selling/selling-tools/terapeak-research?id=4853",
+      "title": "Product research | eBay",
+      "source_type": "ebay_official",
+      "year": 2017,
+      "notes": "eBay acquired Terapeak in December 2017, made free to all Seller Hub sellers in April 2021."
+    },
+    {
+      "canonical_name": "Traffic Reports",
+      "url": "https://export.ebay.com/en/services-tools/seller-hub/monitoring-your-business-in-seller-hub/",
+      "title": "How to monitor your business in Seller Hub",
+      "source_type": "ebay_official",
+      "year": 2016,
+      "notes": "Part of Seller Hub Performance tab. Available since Seller Hub launch in 2016."
+    },
+    {
+      "canonical_name": "Sales Reports",
+      "url": "https://www.ebay.com/help/selling/selling-tools/seller-hub-reports?id=4096",
+      "title": "Seller Hub Reports",
+      "source_type": "ebay_official",
+      "year": 2016,
+      "notes": "Part of Seller Hub. Available since launch in 2016."
+    },
+    {
+      "canonical_name": "Promoted Listings Reports",
+      "url": "https://www.ebay.com/help/selling/ebay-advertising/promoted-listings-overview?id=5295",
+      "title": "Promoted Listings overview",
+      "source_type": "ebay_official",
+      "year": 2015,
+      "notes": "Reports accessible via Advertising dashboard in Seller Hub."
+    },
+    {
+      "canonical_name": "eBay Live",
+      "url": "https://www.ebay.com/help/buying/ebay-live/ebay-live?id=5421",
+      "title": "Livestream shopping with eBay Live",
+      "source_type": "ebay_official",
+      "year": 2022,
+      "notes": "Launched June 16, 2022. Real-time livestream shopping experience."
+    },
+    {
+      "canonical_name": "eBay Open",
+      "url": "https://www.ebay.com/sellercenter/ebay-for-business/ebay-open",
+      "title": "eBay Open: On the Road",
+      "source_type": "ebay_official",
+      "year": 2016,
+      "notes": "First eBay Open held in 2016 in Las Vegas. Annual seller conference."
+    },
+    {
+      "canonical_name": "eBay Live on Tour",
+      "url": "https://www.ebay.com/ebaylive/tour",
+      "title": "eBay Live on Tour",
+      "source_type": "ebay_official",
+      "year": 2025,
+      "notes": "Launched June 14, 2025. Pop-up livestream shopping events across U.S. cities."
+    },
+    {
+      "canonical_name": "eBay Refurbished",
+      "url": "https://pages.ebay.com/refurbished/",
+      "title": "eBay Refurbished | Save up to 50% on quality products",
+      "source_type": "ebay_official",
+      "year": 2021,
+      "notes": "Four-tier channel brand program launched Nov 9, 2021."
+    },
+    {
+      "canonical_name": "Certified Refurbished",
+      "url": "https://www.ebay.com/help/selling/listings/creating-managing-listings/item-conditions-category?id=4765",
+      "title": "Item condition by category",
+      "source_type": "ebay_official",
+      "year": 2020,
+      "notes": "Originally standalone program Oct 21, 2020, became premium tier of eBay Refurbished in 2021."
+    },
+    {
+      "canonical_name": "Seller Refurbished",
+      "url": "https://www.ebay.com/help/selling/listings/creating-managing-listings/item-conditions-category?id=4765",
+      "title": "Item condition by category",
+      "source_type": "ebay_official",
+      "year": null,
+      "notes": "Legacy seller-certified condition. Being phased out as of Aug 2025."
+    },
+    {
+      "canonical_name": "Open Box",
+      "url": "https://www.ebay.com/help/selling/listings/creating-managing-listings/item-conditions-category?id=4765",
+      "title": "Item condition by category",
+      "source_type": "ebay_official",
+      "year": null,
+      "notes": "Standard item condition. Distinct from Certified Open Box program."
+    },
+    {
+      "canonical_name": "Manufacturer Refurbished",
+      "url": "https://www.ebay.com/help/selling/listings/creating-managing-listings/item-conditions-category?id=4765",
+      "title": "Item condition by category",
+      "source_type": "ebay_official",
+      "year": null,
+      "notes": "Legacy product condition. Similar to but separate from Certified Refurbished tier."
+    },
+    {
+      "canonical_name": "eBay Plus",
+      "url": "https://pages.ebay.com/ebay-plus/",
+      "title": "eBay Plus",
+      "source_type": "ebay_official",
+      "year": 2015,
+      "notes": "Subscription program launched in Australia 2015, expanded to Germany 2017."
+    },
+    {
+      "canonical_name": "Top Rated Plus",
+      "url": "https://www.ebay.com/sellercenter/protections/top-rated-program",
+      "title": "Top Rated Seller Program | Seller Center",
+      "source_type": "ebay_official",
+      "year": 2009,
+      "notes": "Enhanced TRS badge. Part of Top-Rated Seller program launched July 2009."
+    },
+    {
+      "canonical_name": "Volume Pricing",
+      "url": "https://www.ebay.com/help/selling/listings/creating-managing-listings/adding-volume-pricing-listing?id=4144",
+      "title": "Adding volume pricing to your listing",
+      "source_type": "ebay_official",
+      "year": null,
+      "notes": "Multi-quantity discount feature. Buyers save when purchasing 2+ items."
+    },
+    {
+      "canonical_name": "Store Subscription",
+      "url": "https://www.ebay.com/sellercenter/payments-and-fees/subscriptions-and-fees",
+      "title": "Subscriptions and fees | Seller Center",
+      "source_type": "ebay_official",
+      "year": 2001,
+      "notes": "eBay Stores subscription tiers launched June 2001."
+    }
+  ]
+}

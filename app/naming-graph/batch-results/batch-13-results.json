@@ -1,0 +1,389 @@
+[
+  {
+    "canonical_name": "Product Video",
+    "node_id": "product-video",
+    "url": "https://www.ebay.com/sellercenter/listings/seller-uploaded-videos",
+    "title": "Seller uploaded videos | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Sellers can add videos to listings to bring products to life. Videos appear after the first image in the gallery on mobile apps. Supports product demonstrations, instructions, and behind-the-scenes content."
+  },
+  {
+    "canonical_name": "Prohibited Items List",
+    "node_id": "prohibited-items-list",
+    "url": "https://pages.ebay.com/help/policies/items-ov.html",
+    "title": "Prohibited and restricted items - overview",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Comprehensive list of items that cannot be sold on eBay, including firearms, drugs, counterfeit items, and other prohibited categories. Sellers receive email notifications if listings are removed for policy violations."
+  },
+  {
+    "canonical_name": "Promoted Listings Advanced",
+    "node_id": "promoted-listings-advanced",
+    "url": "https://www.ebay.com/sellercenter/growth/promoted-listings/promoted-listings-advanced",
+    "title": "Promoted Listings Advanced | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Cost-per-click advertising with priority access to ad placements. Now branded as the 'priority campaign strategy' under Promoted Listings. Sellers only pay for clicks with advanced targeting controls."
+  },
+  {
+    "canonical_name": "Promoted Listings Dashboard",
+    "node_id": "promoted-listings-dashboard",
+    "url": "https://pages.ebay.com/seller-center/listing-and-marketing/promoted-listings.html",
+    "title": "Promoted Listings | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Campaign dashboard provides detailed listing-level performance metrics including impressions, clicks, sold items, CTR, and sales conversion rate. Accessible via Seller Hub."
+  },
+  {
+    "canonical_name": "Promoted Listings Express",
+    "node_id": "promoted-listings-express",
+    "url": "https://www.ebay.com/sellercenter/growth/promoted-listings/promoted-listings-express",
+    "title": "Promoted Listings Express | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Flexible campaign options with general and priority strategies. General strategy pays when item sells after click; priority strategy pays per click with advanced targeting."
+  },
+  {
+    "canonical_name": "Promoted Listings Standard",
+    "node_id": "promoted-listings-general",
+    "url": "https://www.ebay.com/sellercenter/growth/promoted-listings/promoted-listings-standard",
+    "title": "Promoted Listings Standard | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Cost-per-sale campaign strategy with general access to ad placements. Available to Above Standard and Top Rated sellers. Ad rate charged only when buyer clicks and purchases within 30 days."
+  },
+  {
+    "canonical_name": "Promoted Listings Standard",
+    "node_id": "promoted-listings-standard",
+    "url": "https://www.ebay.com/sellercenter/growth/promoted-listings/promoted-listings-standard",
+    "title": "Promoted Listings Standard | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Cost-per-sale campaign strategy with general access to ad placements. Available to Above Standard and Top Rated sellers. Ad rate charged only when buyer clicks and purchases within 30 days."
+  },
+  {
+    "canonical_name": "Promoted Offsite",
+    "node_id": "promoted-offsite",
+    "url": "https://www.ebay.com/sellercenter/growth/ebay-advertising/promoted-offsite",
+    "title": "Promoted Offsite | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Dynamic cost-per-click advertising solution that increases traffic with ads on external channels like Google. Includes Halo sales tracking for related item purchases within 30 days of click."
+  },
+  {
+    "canonical_name": "Promoted Stores",
+    "node_id": "promoted-stores",
+    "url": "https://www.ebay.com/sellercenter/growth/ebay-advertising/promoted-stores",
+    "title": "Promoted Stores | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Advertising solution that highlights store coupons or categories in high visibility placements including above search results. Features store name, logo, and top performing listings."
+  },
+  {
+    "canonical_name": "Promoted Stores Custom",
+    "node_id": "promoted-stores-custom",
+    "url": "https://www.ebay.com/sellercenter/news/2026-january/promoted-stores",
+    "title": "Promoted Stores | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Allows sellers to select up to 1,000 listings with 10 featured items, and choose custom landing pages for store ads. Provides manual control over ad content and landing page destinations."
+  },
+  {
+    "canonical_name": "Promoted Stores",
+    "node_id": "promoted-stores-multi-market",
+    "url": "https://www.ebay.com/sellercenter/growth/ebay-advertising/promoted-stores",
+    "title": "Promoted Stores | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Advertising solution that highlights store coupons or categories in high visibility placements including above search results. Features store name, logo, and top performing listings."
+  },
+  {
+    "canonical_name": "Promotional Codes",
+    "node_id": "promotional-codes",
+    "url": "https://pages.ebay.com/seller-center/listing-and-marketing/promotions-manager.html",
+    "title": "Seller Hub Discounts | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Sellers can create discount codes for buyers through Seller Hub Discounts. Codes can be shared privately or publicly on social media. eBay also runs periodic promotional code campaigns for buyers."
+  },
+  {
+    "canonical_name": "Promotional Credit",
+    "node_id": "promotional-credit",
+    "url": "https://pages.ebay.com/promo/2021/0819/sio.html",
+    "title": "Send an offer and get 50% off final value fees | eBay.com",
+    "source_type": "ebay_official",
+    "year": 2021,
+    "notes": "eBay offers promotional credits for final value fees, Promoted Listings, and buyer coupons. Credits typically processed within 60 days and cannot exceed actual fees charged."
+  },
+  {
+    "canonical_name": "Proxy Bidding",
+    "node_id": "proxy-bidding",
+    "url": "https://pages.ebay.com/help/buy/bidding-overview.html",
+    "title": "All about bidding | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Automatic bidding system where buyers enter maximum bid amount and eBay automatically raises bids in small increments to maintain high bid position. Maximum bid remains confidential."
+  },
+  {
+    "canonical_name": "Purchase History",
+    "node_id": "purchase-history",
+    "url": "https://pages.ebay.com/help/search/questions/search-item-number.html",
+    "title": "Advanced search | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Stores 7 years of order information in My eBay. Provides access to return items, pay for purchases, and view order details. Central hub for managing all past purchases."
+  },
+  {
+    "canonical_name": "Purchase Limits",
+    "node_id": "purchase-limits",
+    "url": "https://pages.ebay.com/help/sell/limits-on-buyers.html",
+    "title": "Buying limits and restrictions | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Account blocks limiting purchase ability, placed by sellers or eBay. Includes gift card limits ($1000/day, $1500/month) and Spendable funds limits ($2000/transaction, $5000/30 days)."
+  },
+  {
+    "canonical_name": "Purchase Protection",
+    "node_id": "purchase-protection",
+    "url": "https://pages.ebay.com/ebay-buyer-protection/",
+    "title": "eBay Buyer Protection | eBay.com",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Includes Money Back Guarantee, Vehicle Purchase Protection (up to $100k), and Business Equipment Purchase Protection. Covers non-delivery and items not as described at no extra charge."
+  },
+  {
+    "canonical_name": "Push Notifications",
+    "node_id": "push-notifications",
+    "url": "https://pages.ebay.com/push-notifications/",
+    "title": "How to Enable eBay App Notifications | eBay.com",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Real-time notifications for orders, offers, auctions, saved searches, and eBay Live events. Available via app, email, or SMS. Used for two-factor authentication on iOS and Android."
+  },
+  {
+    "canonical_name": "Quantity Available",
+    "node_id": "quantity-available",
+    "url": "https://pages.ebay.com/sh/reports/help/create-listings-bulk/",
+    "title": "INVENTORY ONBOARDING GUIDE | eBay.com",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Field specifying number of items available for each trait combination in listings. Used in variation listings with multiple options like colors or sizes."
+  },
+  {
+    "canonical_name": "Quantity Limits",
+    "node_id": "quantity-limits",
+    "url": "https://pages.ebay.com/help/sell/sellinglimits.html",
+    "title": "Selling limits | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Monthly limits on number of listings and total value to help sellers grow business manageably. Reviewed and adjusted monthly based on sales volume and feedback. Category-specific limits may apply."
+  },
+  {
+    "canonical_name": "Quantity Selector",
+    "node_id": "quantity-selector",
+    "url": "https://pages.ebay.com/help/sell/listing-variations.html",
+    "title": "Multi-quantity listings and listings with variations | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Interface for buyers to select quantity when purchasing. Sellers can toggle quantity display preferences to show exact number of items left. Supports volume pricing for tiered discounts."
+  },
+  {
+    "canonical_name": "Quick Listing Tool",
+    "node_id": "quick-listing-tool",
+    "url": "https://pages.ebay.com/sell/quick-listing-tool/help.html",
+    "title": "How to use the quick listing tool",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Available on eBay.com and mobile app. Allows saving up to 250 drafts (compared to 5,000 in Seller Hub bulk tools). Simplified listing creation for sellers with 25-100 items."
+  },
+  {
+    "canonical_name": "Quick Listing Tool",
+    "node_id": "quick-listing-tool-multi-market",
+    "url": "https://pages.ebay.com/sell/quick-listing-tool/help.html",
+    "title": "How to use the quick listing tool",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Available on eBay.com and mobile app. Allows saving up to 250 drafts (compared to 5,000 in Seller Hub bulk tools). Simplified listing creation for sellers with 25-100 items."
+  },
+  {
+    "canonical_name": "Real-Time Notifications",
+    "node_id": "real-time-notifications",
+    "url": "https://pages.ebay.com/push-notifications/",
+    "title": "How to Enable eBay App Notifications | eBay.com",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Push notifications providing real-time updates on orders, offers, auctions, price changes, and delivery steps. Available through eBay app, email, or SMS with customizable preferences."
+  },
+  {
+    "canonical_name": "Real-Time Tracking",
+    "node_id": "real-time-tracking",
+    "url": "https://pages.ebay.com/USPS/tracking.html",
+    "title": "Track/Confirm Delivery",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Track delivery status through My eBay for USPS and UPS packages. eBay Labels provides free automatic tracking with no manual entry needed. International shipments include dual tracking numbers."
+  },
+  {
+    "canonical_name": "Recently Viewed",
+    "node_id": "recently-viewed",
+    "url": "https://pages.ebay.com/help/find/recently-viewed.html",
+    "title": "Your recently viewed items | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Feature tracking items browsed while signed in. Accessible from My eBay, homepage, or search results. Users can clear all viewed items but cannot delete individual items."
+  },
+  {
+    "canonical_name": "Recently Viewed",
+    "node_id": "recently-viewed-multi-market",
+    "url": "https://pages.ebay.com/help/find/recently-viewed.html",
+    "title": "Your recently viewed items | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Feature tracking items browsed while signed in. Accessible from My eBay, homepage, or search results. Users can clear all viewed items but cannot delete individual items."
+  },
+  {
+    "canonical_name": "Refine Search",
+    "node_id": "refine-search",
+    "url": "https://pages.ebay.com/help/search/managingresults.html",
+    "title": "How to use search | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Filtering options to narrow search by item specifics, condition, buying format, and seller policies. Mobile users tap 'Refine' button; desktop users see filters on left side. Includes AI-powered eBay.ai search."
+  },
+  {
+    "canonical_name": "Refund Issued",
+    "node_id": "refund-issued",
+    "url": "https://pages.ebay.com/returns/",
+    "title": "eBay Returns",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Sellers typically issue refunds within 5-6 business days. eBay automatically issues refunds after 2 business days from delivery confirmation if seller hasn't acted. Refunds go to original payment method."
+  },
+  {
+    "canonical_name": "Relist",
+    "node_id": "relist",
+    "url": "https://pages.ebay.com/help/sell/relist.html",
+    "title": "Relisting items | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Automatic or manual relisting of unsold items. Auto-relist up to 8 times for auctions 5+ days. Manual relist via My eBay or Seller Hub. Previously promoted items inherit promotion settings when relisted."
+  },
+  {
+    "canonical_name": "Relist Item",
+    "node_id": "relist-item",
+    "url": "https://pages.ebay.com/help/sell/relist.html",
+    "title": "Relisting items | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Automatic or manual relisting of unsold items. Auto-relist up to 8 times for auctions 5+ days. Manual relist via My eBay or Seller Hub. Previously promoted items inherit promotion settings when relisted."
+  },
+  {
+    "canonical_name": "Reply to Feedback",
+    "node_id": "reply-to-feedback",
+    "url": "https://pages.ebay.com/help/feedback/respond.html",
+    "title": "Viewing and responding to feedback from buyers | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Sellers can reply once to each feedback comment from their feedback profile. Reply appears below initial comment. Cannot edit or retract replies. Search limited to last 12 months."
+  },
+  {
+    "canonical_name": "Report Buyer",
+    "node_id": "report-buyer",
+    "url": "https://pages.ebay.com/help/buy/report-trading.html",
+    "title": "Report an issue with a buyer | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Sellers can report buyers from Orders list by choosing 'Leave feedback' dropdown and selecting 'Report buyer'. Used for policy violations, false claims, and abusive buyer behavior."
+  },
+  {
+    "canonical_name": "Report This Item",
+    "node_id": "report-this-item",
+    "url": "https://pages.ebay.com/securitycenter/report_concern.html",
+    "title": "Security Center - Report a Concern | eBay.com",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Link at bottom of every listing to report counterfeit items, stolen items, or suspected fraud. Form submission to eBay Security Center for policy violations."
+  },
+  {
+    "canonical_name": "Request Feedback Revision",
+    "node_id": "request-feedback-revision",
+    "url": "https://pages.ebay.com/help/feedback/questions/remove.html",
+    "title": "Viewing and changing feedback left for sellers | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Sellers can send limited number of requests for buyers to revise negative/neutral feedback to positive. Buyers have 10 days to respond. Original comments hidden when revised."
+  },
+  {
+    "canonical_name": "Request Return",
+    "node_id": "request-return",
+    "url": "https://pages.ebay.com/help/buy/return-item.html",
+    "title": "Return an item for a refund | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Buyers request returns from Purchase history in My eBay. Sellers have 3 business days to respond. Most purchases covered by Money Back Guarantee. Can escalate to eBay after 3 days."
+  },
+  {
+    "canonical_name": "Request Total",
+    "node_id": "request-total",
+    "url": "https://pages.ebay.com/ebaymotors/help/pay/contextual/checkout-requesttotal.html",
+    "title": "Request Total Amount",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Feature allowing buyers to request invoice from sellers for missing shipping costs or combined shipping discounts. Particularly useful for Motors category and Hawaii/Alaska exclusions."
+  },
+  {
+    "canonical_name": "Reserve Price",
+    "node_id": "reserve-price",
+    "url": "https://pages.ebay.com/ebaymotors/help/sell/contextual/inframe/reserve-price.html",
+    "title": "Reserve Price",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Secret minimum bid price for auctions. Fee of $5 or 7.5% of reserve (whichever greater), up to $250 maximum. No obligation to sell if reserve not met. Can lower reserve during auction."
+  },
+  {
+    "canonical_name": "Reserve Price",
+    "node_id": "reserve-price-multi-market",
+    "url": "https://pages.ebay.com/ebaymotors/help/sell/contextual/inframe/reserve-price.html",
+    "title": "Reserve Price",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Secret minimum bid price for auctions. Fee of $5 or 7.5% of reserve (whichever greater), up to $250 maximum. No obligation to sell if reserve not met. Can lower reserve during auction."
+  },
+  {
+    "canonical_name": "Resolution Center",
+    "node_id": "resolution-center-multi-market",
+    "url": "https://pages.ebay.com/services/buyandsell/disputeres.html",
+    "title": "eBay Services: Buying and Selling Tools: Dispute Resolution Overview",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Three-step Buyer Protection process for reporting problems. Buyers have 30 days from delivery to open case. Sellers have 3 business days to respond before escalation to eBay Customer Support."
+  },
+  {
+    "canonical_name": "Restocking Fee",
+    "node_id": "restocking-fee",
+    "url": "https://pages.ebay.com/help/sell/return-policy.html",
+    "title": "Setting up your return policy | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Sellers can charge 0%, 10%, 15%, or 20% restocking fee deducted from refunds. Cannot be applied when item is 'not as described'. Managed returns default to 0% restocking fee."
+  },
+  {
+    "canonical_name": "Promote Your Listing",
+    "node_id": "promote-your-listing",
+    "url": "https://pages.ebay.com/seller-center/listing-and-marketing/promoted-listings.html",
+    "title": "Promoted Listings | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Two campaign strategies: general (pay on sale after click) and priority (pay per click with advanced targeting). Available to Above Standard and Top Rated sellers for fixed price listings."
+  },
+  {
+    "canonical_name": "Promoted Listings Advanced",
+    "node_id": "promoted-listings-priority",
+    "url": "https://www.ebay.com/sellercenter/growth/promoted-listings/promoted-listings-advanced",
+    "title": "Promoted Listings Advanced | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Cost-per-click advertising with priority access to ad placements. Now branded as the 'priority campaign strategy' under Promoted Listings. Sellers only pay for clicks with advanced targeting controls."
+  }
+]

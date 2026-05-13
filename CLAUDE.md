@@ -85,7 +85,7 @@ Editing any `lib/modules/` file means the change flows through the orchestrator 
 |---|---|---|
 | `app/api/evaluate-v2/route.ts` | `lib/orchestrator.ts` | Full pipeline — only production eval route |
 | `app/api/lab/evaluate/route.ts` | `lib/modules/gate-agents.ts` | Streaming Lab — bypasses orchestrator entirely |
-| `app/api/evaluate/route.ts` | `lib/chomsky.ts` directly | **Legacy route** — do not extend |
+| `app/api/evaluate/route.ts` | nothing — returns 410 Gone | **Tombstoned legacy route** — do not extend |
 | `app/api/chat/route.ts` | `lib/chomsky.ts` directly | Coaching + knowledge mode |
 | `app/api/classify/route.ts` | `lib/chomsky.ts` directly | Intent classifier |
 | `app/api/check-names/route.ts` | `lib/modules/name-checker.ts` | Name availability checking |
@@ -263,7 +263,7 @@ const result = await orchestrator.evaluate({
 - Returns: `NamingFacts`
 
 **4. Gate Evaluation** → `lib/modules/evaluator.ts`
-- Use when: Deterministic evaluation of 6 architectural gates
+- Use when: Deterministic evaluation of 7 architectural gates
 - Pure TypeScript (no LLM costs)
 - Unit testable, fully observable
 - Returns: `GateEvaluation`
@@ -319,7 +319,7 @@ const result = await orchestrator.evaluate({
 | **Messy text → structured data** | `parser` | Semantic understanding needed |
 | **Market/competitor analysis** | `researcher` | Web research + synthesis |
 | **Extract facts from brief** | `extractor` | Inference + business rules |
-| **Gate evaluation (G0-G5)** | `evaluator` | Deterministic, testable |
+| **Gate evaluation (G0-G6)** | `evaluator` | Deterministic, testable |
 | **Score calculation (0-70)** | `scorer` | Deterministic, testable |
 | **Final decision routing** | `verdict` | Deterministic, testable |
 | **Generate clarification questions** | `questioner` | Context-aware prompting |
@@ -343,7 +343,7 @@ const result = await orchestrator.evaluate({
 ```
 ┌─────────────────┐
 │  GATEKEEPER     │  ← LLM via generateObject
-│  (G0-G5)        │    6 architectural gates
+│  (G0-G6)        │    7 architectural gates
 └────────┬────────┘    Pass/Fail/Pending/Unknown
          │
          ▼
@@ -359,7 +359,7 @@ const result = await orchestrator.evaluate({
 └─────────────────┘
 ```
 
-### The 6 Gates (G0-G5)
+### The 7 Gates (G0-G6)
 
 | Gate | Criterion | Pass Condition | Fail Condition |
 |------|-----------|----------------|----------------|
@@ -369,6 +369,7 @@ const result = await orchestrator.evaluate({
 | **G3** | Strategic Lifespan | ≥12 months, permanent | <12 months, promotional, seasonal |
 | **G4** | Portfolio Alignment | No internal name collisions | Conflicts with existing eBay products |
 | **G5** | Legal & Localization | No trademark/regulatory blockers | Trademark issues, regulatory restrictions |
+| **G6** | Linguistic & Cultural Fit | English-only markets OR no linguistic barriers in non-English markets | Name has harmful meaning, unpronounceable, or relies on English wordplay in non-English market |
 
 ### The 5 Scoring Criteria (70 points max)
 
@@ -426,14 +427,14 @@ naming-studio/
 │   │   └── naming-rules.ts # Business logic config (SINGLE SOURCE OF TRUTH)
 │   │
 │   ├── modules/            # Core business logic
-│   │   ├── evaluator.ts   # ✅ Deterministic gate evaluation (G0-G5)
+│   │   ├── evaluator.ts   # ✅ Deterministic gate evaluation (G0-G6)
 │   │   ├── scorer.ts      # ✅ Deterministic scoring (0-70 points)
 │   │   ├── verdict.ts     # ✅ Deterministic routing (5-path hierarchy)
 │   │   ├── parser.ts      # 🤖 LLM-powered brief parsing
 │   │   ├── extractor.ts   # 🤖 LLM-powered fact extraction
 │   │   ├── researcher.ts  # 🤖 LLM-powered landscape research
 │   │   ├── questioner.ts  # 🤖 LLM-powered question generation
-│   │   └── formatter.ts   # 🤖 Output formatting (Markdown/Slack)
+│   │   └── formatter.ts   # ✅ Output formatting (Markdown/Slack) — no LLM
 │   │
 │   ├── prompts/            # Deduplicated prompt templates
 │   │   ├── parse-brief.ts
@@ -875,24 +876,18 @@ Restart the dev server after changing models.
 The system includes automatic rate limiting:
 
 ```typescript
-// lib/rate-limit.ts
-import { Ratelimit } from '@upstash/ratelimit';
-import { Redis } from '@upstash/redis';
-
-const ratelimit = new Ratelimit({
-  redis: Redis.fromEnv(),
-  limiter: Ratelimit.slidingWindow(10, '1 m'),
-});
-
-// Usage in API route
-const { success } = await ratelimit.limit(identifier);
-if (!success) {
-  return NextResponse.json(
-    { error: 'Rate limit exceeded' },
-    { status: 429 }
+// Usage in API route (see lib/rate-limit.ts)
+// Uses @upstash/redis directly — falls back to in-memory if env vars absent
+const result = await rateLimit(req, { interval: 60_000, maxRequests: 10 });
+if (!result.success) {
+  return new Response(
+    JSON.stringify({ error: 'Too many requests. Please try again later.' }),
+    { status: 429, headers: { 'Content-Type': 'application/json', ...result.headers } }
   );
 }
 ```
+
+> **Note**: Set `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` in production. Without them, rate limiting uses an in-memory store that does not share state across serverless instances.
 
 ---
 

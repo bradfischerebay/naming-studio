@@ -1,0 +1,17 @@
+[2026-04-20T22:00:19.152Z] ================================================================================
+[2026-04-20T22:00:19.153Z] eBay Program Scraper - Starting
+[2026-04-20T22:00:19.153Z] ================================================================================
+[2026-04-20T22:00:19.153Z] Loading existing programs from dataset...
+[2026-04-20T22:00:19.155Z] Loaded 761 existing programs
+[2026-04-20T22:00:19.155Z] Fetching sitemap: https://pages.ebay.com/sitemap.xml
+[2026-04-20T22:00:19.175Z] Manual review guide created: /Users/bradfischer/naming-studio/docs/HELP_EBAY_REVIEW_GUIDE.md
+[2026-04-20T22:00:19.569Z] Found 0 potential program pages in sitemap
+[2026-04-20T22:00:19.570Z] Fetching sitemap: https://pages.ebay.com/robots.txt
+[2026-04-20T22:00:19.744Z] Found 0 potential program pages in sitemap
+[2026-04-20T22:00:19.744Z] Total URLs to analyze: 0
+[2026-04-20T22:00:19.745Z] ================================================================================
+[2026-04-20T22:00:19.746Z] Scraping complete!
+[2026-04-20T22:00:19.746Z] Existing programs: 761
+[2026-04-20T22:00:19.746Z] New programs discovered: 0
+[2026-04-20T22:00:19.746Z] Results saved to: /Users/bradfischer/naming-studio/data/discovered-programs.json
+[2026-04-20T22:00:19.746Z] ================================================================================

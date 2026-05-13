@@ -1,0 +1,209 @@
+[
+  {
+    "canonical_name": "Apple Pay",
+    "node_id": "apple-pay",
+    "url": "https://pages.ebay.com/payment/2.0/index.html",
+    "title": "So many ways to pay. So many ways to splurge.",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Payment method option within eBay's managed payments system, accepted alongside credit/debit cards, Google Pay, PayPal"
+  },
+  {
+    "canonical_name": "Ask Seller a Question",
+    "node_id": "ask-seller-question",
+    "url": "https://pages.ebay.com/help/buy/contact.html",
+    "title": "Contacting a seller",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Feature allowing buyers to contact sellers before or after purchase via 'Contact seller' button in Seller Information section or purchase history"
+  },
+  {
+    "canonical_name": "Assured Fit",
+    "node_id": "assured-fit",
+    "url": "https://pages.ebay.com/motors/ebay-guaranteed-fit/",
+    "title": "eBay Guaranteed Fit",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "eBay Motors program guaranteeing automotive parts/accessories fit buyer's vehicle or free returns within 30 days, covers most parts/accessories for cars, trucks, motorcycles (excludes tires/wheels)"
+  },
+  {
+    "canonical_name": "Auction Format",
+    "node_id": "auction-format",
+    "url": "https://pages.ebay.com/sell/choosingformats/",
+    "title": "Choose a Selling Format",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Listing format where buyers place bids and highest bidder wins when auction ends, ideal for collectibles, antiques, limited items where market determines price"
+  },
+  {
+    "canonical_name": "Authenticity Guarantee",
+    "node_id": "authentication",
+    "url": "https://pages.ebay.com/authenticity-guarantee-seller/",
+    "title": "eBay Authenticity Guarantee",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Multi-point inspection program with independent expert verification for eligible items, eBay covers all authentication costs"
+  },
+  {
+    "canonical_name": "Authenticity Guarantee - Sneakers",
+    "node_id": "authenticity-guarantee-sneakers",
+    "url": "https://pages.ebay.com/authenticity-guarantee-sneakers-seller/",
+    "title": "Authenticity Guarantee for Sneakers",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Authentication for select sneaker brands (Yeezy, Jordan, Nike, adidas, etc.) in new/pre-owned condition starting at $75 ($100 for baby shoes category)"
+  },
+  {
+    "canonical_name": "Authenticity Guarantee - Watches",
+    "node_id": "authenticity-guarantee-watches",
+    "url": "https://pages.ebay.com/authenticity-guarantee-watches-seller/",
+    "title": "Authenticity Guarantee for Watches",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Authentication for wristwatches sold for $2,000+ (optional $80 buyer-paid service for $500-$1,999.99), includes verification of movement, crown, bezel, dial, case, clasp, serial number"
+  },
+  {
+    "canonical_name": "Authenticity Guarantee - Handbags",
+    "node_id": "authenticity-guarantee-handbags",
+    "url": "https://pages.ebay.com/authenticity-guarantee-handbags-seller/",
+    "title": "Authenticity Guarantee for Handbags Sellers",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Authentication for select handbag brands sold for $500+ in new/pre-owned condition (optional buyer-paid service for $200-$499.99), returns also inspected before being sent back to sellers"
+  },
+  {
+    "canonical_name": "Authenticity Guarantee - Trading Cards",
+    "node_id": "authenticity-guarantee-trading-cards",
+    "url": "https://pages.ebay.com/authenticity-guarantee-tradingcards-seller/",
+    "title": "Authenticity Guarantee for Trading Cards",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Authentication for sports trading cards, collectible card games, autograph/relic cards, non-sports cards $250+ for ungraded and graded autograph/relic cards"
+  },
+  {
+    "canonical_name": "Authenticity Guarantee - Jewelry",
+    "node_id": "authenticity-guarantee-jewelry",
+    "url": "https://pages.ebay.com/authenticity-guarantee-jewelry-seller/",
+    "title": "Authenticity Guarantee for Jewelry",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Authentication for select unbranded/branded jewelry and loose diamonds sold for $500+ in new/preowned condition"
+  },
+  {
+    "canonical_name": "Best Offer",
+    "node_id": "best-offer-multi-market",
+    "url": "https://pages.ebay.com/help/sell/best-offer.html",
+    "title": "Adding Best Offer to your listing and sending offers to buyers",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Price negotiation feature allowing buyers to propose offers and sellers to accept, decline, or counter; sellers can set auto-accept/decline rules and minimum acceptable amounts"
+  },
+  {
+    "canonical_name": "Automatic Bidding",
+    "node_id": "automatic-bidding",
+    "url": "https://pages.ebay.com/help/buy/bidding-overview.html",
+    "title": "All about bidding",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Proxy bidding system where buyers enter maximum bid and eBay automatically bids incrementally on their behalf to maintain high bid position using minimum necessary amount"
+  },
+  {
+    "canonical_name": "Audience Targeting",
+    "node_id": "audience-targeting",
+    "url": "https://www.ebay.com/sellercenter/growth/promoted-listings/promoted-listings-advanced",
+    "title": "Promoted Listings Advanced",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Advanced targeting controls within Promoted Listings Advanced strategy providing priority ad placements to reach highly motivated buyers, cost-per-click model"
+  },
+  {
+    "canonical_name": "Auto Pay",
+    "node_id": "auto-pay",
+    "url": "https://pages.ebay.com/help/sell/automatic-payments.html",
+    "title": "Automatic Payments",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Automatic payment processing for sellers (managed payments with automatic payouts on daily/weekly/biweekly/monthly schedule) and buyers (payment plans like Klarna with automatic installments)"
+  },
+  {
+    "canonical_name": "Barcode Scanner",
+    "node_id": "barcode-scanner",
+    "url": "https://pages.ebay.com/scantolist/",
+    "title": "Scan to List",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Mobile app feature allowing sellers to scan barcodes (UPC, ISBN, MPN) to identify products and auto-fill listing details from eBay catalog, particularly useful for trading cards"
+  },
+  {
+    "canonical_name": "Below Standard",
+    "node_id": "below-standard",
+    "url": "https://pages.ebay.com/sellerinformation/news/fallupdate16/below-standard.html",
+    "title": "Seller Performance Standards",
+    "source_type": "ebay_official",
+    "year": 2016,
+    "notes": "Seller performance status when defect rate or cases closed without seller resolution exceed eBay's minimum standards, results in lower search placement, pending funds, potential selling limits with 3-month grace period for improvement"
+  },
+  {
+    "canonical_name": "Bid Increment",
+    "node_id": "bid-increment",
+    "url": "https://pages.ebay.com/help/buy/bid-increments.html",
+    "title": "Automatic bidding",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Preset amount by which bids are raised in auctions, smaller increments for low-price items and larger for high-price brackets, used in eBay's automatic bidding system"
+  },
+  {
+    "canonical_name": "Black Friday Deals",
+    "node_id": "black-friday-deals",
+    "url": "https://pages.ebay.com/promo/2018/1126/P25BLACK.html",
+    "title": "eBay Coupon",
+    "source_type": "ebay_official",
+    "year": 2018,
+    "notes": "Annual promotional event offering discounts and coupons during Black Friday shopping period, historical example shows 25% off promotion with $50 maximum discount"
+  },
+  {
+    "canonical_name": "Block Buyer List",
+    "node_id": "block-buyer-list",
+    "url": "https://pages.ebay.com/services/buyandsell/bidderblockFAQ.html",
+    "title": "eBay Services: Bidder Block FAQ",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Seller tool allowing blocking up to 5,000 usernames to prevent specific buyers from bidding/purchasing items, blocked buyers cannot contact seller unless seller initiates, accessed via Account Settings > Selling Preferences"
+  },
+  {
+    "canonical_name": "Background Enhancement",
+    "node_id": "background-enhancement",
+    "url": "https://pages.ebay.com/sellingwithAI/",
+    "title": "Selling is now even easier with AI",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "AI-powered image editing tool for listings allowing automatic background replacement with solid white color, backdrop transformation, brightness/contrast adjustment, available in web and mobile app"
+  },
+  {
+    "canonical_name": "Aste di beneficenza",
+    "node_id": "aste-di-beneficenza",
+    "url": "https://pages.ebay.it/prima-di-iniziare/",
+    "title": "Aste di beneficenza: prima di iniziare",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "eBay Italy charity auction program for non-profit associations with special 1.3% final value fee plus €0.25 per order, 7-day duration recommended, raised over €8.5 million since 2001"
+  },
+  {
+    "canonical_name": "Bons Plans",
+    "node_id": "bons-plans",
+    "url": "https://www.ebay.fr/deals",
+    "title": "Bons Plans: high-tech, maison, jardin, pièces auto, et bien plus",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "eBay France deals hub featuring discounts up to 40% across categories including high-tech, home, garden, and auto parts with free shipping on many items"
+  },
+  {
+    "canonical_name": "Australia Post Express",
+    "node_id": "australia-post-express",
+    "url": "https://www.ebay.com.au/sellercentre/australia-post",
+    "title": "Australia Post on eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Shipping integration offering up to 20% discount on Australia Post International Standard and Express services through eBay Labels, eBay Plus sellers receive $4 express contribution for metro deliveries"
+  }
+]

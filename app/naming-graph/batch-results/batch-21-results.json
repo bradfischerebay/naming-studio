@@ -1,0 +1,398 @@
+[
+  {
+    "canonical_name": "Click-Through Rate",
+    "node_id": "click-through-rate",
+    "url": null,
+    "title": "Not found",
+    "source_type": "not_found",
+    "year": null,
+    "notes": "No official eBay documentation found for Click-Through Rate as a named program"
+  },
+  {
+    "canonical_name": "Coded Coupons",
+    "node_id": "coded-coupons",
+    "url": "https://www.ebay.com/help/selling/selling-tools/discounts-manager?id=4094",
+    "title": "Discounts Manager | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Part of Discounts Manager - coded coupons offer exclusive discounts to buyers using a coupon code"
+  },
+  {
+    "canonical_name": "Coded Coupons (Multi-Market)",
+    "node_id": "coded-coupons-multi-market",
+    "url": "https://export.ebay.com/en/services-tools/discounts-manager/",
+    "title": "Discounts Manager",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "International version of Discounts Manager with coded coupons feature"
+  },
+  {
+    "canonical_name": "Codeless Coupons",
+    "node_id": "codeless-coupons",
+    "url": "https://www.ebay.com/help/selling/selling-tools/discounts-manager?id=4094",
+    "title": "Discounts Manager | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Part of Discounts Manager - automatic coupons applied without requiring buyers to enter a code"
+  },
+  {
+    "canonical_name": "Coins & Currency",
+    "node_id": "coins-currency",
+    "url": "https://www.ebay.com/b/Coins-Currency/bn_1865106",
+    "title": "Coins & Currency for sale | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "eBay category for coins and currency collectibles"
+  },
+  {
+    "canonical_name": "Collectibles Price Guide",
+    "node_id": "collectibles-price-guide",
+    "url": "https://www.ebay.com/shop/collectibles-price-guide",
+    "title": "Collectibles Price Guide | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "eBay shopping page featuring collectibles price guide books and resources"
+  },
+  {
+    "canonical_name": "Collection Points (AU)",
+    "node_id": "collection-points-au",
+    "url": null,
+    "title": "Not found",
+    "source_type": "not_found",
+    "year": null,
+    "notes": "No official eBay Australia documentation found for Collection Points program"
+  },
+  {
+    "canonical_name": "Collections",
+    "node_id": "collections",
+    "url": "https://community.ebay.com/t5/Selling/Stores-Curated-finds-for-you-New-Feature/m-p/35343483",
+    "title": "Stores: Curated finds for you (New Feature) - The eBay Community",
+    "source_type": "community",
+    "year": 2026,
+    "notes": "Curated Lists feature allowing sellers and influencers to create collections of items"
+  },
+  {
+    "canonical_name": "Combined Checkout",
+    "node_id": "combined-checkout",
+    "url": null,
+    "title": "Not found",
+    "source_type": "not_found",
+    "year": null,
+    "notes": "No official eBay documentation found for Combined Checkout as a named program"
+  },
+  {
+    "canonical_name": "Comics",
+    "node_id": "comics",
+    "url": "https://www.ebay.com/b/Comic-Books-Manga-Memorabilia/63/bn_1865459",
+    "title": "Comic Books, Manga & Memorabilia for sale | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "eBay category for comic books, manga, and memorabilia with millions of listings"
+  },
+  {
+    "canonical_name": "Condition Filter",
+    "node_id": "condition-filter",
+    "url": null,
+    "title": "Not found",
+    "source_type": "not_found",
+    "year": null,
+    "notes": "Search filter feature, no dedicated program page found"
+  },
+  {
+    "canonical_name": "Condition: New Sort",
+    "node_id": "condition-new-sort",
+    "url": "https://community.ebay.com/t5/Ask-a-Mentor/Save-Search-Criteria/td-p/34307314",
+    "title": "Save Search Criteria? - The eBay Community",
+    "source_type": "community",
+    "year": 2026,
+    "notes": "Search sorting option to filter for new condition items"
+  },
+  {
+    "canonical_name": "Curated Lists",
+    "node_id": "curated-lists",
+    "url": "https://community.ebay.com/t5/Ask-a-Mentor/Ambassador-Program-Curated-Lists-More-than-one0/td-p/35105765",
+    "title": "Ambassador Program - Curated Lists - The eBay Community",
+    "source_type": "community",
+    "year": 2026,
+    "notes": "Feature allowing users to create curated collections, part of Ambassador Program"
+  },
+  {
+    "canonical_name": "Custom Template",
+    "node_id": "custom-template",
+    "url": null,
+    "title": "Not found",
+    "source_type": "not_found",
+    "year": null,
+    "notes": "No official eBay documentation found for Custom Template program"
+  },
+  {
+    "canonical_name": "Delivered",
+    "node_id": "delivered",
+    "url": "https://www.ebay.com/help/selling/shipping-items/tracking-items-youve-sold?id=4088",
+    "title": "Tracking items you've sold | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Order status indicating item has been delivered to buyer, tracked through carrier systems"
+  },
+  {
+    "canonical_name": "Delivery Updates",
+    "node_id": "delivery-updates",
+    "url": "https://www.ebay.com/help/buying/shipping-delivery/expected-delivery-dates-buyers?id=4025",
+    "title": "Expected delivery dates for buyers | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Feature providing buyers with updated delivery dates and tracking information"
+  },
+  {
+    "canonical_name": "Description Template",
+    "node_id": "description-template",
+    "url": null,
+    "title": "Not found",
+    "source_type": "not_found",
+    "year": null,
+    "notes": "No official eBay documentation found for Description Template as a named program"
+  },
+  {
+    "canonical_name": "Detailed Seller Ratings (DSRs)",
+    "node_id": "detailed-seller-ratings-multi-market",
+    "url": null,
+    "title": "Not found",
+    "source_type": "legacy",
+    "year": null,
+    "notes": "Legacy program - Detailed Seller Ratings were discontinued and replaced with newer seller performance metrics"
+  },
+  {
+    "canonical_name": "DHL Paket",
+    "node_id": "dhl-paket",
+    "url": "https://partner.ebay.de/dhl",
+    "title": "versand so einfach. mit dhl paket.",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "eBay Germany shipping integration with DHL Paket service"
+  },
+  {
+    "canonical_name": "Discounts Manager",
+    "node_id": "discounts-manager",
+    "url": "https://www.ebay.com/help/selling/selling-tools/discounts-manager?id=4094",
+    "title": "Discounts Manager | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Tool for eBay Store subscribers to create sale events, volume pricing, coupons, shipping discounts, and order discounts"
+  },
+  {
+    "canonical_name": "Discounts Manager (Multi-Market)",
+    "node_id": "discounts-manager-multi-market",
+    "url": "https://export.ebay.com/en/services-tools/discounts-manager/",
+    "title": "Discounts Manager",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "International version of Discounts Manager available across multiple eBay markets"
+  },
+  {
+    "canonical_name": "Distance: Nearest First",
+    "node_id": "distance-nearest-first",
+    "url": "https://community.ebay.com/t5/Buying/Why-can-t-I-sort-by-Nearest-First-anymore/td-p/30739700",
+    "title": "Why can't I sort by Nearest First anymore? - The eBay Community",
+    "source_type": "community",
+    "year": 2018,
+    "notes": "Search sort option to display items nearest to buyer's location first, has experienced some technical issues"
+  },
+  {
+    "canonical_name": "Drafts",
+    "node_id": "drafts",
+    "url": null,
+    "title": "Not found",
+    "source_type": "not_found",
+    "year": null,
+    "notes": "Feature for saving draft listings, no dedicated documentation page found"
+  },
+  {
+    "canonical_name": "Duplicate Listing",
+    "node_id": "duplicate-listing",
+    "url": null,
+    "title": "Not found",
+    "source_type": "not_found",
+    "year": null,
+    "notes": "Feature to copy/duplicate existing listings, no dedicated documentation page found"
+  },
+  {
+    "canonical_name": "eBay Academy",
+    "node_id": "ebay-academy-multi-market",
+    "url": "https://www.ebay.com/sellercenter/ebay-for-business/ebay-academy",
+    "title": "eBay Academy | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2022,
+    "notes": "Interactive self-guided seller education platform launched in April 2022, replacing Seller School"
+  },
+  {
+    "canonical_name": "eBay.ai Message Assistance",
+    "node_id": "ebay-ai-message-assistance",
+    "url": null,
+    "title": "Not found",
+    "source_type": "not_found",
+    "year": null,
+    "notes": "AI-powered messaging assistance feature - no public documentation found, may be in limited testing"
+  },
+  {
+    "canonical_name": "eBay Business Supply",
+    "node_id": "ebay-business-supply",
+    "url": "https://www.ebay.com/b/eBay-Business-Supply/bn_7115052945",
+    "title": "eBay Business Supply products for sale | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Category for business and industrial supplies with weekly auctions"
+  },
+  {
+    "canonical_name": "eBay Collection Points (UK)",
+    "node_id": "ebay-collection-points-uk",
+    "url": null,
+    "title": "Not found",
+    "source_type": "not_found",
+    "year": null,
+    "notes": "No official UK eBay documentation found for Collection Points program"
+  },
+  {
+    "canonical_name": "eBay Community",
+    "node_id": "ebay-community-multi-market",
+    "url": "https://community.ebay.com/",
+    "title": "Home - The eBay Community",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Platform for eBay users to connect, share knowledge, ask questions, and engage with community specialists"
+  },
+  {
+    "canonical_name": "eBay Concierge",
+    "node_id": "ebay-concierge",
+    "url": "https://www.ebay.com/help/account/changing-account-settings/ebay-concierge?id=4358",
+    "title": "eBay Concierge | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Premium invite-only customer service program for high-volume buyers and sellers with dedicated support representatives"
+  },
+  {
+    "canonical_name": "eBay Deals",
+    "node_id": "ebay-deals-global",
+    "url": "https://www.ebay.com/deals",
+    "title": "Daily Deals on eBay | Best deals and Free Shipping",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Featured deals page with daily discounts (20-90% off) and free shipping, updated daily at 8am Pacific"
+  },
+  {
+    "canonical_name": "eBay Export",
+    "node_id": "ebay-export",
+    "url": "https://export.ebay.com/en/",
+    "title": "Sell worldwide with eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "International selling platform providing access to 132 million buyers worldwide across 190+ markets"
+  },
+  {
+    "canonical_name": "eBay for Charity",
+    "node_id": "ebay-for-charity-multi-market",
+    "url": "https://charity.ebay.com",
+    "title": "eBay for Charity | Doing Good Together Through Our Charity Program",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Charity program supporting 30,000+ charities with fee waivers for donations and PayPal Giving Fund integration"
+  },
+  {
+    "canonical_name": "eBay Fulfilment",
+    "node_id": "ebay-fulfilment",
+    "url": "https://cloud.forbusiness.ebay.co.uk/fulfilment",
+    "title": "Fulfilment | eBay.co.uk",
+    "source_type": "ebay_official",
+    "year": 2021,
+    "notes": "eBay fulfilment by Orange Connex - multi-channel fulfilment service launched July 2021, showing 10%+ sales increase"
+  },
+  {
+    "canonical_name": "eBay Fulfilment (UK)",
+    "node_id": "ebay-fulfilment-uk",
+    "url": "https://www.ebay.co.uk/sellercentre/postage/fulfilment",
+    "title": "eBay fulfilment by Orange Connex | UK Seller Centre",
+    "source_type": "ebay_official",
+    "year": 2021,
+    "notes": "UK-specific fulfilment service with same-day handling and late cut-off times for next-day delivery"
+  },
+  {
+    "canonical_name": "Email to Friend",
+    "node_id": "email-to-friend",
+    "url": null,
+    "title": "Not found",
+    "source_type": "legacy",
+    "year": null,
+    "notes": "Legacy sharing feature - no current documentation found, likely discontinued"
+  },
+  {
+    "canonical_name": "Express Payouts (Multi-Currency)",
+    "node_id": "express-payouts-multi-currency",
+    "url": "https://www.ebay.com/sellercenter/payments-and-fees/express-payouts",
+    "title": "Express payouts | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Fast payout service ($2 fee) allowing sellers to receive funds in 30 minutes to bank account or debit card, with currency conversion support"
+  },
+  {
+    "canonical_name": "Fast and Free",
+    "node_id": "fast-and-free",
+    "url": null,
+    "title": "Not found",
+    "source_type": "not_found",
+    "year": null,
+    "notes": "No official eBay documentation found for Fast and Free shipping badge program"
+  },
+  {
+    "canonical_name": "Father's Day Gifts",
+    "node_id": "fathers-day-gifts",
+    "url": "https://www.ebay.com/b/Fathers-Day/bn_7005615660",
+    "title": "Father's Day Gifts - eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Seasonal category page featuring Father's Day gift items and collections"
+  },
+  {
+    "canonical_name": "Featured Listing",
+    "node_id": "featured-listing",
+    "url": null,
+    "title": "Not found",
+    "source_type": "legacy",
+    "year": null,
+    "notes": "Legacy listing upgrade feature - no current documentation found, likely discontinued or renamed"
+  },
+  {
+    "canonical_name": "Feedback Reply",
+    "node_id": "feedback-reply-multi-market",
+    "url": "https://www.ebay.com/help/selling/leaving-feedback-buyers/viewing-responding-feedback-buyers?id=4102",
+    "title": "Viewing and responding to feedback from buyers | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Feature allowing sellers to reply once to buyer feedback comments, with ability to request revision within 30 days"
+  },
+  {
+    "canonical_name": "Feedback Revision Request",
+    "node_id": "feedback-revision-request-multi-market",
+    "url": "https://www.ebay.com/help/selling/leaving-feedback-buyers/viewing-responding-feedback-buyers?id=4102",
+    "title": "Viewing and responding to feedback from buyers | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "Feature allowing sellers to request feedback revision from buyers, limited to 5 requests per calendar year"
+  },
+  {
+    "canonical_name": "Form 1099-K (US)",
+    "node_id": "form-1099-k-us",
+    "url": "https://www.ebay.com/help/selling/fees-credits-invoices/ebay-form-1099k?id=4794",
+    "title": "eBay and Form 1099-K | eBay",
+    "source_type": "ebay_official",
+    "year": 2026,
+    "notes": "IRS tax reporting form for US sellers with sales exceeding $20,000 and 200 transactions (2025 tax year), with varying state thresholds"
+  },
+  {
+    "canonical_name": "Free 2-day Shipping",
+    "node_id": "free-2-day-shipping",
+    "url": "https://community.ebay.com/t5/Selling/Free-2-day-shipping-how-to-change/td-p/33527442",
+    "title": "Free 2 day shipping - how to change - The eBay Community",
+    "source_type": "community",
+    "year": 2026,
+    "notes": "Shipping option indicating item delivery within 2 days, shown as badge on listings"
+  }
+]

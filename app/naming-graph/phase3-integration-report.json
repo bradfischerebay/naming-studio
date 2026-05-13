@@ -1,0 +1,24 @@
+{
+  "total_citations": 26,
+  "matched": 26,
+  "merged_into_existing": 25,
+  "created_new": 1,
+  "unmatched": [],
+  "multi_node_citations": [
+    {
+      "citation": "22",
+      "nodes": [
+        "things-people-love",
+        "ebay-evo",
+        "ebay-playbook"
+      ]
+    }
+  ],
+  "generated_at": "2026-04-21T00:42:23.184Z",
+  "phase": "Phase 3: Obsidian Citations Integration",
+  "graph_nodes_total": 944,
+  "evidence_coverage_percent": 5.3,
+  "evidence_total": 50,
+  "phase2_baseline": 44,
+  "phase3_delta": 6
+}

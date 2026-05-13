@@ -85,6 +85,19 @@ export const GATE_DEFINITIONS = {
       "Restricted language in target geographies (e.g., 'Guarantee' in DE)",
     ],
   },
+  G6: {
+    label: "Linguistic & Cultural Fit",
+    description: "Does the product concept work linguistically and culturally across all target markets?",
+    passConditions: [
+      "Only targets English-speaking markets (US, UK, AU, CA, IE)",
+      "Non-English markets included AND no significant linguistic barriers identified",
+    ],
+    failConditions: [
+      "Proposed name has harmful meaning or is unpronounceable in a primary non-English market",
+      "Product category has regulatory naming restrictions in a primary non-English market",
+      "Concept relies on English wordplay that cannot survive translation",
+    ],
+  },
 } as const;
 
 export const SCORING_RULES = {

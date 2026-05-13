@@ -1,0 +1,290 @@
+[
+  {
+    "canonical_name": "Payment Holds",
+    "node_id": "payment-holds",
+    "url": "https://www.ebay.com.au/sellercentre/tracking/payment-hold-faqs",
+    "title": "Payment Hold FAQs | Seller Centre",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "eBay uses payment holds to temporarily retain funds to ensure buyers can be refunded if there's a problem with the transaction"
+  },
+  {
+    "canonical_name": "Payout Schedule",
+    "node_id": "payout-schedule",
+    "url": "https://www.ebay.com/help/selling/getting-paid/getting-paid-items-sold-?id=4814",
+    "title": "Getting paid for items you've sold | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Sellers can choose to schedule payouts daily, weekly, biweekly, or monthly"
+  },
+  {
+    "canonical_name": "Payouts on Demand",
+    "node_id": "payouts-on-demand",
+    "url": "https://www.ebay.com/sellercenter/payments-and-fees/payouts-on-demand",
+    "title": "Payouts on demand | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Allows sellers to request an express payout of their available funds on demand using a linked Visa or Mastercard debit card, with funds typically arriving within 30 minutes"
+  },
+  {
+    "canonical_name": "PayPal Credit",
+    "node_id": "paypal-checkout",
+    "url": "https://pages.ebay.com/paypal-credit/ezp.html",
+    "title": "PayPal Credit | eBay.com",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "eBay offers PayPal Credit as a payment option for buyers. No Interest if paid in full in 6 months on purchases of $149 or more"
+  },
+  {
+    "canonical_name": "Performance Dashboard",
+    "node_id": "performance-dashboard",
+    "url": "https://www.ebay.com/help/selling/selling/monitoring-improving-seller-performance?id=4785",
+    "title": "Monitoring and improving your seller performance | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "eBay has seller dashboards including Seller Standards Dashboard and Service Metrics Dashboard to showcase performance criteria"
+  },
+  {
+    "canonical_name": "Cross Border Trade (CBT) Seller Dashboard",
+    "node_id": "performance-dashboard-multi-market",
+    "url": "https://export.ebay.com/en/growth/seller-performance/cbt-seller-dashboard/",
+    "title": "The CBT Seller Dashboard",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Designed specifically for sellers exporting on eBay to monitor selling performance across international markets"
+  },
+  {
+    "canonical_name": "Photo Enhancement",
+    "node_id": "photo-enhancement",
+    "url": "https://www.ebayinc.com/stories/news/ebay-launches-new-trading-cards-experience-bringing-price-guide-collection-features-to-enthusiasts/",
+    "title": "eBay Launches New Trading Cards Experience Bringing Price Guide & Collection Features to Enthusiasts",
+    "source_type": "press_release",
+    "year": 2020,
+    "notes": "eBay introduced AI-based photo background enhancement feature allowing sellers to swap backgrounds with AI-generated backdrops"
+  },
+  {
+    "canonical_name": "Photo Requirements",
+    "node_id": "photo-requirements",
+    "url": "https://export.ebay.com/en/manage-listings/photo-tips/",
+    "title": "Photo tips",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Photos must be at least 500 pixels on each side; accepted formats include JPEG, PNG, GIF, TIFF, BMP, WEBP, HEIC, or AVIF"
+  },
+  {
+    "canonical_name": "Photo Tips",
+    "node_id": "photo-tips",
+    "url": "https://export.ebay.com/en/listings/how-optimize-your-listings/photo-tips/",
+    "title": "Photo tips",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Official eBay seller help emphasizing product images are one of the most important things buyers use to decide whether to make an online purchase"
+  },
+  {
+    "canonical_name": "Photo Uploader",
+    "node_id": "photo-uploader",
+    "url": "https://www.ebay.com/help/selling/listings/adding-pictures-listings?id=4148",
+    "title": "Adding pictures to your listings | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "eBay's photo uploader makes it easy to add and edit photos of items. Sellers can add up to 24 pictures per listing"
+  },
+  {
+    "canonical_name": "Picture Manager",
+    "node_id": "picture-manager",
+    "url": "https://pages.ebay.com/picture_manager/faq.html",
+    "title": "eBay: Picture Manager FAQs",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Picture Manager hosted pictures and images for listings, About Me pages, eBay Stores. Service has been discontinued but photo uploader functionality continues"
+  },
+  {
+    "canonical_name": "Picture Policy",
+    "node_id": "picture-policy",
+    "url": "https://www.ebay.com/help/policies/listing-policies/picture-policy?id=4370",
+    "title": "Picture policy | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Photos must be at least 500 pixels on the longest side. Prohibited: pictures that don't accurately represent the item, placeholder images, stock photos for used/damaged/defective items"
+  },
+  {
+    "canonical_name": "eBay Picture Services",
+    "node_id": "picture-services",
+    "url": "https://developer.ebay.com/support/kb-article?KBid=1840",
+    "title": "Managing images using eBay Picture Services (EPS) | eBay Developers Program",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Images can be hosted by eBay Picture Services (EPS) or self-hosted, with some options like zoom only available if images are hosted through EPS"
+  },
+  {
+    "canonical_name": "Place Bid",
+    "node_id": "place-bid",
+    "url": "https://www.ebay.com/help/buying/bidding/automatic-bidding?id=4014",
+    "title": "Automatic bidding | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "To set up automatic bidding on an auction listing, enter the maximum amount you'd like to pay for the item and select Place bid"
+  },
+  {
+    "canonical_name": "PowerSeller",
+    "node_id": "powerseller",
+    "url": "https://www.ebayinc.com/stories/news/d-seller-program/",
+    "title": "eBay Introduces New Top-Rated Seller Program",
+    "source_type": "press_release",
+    "year": 2021,
+    "notes": "eBay retired the PowerSeller program on June 20, 2021, replacing it with the Top Rated Seller program"
+  },
+  {
+    "canonical_name": "Pre-loved Fashion Week",
+    "node_id": "pre-loved-fashion-week",
+    "url": "https://www.ebayinc.com/stories/press-room/uk/ebay-launches-its-first-ever-pre-loved-fashion-week-in-new-york-and-london/",
+    "title": "eBay Launches its First-Ever Pre-Loved Fashion Week in New York and London",
+    "source_type": "press_release",
+    "year": 2024,
+    "notes": "eBay's inaugural Pre-Loved Fashion Week announced August 28, 2024, featuring live shoppable runway show 'Endless Runway' on September 5, 2024"
+  },
+  {
+    "canonical_name": "Pre-loved Partner Program",
+    "node_id": "pre-loved-partner-program",
+    "url": "https://www.ebay.com/sellercenter/selling/what-to-sell/pre-loved-partner-program",
+    "title": "Pre-loved Partner Program | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Allows business sellers to submit a free application for a chance to be recognized as one of the top sellers of pre-loved clothing on eBay"
+  },
+  {
+    "canonical_name": "Preloved Partner Program",
+    "node_id": "preloved-partner-program",
+    "url": "https://pages.ebay.com/ads/2025/preloved/",
+    "title": "Preloved Partner Program Seller Agreement | eBay.com",
+    "source_type": "ebay_official",
+    "year": 2025,
+    "notes": "eBay's initiative to highlight pre-loved fashion items from certain business sellers, with items marked with a 'Preloved Partner Program' label and blue tick"
+  },
+  {
+    "canonical_name": "Price Guide",
+    "node_id": "price-guide",
+    "url": "https://www.ebay.com/help/selling/trading-cards-listing-tools/using-the-price-guide?id=5288",
+    "title": "Using the Price Guide",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Helps sellers with pricing by providing detailed market data including median sold price, sales format, sold price range for trading cards and collectibles"
+  },
+  {
+    "canonical_name": "Price + Shipping Sort",
+    "node_id": "price-plus-shipping-sort",
+    "url": "https://community.ebay.com/t5/Postcard-Collectors-Group/quot-Price-Plus-Shipping-quot-Option-on-eBay-Search/td-p/6114109",
+    "title": "\"Price Plus Shipping\" Option on eBay Search - The eBay Community",
+    "source_type": "secondary_source",
+    "year": null,
+    "notes": "eBay search sort option that has filtering issues showing drastically reduced results when sorting by lowest price plus shipping first"
+  },
+  {
+    "canonical_name": "Advanced Search",
+    "node_id": "price-range-filter",
+    "url": "https://www.ebay.com/help/buying/search-tips/advanced-search?id=4049",
+    "title": "Advanced search | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "eBay's Advanced Search allows buyers to apply filters including price range, item condition, or listing format to find exactly what they're looking for"
+  },
+  {
+    "canonical_name": "Print Label",
+    "node_id": "print-label",
+    "url": "https://www.ebay.com/help/selling/shipping-items/labels-packaging-tips/buying-printing-shipping-labels?id=4157",
+    "title": "Printing and canceling shipping labels | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Sellers can print USPS, FedEx, or UPS shipping labels from Orders in My eBay or Seller Hub"
+  },
+  {
+    "canonical_name": "Print Shipping Label",
+    "node_id": "print-shipping-label",
+    "url": "https://www.ebay.com/help/selling/shipping-items/labels-packaging-tips/buying-printing-shipping-labels?id=4157",
+    "title": "Printing and canceling shipping labels | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Sellers save big over retail rates with eBay Labels, get free automatic tracking and no subscription fees"
+  },
+  {
+    "canonical_name": "Priority Campaign",
+    "node_id": "priority-campaign",
+    "url": "https://www.ebay.com/help/selling/ebay-advertising/promoted-listings/priority-campaign-strategy?id=5299",
+    "title": "Priority campaign strategy | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Priority strategy helps reach highly motivated buyers with priority access to ad placements and advanced controls like keyword targeting using a cost-per-click (CPC) model"
+  },
+  {
+    "canonical_name": "Privacy Policy",
+    "node_id": "privacy-policy",
+    "url": "https://www.ebay.com/help/policies/member-behaviour-policies/user-privacy-notice-privacy-policy?id=4260",
+    "title": "User Privacy Notice | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "eBay's collection, use, disclosure, retention, and protection of personal information is governed by their User Privacy Notice"
+  },
+  {
+    "canonical_name": "Private Listing",
+    "node_id": "private-listing",
+    "url": "https://www.ebay.com/help/selling/listings/listing-tips/private-listings?id=4161",
+    "title": "Private listings | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Private listings allow buyers to remain anonymous when they bid on or buy an item, with usernames hidden from other members viewing the listing"
+  },
+  {
+    "canonical_name": "Private Listing (Multi-Market)",
+    "node_id": "private-listing-multi-market",
+    "url": "https://www.ebay.co.uk/help/selling/listings/listing-tips/private-listings?id=4161",
+    "title": "Private listings | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "UK eBay help page for Private listings - same feature allowing buyers to remain anonymous"
+  },
+  {
+    "canonical_name": "Proceed to Checkout",
+    "node_id": "proceed-to-checkout",
+    "url": "https://www.ebay.com/help/buying/paying-items/checkout?id=4036",
+    "title": "Checkout | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "At checkout buyers can pay for items, choose delivery location, and review order details before payment"
+  },
+  {
+    "canonical_name": "Product Identifiers",
+    "node_id": "product-identifiers",
+    "url": "https://www.ebay.com/sellercenter/listings/product-identifiers",
+    "title": "Product identifiers | Seller Center",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Product identifiers (Brand, MPN, UPC, EAN, ISBN) are required when listing in most categories on eBay and help increase item visibility"
+  },
+  {
+    "canonical_name": "Product Identifiers (Multi-Market)",
+    "node_id": "product-identifiers-multi-market",
+    "url": "https://export.ebay.com/en/listings/how-optimize-your-listings/product-identifiers/",
+    "title": "Product identifiers",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Export.ebay.com version covering product identifiers for international sellers"
+  },
+  {
+    "canonical_name": "Product Research",
+    "node_id": "product-research",
+    "url": "https://www.ebay.com/help/selling/selling-tools/product-research?id=4853",
+    "title": "Product research | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "eBay's Product Research tool (formerly Terapeak) is available free to Seller Hub sellers, providing access to last 3 years of eBay sales data"
+  },
+  {
+    "canonical_name": "Product Reviews",
+    "node_id": "product-reviews",
+    "url": "https://www.ebay.com/help/selling/listings/product-reviews?id=5186",
+    "title": "Product reviews | eBay",
+    "source_type": "ebay_official",
+    "year": null,
+    "notes": "Product reviews are item ratings and comments left by buyers who previously purchased the product, displayed on listings to help buyers"
+  }
+]

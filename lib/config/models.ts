@@ -76,6 +76,6 @@ export function getPipelineModels(): PipelineModelRouting {
     parser:     process.env.CHOMSKY_MODEL_PARSER     || defaultModel,
     researcher: process.env.CHOMSKY_MODEL_RESEARCHER || defaultModel,
     extractor:  process.env.CHOMSKY_MODEL_EXTRACTOR  || defaultModel,
-    questioner: process.env.CHOMSKY_MODEL_EXTRACTOR  || defaultModel, // same default as extractor
+    questioner: process.env.CHOMSKY_MODEL_QUESTIONER || defaultModel,
   };
 }

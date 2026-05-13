@@ -1,0 +1,317 @@
+[
+  {
+    "canonical_name": "Express Payouts",
+    "node_id": "express-payouts",
+    "url": "https://www.ebay.com/sellercenter/payments-and-fees/express-payouts",
+    "title": "Express payouts | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Get express payouts in as little as 30 minutes with Visa or Mastercard debit card. Flat fee of $2.00 per payout."
+  },
+  {
+    "canonical_name": "Fast 'N Free",
+    "node_id": "fast-n-free",
+    "url": "https://innovation.ebayinc.com/stories/simplifying-shipping-signals-on-ebay/",
+    "title": "Simplifying Shipping Signals on eBay",
+    "source_type": "ebay_official",
+    "year": 2025,
+    "notes": "4-day or less delivery with free shipping. Replaced by 'Free x day shipping' badge. eBay guarantees Fast 'N Free shipments."
+  },
+  {
+    "canonical_name": "Featured First",
+    "node_id": "featured-first",
+    "url": "https://developer.ebay.com/support/kb-article?KBid=1761",
+    "title": "Featured First listing enhancement",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Legacy listing upgrade feature that can be removed by setting Gallery Type as 'None'"
+  },
+  {
+    "canonical_name": "Fee Illustrator",
+    "node_id": "fee-illustrator",
+    "url": "https://pages.ebay.com/seller/fees/faq.html",
+    "title": "eBay: Seller Fees FAQs",
+    "source_type": "ebay_official",
+    "year": 2015,
+    "notes": "Tool that recommends eBay Store level to help analyze if opening a store will benefit business. Available to all sellers at no cost."
+  },
+  {
+    "canonical_name": "Feedback Extortion Policy",
+    "node_id": "feedback-extortion-policy",
+    "url": "https://www.ebay.com/help/policies/feedback-policies/feedback-extortion-policy?id=4230",
+    "title": "Feedback extortion policy | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Buyers cannot use threats of negative feedback to force sellers to meet demands. Sellers cannot demand feedback actions in exchange for items or refunds."
+  },
+  {
+    "canonical_name": "Feedback Revision Request",
+    "node_id": "feedback-revision-request",
+    "url": "https://www.ebay.com/help/selling/leaving-feedback-buyers/disputing-feedback-received?id=4102",
+    "title": "Viewing and responding to feedback from buyers | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Sellers can make 5 feedback revision requests per year, plus 5 additional per 1,000 feedback ratings. Buyer has 10 days to respond."
+  },
+  {
+    "canonical_name": "Fitment Compatibility",
+    "node_id": "fitment-compatibility",
+    "url": "https://www.ebay.com/sellercenter/listings/list-with-fitment",
+    "title": "List with fitment | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Compatibility information for automotive parts showing which vehicles the part fits. Supports eBay Guaranteed Fit program."
+  },
+  {
+    "canonical_name": "Fitment Plus",
+    "node_id": "fitment-plus",
+    "url": "https://www.ebay.com/sellercenter/ebay-for-business/ebay-fitment-plus",
+    "title": "Fitment Plus | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Free fitment service from eBay after myFitment acquisition. Automatically adds and updates compatibility information to listings."
+  },
+  {
+    "canonical_name": "Fitment Plus Auto",
+    "node_id": "fitment-plus-auto",
+    "url": "https://www.ebay.com/sellercenter/news/2025-october/fitment-plus-auto",
+    "title": "Fitment Plus Auto | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2025,
+    "notes": "Automatic Fitment Coverage feature that keeps listings with fitment up-to-date automatically."
+  },
+  {
+    "canonical_name": "Fixed Price Format",
+    "node_id": "fixed-price-format",
+    "url": "https://pages.ebay.com/services/buyandsell/SellerFAQ.html",
+    "title": "eBay: Fixed Price Help",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Buy It Now listing format. Good 'Til Canceled duration by default, auto-renewed every 30 days until sold or ended."
+  },
+  {
+    "canonical_name": "Flash Deals",
+    "node_id": "flash-deals",
+    "url": "https://www.ebayinc.com/stories/news/tis-season-sweet-savings-ebay-debuts-hourly-flash-sale-holidays-offering/",
+    "title": "eBay Debuts Hourly Flash Sale for the Holidays",
+    "source_type": "press_release",
+    "year": 2024,
+    "notes": "Promotional hourly flash sales with up to 88% off MSRP. Also featured in eBay Live events."
+  },
+  {
+    "canonical_name": "Follow Seller",
+    "node_id": "follow-seller",
+    "url": "https://www.ebay.com/help/policies/listing-policies/links-policy?id=4248",
+    "title": "Links policy | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Feature allowing buyers to follow sellers they're interested in. Same as 'Add to Favorite Sellers' and 'Favorite store'."
+  },
+  {
+    "canonical_name": "Following",
+    "node_id": "following",
+    "url": "https://community.ebay.com/t5/Announcements/Follow-it-Find-it-Make-it-Yours/ba-p/26163261",
+    "title": "Follow it. Find it. Make it Yours.",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Personalized homepage feed feature allowing users to follow collections, curators, eBay members, interests, sellers and stores."
+  },
+  {
+    "canonical_name": "Form 1099-K",
+    "node_id": "form-1099-k",
+    "url": "https://www.ebay.com/help/selling/fees-credits-invoices/ebay-form-1099k?id=4794",
+    "title": "eBay and Form 1099-K | eBay",
+    "source_type": "ebay_official",
+    "year": 2025,
+    "notes": "IRS tax form for sellers with $20,000+ in sales and 200+ transactions. Threshold permanently restored in 2025."
+  },
+  {
+    "canonical_name": "Free Returns",
+    "node_id": "free-returns",
+    "url": "https://www.ebayinc.com/stories/news/ebay-launches-free-returns-for-vehicle-parts-and-accessories/",
+    "title": "eBay Launches Free Returns for Vehicle Parts & Accessories",
+    "source_type": "press_release",
+    "year": 2024,
+    "notes": "Seller pays return shipping no matter the reason. Required for P&A sellers starting July 15, 2025. eBay subsidizes 50% of return label costs."
+  },
+  {
+    "canonical_name": "Free Shipping Badge",
+    "node_id": "free-shipping-badge",
+    "url": "https://innovation.ebayinc.com/stories/simplifying-shipping-signals-on-ebay/",
+    "title": "Simplifying Shipping Signals on eBay",
+    "source_type": "ebay_official",
+    "year": 2025,
+    "notes": "Free x day shipping badge showing end-to-end delivery estimate. Improved conversion for sellers."
+  },
+  {
+    "canonical_name": "Freight Shipping",
+    "node_id": "freight-shipping",
+    "url": "https://www.ebay.com/sellercenter/shipping/choosing-a-carrier-and-service/freight",
+    "title": "Freight | Seller Center",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Most economical option for large, heavy items. Flat-rate freight or freight rate tables available. Labels purchased directly from carrier."
+  },
+  {
+    "canonical_name": "Full Refund",
+    "node_id": "full-refund",
+    "url": "https://www.ebay.com/help/policies/ebay-money-back-guarantee-policy/ebay-money-back-guarantee-policy?id=4210",
+    "title": "eBay Money Back Guarantee policy",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Refund of purchase price plus original shipping when items not received or not as described. Part of Money Back Guarantee."
+  },
+  {
+    "canonical_name": "Gallery Picture",
+    "node_id": "gallery-picture",
+    "url": "https://www.ebay.com/pages/help/sell/contextual/gallery_featured.html",
+    "title": "Gallery Featured Example",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Thumbnail picture in search results. Was initially fee-based, became free, then required for all listings."
+  },
+  {
+    "canonical_name": "Gallery Plus",
+    "node_id": "gallery-plus",
+    "url": "https://pages.ebay.com/ebaymotors/help/sell/contextual/inframe/gallery_plus.html",
+    "title": "Listing Upgrade – Gallery Plus",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Displays larger picture in search results when users mouse over listing. Free in Collectibles/Art/Antiques, 35 cents to $2 in other categories."
+  },
+  {
+    "canonical_name": "GDPR Compliance",
+    "node_id": "gdpr-compliance",
+    "url": "https://www.ebayinc.com/company/privacy-center/gdpr",
+    "title": "Data Processing Agreement - eBay Inc.",
+    "source_type": "ebay_official",
+    "year": 2018,
+    "notes": "General Data Protection Regulation compliance program. Enforceable since May 25, 2018. Includes Data Processing Agreements and privacy monitoring."
+  },
+  {
+    "canonical_name": "General Campaign",
+    "node_id": "general-campaign",
+    "url": "https://www.ebay.com/help/selling/ebay-advertising/promoted-listings/general-campaign-strategy?id=4164",
+    "title": "General campaign strategy | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Promoted Listings strategy with 2-100% ad rate. Pay only when item sells within 30 days of ad click. General access to ad placements."
+  },
+  {
+    "canonical_name": "Goldin Auctions",
+    "node_id": "goldin-auctions",
+    "url": "https://investors.ebayinc.com/investor-news/press-release-details/2024/eBay-Collectors-Enter-into-Commercial-Agreement-Sign-Deals-for-Acquisition-of-Goldin-by-eBay-and-Acquisition-of-the-eBay-Vault-by-PSA/default.aspx",
+    "title": "eBay Acquires Goldin",
+    "source_type": "press_release",
+    "year": 2024,
+    "notes": "Leading US auction house for high-value trading cards and collectibles. Acquired by eBay in 2024. Official auction partner of Basketball Hall of Fame."
+  },
+  {
+    "canonical_name": "Good - Refurbished",
+    "node_id": "good-refurbished",
+    "url": "https://www.ebay.com/help/selling/listings/creating-managing-listings/item-conditions-category?id=4765",
+    "title": "Item condition by category | eBay",
+    "source_type": "ebay_official",
+    "year": 2025,
+    "notes": "Item shows moderate wear, backed by one year warranty. Fully functional, professionally refurbished. One of four refurbished condition tiers."
+  },
+  {
+    "canonical_name": "Featured Deals",
+    "node_id": "featured-deals",
+    "url": "https://www.ebay.com/deals/featured/",
+    "title": "Featured Deals on eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Daily-updated deals with free shipping. Program surpassed $1 billion in sales in North America."
+  },
+  {
+    "canonical_name": "Fine Art",
+    "node_id": "fine-art",
+    "url": "https://www.ebay.com/b/Fine-Art-Photography/2211/bn_7114031399",
+    "title": "Fine Art Photography for sale | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Category for fine art including paintings, sculptures, photographs, prints from classic and contemporary artists."
+  },
+  {
+    "canonical_name": "Flat Rate Shipping",
+    "node_id": "flat-rate-shipping",
+    "url": "https://developer.ebay.com/api-docs/user-guides/static/trading-user-guide/shipping-flat-rate.html",
+    "title": "Flat rate shipping | eBay Developers Program",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Fixed shipping rate regardless of package dimensions, weight, or distance. Seller specifies cost, can offer multiple shipping services."
+  },
+  {
+    "canonical_name": "Free 2-Day Shipping",
+    "node_id": "free-2-day-shipping-us",
+    "url": "https://innovation.ebayinc.com/stories/faster-and-local-shopping-on-ebay-just-got-simpler/",
+    "title": "Faster and Local Shopping on eBay Just Got Simpler",
+    "source_type": "ebay_official",
+    "year": 2025,
+    "notes": "Badge indicating item will be delivered in 2 days, not that it will ship in 2 days. Calculated based on buyer's location."
+  },
+  {
+    "canonical_name": "Free 4-Day Shipping",
+    "node_id": "free-4-day-shipping-us",
+    "url": "https://www.ebayinc.com/stories/news/ebay-to-roll-out-guaranteed-delivery-for-20-million-items/",
+    "title": "eBay Guaranteed Delivery",
+    "source_type": "press_release",
+    "year": 2017,
+    "notes": "Part of eBay's delivery time badges. Retail standard threshold is 4 days in US, 3 days in UK/Germany."
+  },
+  {
+    "canonical_name": "Feed",
+    "node_id": "feed",
+    "url": "https://www.ebayinc.com/stories/news/media-covers-ebays-rollout-feed-homepage-personalization-1/",
+    "title": "Media Covers eBay's Feed Personalization Rollout",
+    "source_type": "press_release",
+    "year": 2024,
+    "notes": "Redesigned homepage featuring personalized streams of products. Biggest homepage redesign in eBay's history - different for every user."
+  },
+  {
+    "canonical_name": "Feedback Left",
+    "node_id": "feedback-left",
+    "url": "https://www.ebay.com/help/buying/leaving-feedback-sellers/viewing-changing-feedback-left-sellers?id=4031",
+    "title": "Viewing and changing feedback left for sellers | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "View feedback you've given to others in 'Left for others' tab. Cannot edit or delete unless seller sends revision request."
+  },
+  {
+    "canonical_name": "Feedback Reply",
+    "node_id": "feedback-reply",
+    "url": "https://www.ebay.com/help/selling/leaving-feedback-buyers/disputing-feedback-received?id=4102",
+    "title": "Viewing and responding to feedback from buyers | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Allows 500 character responses to feedback. Helps sellers tell their side of the story, especially for negative feedback."
+  },
+  {
+    "canonical_name": "Filter By",
+    "node_id": "filter-by",
+    "url": "https://developer.ebay.com/devzone/finding/callref/finditemsbykeywords.html",
+    "title": "findItemsByKeywords - API Reference",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Search refinement using item filters (condition, price, listing type) and aspect filters. Controls search results with name/value pairs."
+  },
+  {
+    "canonical_name": "Global Shipping Toggle",
+    "node_id": "global-shipping-toggle",
+    "url": "https://pages.ebay.com/buy/globalshippingprogram/",
+    "title": "eBay: Global Shipping Program",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Replaced by eBay International Shipping in US. Still available on UK marketplace. Ships to 100+ countries, reaches 60M+ buyers worldwide."
+  },
+  {
+    "canonical_name": "Go to Checkout",
+    "node_id": "go-to-checkout",
+    "url": "https://www.ebay.com/help/buying/paying-items/shopping-cart?id=4360",
+    "title": "Your shopping cart | eBay",
+    "source_type": "ebay_official",
+    "year": 2024,
+    "notes": "Button to proceed from shopping cart to payment. Can pay for multiple items from different sellers together."
+  }
+]
